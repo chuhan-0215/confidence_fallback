@@ -1,0 +1,10798 @@
+[
+  {
+    "question": "Every terpus is a gerpus. Every rompus is a vumpus. Every impus is a vumpus. Sally is a worpus. Every dumpus is a gerpus. Every worpus is a yerpus. Every zumpus is a vumpus. Every boompus is a zumpus. Every timpus is a tumpus. Every zhorpus is a boompus. Every zhorpus is a impus. Every dumpus is a yerpus. Every zhorpus is a timpus. Every rompus is a worpus. Every zumpus is a worpus. Every timpus is a vumpus. Oliver is a dumpus. Every yimpus is a felpus. Every yimpus is a bompus. Every timpus is a worpus. Every yimpus is a quimpus. Oliver is a gwompus. Every terpus is a gwompus. Every rempus is a gerpus. Every rompus is a gwompus. Every dumpus is a yimpus. Every tumpus is a vumpus. Every quimpus is a rempus. Sally is a zhorpus. Sally is a boompus. Every dumpus is a terpus. Every timpus is a rompus. Every yimpus is a rempus. Every boompus is a timpus. Every dumpus is a felpus. Every terpus is a yerpus. Oliver is a terpus. Is Oliver a bompus or vumpus? Every bompus is a Quimshumhil. Every Quimshumhil is a Brimpvexlum.",
+    "answer": "Oliver is a Brimpvexlum.",
+    "steps": [
+      "Oliver is a dumpus.",
+      "Every dumpus is a yimpus.",
+      "Every yimpus is a bompus.",
+      "Every bompus is a Quimshumhil.",
+      "Every Quimshumhil is a Brimpvexlum."
+    ],
+    "idx_to_symbol": [
+      "Sally",
+      "Oliver",
+      "dumpus",
+      "zhorpus",
+      "boompus",
+      "timpus",
+      "terpus",
+      "yimpus",
+      "rompus",
+      "gwompus",
+      "zumpus",
+      "felpus",
+      "worpus",
+      "quimpus",
+      "bompus",
+      "tumpus",
+      "impus",
+      "rempus",
+      "yerpus",
+      "vumpus",
+      "gerpus",
+      "Quimshumhil",
+      "Brimpvexlum"
+    ],
+    "edges": [
+      [
+        1,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        1,
+        9
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        7,
+        11
+      ],
+      [
+        2,
+        11
+      ],
+      [
+        8,
+        12
+      ],
+      [
+        0,
+        12
+      ],
+      [
+        10,
+        12
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        7,
+        13
+      ],
+      [
+        7,
+        14
+      ],
+      [
+        5,
+        15
+      ],
+      [
+        3,
+        16
+      ],
+      [
+        7,
+        17
+      ],
+      [
+        13,
+        17
+      ],
+      [
+        6,
+        18
+      ],
+      [
+        12,
+        18
+      ],
+      [
+        2,
+        18
+      ],
+      [
+        16,
+        19
+      ],
+      [
+        8,
+        19
+      ],
+      [
+        10,
+        19
+      ],
+      [
+        5,
+        19
+      ],
+      [
+        15,
+        19
+      ],
+      [
+        6,
+        20
+      ],
+      [
+        17,
+        20
+      ],
+      [
+        2,
+        20
+      ],
+      [
+        14,
+        21
+      ],
+      [
+        21,
+        22
+      ]
+    ],
+    "root": 1,
+    "target": 22,
+    "neg_target": 19,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        2
+      ],
+      "2": [
+        7
+      ],
+      "3": [
+        14
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 0
+  },
+  {
+    "question": "Polly is a yumpus. Every shumpus is a boompus. Every grimpus is a lempus. Fae is a shumpus. Every felpus is a gorpus. Every sterpus is a scrompus. Every quimpus is a rompus. Every terpus is a numpus. Every numpus is a yimpus. Fae is a sterpus. Every sterpus is a rompus. Fae is a quimpus. Every gorpus is a kerpus. Tom is a jelpus. Polly is a felpus. Every grimpus is a sterpus. Every numpus is a boompus. Every yimpus is a scrompus. Every quimpus is a numpus. Every lempus is a fompus. Fae is a terpus. Every shumpus is a numpus. Every shumpus is a rompus. Every boompus is a fompus. Every yimpus is a grimpus. Fae is a storpus. Is Fae a fompus or yumpus? Every fompus is a Yumimppus. Every Yumimppus is a Lorzorrom.",
+    "answer": "Fae is a Lorzorrom.",
+    "steps": [
+      "Fae is a shumpus.",
+      "Every shumpus is a boompus.",
+      "Every boompus is a fompus.",
+      "Every fompus is a Yumimppus.",
+      "Every Yumimppus is a Lorzorrom."
+    ],
+    "idx_to_symbol": [
+      "Polly",
+      "Fae",
+      "Tom",
+      "quimpus",
+      "terpus",
+      "jelpus",
+      "felpus",
+      "shumpus",
+      "numpus",
+      "yimpus",
+      "gorpus",
+      "storpus",
+      "grimpus",
+      "sterpus",
+      "scrompus",
+      "boompus",
+      "rompus",
+      "lempus",
+      "fompus",
+      "kerpus",
+      "yumpus",
+      "Yumimppus",
+      "Lorzorrom"
+    ],
+    "edges": [
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        1,
+        11
+      ],
+      [
+        9,
+        12
+      ],
+      [
+        12,
+        13
+      ],
+      [
+        1,
+        13
+      ],
+      [
+        13,
+        14
+      ],
+      [
+        9,
+        14
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        8,
+        15
+      ],
+      [
+        3,
+        16
+      ],
+      [
+        7,
+        16
+      ],
+      [
+        13,
+        16
+      ],
+      [
+        12,
+        17
+      ],
+      [
+        15,
+        18
+      ],
+      [
+        17,
+        18
+      ],
+      [
+        10,
+        19
+      ],
+      [
+        0,
+        20
+      ],
+      [
+        18,
+        21
+      ],
+      [
+        21,
+        22
+      ]
+    ],
+    "root": 1,
+    "target": 22,
+    "neg_target": 20,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        7
+      ],
+      "2": [
+        15
+      ],
+      "3": [
+        18
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 1
+  },
+  {
+    "question": "Rex is a sterpus. Every jelpus is a quimpus. Every dumpus is a rempus. Sam is a jelpus. Every rorpus is a storpus. Every dumpus is a impus. Sam is a scrompus. Every worpus is a kerpus. Every brimpus is a gerpus. Every jelpus is a rompus. Every rorpus is a kerpus. Every kerpus is a rempus. Every rorpus is a sterpus. Every gerpus is a kerpus. Every worpus is a wumpus. Every brimpus is a rorpus. Every wumpus is a hilpus. Every hilpus is a dumpus. Every boompus is a gorpus. Every jelpus is a boompus. Sam is a boompus. Every quimpus is a rompus. Every gorpus is a quimpus. Every jelpus is a scrompus. Davis is a brimpus. Davis is a worpus. Every impus is a rempus. Sam is a chorpus. Rex is a chorpus. Every rorpus is a chorpus. Every gorpus is a rompus. Every worpus is a brimpus. Every scrompus is a sterpus. Is Davis a rompus or rempus? Every rempus is a Impzorter. Every Impzorter is a Romstorpshum.",
+    "answer": "Davis is a Romstorpshum.",
+    "steps": [
+      "Davis is a worpus.",
+      "Every worpus is a kerpus.",
+      "Every kerpus is a rempus.",
+      "Every rempus is a Impzorter.",
+      "Every Impzorter is a Romstorpshum."
+    ],
+    "idx_to_symbol": [
+      "Sam",
+      "Davis",
+      "worpus",
+      "brimpus",
+      "wumpus",
+      "Rex",
+      "rorpus",
+      "jelpus",
+      "scrompus",
+      "chorpus",
+      "boompus",
+      "sterpus",
+      "gerpus",
+      "hilpus",
+      "gorpus",
+      "dumpus",
+      "kerpus",
+      "impus",
+      "quimpus",
+      "rempus",
+      "rompus",
+      "storpus",
+      "Impzorter",
+      "Romstorpshum"
+    ],
+    "edges": [
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        5,
+        9
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        0,
+        10
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        8,
+        11
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        3,
+        12
+      ],
+      [
+        4,
+        13
+      ],
+      [
+        10,
+        14
+      ],
+      [
+        13,
+        15
+      ],
+      [
+        6,
+        16
+      ],
+      [
+        2,
+        16
+      ],
+      [
+        12,
+        16
+      ],
+      [
+        15,
+        17
+      ],
+      [
+        14,
+        18
+      ],
+      [
+        7,
+        18
+      ],
+      [
+        17,
+        19
+      ],
+      [
+        15,
+        19
+      ],
+      [
+        16,
+        19
+      ],
+      [
+        18,
+        20
+      ],
+      [
+        7,
+        20
+      ],
+      [
+        14,
+        20
+      ],
+      [
+        6,
+        21
+      ],
+      [
+        19,
+        22
+      ],
+      [
+        22,
+        23
+      ]
+    ],
+    "root": 1,
+    "target": 23,
+    "neg_target": 20,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        2
+      ],
+      "2": [
+        16
+      ],
+      "3": [
+        19
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 2
+  },
+  {
+    "question": "Every impus is a boompus. Every scrompus is a storpus. Wren is a fompus. Every gwompus is a boompus. Every tumpus is a zumpus. Every fompus is a chorpus. Every fompus is a gerpus. Carol is a storpus. Every zumpus is a fompus. Oliver is a lempus. Every worpus is a impus. Every worpus is a boompus. Every shumpus is a zumpus. Every lempus is a impus. Every lempus is a boompus. Every jompus is a gwompus. Every grimpus is a boompus. Every jompus is a boompus. Every impus is a jompus. Oliver is a boompus. Every gwompus is a rorpus. Every yumpus is a vumpus. Every zumpus is a yumpus. Every jompus is a rorpus. Every lempus is a grimpus. Every lempus is a gwompus. Every scrompus is a yumpus. Every shumpus is a vumpus. Every grimpus is a impus. Oliver is a worpus. Every grimpus is a worpus. Every tumpus is a fompus. Every tumpus is a jelpus. Every zumpus is a gerpus. Every storpus is a jelpus. Every worpus is a gwompus. Every shumpus is a fompus. Every shumpus is a dumpus. Every scrompus is a shumpus. Every storpus is a tumpus. Wren is a scrompus. Every impus is a gwompus. Every lempus is a worpus. Is Wren a boompus or vumpus? Every vumpus is a Brimpterquim. Every Brimpterquim is a Zorvexquim.",
+    "answer": "Wren is a Zorvexquim.",
+    "steps": [
+      "Wren is a scrompus.",
+      "Every scrompus is a yumpus.",
+      "Every yumpus is a vumpus.",
+      "Every vumpus is a Brimpterquim.",
+      "Every Brimpterquim is a Zorvexquim."
+    ],
+    "idx_to_symbol": [
+      "Oliver",
+      "Wren",
+      "scrompus",
+      "lempus",
+      "Carol",
+      "grimpus",
+      "storpus",
+      "shumpus",
+      "worpus",
+      "impus",
+      "tumpus",
+      "jompus",
+      "zumpus",
+      "fompus",
+      "gwompus",
+      "gerpus",
+      "yumpus",
+      "boompus",
+      "vumpus",
+      "rorpus",
+      "chorpus",
+      "dumpus",
+      "jelpus",
+      "Brimpterquim",
+      "Zorvexquim"
+    ],
+    "edges": [
+      [
+        1,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        5,
+        9
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        3,
+        9
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        9,
+        11
+      ],
+      [
+        7,
+        12
+      ],
+      [
+        10,
+        12
+      ],
+      [
+        10,
+        13
+      ],
+      [
+        12,
+        13
+      ],
+      [
+        1,
+        13
+      ],
+      [
+        7,
+        13
+      ],
+      [
+        11,
+        14
+      ],
+      [
+        9,
+        14
+      ],
+      [
+        3,
+        14
+      ],
+      [
+        8,
+        14
+      ],
+      [
+        12,
+        15
+      ],
+      [
+        13,
+        15
+      ],
+      [
+        12,
+        16
+      ],
+      [
+        2,
+        16
+      ],
+      [
+        5,
+        17
+      ],
+      [
+        3,
+        17
+      ],
+      [
+        11,
+        17
+      ],
+      [
+        14,
+        17
+      ],
+      [
+        9,
+        17
+      ],
+      [
+        0,
+        17
+      ],
+      [
+        8,
+        17
+      ],
+      [
+        16,
+        18
+      ],
+      [
+        7,
+        18
+      ],
+      [
+        11,
+        19
+      ],
+      [
+        14,
+        19
+      ],
+      [
+        13,
+        20
+      ],
+      [
+        7,
+        21
+      ],
+      [
+        6,
+        22
+      ],
+      [
+        10,
+        22
+      ],
+      [
+        18,
+        23
+      ],
+      [
+        23,
+        24
+      ]
+    ],
+    "root": 1,
+    "target": 24,
+    "neg_target": 17,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        2
+      ],
+      "2": [
+        16,
+        7
+      ],
+      "3": [
+        18
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 3
+  },
+  {
+    "question": "Every wumpus is a grimpus. Every bompus is a felpus. Every worpus is a rompus. Tom is a shumpus. Every storpus is a lempus. Every timpus is a felpus. Every numpus is a vumpus. Every numpus is a fompus. Every brimpus is a sterpus. Sam is a fompus. Every storpus is a kerpus. Every storpus is a zumpus. Tom is a storpus. Every timpus is a wumpus. Every vumpus is a rompus. Every rorpus is a timpus. Every sterpus is a gorpus. Every brimpus is a fompus. Every storpus is a timpus. Every rorpus is a rompus. Every kerpus is a zumpus. Every storpus is a felpus. Sam is a brimpus. Every storpus is a rorpus. Sam is a numpus. Every worpus is a lempus. Stella is a zumpus. Every brimpus is a numpus. Every wumpus is a lempus. Tom is a timpus. Every brimpus is a shumpus. Every worpus is a timpus. Every storpus is a shumpus. Sam is a kerpus. Every rorpus is a bompus. Sam is a zumpus. Every fompus is a vumpus. Every rorpus is a worpus. Every brimpus is a kerpus. Every storpus is a worpus. Is Sam a grimpus or gorpus? Every gorpus is a Terdumpjel. Every Terdumpjel is a Terscromvex.",
+    "answer": "Sam is a Terscromvex.",
+    "steps": [
+      "Sam is a brimpus.",
+      "Every brimpus is a sterpus.",
+      "Every sterpus is a gorpus.",
+      "Every gorpus is a Terdumpjel.",
+      "Every Terdumpjel is a Terscromvex."
+    ],
+    "idx_to_symbol": [
+      "Sam",
+      "Tom",
+      "storpus",
+      "Stella",
+      "brimpus",
+      "kerpus",
+      "shumpus",
+      "rorpus",
+      "numpus",
+      "fompus",
+      "zumpus",
+      "worpus",
+      "timpus",
+      "vumpus",
+      "rompus",
+      "sterpus",
+      "bompus",
+      "gorpus",
+      "wumpus",
+      "felpus",
+      "lempus",
+      "grimpus",
+      "Terdumpjel",
+      "Terscromvex"
+    ],
+    "edges": [
+      [
+        1,
+        2
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        3,
+        10
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        0,
+        10
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        7,
+        11
+      ],
+      [
+        2,
+        11
+      ],
+      [
+        7,
+        12
+      ],
+      [
+        11,
+        12
+      ],
+      [
+        1,
+        12
+      ],
+      [
+        2,
+        12
+      ],
+      [
+        8,
+        13
+      ],
+      [
+        9,
+        13
+      ],
+      [
+        11,
+        14
+      ],
+      [
+        13,
+        14
+      ],
+      [
+        7,
+        14
+      ],
+      [
+        4,
+        15
+      ],
+      [
+        7,
+        16
+      ],
+      [
+        15,
+        17
+      ],
+      [
+        12,
+        18
+      ],
+      [
+        12,
+        19
+      ],
+      [
+        16,
+        19
+      ],
+      [
+        2,
+        19
+      ],
+      [
+        18,
+        20
+      ],
+      [
+        11,
+        20
+      ],
+      [
+        2,
+        20
+      ],
+      [
+        18,
+        21
+      ],
+      [
+        17,
+        22
+      ],
+      [
+        22,
+        23
+      ]
+    ],
+    "root": 0,
+    "target": 23,
+    "neg_target": 21,
+    "neighbor_k": {
+      "0": [
+        0
+      ],
+      "1": [
+        4
+      ],
+      "2": [
+        15
+      ],
+      "3": [
+        17
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 4
+  },
+  {
+    "question": "Every vumpus is a yimpus. Every yerpus is a kerpus. Every yerpus is a shumpus. Every grimpus is a scrompus. Every fompus is a lorpus. Every grimpus is a fompus. Every timpus is a grimpus. Bob is a wumpus. Every vumpus is a timpus. Every jelpus is a bompus. Every rempus is a lorpus. Every shumpus is a sterpus. Every jelpus is a scrompus. Every vumpus is a fompus. Every shumpus is a wumpus. Every rempus is a dumpus. Every jelpus is a shumpus. Carol is a fompus. Every yerpus is a sterpus. Bob is a jelpus. Bob is a shumpus. Every dumpus is a fompus. Every rempus is a fompus. Every timpus is a rempus. Every jelpus is a yerpus. Carol is a vumpus. Every yimpus is a lorpus. Every sterpus is a bompus. Every shumpus is a gorpus. Every sterpus is a gerpus. Every timpus is a scrompus. Is Bob a kerpus or lorpus? Every kerpus is a Scromvexstorp. Every Scromvexstorp is a Wumterger.",
+    "answer": "Bob is a Wumterger.",
+    "steps": [
+      "Bob is a jelpus.",
+      "Every jelpus is a yerpus.",
+      "Every yerpus is a kerpus.",
+      "Every kerpus is a Scromvexstorp.",
+      "Every Scromvexstorp is a Wumterger."
+    ],
+    "idx_to_symbol": [
+      "Bob",
+      "Carol",
+      "vumpus",
+      "jelpus",
+      "timpus",
+      "grimpus",
+      "scrompus",
+      "rempus",
+      "yimpus",
+      "yerpus",
+      "dumpus",
+      "shumpus",
+      "sterpus",
+      "bompus",
+      "gorpus",
+      "wumpus",
+      "kerpus",
+      "gerpus",
+      "fompus",
+      "lorpus",
+      "Scromvexstorp",
+      "Wumterger"
+    ],
+    "edges": [
+      [
+        1,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        3,
+        9
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        9,
+        11
+      ],
+      [
+        3,
+        11
+      ],
+      [
+        0,
+        11
+      ],
+      [
+        9,
+        12
+      ],
+      [
+        11,
+        12
+      ],
+      [
+        12,
+        13
+      ],
+      [
+        3,
+        13
+      ],
+      [
+        11,
+        14
+      ],
+      [
+        11,
+        15
+      ],
+      [
+        0,
+        15
+      ],
+      [
+        9,
+        16
+      ],
+      [
+        12,
+        17
+      ],
+      [
+        7,
+        18
+      ],
+      [
+        2,
+        18
+      ],
+      [
+        10,
+        18
+      ],
+      [
+        5,
+        18
+      ],
+      [
+        1,
+        18
+      ],
+      [
+        7,
+        19
+      ],
+      [
+        8,
+        19
+      ],
+      [
+        18,
+        19
+      ],
+      [
+        16,
+        20
+      ],
+      [
+        20,
+        21
+      ]
+    ],
+    "root": 0,
+    "target": 21,
+    "neg_target": 19,
+    "neighbor_k": {
+      "0": [
+        0
+      ],
+      "1": [
+        3
+      ],
+      "2": [
+        9
+      ],
+      "3": [
+        16
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 5
+  },
+  {
+    "question": "Every jelpus is a dumpus. Every yimpus is a rempus. Every zumpus is a yumpus. Every kerpus is a quimpus. Every shumpus is a boompus. Every dumpus is a rorpus. Every terpus is a fompus. Every rorpus is a fompus. Every lorpus is a jelpus. Every kerpus is a boompus. Every impus is a jompus. Every felpus is a yerpus. Tom is a felpus. Every yerpus is a timpus. Every storpus is a zumpus. Tom is a kerpus. Every terpus is a dumpus. Every lempus is a yumpus. Every jelpus is a zumpus. Every zumpus is a dumpus. Every zumpus is a lempus. Every storpus is a terpus. Eva is a lorpus. Eva is a jelpus. Eva is a lempus. Every shumpus is a impus. Every felpus is a kerpus. Every jelpus is a storpus. Every lorpus is a zumpus. Every felpus is a boompus. Every lempus is a dumpus. Eva is a storpus. Every boompus is a timpus. Every shumpus is a quimpus. Every boompus is a jompus. Every dumpus is a chorpus. Every lorpus is a yimpus. Every yerpus is a shumpus. Is Eva a quimpus or rempus? Every rempus is a Pusjelshum. Every Pusjelshum is a Shumvexbrim.",
+    "answer": "Eva is a Shumvexbrim.",
+    "steps": [
+      "Eva is a lorpus.",
+      "Every lorpus is a yimpus.",
+      "Every yimpus is a rempus.",
+      "Every rempus is a Pusjelshum.",
+      "Every Pusjelshum is a Shumvexbrim."
+    ],
+    "idx_to_symbol": [
+      "Tom",
+      "Eva",
+      "lorpus",
+      "jelpus",
+      "felpus",
+      "storpus",
+      "zumpus",
+      "lempus",
+      "yumpus",
+      "yerpus",
+      "kerpus",
+      "shumpus",
+      "terpus",
+      "quimpus",
+      "yimpus",
+      "dumpus",
+      "rorpus",
+      "boompus",
+      "timpus",
+      "chorpus",
+      "impus",
+      "fompus",
+      "rempus",
+      "jompus",
+      "Pusjelshum",
+      "Shumvexbrim"
+    ],
+    "edges": [
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        0,
+        10
+      ],
+      [
+        9,
+        11
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        11,
+        13
+      ],
+      [
+        10,
+        13
+      ],
+      [
+        2,
+        14
+      ],
+      [
+        12,
+        15
+      ],
+      [
+        3,
+        15
+      ],
+      [
+        6,
+        15
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        15,
+        16
+      ],
+      [
+        10,
+        17
+      ],
+      [
+        11,
+        17
+      ],
+      [
+        4,
+        17
+      ],
+      [
+        9,
+        18
+      ],
+      [
+        17,
+        18
+      ],
+      [
+        15,
+        19
+      ],
+      [
+        11,
+        20
+      ],
+      [
+        12,
+        21
+      ],
+      [
+        16,
+        21
+      ],
+      [
+        14,
+        22
+      ],
+      [
+        17,
+        23
+      ],
+      [
+        20,
+        23
+      ],
+      [
+        22,
+        24
+      ],
+      [
+        24,
+        25
+      ]
+    ],
+    "root": 1,
+    "target": 25,
+    "neg_target": 13,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        2
+      ],
+      "2": [
+        14
+      ],
+      "3": [
+        22
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 6
+  },
+  {
+    "question": "Every bompus is a shumpus. Every lorpus is a rorpus. Every gwompus is a sterpus. Sally is a bompus. Every lorpus is a zumpus. Every quimpus is a terpus. Sally is a numpus. Every lorpus is a vumpus. Every lorpus is a quimpus. Every storpus is a worpus. Every sterpus is a rompus. Every grimpus is a yumpus. Every fompus is a hilpus. Every numpus is a fompus. Every gwompus is a rorpus. Every quimpus is a boompus. Every gorpus is a brimpus. Every gwompus is a gorpus. Every numpus is a storpus. Every lorpus is a terpus. Alex is a lorpus. Every quimpus is a gwompus. Sally is a vumpus. Alex is a terpus. Every numpus is a bompus. Every fompus is a storpus. Every shumpus is a dumpus. Sally is a rompus. Every bompus is a fompus. Every lorpus is a sterpus. Every grimpus is a rorpus. Every bompus is a storpus. Every sterpus is a grimpus. Every sterpus is a brimpus. Every dumpus is a yumpus. Every storpus is a timpus. Alex is a vumpus. Sally is a rorpus. Every gorpus is a yumpus. Sally is a storpus. Every sterpus is a gorpus. Is Alex a worpus or boompus? Every boompus is a Yumhilbrimp. Every Yumhilbrimp is a Lumpuster.",
+    "answer": "Alex is a Lumpuster.",
+    "steps": [
+      "Alex is a lorpus.",
+      "Every lorpus is a quimpus.",
+      "Every quimpus is a boompus.",
+      "Every boompus is a Yumhilbrimp.",
+      "Every Yumhilbrimp is a Lumpuster."
+    ],
+    "idx_to_symbol": [
+      "Alex",
+      "Sally",
+      "lorpus",
+      "vumpus",
+      "quimpus",
+      "terpus",
+      "gwompus",
+      "numpus",
+      "sterpus",
+      "grimpus",
+      "bompus",
+      "fompus",
+      "storpus",
+      "gorpus",
+      "timpus",
+      "zumpus",
+      "brimpus",
+      "shumpus",
+      "hilpus",
+      "rompus",
+      "rorpus",
+      "dumpus",
+      "worpus",
+      "yumpus",
+      "boompus",
+      "Yumhilbrimp",
+      "Lumpuster"
+    ],
+    "edges": [
+      [
+        0,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        1,
+        10
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        7,
+        11
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        11,
+        12
+      ],
+      [
+        1,
+        12
+      ],
+      [
+        10,
+        12
+      ],
+      [
+        7,
+        12
+      ],
+      [
+        8,
+        13
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        12,
+        14
+      ],
+      [
+        2,
+        15
+      ],
+      [
+        8,
+        16
+      ],
+      [
+        13,
+        16
+      ],
+      [
+        10,
+        17
+      ],
+      [
+        11,
+        18
+      ],
+      [
+        1,
+        19
+      ],
+      [
+        8,
+        19
+      ],
+      [
+        2,
+        20
+      ],
+      [
+        6,
+        20
+      ],
+      [
+        1,
+        20
+      ],
+      [
+        9,
+        20
+      ],
+      [
+        17,
+        21
+      ],
+      [
+        12,
+        22
+      ],
+      [
+        21,
+        23
+      ],
+      [
+        9,
+        23
+      ],
+      [
+        13,
+        23
+      ],
+      [
+        4,
+        24
+      ],
+      [
+        24,
+        25
+      ],
+      [
+        25,
+        26
+      ]
+    ],
+    "root": 0,
+    "target": 26,
+    "neg_target": 22,
+    "neighbor_k": {
+      "0": [
+        0
+      ],
+      "1": [
+        2
+      ],
+      "2": [
+        4
+      ],
+      "3": [
+        24
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 7
+  },
+  {
+    "question": "Polly is a quimpus. Rex is a impus. Every scrompus is a fompus. Every quimpus is a kerpus. Every impus is a numpus. Every scrompus is a vumpus. Every brimpus is a chorpus. Every quimpus is a gerpus. Every bompus is a terpus. Every scrompus is a boompus. Every brimpus is a storpus. Every quimpus is a jompus. Polly is a bompus. Every felpus is a scrompus. Every terpus is a jelpus. Every gerpus is a vumpus. Every brimpus is a bompus. Polly is a storpus. Every yimpus is a kerpus. Every brimpus is a boompus. Every jompus is a gerpus. Rex is a scrompus. Rex is a felpus. Every brimpus is a quimpus. Every impus is a grimpus. Polly is a yerpus. Every terpus is a storpus. Every impus is a vumpus. Every bompus is a gerpus. Every chorpus is a jelpus. Every bompus is a yerpus. Polly is a brimpus. Every impus is a yimpus. Every scrompus is a yimpus. Every chorpus is a storpus. Every bompus is a boompus. Is Polly a jelpus or fompus? Every jelpus is a Impjelshum. Every Impjelshum is a Hilquimlum.",
+    "answer": "Polly is a Hilquimlum.",
+    "steps": [
+      "Polly is a brimpus.",
+      "Every brimpus is a chorpus.",
+      "Every chorpus is a jelpus.",
+      "Every jelpus is a Impjelshum.",
+      "Every Impjelshum is a Hilquimlum."
+    ],
+    "idx_to_symbol": [
+      "Rex",
+      "Polly",
+      "brimpus",
+      "felpus",
+      "scrompus",
+      "bompus",
+      "quimpus",
+      "boompus",
+      "chorpus",
+      "impus",
+      "yimpus",
+      "yerpus",
+      "jompus",
+      "kerpus",
+      "gerpus",
+      "vumpus",
+      "fompus",
+      "terpus",
+      "storpus",
+      "jelpus",
+      "numpus",
+      "grimpus",
+      "Impjelshum",
+      "Hilquimlum"
+    ],
+    "edges": [
+      [
+        1,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        1,
+        11
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        10,
+        13
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        12,
+        14
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        5,
+        14
+      ],
+      [
+        4,
+        15
+      ],
+      [
+        9,
+        15
+      ],
+      [
+        14,
+        15
+      ],
+      [
+        4,
+        16
+      ],
+      [
+        5,
+        17
+      ],
+      [
+        17,
+        18
+      ],
+      [
+        2,
+        18
+      ],
+      [
+        1,
+        18
+      ],
+      [
+        8,
+        18
+      ],
+      [
+        17,
+        19
+      ],
+      [
+        8,
+        19
+      ],
+      [
+        9,
+        20
+      ],
+      [
+        9,
+        21
+      ],
+      [
+        19,
+        22
+      ],
+      [
+        22,
+        23
+      ]
+    ],
+    "root": 1,
+    "target": 23,
+    "neg_target": 16,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        2,
+        5
+      ],
+      "2": [
+        8,
+        17
+      ],
+      "3": [
+        19
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 8
+  },
+  {
+    "question": "Every zhorpus is a rompus. Every timpus is a terpus. Every tumpus is a grimpus. Bob is a sterpus. Every timpus is a gerpus. Every timpus is a grimpus. Jack is a timpus. Every yumpus is a sterpus. Every yimpus is a bompus. Every fompus is a brimpus. Every gwompus is a brimpus. Every yimpus is a rompus. Every storpus is a brimpus. Every timpus is a scrompus. Jack is a tumpus. Every bompus is a sterpus. Every bompus is a zhorpus. Every terpus is a scrompus. Every rompus is a jompus. Every zhorpus is a lempus. Every grimpus is a brimpus. Every timpus is a fompus. Every tumpus is a gwompus. Every yumpus is a zhorpus. Every gerpus is a tumpus. Bob is a yimpus. Every gwompus is a grimpus. Every fompus is a grimpus. Bob is a quimpus. Every gerpus is a scrompus. Every gwompus is a storpus. Every terpus is a grimpus. Every lempus is a jompus. Every yimpus is a sterpus. Every gerpus is a terpus. Every terpus is a gwompus. Every gerpus is a brimpus. Every timpus is a boompus. Every rompus is a lempus. Every yumpus is a wumpus. Every bompus is a yumpus. Every scrompus is a tumpus. Every terpus is a gorpus. Every yumpus is a jompus. Bob is a bompus. Every zhorpus is a jompus. Every timpus is a gwompus. Every terpus is a quimpus. Is Jack a wumpus or gorpus? Every gorpus is a Lumterrom. Every Lumterrom is a Jeldumplum.",
+    "answer": "Jack is a Jeldumplum.",
+    "steps": [
+      "Jack is a timpus.",
+      "Every timpus is a terpus.",
+      "Every terpus is a gorpus.",
+      "Every gorpus is a Lumterrom.",
+      "Every Lumterrom is a Jeldumplum."
+    ],
+    "idx_to_symbol": [
+      "Jack",
+      "Bob",
+      "yimpus",
+      "bompus",
+      "timpus",
+      "yumpus",
+      "sterpus",
+      "gerpus",
+      "terpus",
+      "fompus",
+      "zhorpus",
+      "quimpus",
+      "scrompus",
+      "tumpus",
+      "rompus",
+      "lempus",
+      "gwompus",
+      "grimpus",
+      "storpus",
+      "jompus",
+      "brimpus",
+      "gorpus",
+      "boompus",
+      "wumpus",
+      "Lumterrom",
+      "Jeldumplum"
+    ],
+    "edges": [
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        3,
+        10
+      ],
+      [
+        8,
+        11
+      ],
+      [
+        1,
+        11
+      ],
+      [
+        8,
+        12
+      ],
+      [
+        7,
+        12
+      ],
+      [
+        4,
+        12
+      ],
+      [
+        12,
+        13
+      ],
+      [
+        7,
+        13
+      ],
+      [
+        0,
+        13
+      ],
+      [
+        2,
+        14
+      ],
+      [
+        10,
+        14
+      ],
+      [
+        10,
+        15
+      ],
+      [
+        14,
+        15
+      ],
+      [
+        13,
+        16
+      ],
+      [
+        8,
+        16
+      ],
+      [
+        4,
+        16
+      ],
+      [
+        4,
+        17
+      ],
+      [
+        8,
+        17
+      ],
+      [
+        13,
+        17
+      ],
+      [
+        16,
+        17
+      ],
+      [
+        9,
+        17
+      ],
+      [
+        16,
+        18
+      ],
+      [
+        15,
+        19
+      ],
+      [
+        5,
+        19
+      ],
+      [
+        14,
+        19
+      ],
+      [
+        10,
+        19
+      ],
+      [
+        17,
+        20
+      ],
+      [
+        18,
+        20
+      ],
+      [
+        7,
+        20
+      ],
+      [
+        9,
+        20
+      ],
+      [
+        16,
+        20
+      ],
+      [
+        8,
+        21
+      ],
+      [
+        4,
+        22
+      ],
+      [
+        5,
+        23
+      ],
+      [
+        21,
+        24
+      ],
+      [
+        24,
+        25
+      ]
+    ],
+    "root": 0,
+    "target": 25,
+    "neg_target": 23,
+    "neighbor_k": {
+      "0": [
+        0
+      ],
+      "1": [
+        4
+      ],
+      "2": [
+        8
+      ],
+      "3": [
+        21
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 9
+  },
+  {
+    "question": "Every numpus is a chorpus. Every vumpus is a felpus. Every bompus is a dumpus. Every boompus is a vumpus. Gabriel is a brimpus. Every lorpus is a bompus. Every gwompus is a lorpus. Every boompus is a brimpus. Every lorpus is a chorpus. Every impus is a yimpus. Sally is a gerpus. Every gwompus is a numpus. Every jompus is a felpus. Every bompus is a chorpus. Every kerpus is a impus. Gabriel is a boompus. Every impus is a storpus. Every boompus is a storpus. Sally is a gwompus. Every gorpus is a terpus. Every jompus is a brimpus. Every gwompus is a gorpus. Every numpus is a bompus. Every gwompus is a bompus. Every vumpus is a jompus. Every bompus is a gorpus. Every kerpus is a terpus. Every boompus is a kerpus. Every boompus is a terpus. Every boompus is a felpus. Gabriel is a storpus. Every kerpus is a storpus. Every chorpus is a gerpus. Gabriel is a impus. Every kerpus is a felpus. Every lorpus is a worpus. Every numpus is a tumpus. Every kerpus is a vumpus. Every felpus is a brimpus. Is Sally a tumpus or yimpus? Every tumpus is a Scromstorpimp. Every Scromstorpimp is a Dumpgerjel.",
+    "answer": "Sally is a Dumpgerjel.",
+    "steps": [
+      "Sally is a gwompus.",
+      "Every gwompus is a numpus.",
+      "Every numpus is a tumpus.",
+      "Every tumpus is a Scromstorpimp.",
+      "Every Scromstorpimp is a Dumpgerjel."
+    ],
+    "idx_to_symbol": [
+      "Sally",
+      "Gabriel",
+      "boompus",
+      "gwompus",
+      "numpus",
+      "lorpus",
+      "bompus",
+      "kerpus",
+      "gorpus",
+      "chorpus",
+      "worpus",
+      "impus",
+      "dumpus",
+      "vumpus",
+      "jompus",
+      "felpus",
+      "storpus",
+      "brimpus",
+      "gerpus",
+      "tumpus",
+      "terpus",
+      "yimpus",
+      "Scromstorpimp",
+      "Dumpgerjel"
+    ],
+    "edges": [
+      [
+        1,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        5,
+        9
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        7,
+        11
+      ],
+      [
+        1,
+        11
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        2,
+        13
+      ],
+      [
+        7,
+        13
+      ],
+      [
+        13,
+        14
+      ],
+      [
+        13,
+        15
+      ],
+      [
+        2,
+        15
+      ],
+      [
+        14,
+        15
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        11,
+        16
+      ],
+      [
+        1,
+        16
+      ],
+      [
+        2,
+        16
+      ],
+      [
+        7,
+        16
+      ],
+      [
+        15,
+        17
+      ],
+      [
+        2,
+        17
+      ],
+      [
+        14,
+        17
+      ],
+      [
+        1,
+        17
+      ],
+      [
+        0,
+        18
+      ],
+      [
+        9,
+        18
+      ],
+      [
+        4,
+        19
+      ],
+      [
+        2,
+        20
+      ],
+      [
+        8,
+        20
+      ],
+      [
+        7,
+        20
+      ],
+      [
+        11,
+        21
+      ],
+      [
+        19,
+        22
+      ],
+      [
+        22,
+        23
+      ]
+    ],
+    "root": 0,
+    "target": 23,
+    "neg_target": 21,
+    "neighbor_k": {
+      "0": [
+        0
+      ],
+      "1": [
+        3
+      ],
+      "2": [
+        4
+      ],
+      "3": [
+        19
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 10
+  },
+  {
+    "question": "Jack is a sterpus. Every rorpus is a jelpus. Every gerpus is a numpus. Wren is a quimpus. Wren is a worpus. Every gerpus is a lorpus. Jack is a boompus. Every dumpus is a rorpus. Every scrompus is a quimpus. Jack is a chorpus. Every worpus is a storpus. Every yerpus is a dumpus. Every chorpus is a boompus. Every chorpus is a zhorpus. Every sterpus is a kerpus. Every yerpus is a rorpus. Every yerpus is a rempus. Every chorpus is a gerpus. Every gerpus is a kerpus. Every boompus is a zhorpus. Every bompus is a scrompus. Every boompus is a gerpus. Every rempus is a rorpus. Every worpus is a wumpus. Every wumpus is a scrompus. Every storpus is a quimpus. Every jelpus is a numpus. Every sterpus is a jelpus. Every boompus is a yerpus. Every wumpus is a bompus. Every sterpus is a chorpus. Wren is a wumpus. Jack is a zhorpus. Every gerpus is a yerpus. Every kerpus is a rorpus. Every yerpus is a lorpus. Is Jack a numpus or quimpus? Every numpus is a Teryumger. Every Teryumger is a Lumgerhil.",
+    "answer": "Jack is a Lumgerhil.",
+    "steps": [
+      "Jack is a boompus.",
+      "Every boompus is a gerpus.",
+      "Every gerpus is a numpus.",
+      "Every numpus is a Teryumger.",
+      "Every Teryumger is a Lumgerhil."
+    ],
+    "idx_to_symbol": [
+      "Wren",
+      "Jack",
+      "sterpus",
+      "worpus",
+      "chorpus",
+      "boompus",
+      "gerpus",
+      "wumpus",
+      "bompus",
+      "zhorpus",
+      "yerpus",
+      "lorpus",
+      "dumpus",
+      "storpus",
+      "scrompus",
+      "kerpus",
+      "quimpus",
+      "rempus",
+      "rorpus",
+      "jelpus",
+      "numpus",
+      "Teryumger",
+      "Lumgerhil"
+    ],
+    "edges": [
+      [
+        1,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        5,
+        9
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        1,
+        9
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        10,
+        12
+      ],
+      [
+        3,
+        13
+      ],
+      [
+        7,
+        14
+      ],
+      [
+        8,
+        14
+      ],
+      [
+        6,
+        15
+      ],
+      [
+        2,
+        15
+      ],
+      [
+        14,
+        16
+      ],
+      [
+        0,
+        16
+      ],
+      [
+        13,
+        16
+      ],
+      [
+        10,
+        17
+      ],
+      [
+        17,
+        18
+      ],
+      [
+        12,
+        18
+      ],
+      [
+        10,
+        18
+      ],
+      [
+        15,
+        18
+      ],
+      [
+        2,
+        19
+      ],
+      [
+        18,
+        19
+      ],
+      [
+        6,
+        20
+      ],
+      [
+        19,
+        20
+      ],
+      [
+        20,
+        21
+      ],
+      [
+        21,
+        22
+      ]
+    ],
+    "root": 1,
+    "target": 22,
+    "neg_target": 16,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        2,
+        4,
+        5
+      ],
+      "2": [
+        19,
+        6
+      ],
+      "3": [
+        20
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 11
+  },
+  {
+    "question": "Every brimpus is a quimpus. Every yerpus is a wumpus. Every tumpus is a fompus. Every numpus is a gwompus. Every fompus is a brimpus. Alex is a terpus. Every worpus is a gwompus. Every fompus is a worpus. Every hilpus is a storpus. Every kerpus is a storpus. Every tumpus is a worpus. Gabriel is a shumpus. Every jompus is a felpus. Jack is a numpus. Every numpus is a jompus. Jack is a jompus. Every numpus is a gorpus. Every brimpus is a wumpus. Every kerpus is a scrompus. Every yerpus is a felpus. Every storpus is a quimpus. Every hilpus is a wumpus. Every fompus is a hilpus. Sally is a tumpus. Every kerpus is a gwompus. Every numpus is a yerpus. Sally is a kerpus. Gabriel is a terpus. Every hilpus is a timpus. Jack is a yerpus. Every tumpus is a hilpus. Every tumpus is a gerpus. Every numpus is a scrompus. Every yerpus is a jompus. Every yerpus is a scrompus. Sally is a worpus. Is Sally a timpus or gorpus? Every timpus is a Lumdumpjel. Every Lumdumpjel is a Yumdumpvex.",
+    "answer": "Sally is a Yumdumpvex.",
+    "steps": [
+      "Sally is a tumpus.",
+      "Every tumpus is a hilpus.",
+      "Every hilpus is a timpus.",
+      "Every timpus is a Lumdumpjel.",
+      "Every Lumdumpjel is a Yumdumpvex."
+    ],
+    "idx_to_symbol": [
+      "Jack",
+      "Sally",
+      "numpus",
+      "kerpus",
+      "tumpus",
+      "fompus",
+      "Gabriel",
+      "yerpus",
+      "scrompus",
+      "hilpus",
+      "brimpus",
+      "wumpus",
+      "Alex",
+      "jompus",
+      "terpus",
+      "storpus",
+      "shumpus",
+      "gorpus",
+      "timpus",
+      "worpus",
+      "quimpus",
+      "felpus",
+      "gwompus",
+      "gerpus",
+      "Lumdumpjel",
+      "Yumdumpvex"
+    ],
+    "edges": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        5,
+        9
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        7,
+        11
+      ],
+      [
+        9,
+        11
+      ],
+      [
+        0,
+        13
+      ],
+      [
+        7,
+        13
+      ],
+      [
+        2,
+        13
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        12,
+        14
+      ],
+      [
+        9,
+        15
+      ],
+      [
+        3,
+        15
+      ],
+      [
+        6,
+        16
+      ],
+      [
+        2,
+        17
+      ],
+      [
+        9,
+        18
+      ],
+      [
+        4,
+        19
+      ],
+      [
+        1,
+        19
+      ],
+      [
+        5,
+        19
+      ],
+      [
+        10,
+        20
+      ],
+      [
+        15,
+        20
+      ],
+      [
+        13,
+        21
+      ],
+      [
+        7,
+        21
+      ],
+      [
+        19,
+        22
+      ],
+      [
+        3,
+        22
+      ],
+      [
+        2,
+        22
+      ],
+      [
+        4,
+        23
+      ],
+      [
+        18,
+        24
+      ],
+      [
+        24,
+        25
+      ]
+    ],
+    "root": 1,
+    "target": 25,
+    "neg_target": 17,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        4
+      ],
+      "2": [
+        9
+      ],
+      "3": [
+        18
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 12
+  },
+  {
+    "question": "Davis is a boompus. Davis is a lorpus. Every quimpus is a felpus. Every yumpus is a tumpus. Every wumpus is a lorpus. Every quimpus is a rempus. Every yumpus is a fompus. Every rempus is a lempus. Every lorpus is a kerpus. Every kerpus is a fompus. Every wumpus is a yumpus. Rex is a quimpus. Every lorpus is a fompus. Every dumpus is a fompus. Every grimpus is a dumpus. Rex is a felpus. Every quimpus is a lempus. Every hilpus is a boompus. Sally is a lempus. Every wumpus is a hilpus. Every felpus is a numpus. Every hilpus is a fompus. Every felpus is a bompus. Every rempus is a bompus. Every quimpus is a numpus. Rex is a bompus. Every yumpus is a lorpus. Every tumpus is a gerpus. Every rempus is a felpus. Every yerpus is a fompus. Every rempus is a numpus. Every wumpus is a vumpus. Every wumpus is a dumpus. Davis is a wumpus. Every quimpus is a bompus. Davis is a lempus. Every vumpus is a tumpus. Every boompus is a fompus. Every grimpus is a hilpus. Every wumpus is a tumpus. Every dumpus is a yimpus. Every yerpus is a impus. Rex is a rempus. Every lorpus is a grimpus. Every grimpus is a boompus. Davis is a yerpus. Every yumpus is a kerpus. Is Davis a bompus or yimpus? Every yimpus is a Brimjellor. Every Brimjellor is a Zorscrompus.",
+    "answer": "Davis is a Zorscrompus.",
+    "steps": [
+      "Davis is a wumpus.",
+      "Every wumpus is a dumpus.",
+      "Every dumpus is a yimpus.",
+      "Every yimpus is a Brimjellor.",
+      "Every Brimjellor is a Zorscrompus."
+    ],
+    "idx_to_symbol": [
+      "Rex",
+      "Davis",
+      "quimpus",
+      "rempus",
+      "Sally",
+      "lempus",
+      "wumpus",
+      "yerpus",
+      "yumpus",
+      "lorpus",
+      "grimpus",
+      "kerpus",
+      "hilpus",
+      "boompus",
+      "vumpus",
+      "dumpus",
+      "fompus",
+      "felpus",
+      "impus",
+      "bompus",
+      "tumpus",
+      "numpus",
+      "yimpus",
+      "gerpus",
+      "Brimjellor",
+      "Zorscrompus"
+    ],
+    "edges": [
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        1,
+        9
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        9,
+        11
+      ],
+      [
+        8,
+        11
+      ],
+      [
+        10,
+        12
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        10,
+        13
+      ],
+      [
+        1,
+        13
+      ],
+      [
+        12,
+        13
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        6,
+        15
+      ],
+      [
+        10,
+        15
+      ],
+      [
+        7,
+        16
+      ],
+      [
+        12,
+        16
+      ],
+      [
+        15,
+        16
+      ],
+      [
+        9,
+        16
+      ],
+      [
+        11,
+        16
+      ],
+      [
+        13,
+        16
+      ],
+      [
+        8,
+        16
+      ],
+      [
+        2,
+        17
+      ],
+      [
+        3,
+        17
+      ],
+      [
+        0,
+        17
+      ],
+      [
+        7,
+        18
+      ],
+      [
+        17,
+        19
+      ],
+      [
+        3,
+        19
+      ],
+      [
+        0,
+        19
+      ],
+      [
+        2,
+        19
+      ],
+      [
+        14,
+        20
+      ],
+      [
+        8,
+        20
+      ],
+      [
+        6,
+        20
+      ],
+      [
+        2,
+        21
+      ],
+      [
+        17,
+        21
+      ],
+      [
+        3,
+        21
+      ],
+      [
+        15,
+        22
+      ],
+      [
+        20,
+        23
+      ],
+      [
+        22,
+        24
+      ],
+      [
+        24,
+        25
+      ]
+    ],
+    "root": 1,
+    "target": 25,
+    "neg_target": 19,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        6
+      ],
+      "2": [
+        15
+      ],
+      "3": [
+        22
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 13
+  },
+  {
+    "question": "Every hilpus is a yimpus. Polly is a rempus. Every fompus is a yerpus. Every zhorpus is a dumpus. Every fompus is a zumpus. Every rempus is a vumpus. Carol is a gorpus. Every gwompus is a jompus. Every rempus is a fompus. Polly is a fompus. Every storpus is a jompus. Every zumpus is a yerpus. Every rempus is a shumpus. Every dumpus is a hilpus. Every rempus is a rompus. Every rorpus is a brimpus. Every dumpus is a rorpus. Carol is a storpus. Every shumpus is a dumpus. Every gorpus is a numpus. Every rompus is a chorpus. Every storpus is a gwompus. Every jompus is a numpus. Every storpus is a numpus. Every fompus is a zhorpus. Polly is a vumpus. Every shumpus is a zumpus. Carol is a rompus. Carol is a jompus. Every rorpus is a yerpus. Every rempus is a dumpus. Every lempus is a yimpus. Every lempus is a yerpus. Fae is a chorpus. Every zumpus is a worpus. Every rorpus is a lempus. Every rempus is a chorpus. Every gwompus is a gorpus. Every zhorpus is a brimpus. Every timpus is a jelpus. Every lempus is a zumpus. Every dumpus is a yimpus. Carol is a vumpus. Every rempus is a timpus. Is Polly a yimpus or numpus? Every yimpus is a Terstorprom. Every Terstorprom is a Pusteryum.",
+    "answer": "Polly is a Pusteryum.",
+    "steps": [
+      "Polly is a rempus.",
+      "Every rempus is a dumpus.",
+      "Every dumpus is a yimpus.",
+      "Every yimpus is a Terstorprom.",
+      "Every Terstorprom is a Pusteryum."
+    ],
+    "idx_to_symbol": [
+      "Carol",
+      "Polly",
+      "rempus",
+      "vumpus",
+      "fompus",
+      "Fae",
+      "rompus",
+      "chorpus",
+      "zhorpus",
+      "shumpus",
+      "dumpus",
+      "rorpus",
+      "lempus",
+      "zumpus",
+      "storpus",
+      "yerpus",
+      "gwompus",
+      "worpus",
+      "jompus",
+      "brimpus",
+      "hilpus",
+      "timpus",
+      "gorpus",
+      "yimpus",
+      "numpus",
+      "jelpus",
+      "Terstorprom",
+      "Pusteryum"
+    ],
+    "edges": [
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        11,
+        12
+      ],
+      [
+        4,
+        13
+      ],
+      [
+        9,
+        13
+      ],
+      [
+        12,
+        13
+      ],
+      [
+        0,
+        14
+      ],
+      [
+        4,
+        15
+      ],
+      [
+        11,
+        15
+      ],
+      [
+        13,
+        15
+      ],
+      [
+        12,
+        15
+      ],
+      [
+        14,
+        16
+      ],
+      [
+        13,
+        17
+      ],
+      [
+        0,
+        18
+      ],
+      [
+        16,
+        18
+      ],
+      [
+        14,
+        18
+      ],
+      [
+        11,
+        19
+      ],
+      [
+        8,
+        19
+      ],
+      [
+        10,
+        20
+      ],
+      [
+        2,
+        21
+      ],
+      [
+        16,
+        22
+      ],
+      [
+        0,
+        22
+      ],
+      [
+        12,
+        23
+      ],
+      [
+        10,
+        23
+      ],
+      [
+        20,
+        23
+      ],
+      [
+        18,
+        24
+      ],
+      [
+        14,
+        24
+      ],
+      [
+        22,
+        24
+      ],
+      [
+        21,
+        25
+      ],
+      [
+        23,
+        26
+      ],
+      [
+        26,
+        27
+      ]
+    ],
+    "root": 1,
+    "target": 27,
+    "neg_target": 24,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        2
+      ],
+      "2": [
+        10
+      ],
+      "3": [
+        23
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 14
+  },
+  {
+    "question": "Every kerpus is a felpus. Every gerpus is a yerpus. Every brimpus is a gerpus. Every jompus is a gorpus. Every yerpus is a kerpus. Every yerpus is a felpus. Every quimpus is a rorpus. Every zhorpus is a impus. Every yerpus is a zumpus. Eva is a fompus. Every impus is a fompus. Every yerpus is a quimpus. Every gerpus is a quimpus. Davis is a kerpus. Every gerpus is a fompus. Every rempus is a jompus. Every rempus is a scrompus. Every yerpus is a chorpus. Eva is a brimpus. Every impus is a rorpus. Every fompus is a vumpus. Every brimpus is a chorpus. Every scrompus is a gorpus. Every jompus is a lempus. Every brimpus is a zhorpus. Every zhorpus is a vumpus. Every fompus is a rorpus. Every rempus is a rorpus. Every bompus is a jompus. Eva is a yerpus. Every gerpus is a chorpus. Every brimpus is a yerpus. Eva is a gerpus. Every felpus is a impus. Rex is a bompus. Every zumpus is a zhorpus. Eva is a kerpus. Every yerpus is a impus. Every kerpus is a fompus. Every brimpus is a impus. Every quimpus is a vumpus. Every rempus is a bompus. Rex is a rempus. Sally is a rorpus. Every kerpus is a impus. Max is a timpus. Every fompus is a quimpus. Every kerpus is a chorpus. Every gerpus is a kerpus. Is Rex a gorpus or chorpus? Every gorpus is a Brimterquim. Every Brimterquim is a Teryumlum.",
+    "answer": "Rex is a Teryumlum.",
+    "steps": [
+      "Rex is a bompus.",
+      "Every bompus is a jompus.",
+      "Every jompus is a gorpus.",
+      "Every gorpus is a Brimterquim.",
+      "Every Brimterquim is a Teryumlum."
+    ],
+    "idx_to_symbol": [
+      "Rex",
+      "Eva",
+      "brimpus",
+      "gerpus",
+      "Davis",
+      "yerpus",
+      "kerpus",
+      "rempus",
+      "zumpus",
+      "zhorpus",
+      "bompus",
+      "chorpus",
+      "felpus",
+      "Max",
+      "impus",
+      "scrompus",
+      "jompus",
+      "fompus",
+      "lempus",
+      "quimpus",
+      "gorpus",
+      "timpus",
+      "Sally",
+      "vumpus",
+      "rorpus",
+      "Brimterquim",
+      "Teryumlum"
+    ],
+    "edges": [
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        0,
+        10
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        3,
+        11
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        2,
+        11
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        9,
+        14
+      ],
+      [
+        12,
+        14
+      ],
+      [
+        5,
+        14
+      ],
+      [
+        2,
+        14
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        7,
+        16
+      ],
+      [
+        10,
+        16
+      ],
+      [
+        6,
+        17
+      ],
+      [
+        1,
+        17
+      ],
+      [
+        3,
+        17
+      ],
+      [
+        14,
+        17
+      ],
+      [
+        16,
+        18
+      ],
+      [
+        5,
+        19
+      ],
+      [
+        17,
+        19
+      ],
+      [
+        3,
+        19
+      ],
+      [
+        15,
+        20
+      ],
+      [
+        16,
+        20
+      ],
+      [
+        13,
+        21
+      ],
+      [
+        19,
+        23
+      ],
+      [
+        9,
+        23
+      ],
+      [
+        17,
+        23
+      ],
+      [
+        17,
+        24
+      ],
+      [
+        7,
+        24
+      ],
+      [
+        14,
+        24
+      ],
+      [
+        19,
+        24
+      ],
+      [
+        22,
+        24
+      ],
+      [
+        20,
+        25
+      ],
+      [
+        25,
+        26
+      ]
+    ],
+    "root": 0,
+    "target": 26,
+    "neg_target": 11,
+    "neighbor_k": {
+      "0": [
+        0
+      ],
+      "1": [
+        10,
+        7
+      ],
+      "2": [
+        16,
+        15
+      ],
+      "3": [
+        20
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 15
+  },
+  {
+    "question": "Every yerpus is a chorpus. Every terpus is a grimpus. Every grimpus is a rompus. Sally is a grimpus. Every chorpus is a quimpus. Eva is a storpus. Sally is a jompus. Every hilpus is a quimpus. Every felpus is a zhorpus. Every chorpus is a hilpus. Every zumpus is a chorpus. Every brimpus is a jompus. Every brimpus is a gwompus. Every storpus is a zumpus. Every felpus is a terpus. Every chorpus is a worpus. Every yerpus is a zhorpus. Every yerpus is a storpus. Every storpus is a zhorpus. Every jompus is a jelpus. Sally is a felpus. Stella is a yerpus. Every yerpus is a hilpus. Every grimpus is a brimpus. Every jompus is a boompus. Every zumpus is a quimpus. Every grimpus is a lempus. Every worpus is a quimpus. Every terpus is a brimpus. Every yerpus is a worpus. Is Stella a quimpus or rompus? Every quimpus is a Romlorvex. Every Romlorvex is a Dumpgerscrom.",
+    "answer": "Stella is a Dumpgerscrom.",
+    "steps": [
+      "Stella is a yerpus.",
+      "Every yerpus is a hilpus.",
+      "Every hilpus is a quimpus.",
+      "Every quimpus is a Romlorvex.",
+      "Every Romlorvex is a Dumpgerscrom."
+    ],
+    "idx_to_symbol": [
+      "Sally",
+      "Stella",
+      "yerpus",
+      "Eva",
+      "storpus",
+      "felpus",
+      "terpus",
+      "zhorpus",
+      "zumpus",
+      "grimpus",
+      "chorpus",
+      "brimpus",
+      "hilpus",
+      "rompus",
+      "worpus",
+      "quimpus",
+      "jompus",
+      "jelpus",
+      "lempus",
+      "gwompus",
+      "boompus",
+      "Romlorvex",
+      "Dumpgerscrom"
+    ],
+    "edges": [
+      [
+        1,
+        2
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        9,
+        11
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        2,
+        12
+      ],
+      [
+        10,
+        12
+      ],
+      [
+        9,
+        13
+      ],
+      [
+        10,
+        14
+      ],
+      [
+        2,
+        14
+      ],
+      [
+        8,
+        15
+      ],
+      [
+        10,
+        15
+      ],
+      [
+        14,
+        15
+      ],
+      [
+        12,
+        15
+      ],
+      [
+        0,
+        16
+      ],
+      [
+        11,
+        16
+      ],
+      [
+        16,
+        17
+      ],
+      [
+        9,
+        18
+      ],
+      [
+        11,
+        19
+      ],
+      [
+        16,
+        20
+      ],
+      [
+        15,
+        21
+      ],
+      [
+        21,
+        22
+      ]
+    ],
+    "root": 1,
+    "target": 22,
+    "neg_target": 13,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        2
+      ],
+      "2": [
+        10,
+        12,
+        14
+      ],
+      "3": [
+        15
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 16
+  },
+  {
+    "question": "Every brimpus is a kerpus. Every numpus is a chorpus. Every yimpus is a zumpus. Every tumpus is a yimpus. Every yimpus is a brimpus. Every jompus is a scrompus. Every sterpus is a rorpus. Every brimpus is a sterpus. Every yimpus is a gwompus. Bob is a wumpus. Every gwompus is a rempus. Every brimpus is a rorpus. Every tumpus is a brimpus. Fae is a gorpus. Every sterpus is a kerpus. Every jelpus is a wumpus. Oliver is a brimpus. Every yimpus is a chorpus. Every yimpus is a fompus. Every jelpus is a lempus. Every tumpus is a zumpus. Every jelpus is a jompus. Oliver is a tumpus. Bob is a numpus. Every yimpus is a kerpus. Oliver is a numpus. Every yimpus is a vumpus. Every wumpus is a gorpus. Every fompus is a sterpus. Every sterpus is a vumpus. Every sterpus is a rempus. Every fompus is a vumpus. Every jelpus is a scrompus. Every impus is a rorpus. Every tumpus is a kerpus. Every zumpus is a yerpus. Every brimpus is a fompus. Bob is a jelpus. Every wumpus is a impus. Every jompus is a lempus. Oliver is a yimpus. Every gorpus is a yerpus. Every vumpus is a rempus. Is Oliver a rempus or lempus? Every rempus is a Wumimpzor. Every Wumimpzor is a Gervexrom.",
+    "answer": "Oliver is a Gervexrom.",
+    "steps": [
+      "Oliver is a yimpus.",
+      "Every yimpus is a gwompus.",
+      "Every gwompus is a rempus.",
+      "Every rempus is a Wumimpzor.",
+      "Every Wumimpzor is a Gervexrom."
+    ],
+    "idx_to_symbol": [
+      "Bob",
+      "Oliver",
+      "numpus",
+      "jelpus",
+      "wumpus",
+      "Fae",
+      "tumpus",
+      "yimpus",
+      "brimpus",
+      "jompus",
+      "fompus",
+      "gwompus",
+      "sterpus",
+      "vumpus",
+      "scrompus",
+      "chorpus",
+      "lempus",
+      "zumpus",
+      "impus",
+      "kerpus",
+      "gorpus",
+      "rorpus",
+      "yerpus",
+      "rempus",
+      "Wumimpzor",
+      "Gervexrom"
+    ],
+    "edges": [
+      [
+        1,
+        2
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        3,
+        9
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        7,
+        11
+      ],
+      [
+        10,
+        12
+      ],
+      [
+        8,
+        12
+      ],
+      [
+        7,
+        13
+      ],
+      [
+        10,
+        13
+      ],
+      [
+        12,
+        13
+      ],
+      [
+        9,
+        14
+      ],
+      [
+        3,
+        14
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        2,
+        15
+      ],
+      [
+        3,
+        16
+      ],
+      [
+        9,
+        16
+      ],
+      [
+        7,
+        17
+      ],
+      [
+        6,
+        17
+      ],
+      [
+        4,
+        18
+      ],
+      [
+        7,
+        19
+      ],
+      [
+        6,
+        19
+      ],
+      [
+        12,
+        19
+      ],
+      [
+        8,
+        19
+      ],
+      [
+        4,
+        20
+      ],
+      [
+        5,
+        20
+      ],
+      [
+        12,
+        21
+      ],
+      [
+        8,
+        21
+      ],
+      [
+        18,
+        21
+      ],
+      [
+        17,
+        22
+      ],
+      [
+        20,
+        22
+      ],
+      [
+        12,
+        23
+      ],
+      [
+        13,
+        23
+      ],
+      [
+        11,
+        23
+      ],
+      [
+        23,
+        24
+      ],
+      [
+        24,
+        25
+      ]
+    ],
+    "root": 1,
+    "target": 25,
+    "neg_target": 16,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        8,
+        7
+      ],
+      "2": [
+        11,
+        12,
+        13
+      ],
+      "3": [
+        23
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 17
+  },
+  {
+    "question": "Every storpus is a jelpus. Oliver is a zhorpus. Every boompus is a hilpus. Every storpus is a brimpus. Every dumpus is a lempus. Oliver is a rompus. Sally is a grimpus. Sally is a kerpus. Every numpus is a tumpus. Sally is a boompus. Every rorpus is a dumpus. Every boompus is a grimpus. Every zhorpus is a rompus. Every rompus is a yerpus. Every kerpus is a hilpus. Every zhorpus is a yerpus. Every boompus is a numpus. Oliver is a yerpus. Every boompus is a rorpus. Every dumpus is a tumpus. Every boompus is a kerpus. Oliver is a timpus. Every boompus is a timpus. Every numpus is a storpus. Every hilpus is a storpus. Sally is a tumpus. Sally is a hilpus. Every rorpus is a grimpus. Every grimpus is a storpus. Every lempus is a tumpus. Every kerpus is a rorpus. Every rompus is a wumpus. Every storpus is a scrompus. Is Sally a brimpus or yerpus? Every brimpus is a Puslorshum. Every Puslorshum is a Brimdumppus.",
+    "answer": "Sally is a Brimdumppus.",
+    "steps": [
+      "Sally is a hilpus.",
+      "Every hilpus is a storpus.",
+      "Every storpus is a brimpus.",
+      "Every brimpus is a Puslorshum.",
+      "Every Puslorshum is a Brimdumppus."
+    ],
+    "idx_to_symbol": [
+      "Oliver",
+      "Sally",
+      "boompus",
+      "timpus",
+      "zhorpus",
+      "kerpus",
+      "hilpus",
+      "rompus",
+      "rorpus",
+      "yerpus",
+      "grimpus",
+      "dumpus",
+      "numpus",
+      "wumpus",
+      "storpus",
+      "lempus",
+      "scrompus",
+      "tumpus",
+      "brimpus",
+      "jelpus",
+      "Puslorshum",
+      "Brimdumppus"
+    ],
+    "edges": [
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        7,
+        9
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        1,
+        10
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        8,
+        11
+      ],
+      [
+        2,
+        12
+      ],
+      [
+        7,
+        13
+      ],
+      [
+        10,
+        14
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        12,
+        14
+      ],
+      [
+        11,
+        15
+      ],
+      [
+        14,
+        16
+      ],
+      [
+        15,
+        17
+      ],
+      [
+        1,
+        17
+      ],
+      [
+        11,
+        17
+      ],
+      [
+        12,
+        17
+      ],
+      [
+        14,
+        18
+      ],
+      [
+        14,
+        19
+      ],
+      [
+        18,
+        20
+      ],
+      [
+        20,
+        21
+      ]
+    ],
+    "root": 1,
+    "target": 21,
+    "neg_target": 9,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        10,
+        6
+      ],
+      "2": [
+        14
+      ],
+      "3": [
+        18
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 18
+  },
+  {
+    "question": "Every fompus is a sterpus. Sally is a terpus. Every fompus is a hilpus. Alex is a felpus. Sally is a jompus. Every timpus is a chorpus. Gabriel is a zumpus. Every jelpus is a timpus. Every felpus is a bompus. Every timpus is a bompus. Gabriel is a jompus. Every bompus is a chorpus. Every hilpus is a impus. Every hilpus is a lempus. Gabriel is a worpus. Every fompus is a zumpus. Every terpus is a jelpus. Every felpus is a brimpus. Sally is a worpus. Every zumpus is a lempus. Gabriel is a fompus. Every zumpus is a hilpus. Every felpus is a gerpus. Every bompus is a sterpus. Every lempus is a numpus. Every jompus is a worpus. Every hilpus is a numpus. Every fompus is a gerpus. Tom is a worpus. Alex is a jompus. Alex is a worpus. Alex is a terpus. Is Alex a chorpus or impus? Every chorpus is a Shumvexzor. Every Shumvexzor is a Scromvexlum.",
+    "answer": "Alex is a Scromvexlum.",
+    "steps": [
+      "Alex is a felpus.",
+      "Every felpus is a bompus.",
+      "Every bompus is a chorpus.",
+      "Every chorpus is a Shumvexzor.",
+      "Every Shumvexzor is a Scromvexlum."
+    ],
+    "idx_to_symbol": [
+      "Alex",
+      "Gabriel",
+      "Sally",
+      "jompus",
+      "Tom",
+      "worpus",
+      "fompus",
+      "felpus",
+      "terpus",
+      "zumpus",
+      "jelpus",
+      "hilpus",
+      "timpus",
+      "brimpus",
+      "bompus",
+      "gerpus",
+      "chorpus",
+      "sterpus",
+      "lempus",
+      "numpus",
+      "impus",
+      "Shumvexzor",
+      "Scromvexlum"
+    ],
+    "edges": [
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        1,
+        9
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        9,
+        11
+      ],
+      [
+        10,
+        12
+      ],
+      [
+        7,
+        13
+      ],
+      [
+        12,
+        14
+      ],
+      [
+        7,
+        14
+      ],
+      [
+        6,
+        15
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        14,
+        16
+      ],
+      [
+        12,
+        16
+      ],
+      [
+        14,
+        17
+      ],
+      [
+        6,
+        17
+      ],
+      [
+        9,
+        18
+      ],
+      [
+        11,
+        18
+      ],
+      [
+        18,
+        19
+      ],
+      [
+        11,
+        19
+      ],
+      [
+        11,
+        20
+      ],
+      [
+        16,
+        21
+      ],
+      [
+        21,
+        22
+      ]
+    ],
+    "root": 0,
+    "target": 22,
+    "neg_target": 20,
+    "neighbor_k": {
+      "0": [
+        0
+      ],
+      "1": [
+        7
+      ],
+      "2": [
+        14
+      ],
+      "3": [
+        16
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 19
+  },
+  {
+    "question": "Gabriel is a numpus. Every grimpus is a hilpus. Gabriel is a hilpus. Every jompus is a rempus. Every vumpus is a gerpus. Every jompus is a storpus. Every grimpus is a rorpus. Every quimpus is a chorpus. Gabriel is a grimpus. Every quimpus is a rompus. Every gorpus is a kerpus. Every grimpus is a dumpus. Every rempus is a jelpus. Jack is a felpus. Bob is a wumpus. Every numpus is a dumpus. Jack is a gorpus. Every quimpus is a felpus. Every grimpus is a jelpus. Every fompus is a vumpus. Jack is a jompus. Every jompus is a vumpus. Every grimpus is a numpus. Every fompus is a gorpus. Every rempus is a felpus. Every chorpus is a brimpus. Jack is a rempus. Every grimpus is a storpus. Every rempus is a quimpus. Every hilpus is a dumpus. Every rempus is a fompus. Every rempus is a vumpus. Every brimpus is a gerpus. Every jompus is a fompus. Every jompus is a jelpus. Every fompus is a chorpus. Every jompus is a chorpus. Is Jack a rorpus or rompus? Every rompus is a Shumlumger. Every Shumlumger is a Brimquimhil.",
+    "answer": "Jack is a Brimquimhil.",
+    "steps": [
+      "Jack is a rempus.",
+      "Every rempus is a quimpus.",
+      "Every quimpus is a rompus.",
+      "Every rompus is a Shumlumger.",
+      "Every Shumlumger is a Brimquimhil."
+    ],
+    "idx_to_symbol": [
+      "Gabriel",
+      "Jack",
+      "jompus",
+      "grimpus",
+      "storpus",
+      "rempus",
+      "quimpus",
+      "jelpus",
+      "felpus",
+      "numpus",
+      "Bob",
+      "fompus",
+      "gorpus",
+      "vumpus",
+      "chorpus",
+      "kerpus",
+      "brimpus",
+      "hilpus",
+      "dumpus",
+      "rompus",
+      "wumpus",
+      "rorpus",
+      "gerpus",
+      "Shumlumger",
+      "Brimquimhil"
+    ],
+    "edges": [
+      [
+        1,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        3,
+        9
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        2,
+        11
+      ],
+      [
+        11,
+        12
+      ],
+      [
+        1,
+        12
+      ],
+      [
+        5,
+        13
+      ],
+      [
+        2,
+        13
+      ],
+      [
+        11,
+        13
+      ],
+      [
+        2,
+        14
+      ],
+      [
+        11,
+        14
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        12,
+        15
+      ],
+      [
+        14,
+        16
+      ],
+      [
+        3,
+        17
+      ],
+      [
+        0,
+        17
+      ],
+      [
+        3,
+        18
+      ],
+      [
+        9,
+        18
+      ],
+      [
+        17,
+        18
+      ],
+      [
+        6,
+        19
+      ],
+      [
+        10,
+        20
+      ],
+      [
+        3,
+        21
+      ],
+      [
+        16,
+        22
+      ],
+      [
+        13,
+        22
+      ],
+      [
+        19,
+        23
+      ],
+      [
+        23,
+        24
+      ]
+    ],
+    "root": 1,
+    "target": 24,
+    "neg_target": 21,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        5
+      ],
+      "2": [
+        6
+      ],
+      "3": [
+        19
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 20
+  },
+  {
+    "question": "Every gorpus is a jompus. Every rempus is a yumpus. Every gorpus is a lempus. Every terpus is a grimpus. Tom is a chorpus. Every scrompus is a vumpus. Eva is a boompus. Carol is a tumpus. Every storpus is a grimpus. Every scrompus is a yumpus. Every gorpus is a terpus. Every scrompus is a dumpus. Every rempus is a numpus. Every brimpus is a storpus. Every yumpus is a vumpus. Every brimpus is a grimpus. Every rempus is a scrompus. Every brimpus is a boompus. Every chorpus is a tumpus. Every yumpus is a jompus. Tom is a numpus. Eva is a terpus. Every grimpus is a kerpus. Tom is a rempus. Every storpus is a gorpus. Every rempus is a gerpus. Every numpus is a dumpus. Every gorpus is a vumpus. Every rempus is a fompus. Every storpus is a tumpus. Every chorpus is a gerpus. Every chorpus is a yumpus. Every numpus is a tumpus. Eva is a storpus. Every storpus is a boompus. Every jompus is a kerpus. Eva is a brimpus. Every gerpus is a vumpus. Every brimpus is a vumpus. Is Eva a fompus or lempus? Every lempus is a Scromdumppus. Every Scromdumppus is a Shumlumpus.",
+    "answer": "Eva is a Shumlumpus.",
+    "steps": [
+      "Eva is a storpus.",
+      "Every storpus is a gorpus.",
+      "Every gorpus is a lempus.",
+      "Every lempus is a Scromdumppus.",
+      "Every Scromdumppus is a Shumlumpus."
+    ],
+    "idx_to_symbol": [
+      "Tom",
+      "Eva",
+      "rempus",
+      "brimpus",
+      "storpus",
+      "chorpus",
+      "gorpus",
+      "Carol",
+      "boompus",
+      "scrompus",
+      "yumpus",
+      "jompus",
+      "gerpus",
+      "numpus",
+      "tumpus",
+      "dumpus",
+      "terpus",
+      "vumpus",
+      "grimpus",
+      "fompus",
+      "lempus",
+      "kerpus",
+      "Scromdumppus",
+      "Shumlumpus"
+    ],
+    "edges": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        2,
+        12
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        2,
+        13
+      ],
+      [
+        0,
+        13
+      ],
+      [
+        7,
+        14
+      ],
+      [
+        5,
+        14
+      ],
+      [
+        4,
+        14
+      ],
+      [
+        13,
+        14
+      ],
+      [
+        9,
+        15
+      ],
+      [
+        13,
+        15
+      ],
+      [
+        6,
+        16
+      ],
+      [
+        1,
+        16
+      ],
+      [
+        10,
+        17
+      ],
+      [
+        12,
+        17
+      ],
+      [
+        3,
+        17
+      ],
+      [
+        6,
+        17
+      ],
+      [
+        9,
+        17
+      ],
+      [
+        16,
+        18
+      ],
+      [
+        4,
+        18
+      ],
+      [
+        3,
+        18
+      ],
+      [
+        2,
+        19
+      ],
+      [
+        6,
+        20
+      ],
+      [
+        11,
+        21
+      ],
+      [
+        18,
+        21
+      ],
+      [
+        20,
+        22
+      ],
+      [
+        22,
+        23
+      ]
+    ],
+    "root": 1,
+    "target": 23,
+    "neg_target": 19,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        4
+      ],
+      "2": [
+        6
+      ],
+      "3": [
+        20
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 21
+  },
+  {
+    "question": "Every jompus is a fompus. Every terpus is a worpus. Every jompus is a yerpus. Every jompus is a timpus. Every zumpus is a yimpus. Every terpus is a tumpus. Every felpus is a dumpus. Every worpus is a gwompus. Every fompus is a rempus. Every jompus is a rempus. Every rempus is a storpus. Every tumpus is a hilpus. Every worpus is a chorpus. Every hilpus is a scrompus. Every terpus is a shumpus. Polly is a felpus. Max is a jompus. Polly is a scrompus. Max is a fompus. Every timpus is a lempus. Polly is a terpus. Every fompus is a storpus. Every rempus is a bompus. Every zhorpus is a worpus. Polly is a zhorpus. Every zumpus is a lempus. Every zhorpus is a felpus. Every fompus is a zumpus. Every worpus is a dumpus. Every shumpus is a hilpus. Is Max a dumpus or yimpus? Every yimpus is a Yumjelstorp. Every Yumjelstorp is a Romhilimp.",
+    "answer": "Max is a Romhilimp.",
+    "steps": [
+      "Max is a fompus.",
+      "Every fompus is a zumpus.",
+      "Every zumpus is a yimpus.",
+      "Every yimpus is a Yumjelstorp.",
+      "Every Yumjelstorp is a Romhilimp."
+    ],
+    "idx_to_symbol": [
+      "Polly",
+      "Max",
+      "zhorpus",
+      "jompus",
+      "felpus",
+      "fompus",
+      "terpus",
+      "worpus",
+      "chorpus",
+      "rempus",
+      "bompus",
+      "timpus",
+      "tumpus",
+      "zumpus",
+      "storpus",
+      "shumpus",
+      "lempus",
+      "yerpus",
+      "dumpus",
+      "hilpus",
+      "gwompus",
+      "scrompus",
+      "yimpus",
+      "Yumjelstorp",
+      "Romhilimp"
+    ],
+    "edges": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        3,
+        9
+      ],
+      [
+        5,
+        9
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        3,
+        11
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        5,
+        13
+      ],
+      [
+        5,
+        14
+      ],
+      [
+        9,
+        14
+      ],
+      [
+        6,
+        15
+      ],
+      [
+        11,
+        16
+      ],
+      [
+        13,
+        16
+      ],
+      [
+        3,
+        17
+      ],
+      [
+        7,
+        18
+      ],
+      [
+        4,
+        18
+      ],
+      [
+        15,
+        19
+      ],
+      [
+        12,
+        19
+      ],
+      [
+        7,
+        20
+      ],
+      [
+        19,
+        21
+      ],
+      [
+        0,
+        21
+      ],
+      [
+        13,
+        22
+      ],
+      [
+        22,
+        23
+      ],
+      [
+        23,
+        24
+      ]
+    ],
+    "root": 1,
+    "target": 24,
+    "neg_target": 18,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        5
+      ],
+      "2": [
+        13
+      ],
+      "3": [
+        22
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 22
+  },
+  {
+    "question": "Sam is a wumpus. Every scrompus is a kerpus. Sam is a rempus. Every zumpus is a scrompus. Sam is a grimpus. Every storpus is a gorpus. Sam is a jelpus. Carol is a lempus. Rex is a worpus. Every zumpus is a lorpus. Rex is a zumpus. Rex is a kerpus. Every scrompus is a zhorpus. Every scrompus is a storpus. Every bompus is a wumpus. Every yerpus is a rompus. Every storpus is a yerpus. Every wumpus is a rempus. Sam is a bompus. Every grimpus is a bompus. Every grimpus is a worpus. Every lorpus is a chorpus. Sam is a worpus. Every storpus is a chorpus. Every zhorpus is a kerpus. Every worpus is a jelpus. Every zumpus is a boompus. Every zhorpus is a gorpus. Every grimpus is a lempus. Rex is a storpus. Every yerpus is a vumpus. Every zumpus is a rompus. Stella is a rompus. Every bompus is a lempus. Every grimpus is a wumpus. Is Rex a vumpus or lempus? Every vumpus is a Brimpwumscrom. Every Brimpwumscrom is a Teryumjel.",
+    "answer": "Rex is a Teryumjel.",
+    "steps": [
+      "Rex is a storpus.",
+      "Every storpus is a yerpus.",
+      "Every yerpus is a vumpus.",
+      "Every vumpus is a Brimpwumscrom.",
+      "Every Brimpwumscrom is a Teryumjel."
+    ],
+    "idx_to_symbol": [
+      "Sam",
+      "Rex",
+      "grimpus",
+      "Carol",
+      "bompus",
+      "worpus",
+      "Stella",
+      "jelpus",
+      "lempus",
+      "zumpus",
+      "scrompus",
+      "storpus",
+      "zhorpus",
+      "wumpus",
+      "yerpus",
+      "boompus",
+      "kerpus",
+      "vumpus",
+      "rompus",
+      "lorpus",
+      "rempus",
+      "chorpus",
+      "gorpus",
+      "Brimpwumscrom",
+      "Teryumjel"
+    ],
+    "edges": [
+      [
+        0,
+        2
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        1,
+        9
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        1,
+        11
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        10,
+        12
+      ],
+      [
+        4,
+        13
+      ],
+      [
+        0,
+        13
+      ],
+      [
+        2,
+        13
+      ],
+      [
+        11,
+        14
+      ],
+      [
+        9,
+        15
+      ],
+      [
+        12,
+        16
+      ],
+      [
+        1,
+        16
+      ],
+      [
+        10,
+        16
+      ],
+      [
+        14,
+        17
+      ],
+      [
+        9,
+        18
+      ],
+      [
+        6,
+        18
+      ],
+      [
+        14,
+        18
+      ],
+      [
+        9,
+        19
+      ],
+      [
+        0,
+        20
+      ],
+      [
+        13,
+        20
+      ],
+      [
+        19,
+        21
+      ],
+      [
+        11,
+        21
+      ],
+      [
+        12,
+        22
+      ],
+      [
+        11,
+        22
+      ],
+      [
+        17,
+        23
+      ],
+      [
+        23,
+        24
+      ]
+    ],
+    "root": 1,
+    "target": 24,
+    "neg_target": 8,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        11
+      ],
+      "2": [
+        14
+      ],
+      "3": [
+        17
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 23
+  },
+  {
+    "question": "Wren is a chorpus. Every scrompus is a yimpus. Every shumpus is a wumpus. Every scrompus is a impus. Every bompus is a gerpus. Every gorpus is a brimpus. Wren is a yerpus. Every impus is a worpus. Every lempus is a yumpus. Every impus is a gorpus. Every yerpus is a quimpus. Every scrompus is a lempus. Every shumpus is a numpus. Every lempus is a kerpus. Wren is a bompus. Every yumpus is a jompus. Max is a scrompus. Every bompus is a shumpus. Every yerpus is a numpus. Every yerpus is a shumpus. Every yerpus is a wumpus. Max is a impus. Every worpus is a jompus. Every gorpus is a yimpus. Every chorpus is a jelpus. Wren is a quimpus. Every quimpus is a gerpus. Every yimpus is a brimpus. Every chorpus is a gerpus. Every bompus is a jelpus. Every jompus is a kerpus. Every gerpus is a numpus. Is Max a brimpus or wumpus? Every brimpus is a Impshumvex. Every Impshumvex is a Storpdumpscrom.",
+    "answer": "Max is a Storpdumpscrom.",
+    "steps": [
+      "Max is a scrompus.",
+      "Every scrompus is a yimpus.",
+      "Every yimpus is a brimpus.",
+      "Every brimpus is a Impshumvex.",
+      "Every Impshumvex is a Storpdumpscrom."
+    ],
+    "idx_to_symbol": [
+      "Max",
+      "Wren",
+      "scrompus",
+      "yerpus",
+      "impus",
+      "quimpus",
+      "gorpus",
+      "bompus",
+      "yimpus",
+      "chorpus",
+      "shumpus",
+      "brimpus",
+      "lempus",
+      "worpus",
+      "yumpus",
+      "gerpus",
+      "wumpus",
+      "jompus",
+      "jelpus",
+      "numpus",
+      "kerpus",
+      "Impshumvex",
+      "Storpdumpscrom"
+    ],
+    "edges": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        1,
+        9
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        3,
+        10
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        8,
+        11
+      ],
+      [
+        2,
+        12
+      ],
+      [
+        4,
+        13
+      ],
+      [
+        12,
+        14
+      ],
+      [
+        9,
+        15
+      ],
+      [
+        5,
+        15
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        10,
+        16
+      ],
+      [
+        3,
+        16
+      ],
+      [
+        14,
+        17
+      ],
+      [
+        13,
+        17
+      ],
+      [
+        7,
+        18
+      ],
+      [
+        9,
+        18
+      ],
+      [
+        10,
+        19
+      ],
+      [
+        15,
+        19
+      ],
+      [
+        3,
+        19
+      ],
+      [
+        12,
+        20
+      ],
+      [
+        17,
+        20
+      ],
+      [
+        11,
+        21
+      ],
+      [
+        21,
+        22
+      ]
+    ],
+    "root": 0,
+    "target": 22,
+    "neg_target": 16,
+    "neighbor_k": {
+      "0": [
+        0
+      ],
+      "1": [
+        2,
+        4
+      ],
+      "2": [
+        8,
+        6
+      ],
+      "3": [
+        11
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 24
+  },
+  {
+    "question": "Every sterpus is a brimpus. Tom is a bompus. Every yerpus is a shumpus. Every rompus is a brimpus. Every yerpus is a bompus. Every gerpus is a felpus. Every chorpus is a yerpus. Every bompus is a felpus. Every gorpus is a yimpus. Every chorpus is a bompus. Every zhorpus is a quimpus. Every rompus is a yumpus. Every gerpus is a dumpus. Every gerpus is a zumpus. Every chorpus is a lorpus. Tom is a gerpus. Every sterpus is a rompus. Every felpus is a gwompus. Every storpus is a gorpus. Every yerpus is a lorpus. Every chorpus is a gerpus. Every quimpus is a gorpus. Every storpus is a sterpus. Every gerpus is a rempus. Every rompus is a gorpus. Tom is a chorpus. Every gerpus is a bompus. Every yerpus is a felpus. Every zhorpus is a yumpus. Every yumpus is a yimpus. Every zhorpus is a storpus. Every zhorpus is a sterpus. Every zhorpus is a yimpus. Fae is a lorpus. Every lempus is a brimpus. Every storpus is a lempus. Fae is a zhorpus. Is Fae a dumpus or brimpus? Every brimpus is a Pusgerbrim. Every Pusgerbrim is a Zorquimger.",
+    "answer": "Fae is a Zorquimger.",
+    "steps": [
+      "Fae is a zhorpus.",
+      "Every zhorpus is a sterpus.",
+      "Every sterpus is a brimpus.",
+      "Every brimpus is a Pusgerbrim.",
+      "Every Pusgerbrim is a Zorquimger."
+    ],
+    "idx_to_symbol": [
+      "Fae",
+      "Tom",
+      "chorpus",
+      "gerpus",
+      "yerpus",
+      "zhorpus",
+      "lorpus",
+      "bompus",
+      "storpus",
+      "felpus",
+      "sterpus",
+      "zumpus",
+      "rompus",
+      "yumpus",
+      "dumpus",
+      "quimpus",
+      "shumpus",
+      "gorpus",
+      "lempus",
+      "yimpus",
+      "gwompus",
+      "rempus",
+      "brimpus",
+      "Pusgerbrim",
+      "Zorquimger"
+    ],
+    "edges": [
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        3,
+        9
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        7,
+        9
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        3,
+        11
+      ],
+      [
+        10,
+        12
+      ],
+      [
+        5,
+        13
+      ],
+      [
+        12,
+        13
+      ],
+      [
+        3,
+        14
+      ],
+      [
+        5,
+        15
+      ],
+      [
+        4,
+        16
+      ],
+      [
+        15,
+        17
+      ],
+      [
+        12,
+        17
+      ],
+      [
+        8,
+        17
+      ],
+      [
+        8,
+        18
+      ],
+      [
+        13,
+        19
+      ],
+      [
+        5,
+        19
+      ],
+      [
+        17,
+        19
+      ],
+      [
+        9,
+        20
+      ],
+      [
+        3,
+        21
+      ],
+      [
+        18,
+        22
+      ],
+      [
+        12,
+        22
+      ],
+      [
+        10,
+        22
+      ],
+      [
+        22,
+        23
+      ],
+      [
+        23,
+        24
+      ]
+    ],
+    "root": 0,
+    "target": 24,
+    "neg_target": 14,
+    "neighbor_k": {
+      "0": [
+        0
+      ],
+      "1": [
+        5
+      ],
+      "2": [
+        10
+      ],
+      "3": [
+        22
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 25
+  },
+  {
+    "question": "Every dumpus is a jelpus. Every sterpus is a quimpus. Every gerpus is a tumpus. Every lorpus is a timpus. Every gerpus is a kerpus. Every dumpus is a worpus. Every fompus is a vumpus. Every storpus is a yumpus. Every dumpus is a chorpus. Sam is a dumpus. Davis is a bompus. Sam is a terpus. Sam is a jelpus. Every fompus is a scrompus. Davis is a terpus. Every sterpus is a boompus. Every jompus is a yumpus. Every gerpus is a jelpus. Every terpus is a tumpus. Every kerpus is a quimpus. Every dumpus is a bompus. Davis is a lorpus. Every gerpus is a sterpus. Every gerpus is a dumpus. Sam is a gerpus. Every lorpus is a shumpus. Every jelpus is a chorpus. Every lorpus is a fompus. Every worpus is a boompus. Every shumpus is a timpus. Every worpus is a jompus. Every dumpus is a tumpus. Every dumpus is a storpus. Davis is a fompus. Every gerpus is a quimpus. Is Sam a vumpus or yumpus? Every yumpus is a Romzorwum. Every Romzorwum is a Lorpusdump.",
+    "answer": "Sam is a Lorpusdump.",
+    "steps": [
+      "Sam is a dumpus.",
+      "Every dumpus is a storpus.",
+      "Every storpus is a yumpus.",
+      "Every yumpus is a Romzorwum.",
+      "Every Romzorwum is a Lorpusdump."
+    ],
+    "idx_to_symbol": [
+      "Sam",
+      "Davis",
+      "terpus",
+      "gerpus",
+      "dumpus",
+      "jelpus",
+      "tumpus",
+      "lorpus",
+      "bompus",
+      "worpus",
+      "fompus",
+      "chorpus",
+      "shumpus",
+      "jompus",
+      "storpus",
+      "sterpus",
+      "boompus",
+      "kerpus",
+      "timpus",
+      "scrompus",
+      "quimpus",
+      "yumpus",
+      "vumpus",
+      "Romzorwum",
+      "Lorpusdump"
+    ],
+    "edges": [
+      [
+        1,
+        2
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        1,
+        10
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        4,
+        11
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        7,
+        12
+      ],
+      [
+        9,
+        13
+      ],
+      [
+        4,
+        14
+      ],
+      [
+        3,
+        15
+      ],
+      [
+        9,
+        16
+      ],
+      [
+        15,
+        16
+      ],
+      [
+        3,
+        17
+      ],
+      [
+        12,
+        18
+      ],
+      [
+        7,
+        18
+      ],
+      [
+        10,
+        19
+      ],
+      [
+        3,
+        20
+      ],
+      [
+        15,
+        20
+      ],
+      [
+        17,
+        20
+      ],
+      [
+        14,
+        21
+      ],
+      [
+        13,
+        21
+      ],
+      [
+        10,
+        22
+      ],
+      [
+        21,
+        23
+      ],
+      [
+        23,
+        24
+      ]
+    ],
+    "root": 0,
+    "target": 24,
+    "neg_target": 22,
+    "neighbor_k": {
+      "0": [
+        0
+      ],
+      "1": [
+        4
+      ],
+      "2": [
+        14
+      ],
+      "3": [
+        21
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 26
+  },
+  {
+    "question": "Every kerpus is a yumpus. Every fompus is a rompus. Every worpus is a rompus. Every scrompus is a yumpus. Every vumpus is a zumpus. Every hilpus is a zumpus. Stella is a worpus. Every wumpus is a bompus. Every yerpus is a wumpus. Every scrompus is a jompus. Every worpus is a bompus. Every vumpus is a tumpus. Every rorpus is a tumpus. Stella is a yumpus. Every fompus is a jompus. Every scrompus is a rorpus. Every yerpus is a yumpus. Every tumpus is a jelpus. Every yerpus is a fompus. Every kerpus is a yimpus. Every yerpus is a kerpus. Stella is a yerpus. Sally is a yimpus. Stella is a wumpus. Every scrompus is a vumpus. Every yerpus is a rompus. Every rorpus is a zumpus. Every rorpus is a yimpus. Every vumpus is a rorpus. Every rorpus is a hilpus. Every worpus is a yimpus. Every vumpus is a yimpus. Every wumpus is a gwompus. Every yerpus is a worpus. Polly is a kerpus. Every jelpus is a gwompus. Every wumpus is a fompus. Every worpus is a fompus. Every vumpus is a hilpus. Polly is a scrompus. Is Polly a bompus or zumpus? Every zumpus is a Dumpterwum. Every Dumpterwum is a Yumbrimpvex.",
+    "answer": "Polly is a Yumbrimpvex.",
+    "steps": [
+      "Polly is a scrompus.",
+      "Every scrompus is a vumpus.",
+      "Every vumpus is a zumpus.",
+      "Every zumpus is a Dumpterwum.",
+      "Every Dumpterwum is a Yumbrimpvex."
+    ],
+    "idx_to_symbol": [
+      "Polly",
+      "Stella",
+      "Sally",
+      "yerpus",
+      "scrompus",
+      "kerpus",
+      "yumpus",
+      "vumpus",
+      "rorpus",
+      "hilpus",
+      "tumpus",
+      "wumpus",
+      "worpus",
+      "fompus",
+      "rompus",
+      "jelpus",
+      "zumpus",
+      "gwompus",
+      "jompus",
+      "bompus",
+      "yimpus",
+      "Dumpterwum",
+      "Yumbrimpvex"
+    ],
+    "edges": [
+      [
+        1,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        7,
+        9
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        3,
+        11
+      ],
+      [
+        1,
+        11
+      ],
+      [
+        3,
+        12
+      ],
+      [
+        1,
+        12
+      ],
+      [
+        11,
+        13
+      ],
+      [
+        12,
+        13
+      ],
+      [
+        3,
+        13
+      ],
+      [
+        12,
+        14
+      ],
+      [
+        3,
+        14
+      ],
+      [
+        13,
+        14
+      ],
+      [
+        10,
+        15
+      ],
+      [
+        7,
+        16
+      ],
+      [
+        8,
+        16
+      ],
+      [
+        9,
+        16
+      ],
+      [
+        15,
+        17
+      ],
+      [
+        11,
+        17
+      ],
+      [
+        4,
+        18
+      ],
+      [
+        13,
+        18
+      ],
+      [
+        11,
+        19
+      ],
+      [
+        12,
+        19
+      ],
+      [
+        5,
+        20
+      ],
+      [
+        8,
+        20
+      ],
+      [
+        2,
+        20
+      ],
+      [
+        12,
+        20
+      ],
+      [
+        7,
+        20
+      ],
+      [
+        16,
+        21
+      ],
+      [
+        21,
+        22
+      ]
+    ],
+    "root": 0,
+    "target": 22,
+    "neg_target": 19,
+    "neighbor_k": {
+      "0": [
+        0
+      ],
+      "1": [
+        4
+      ],
+      "2": [
+        8,
+        7
+      ],
+      "3": [
+        16
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 27
+  },
+  {
+    "question": "Every bompus is a timpus. Every lempus is a vumpus. Every vumpus is a yimpus. Every yumpus is a impus. Every felpus is a impus. Every quimpus is a lorpus. Every quimpus is a vumpus. Every bompus is a yumpus. Every bompus is a felpus. Alex is a yimpus. Every yumpus is a rempus. Fae is a yumpus. Every lorpus is a brimpus. Every gwompus is a timpus. Every boompus is a bompus. Every numpus is a gorpus. Every quimpus is a yimpus. Every bompus is a jompus. Fae is a boompus. Every boompus is a felpus. Fae is a bompus. Every kerpus is a jompus. Every felpus is a numpus. Every gorpus is a rempus. Every bompus is a impus. Every lempus is a quimpus. Every numpus is a rempus. Every felpus is a scrompus. Every boompus is a yumpus. Every yimpus is a kerpus. Alex is a brimpus. Alex is a vumpus. Every yimpus is a impus. Every felpus is a gwompus. Every felpus is a timpus. Every lorpus is a jompus. Alex is a lempus. Every vumpus is a jompus. Every quimpus is a zhorpus. Every lempus is a yimpus. Is Fae a zhorpus or scrompus? Every scrompus is a Shumromhil. Every Shumromhil is a Pusbrimpshum.",
+    "answer": "Fae is a Pusbrimpshum.",
+    "steps": [
+      "Fae is a bompus.",
+      "Every bompus is a felpus.",
+      "Every felpus is a scrompus.",
+      "Every scrompus is a Shumromhil.",
+      "Every Shumromhil is a Pusbrimpshum."
+    ],
+    "idx_to_symbol": [
+      "Alex",
+      "Fae",
+      "lempus",
+      "quimpus",
+      "vumpus",
+      "boompus",
+      "bompus",
+      "felpus",
+      "yumpus",
+      "yimpus",
+      "numpus",
+      "impus",
+      "kerpus",
+      "scrompus",
+      "lorpus",
+      "gwompus",
+      "brimpus",
+      "jompus",
+      "timpus",
+      "zhorpus",
+      "gorpus",
+      "rempus",
+      "Shumromhil",
+      "Pusbrimpshum"
+    ],
+    "edges": [
+      [
+        0,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        3,
+        9
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        9,
+        11
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        8,
+        11
+      ],
+      [
+        7,
+        11
+      ],
+      [
+        9,
+        12
+      ],
+      [
+        7,
+        13
+      ],
+      [
+        3,
+        14
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        14,
+        16
+      ],
+      [
+        0,
+        16
+      ],
+      [
+        6,
+        17
+      ],
+      [
+        12,
+        17
+      ],
+      [
+        4,
+        17
+      ],
+      [
+        14,
+        17
+      ],
+      [
+        7,
+        18
+      ],
+      [
+        15,
+        18
+      ],
+      [
+        6,
+        18
+      ],
+      [
+        3,
+        19
+      ],
+      [
+        10,
+        20
+      ],
+      [
+        8,
+        21
+      ],
+      [
+        10,
+        21
+      ],
+      [
+        20,
+        21
+      ],
+      [
+        13,
+        22
+      ],
+      [
+        22,
+        23
+      ]
+    ],
+    "root": 1,
+    "target": 23,
+    "neg_target": 19,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        5,
+        6
+      ],
+      "2": [
+        7
+      ],
+      "3": [
+        13
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 28
+  },
+  {
+    "question": "Every gorpus is a rompus. Oliver is a yerpus. Stella is a scrompus. Every numpus is a gorpus. Every yerpus is a zumpus. Stella is a rorpus. Oliver is a boompus. Every zumpus is a numpus. Every lempus is a sterpus. Every zumpus is a gorpus. Every boompus is a vumpus. Every yerpus is a boompus. Every yerpus is a felpus. Every rempus is a gwompus. Every lempus is a storpus. Oliver is a gerpus. Every storpus is a sterpus. Every yimpus is a lorpus. Every kerpus is a jompus. Every rorpus is a sterpus. Every quimpus is a felpus. Every lempus is a gwompus. Every numpus is a kerpus. Every boompus is a zumpus. Every scrompus is a gwompus. Every zumpus is a gerpus. Every boompus is a lorpus. Every boompus is a quimpus. Oliver is a zumpus. Every boompus is a yimpus. Every gorpus is a jompus. Every rorpus is a lempus. Every kerpus is a felpus. Stella is a rempus. Is Oliver a sterpus or rompus? Every rompus is a Storpbrimpus. Every Storpbrimpus is a Quimscromzor.",
+    "answer": "Oliver is a Quimscromzor.",
+    "steps": [
+      "Oliver is a zumpus.",
+      "Every zumpus is a gorpus.",
+      "Every gorpus is a rompus.",
+      "Every rompus is a Storpbrimpus.",
+      "Every Storpbrimpus is a Quimscromzor."
+    ],
+    "idx_to_symbol": [
+      "Stella",
+      "Oliver",
+      "yerpus",
+      "boompus",
+      "rorpus",
+      "zumpus",
+      "gerpus",
+      "quimpus",
+      "numpus",
+      "yimpus",
+      "gorpus",
+      "rompus",
+      "kerpus",
+      "rempus",
+      "scrompus",
+      "felpus",
+      "lempus",
+      "vumpus",
+      "jompus",
+      "lorpus",
+      "storpus",
+      "gwompus",
+      "sterpus",
+      "Storpbrimpus",
+      "Quimscromzor"
+    ],
+    "edges": [
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        3,
+        9
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        8,
+        12
+      ],
+      [
+        0,
+        13
+      ],
+      [
+        0,
+        14
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        2,
+        15
+      ],
+      [
+        12,
+        15
+      ],
+      [
+        4,
+        16
+      ],
+      [
+        3,
+        17
+      ],
+      [
+        10,
+        18
+      ],
+      [
+        12,
+        18
+      ],
+      [
+        3,
+        19
+      ],
+      [
+        9,
+        19
+      ],
+      [
+        16,
+        20
+      ],
+      [
+        13,
+        21
+      ],
+      [
+        16,
+        21
+      ],
+      [
+        14,
+        21
+      ],
+      [
+        4,
+        22
+      ],
+      [
+        16,
+        22
+      ],
+      [
+        20,
+        22
+      ],
+      [
+        11,
+        23
+      ],
+      [
+        23,
+        24
+      ]
+    ],
+    "root": 1,
+    "target": 24,
+    "neg_target": 22,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        5
+      ],
+      "2": [
+        10
+      ],
+      "3": [
+        11
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 29
+  },
+  {
+    "question": "Eva is a gwompus. Jack is a jelpus. Every yimpus is a gerpus. Jack is a sterpus. Sam is a gwompus. Sam is a kerpus. Every kerpus is a zumpus. Every kerpus is a gwompus. Every zumpus is a vumpus. Eva is a hilpus. Sam is a vumpus. Every storpus is a bompus. Every sterpus is a gwompus. Every zumpus is a dumpus. Every storpus is a rempus. Every lempus is a vumpus. Jack is a rorpus. Every sterpus is a impus. Every impus is a storpus. Every impus is a brimpus. Every rorpus is a storpus. Every lempus is a gerpus. Every vumpus is a yimpus. Every zumpus is a lempus. Every dumpus is a gerpus. Sam is a zumpus. Is Jack a gerpus or brimpus? Every brimpus is a Zorlumbrim. Every Zorlumbrim is a Hilquimpus.",
+    "answer": "Jack is a Hilquimpus.",
+    "steps": [
+      "Jack is a sterpus.",
+      "Every sterpus is a impus.",
+      "Every impus is a brimpus.",
+      "Every brimpus is a Zorlumbrim.",
+      "Every Zorlumbrim is a Hilquimpus."
+    ],
+    "idx_to_symbol": [
+      "Sam",
+      "Jack",
+      "rorpus",
+      "sterpus",
+      "kerpus",
+      "Eva",
+      "gwompus",
+      "zumpus",
+      "dumpus",
+      "lempus",
+      "impus",
+      "storpus",
+      "vumpus",
+      "yimpus",
+      "jelpus",
+      "bompus",
+      "brimpus",
+      "rempus",
+      "hilpus",
+      "gerpus",
+      "Zorlumbrim",
+      "Hilquimpus"
+    ],
+    "edges": [
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        7,
+        9
+      ],
+      [
+        3,
+        10
+      ],
+      [
+        2,
+        11
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        7,
+        12
+      ],
+      [
+        0,
+        12
+      ],
+      [
+        9,
+        12
+      ],
+      [
+        12,
+        13
+      ],
+      [
+        1,
+        14
+      ],
+      [
+        11,
+        15
+      ],
+      [
+        10,
+        16
+      ],
+      [
+        11,
+        17
+      ],
+      [
+        5,
+        18
+      ],
+      [
+        8,
+        19
+      ],
+      [
+        13,
+        19
+      ],
+      [
+        9,
+        19
+      ],
+      [
+        16,
+        20
+      ],
+      [
+        20,
+        21
+      ]
+    ],
+    "root": 1,
+    "target": 21,
+    "neg_target": 19,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        3
+      ],
+      "2": [
+        10
+      ],
+      "3": [
+        16
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 30
+  },
+  {
+    "question": "Every jelpus is a gwompus. Every zhorpus is a scrompus. Every jelpus is a fompus. Every lempus is a gorpus. Wren is a lempus. Every jelpus is a jompus. Wren is a sterpus. Every sterpus is a lempus. Every brimpus is a chorpus. Every gerpus is a quimpus. Every storpus is a bompus. Every hilpus is a zhorpus. Every kerpus is a lorpus. Every sterpus is a brimpus. Every worpus is a hilpus. Every rempus is a gerpus. Every kerpus is a worpus. Every kerpus is a hilpus. Max is a kerpus. Every gwompus is a quimpus. Every lempus is a terpus. Every worpus is a rempus. Every zhorpus is a jompus. Every fompus is a jompus. Wren is a storpus. Max is a jelpus. Every worpus is a jelpus. Every kerpus is a jelpus. Every scrompus is a jompus. Every gerpus is a zhorpus. Every gerpus is a hilpus. Every worpus is a gwompus. Wren is a lorpus. Is Max a chorpus or quimpus? Every quimpus is a Shumdumpbrim. Every Shumdumpbrim is a Zorvexdump.",
+    "answer": "Max is a Zorvexdump.",
+    "steps": [
+      "Max is a jelpus.",
+      "Every jelpus is a gwompus.",
+      "Every gwompus is a quimpus.",
+      "Every quimpus is a Shumdumpbrim.",
+      "Every Shumdumpbrim is a Zorvexdump."
+    ],
+    "idx_to_symbol": [
+      "Max",
+      "Wren",
+      "kerpus",
+      "lorpus",
+      "sterpus",
+      "lempus",
+      "storpus",
+      "worpus",
+      "jelpus",
+      "brimpus",
+      "rempus",
+      "terpus",
+      "gerpus",
+      "hilpus",
+      "fompus",
+      "zhorpus",
+      "gorpus",
+      "gwompus",
+      "scrompus",
+      "chorpus",
+      "jompus",
+      "quimpus",
+      "bompus",
+      "Shumdumpbrim",
+      "Zorvexdump"
+    ],
+    "edges": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        10,
+        12
+      ],
+      [
+        12,
+        13
+      ],
+      [
+        7,
+        13
+      ],
+      [
+        2,
+        13
+      ],
+      [
+        8,
+        14
+      ],
+      [
+        12,
+        15
+      ],
+      [
+        13,
+        15
+      ],
+      [
+        5,
+        16
+      ],
+      [
+        7,
+        17
+      ],
+      [
+        8,
+        17
+      ],
+      [
+        15,
+        18
+      ],
+      [
+        9,
+        19
+      ],
+      [
+        18,
+        20
+      ],
+      [
+        15,
+        20
+      ],
+      [
+        8,
+        20
+      ],
+      [
+        14,
+        20
+      ],
+      [
+        17,
+        21
+      ],
+      [
+        12,
+        21
+      ],
+      [
+        6,
+        22
+      ],
+      [
+        21,
+        23
+      ],
+      [
+        23,
+        24
+      ]
+    ],
+    "root": 0,
+    "target": 24,
+    "neg_target": 19,
+    "neighbor_k": {
+      "0": [
+        0
+      ],
+      "1": [
+        8
+      ],
+      "2": [
+        17
+      ],
+      "3": [
+        21
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 31
+  },
+  {
+    "question": "Every numpus is a worpus. Every numpus is a rempus. Every numpus is a gerpus. Every worpus is a sterpus. Every timpus is a brimpus. Every kerpus is a chorpus. Every timpus is a quimpus. Every bompus is a yimpus. Every bompus is a yerpus. Every bompus is a lorpus. Every storpus is a timpus. Stella is a kerpus. Every chorpus is a timpus. Every rompus is a storpus. Every rompus is a chorpus. Every lorpus is a yerpus. Every kerpus is a storpus. Every rompus is a brimpus. Alex is a lorpus. Every chorpus is a quimpus. Every rempus is a lorpus. Every yimpus is a gerpus. Every bompus is a worpus. Every yerpus is a gerpus. Every rompus is a zumpus. Every bompus is a numpus. Every sterpus is a gerpus. Every kerpus is a rompus. Alex is a gerpus. Alex is a bompus. Every rempus is a yerpus. Every rempus is a gerpus. Is Stella a gerpus or zumpus? Every zumpus is a Quimdumpvex. Every Quimdumpvex is a Shumyumlum.",
+    "answer": "Stella is a Shumyumlum.",
+    "steps": [
+      "Stella is a kerpus.",
+      "Every kerpus is a rompus.",
+      "Every rompus is a zumpus.",
+      "Every zumpus is a Quimdumpvex.",
+      "Every Quimdumpvex is a Shumyumlum."
+    ],
+    "idx_to_symbol": [
+      "Stella",
+      "Alex",
+      "kerpus",
+      "bompus",
+      "numpus",
+      "rempus",
+      "lorpus",
+      "rompus",
+      "storpus",
+      "chorpus",
+      "worpus",
+      "timpus",
+      "yerpus",
+      "yimpus",
+      "sterpus",
+      "gerpus",
+      "zumpus",
+      "quimpus",
+      "brimpus",
+      "Quimdumpvex",
+      "Shumyumlum"
+    ],
+    "edges": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        7,
+        9
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        3,
+        10
+      ],
+      [
+        8,
+        11
+      ],
+      [
+        9,
+        11
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        3,
+        12
+      ],
+      [
+        3,
+        13
+      ],
+      [
+        10,
+        14
+      ],
+      [
+        14,
+        15
+      ],
+      [
+        4,
+        15
+      ],
+      [
+        5,
+        15
+      ],
+      [
+        13,
+        15
+      ],
+      [
+        12,
+        15
+      ],
+      [
+        1,
+        15
+      ],
+      [
+        7,
+        16
+      ],
+      [
+        9,
+        17
+      ],
+      [
+        11,
+        17
+      ],
+      [
+        11,
+        18
+      ],
+      [
+        7,
+        18
+      ],
+      [
+        16,
+        19
+      ],
+      [
+        19,
+        20
+      ]
+    ],
+    "root": 0,
+    "target": 20,
+    "neg_target": 15,
+    "neighbor_k": {
+      "0": [
+        0
+      ],
+      "1": [
+        2
+      ],
+      "2": [
+        7
+      ],
+      "3": [
+        16
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 32
+  },
+  {
+    "question": "Every impus is a boompus. Sam is a timpus. Every timpus is a boompus. Sam is a scrompus. Every timpus is a jompus. Every jompus is a lorpus. Every numpus is a boompus. Every timpus is a fompus. Every zumpus is a gerpus. Every zhorpus is a zumpus. Every sterpus is a boompus. Every yimpus is a hilpus. Every brimpus is a grimpus. Every worpus is a scrompus. Every zumpus is a chorpus. Every timpus is a grimpus. Every yimpus is a chorpus. Every impus is a sterpus. Every worpus is a chorpus. Rex is a scrompus. Rex is a zhorpus. Every worpus is a yimpus. Every zhorpus is a yimpus. Every zumpus is a hilpus. Rex is a zumpus. Every timpus is a impus. Every timpus is a brimpus. Every gerpus is a hilpus. Rex is a worpus. Every yimpus is a gerpus. Every impus is a numpus. Is Sam a chorpus or lorpus? Every lorpus is a Vexquimrom. Every Vexquimrom is a Zorwumrom.",
+    "answer": "Sam is a Zorwumrom.",
+    "steps": [
+      "Sam is a timpus.",
+      "Every timpus is a jompus.",
+      "Every jompus is a lorpus.",
+      "Every lorpus is a Vexquimrom.",
+      "Every Vexquimrom is a Zorwumrom."
+    ],
+    "idx_to_symbol": [
+      "Sam",
+      "Rex",
+      "worpus",
+      "scrompus",
+      "timpus",
+      "impus",
+      "sterpus",
+      "brimpus",
+      "zhorpus",
+      "grimpus",
+      "zumpus",
+      "numpus",
+      "yimpus",
+      "jompus",
+      "gerpus",
+      "boompus",
+      "lorpus",
+      "chorpus",
+      "fompus",
+      "hilpus",
+      "Vexquimrom",
+      "Zorwumrom"
+    ],
+    "edges": [
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        7,
+        9
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        1,
+        10
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        8,
+        12
+      ],
+      [
+        2,
+        12
+      ],
+      [
+        4,
+        13
+      ],
+      [
+        12,
+        14
+      ],
+      [
+        10,
+        14
+      ],
+      [
+        6,
+        15
+      ],
+      [
+        5,
+        15
+      ],
+      [
+        11,
+        15
+      ],
+      [
+        4,
+        15
+      ],
+      [
+        13,
+        16
+      ],
+      [
+        2,
+        17
+      ],
+      [
+        12,
+        17
+      ],
+      [
+        10,
+        17
+      ],
+      [
+        4,
+        18
+      ],
+      [
+        12,
+        19
+      ],
+      [
+        14,
+        19
+      ],
+      [
+        10,
+        19
+      ],
+      [
+        16,
+        20
+      ],
+      [
+        20,
+        21
+      ]
+    ],
+    "root": 0,
+    "target": 21,
+    "neg_target": 17,
+    "neighbor_k": {
+      "0": [
+        0
+      ],
+      "1": [
+        4
+      ],
+      "2": [
+        13
+      ],
+      "3": [
+        16
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 33
+  },
+  {
+    "question": "Every yumpus is a jelpus. Every timpus is a boompus. Jack is a lempus. Every rempus is a gwompus. Every yimpus is a yerpus. Gabriel is a chorpus. Every lempus is a gwompus. Every rompus is a impus. Every rorpus is a vumpus. Every zumpus is a storpus. Every lempus is a scrompus. Every gwompus is a scrompus. Every terpus is a storpus. Gabriel is a rompus. Every rempus is a tumpus. Jack is a chorpus. Every rorpus is a yerpus. Every yerpus is a vumpus. Every rorpus is a impus. Jack is a rempus. Every boompus is a scrompus. Every yumpus is a yerpus. Gabriel is a yimpus. Every yumpus is a vumpus. Jack is a zumpus. Every rempus is a timpus. Every yimpus is a zumpus. Every yimpus is a rompus. Every rompus is a vumpus. Every vumpus is a impus. Every vumpus is a bompus. Every yimpus is a vumpus. Every rempus is a lempus. Every rompus is a yerpus. Every rorpus is a yumpus. Every chorpus is a gorpus. Gabriel is a rorpus. Every scrompus is a terpus. Every rorpus is a rompus. Jack is a timpus. Is Gabriel a tumpus or bompus? Every bompus is a Veximppus. Every Veximppus is a Terjelhil.",
+    "answer": "Gabriel is a Terjelhil.",
+    "steps": [
+      "Gabriel is a rompus.",
+      "Every rompus is a vumpus.",
+      "Every vumpus is a bompus.",
+      "Every bompus is a Veximppus.",
+      "Every Veximppus is a Terjelhil."
+    ],
+    "idx_to_symbol": [
+      "Jack",
+      "Gabriel",
+      "chorpus",
+      "gorpus",
+      "rorpus",
+      "yimpus",
+      "rempus",
+      "timpus",
+      "rompus",
+      "lempus",
+      "yumpus",
+      "zumpus",
+      "gwompus",
+      "boompus",
+      "yerpus",
+      "scrompus",
+      "vumpus",
+      "terpus",
+      "bompus",
+      "tumpus",
+      "jelpus",
+      "impus",
+      "storpus",
+      "Veximppus",
+      "Terjelhil"
+    ],
+    "edges": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        0,
+        11
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        9,
+        12
+      ],
+      [
+        7,
+        13
+      ],
+      [
+        10,
+        14
+      ],
+      [
+        5,
+        14
+      ],
+      [
+        4,
+        14
+      ],
+      [
+        8,
+        14
+      ],
+      [
+        12,
+        15
+      ],
+      [
+        9,
+        15
+      ],
+      [
+        13,
+        15
+      ],
+      [
+        14,
+        16
+      ],
+      [
+        10,
+        16
+      ],
+      [
+        4,
+        16
+      ],
+      [
+        5,
+        16
+      ],
+      [
+        8,
+        16
+      ],
+      [
+        15,
+        17
+      ],
+      [
+        16,
+        18
+      ],
+      [
+        6,
+        19
+      ],
+      [
+        10,
+        20
+      ],
+      [
+        16,
+        21
+      ],
+      [
+        4,
+        21
+      ],
+      [
+        8,
+        21
+      ],
+      [
+        11,
+        22
+      ],
+      [
+        17,
+        22
+      ],
+      [
+        18,
+        23
+      ],
+      [
+        23,
+        24
+      ]
+    ],
+    "root": 1,
+    "target": 24,
+    "neg_target": 19,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        8,
+        4,
+        5
+      ],
+      "2": [
+        16
+      ],
+      "3": [
+        18
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 34
+  },
+  {
+    "question": "Every chorpus is a numpus. Every lempus is a impus. Every dumpus is a gwompus. Bob is a quimpus. Every gorpus is a impus. Every quimpus is a zumpus. Every scrompus is a felpus. Every grimpus is a bompus. Every bompus is a gorpus. Every brimpus is a impus. Every quimpus is a grimpus. Every dumpus is a timpus. Every dumpus is a jompus. Every gorpus is a vumpus. Every brimpus is a gorpus. Every quimpus is a scrompus. Every brimpus is a lempus. Every chorpus is a gwompus. Every timpus is a numpus. Every vumpus is a impus. Alex is a timpus. Every zumpus is a lorpus. Every timpus is a chorpus. Alex is a dumpus. Every numpus is a gwompus. Every scrompus is a tumpus. Bob is a scrompus. Every scrompus is a brimpus. Is Bob a impus or jompus? Every impus is a Hilshumzor. Every Hilshumzor is a Jelimplor.",
+    "answer": "Bob is a Jelimplor.",
+    "steps": [
+      "Bob is a scrompus.",
+      "Every scrompus is a brimpus.",
+      "Every brimpus is a impus.",
+      "Every impus is a Hilshumzor.",
+      "Every Hilshumzor is a Jelimplor."
+    ],
+    "idx_to_symbol": [
+      "Alex",
+      "Bob",
+      "dumpus",
+      "quimpus",
+      "scrompus",
+      "brimpus",
+      "grimpus",
+      "lempus",
+      "zumpus",
+      "bompus",
+      "gorpus",
+      "timpus",
+      "vumpus",
+      "impus",
+      "chorpus",
+      "tumpus",
+      "numpus",
+      "jompus",
+      "gwompus",
+      "felpus",
+      "lorpus",
+      "Hilshumzor",
+      "Jelimplor"
+    ],
+    "edges": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        2,
+        11
+      ],
+      [
+        0,
+        11
+      ],
+      [
+        10,
+        12
+      ],
+      [
+        7,
+        13
+      ],
+      [
+        12,
+        13
+      ],
+      [
+        5,
+        13
+      ],
+      [
+        10,
+        13
+      ],
+      [
+        11,
+        14
+      ],
+      [
+        4,
+        15
+      ],
+      [
+        11,
+        16
+      ],
+      [
+        14,
+        16
+      ],
+      [
+        2,
+        17
+      ],
+      [
+        2,
+        18
+      ],
+      [
+        16,
+        18
+      ],
+      [
+        14,
+        18
+      ],
+      [
+        4,
+        19
+      ],
+      [
+        8,
+        20
+      ],
+      [
+        13,
+        21
+      ],
+      [
+        21,
+        22
+      ]
+    ],
+    "root": 1,
+    "target": 22,
+    "neg_target": 17,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        4
+      ],
+      "2": [
+        5
+      ],
+      "3": [
+        13
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 35
+  },
+  {
+    "question": "Sam is a scrompus. Every hilpus is a rompus. Every scrompus is a yumpus. Every scrompus is a bompus. Every zumpus is a gwompus. Davis is a gwompus. Every zumpus is a numpus. Every jompus is a yimpus. Fae is a storpus. Every kerpus is a tumpus. Every lorpus is a jompus. Every yimpus is a worpus. Every storpus is a lorpus. Every hilpus is a sterpus. Every bompus is a tumpus. Every hilpus is a zhorpus. Every scrompus is a kerpus. Every lorpus is a numpus. Every bompus is a hilpus. Every yimpus is a jelpus. Every rompus is a wumpus. Fae is a gwompus. Every storpus is a zumpus. Every sterpus is a yumpus. Every storpus is a numpus. Every zhorpus is a gerpus. Sam is a gwompus. Sam is a hilpus. Every gerpus is a tumpus. Every storpus is a jelpus. Every kerpus is a rompus. Every kerpus is a hilpus. Every storpus is a gwompus. Bob is a gwompus. Fae is a zumpus. Every numpus is a worpus. Is Sam a wumpus or worpus? Every wumpus is a Loryumimp. Every Loryumimp is a Quimscromger.",
+    "answer": "Sam is a Quimscromger.",
+    "steps": [
+      "Sam is a hilpus.",
+      "Every hilpus is a rompus.",
+      "Every rompus is a wumpus.",
+      "Every wumpus is a Loryumimp.",
+      "Every Loryumimp is a Quimscromger."
+    ],
+    "idx_to_symbol": [
+      "Sam",
+      "Fae",
+      "Bob",
+      "storpus",
+      "zumpus",
+      "Davis",
+      "gwompus",
+      "scrompus",
+      "lorpus",
+      "numpus",
+      "bompus",
+      "kerpus",
+      "jompus",
+      "hilpus",
+      "yimpus",
+      "rompus",
+      "zhorpus",
+      "jelpus",
+      "sterpus",
+      "worpus",
+      "gerpus",
+      "tumpus",
+      "yumpus",
+      "wumpus",
+      "Loryumimp",
+      "Quimscromger"
+    ],
+    "edges": [
+      [
+        1,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        3,
+        9
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        7,
+        11
+      ],
+      [
+        8,
+        12
+      ],
+      [
+        10,
+        13
+      ],
+      [
+        11,
+        13
+      ],
+      [
+        0,
+        13
+      ],
+      [
+        12,
+        14
+      ],
+      [
+        11,
+        15
+      ],
+      [
+        13,
+        15
+      ],
+      [
+        13,
+        16
+      ],
+      [
+        3,
+        17
+      ],
+      [
+        14,
+        17
+      ],
+      [
+        13,
+        18
+      ],
+      [
+        14,
+        19
+      ],
+      [
+        9,
+        19
+      ],
+      [
+        16,
+        20
+      ],
+      [
+        20,
+        21
+      ],
+      [
+        10,
+        21
+      ],
+      [
+        11,
+        21
+      ],
+      [
+        7,
+        22
+      ],
+      [
+        18,
+        22
+      ],
+      [
+        15,
+        23
+      ],
+      [
+        23,
+        24
+      ],
+      [
+        24,
+        25
+      ]
+    ],
+    "root": 0,
+    "target": 25,
+    "neg_target": 19,
+    "neighbor_k": {
+      "0": [
+        0
+      ],
+      "1": [
+        13
+      ],
+      "2": [
+        15
+      ],
+      "3": [
+        23
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 36
+  },
+  {
+    "question": "Every zumpus is a vumpus. Every zumpus is a zhorpus. Every sterpus is a storpus. Every gerpus is a boompus. Every gorpus is a zhorpus. Tom is a jompus. Every rorpus is a bompus. Every dumpus is a vumpus. Tom is a felpus. Every gerpus is a bompus. Every gorpus is a scrompus. Every zhorpus is a scrompus. Every storpus is a grimpus. Every felpus is a wumpus. Every wumpus is a rempus. Every gorpus is a zumpus. Every felpus is a jompus. Gabriel is a gorpus. Every grimpus is a vumpus. Every sterpus is a dumpus. Every gerpus is a timpus. Every zhorpus is a numpus. Every gerpus is a scrompus. Every felpus is a dumpus. Every zumpus is a storpus. Gabriel is a zumpus. Gabriel is a rorpus. Every zumpus is a gerpus. Gabriel is a zhorpus. Tom is a sterpus. Every sterpus is a boompus. Tom is a dumpus. Every sterpus is a rempus. Is Gabriel a timpus or rempus? Every timpus is a Wumterdump. Every Wumterdump is a Yumlumzor.",
+    "answer": "Gabriel is a Yumlumzor.",
+    "steps": [
+      "Gabriel is a zumpus.",
+      "Every zumpus is a gerpus.",
+      "Every gerpus is a timpus.",
+      "Every timpus is a Wumterdump.",
+      "Every Wumterdump is a Yumlumzor."
+    ],
+    "idx_to_symbol": [
+      "Tom",
+      "Gabriel",
+      "gorpus",
+      "zumpus",
+      "zhorpus",
+      "rorpus",
+      "sterpus",
+      "gerpus",
+      "boompus",
+      "storpus",
+      "bompus",
+      "scrompus",
+      "felpus",
+      "dumpus",
+      "grimpus",
+      "jompus",
+      "timpus",
+      "wumpus",
+      "vumpus",
+      "rempus",
+      "numpus",
+      "Wumterdump",
+      "Yumlumzor"
+    ],
+    "edges": [
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        3,
+        9
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        7,
+        11
+      ],
+      [
+        2,
+        11
+      ],
+      [
+        4,
+        11
+      ],
+      [
+        0,
+        12
+      ],
+      [
+        0,
+        13
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        12,
+        13
+      ],
+      [
+        9,
+        14
+      ],
+      [
+        0,
+        15
+      ],
+      [
+        12,
+        15
+      ],
+      [
+        7,
+        16
+      ],
+      [
+        12,
+        17
+      ],
+      [
+        13,
+        18
+      ],
+      [
+        3,
+        18
+      ],
+      [
+        14,
+        18
+      ],
+      [
+        6,
+        19
+      ],
+      [
+        17,
+        19
+      ],
+      [
+        4,
+        20
+      ],
+      [
+        16,
+        21
+      ],
+      [
+        21,
+        22
+      ]
+    ],
+    "root": 1,
+    "target": 22,
+    "neg_target": 19,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        3
+      ],
+      "2": [
+        7
+      ],
+      "3": [
+        16
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 37
+  },
+  {
+    "question": "Every jompus is a rempus. Every sterpus is a fompus. Tom is a storpus. Every impus is a fompus. Every zumpus is a storpus. Every gerpus is a rompus. Every dumpus is a lorpus. Every jompus is a shumpus. Tom is a dumpus. Every jompus is a sterpus. Every shumpus is a storpus. Every lempus is a vumpus. Every shumpus is a zumpus. Every zumpus is a lempus. Every jompus is a zumpus. Every sterpus is a yimpus. Carol is a shumpus. Carol is a sterpus. Every rompus is a dumpus. Carol is a storpus. Every rompus is a jelpus. Every impus is a rempus. Tom is a rompus. Every zumpus is a fompus. Every impus is a sterpus. Every dumpus is a quimpus. Carol is a jompus. Every rompus is a grimpus. Every rompus is a quimpus. Every timpus is a jompus. Every jompus is a impus. Tom is a gerpus. Carol is a timpus. Bob is a kerpus. Every fompus is a vumpus. Is Carol a vumpus or jelpus? Every vumpus is a Lorquimger. Every Lorquimger is a Dumpvexquim.",
+    "answer": "Carol is a Dumpvexquim.",
+    "steps": [
+      "Carol is a sterpus.",
+      "Every sterpus is a fompus.",
+      "Every fompus is a vumpus.",
+      "Every vumpus is a Lorquimger.",
+      "Every Lorquimger is a Dumpvexquim."
+    ],
+    "idx_to_symbol": [
+      "Tom",
+      "Carol",
+      "Bob",
+      "gerpus",
+      "timpus",
+      "rompus",
+      "jompus",
+      "shumpus",
+      "zumpus",
+      "jelpus",
+      "storpus",
+      "dumpus",
+      "grimpus",
+      "impus",
+      "kerpus",
+      "quimpus",
+      "sterpus",
+      "rempus",
+      "fompus",
+      "yimpus",
+      "lorpus",
+      "lempus",
+      "vumpus",
+      "Lorquimger",
+      "Dumpvexquim"
+    ],
+    "edges": [
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        5,
+        9
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        0,
+        10
+      ],
+      [
+        1,
+        10
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        0,
+        11
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        2,
+        14
+      ],
+      [
+        11,
+        15
+      ],
+      [
+        5,
+        15
+      ],
+      [
+        13,
+        16
+      ],
+      [
+        6,
+        16
+      ],
+      [
+        1,
+        16
+      ],
+      [
+        6,
+        17
+      ],
+      [
+        13,
+        17
+      ],
+      [
+        8,
+        18
+      ],
+      [
+        13,
+        18
+      ],
+      [
+        16,
+        18
+      ],
+      [
+        16,
+        19
+      ],
+      [
+        11,
+        20
+      ],
+      [
+        8,
+        21
+      ],
+      [
+        21,
+        22
+      ],
+      [
+        18,
+        22
+      ],
+      [
+        22,
+        23
+      ],
+      [
+        23,
+        24
+      ]
+    ],
+    "root": 1,
+    "target": 24,
+    "neg_target": 9,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        16
+      ],
+      "2": [
+        18
+      ],
+      "3": [
+        22
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 38
+  },
+  {
+    "question": "Every jelpus is a sterpus. Carol is a jelpus. Every jelpus is a zumpus. Every jelpus is a quimpus. Every shumpus is a grimpus. Every quimpus is a grimpus. Every quimpus is a brimpus. Every gwompus is a lorpus. Every zumpus is a gerpus. Carol is a impus. Every grimpus is a tumpus. Every quimpus is a fompus. Fae is a gwompus. Every brimpus is a gerpus. Every brimpus is a shumpus. Eva is a lorpus. Every quimpus is a sterpus. Carol is a kerpus. Every sterpus is a zumpus. Every gerpus is a fompus. Every jelpus is a tumpus. Every wumpus is a yimpus. Fae is a wumpus. Every yimpus is a zhorpus. Is Fae a tumpus or zhorpus? Every zhorpus is a Quimpusdump. Every Quimpusdump is a Quimscromstorp.",
+    "answer": "Fae is a Quimscromstorp.",
+    "steps": [
+      "Fae is a wumpus.",
+      "Every wumpus is a yimpus.",
+      "Every yimpus is a zhorpus.",
+      "Every zhorpus is a Quimpusdump.",
+      "Every Quimpusdump is a Quimscromstorp."
+    ],
+    "idx_to_symbol": [
+      "Fae",
+      "Carol",
+      "jelpus",
+      "quimpus",
+      "sterpus",
+      "brimpus",
+      "wumpus",
+      "shumpus",
+      "gwompus",
+      "kerpus",
+      "Eva",
+      "zumpus",
+      "gerpus",
+      "grimpus",
+      "lorpus",
+      "yimpus",
+      "fompus",
+      "zhorpus",
+      "tumpus",
+      "impus",
+      "Quimpusdump",
+      "Quimscromstorp"
+    ],
+    "edges": [
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        1,
+        9
+      ],
+      [
+        4,
+        11
+      ],
+      [
+        2,
+        11
+      ],
+      [
+        11,
+        12
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        7,
+        13
+      ],
+      [
+        3,
+        13
+      ],
+      [
+        8,
+        14
+      ],
+      [
+        10,
+        14
+      ],
+      [
+        6,
+        15
+      ],
+      [
+        12,
+        16
+      ],
+      [
+        3,
+        16
+      ],
+      [
+        15,
+        17
+      ],
+      [
+        2,
+        18
+      ],
+      [
+        13,
+        18
+      ],
+      [
+        1,
+        19
+      ],
+      [
+        17,
+        20
+      ],
+      [
+        20,
+        21
+      ]
+    ],
+    "root": 0,
+    "target": 21,
+    "neg_target": 18,
+    "neighbor_k": {
+      "0": [
+        0
+      ],
+      "1": [
+        6
+      ],
+      "2": [
+        15
+      ],
+      "3": [
+        17
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 39
+  },
+  {
+    "question": "Every boompus is a storpus. Fae is a terpus. Every storpus is a kerpus. Every zumpus is a numpus. Every numpus is a timpus. Fae is a vumpus. Every sterpus is a kerpus. Every rempus is a storpus. Every gorpus is a worpus. Every boompus is a sterpus. Oliver is a quimpus. Every sterpus is a vumpus. Every gorpus is a fompus. Every sterpus is a storpus. Every boompus is a vumpus. Fae is a boompus. Every scrompus is a fompus. Every kerpus is a jelpus. Every terpus is a storpus. Every zumpus is a fompus. Oliver is a zumpus. Every terpus is a rempus. Every storpus is a jelpus. Max is a gwompus. Every worpus is a fompus. Every sterpus is a dumpus. Every rempus is a jelpus. Every boompus is a rempus. Every terpus is a jelpus. Every rempus is a kerpus. Every scrompus is a gorpus. Every worpus is a timpus. Every terpus is a kerpus. Fae is a dumpus. Every gorpus is a quimpus. Every zumpus is a scrompus. Every scrompus is a dumpus. Is Oliver a jelpus or timpus? Every timpus is a Puswumquim. Every Puswumquim is a Lumyumvex.",
+    "answer": "Oliver is a Lumyumvex.",
+    "steps": [
+      "Oliver is a zumpus.",
+      "Every zumpus is a numpus.",
+      "Every numpus is a timpus.",
+      "Every timpus is a Puswumquim.",
+      "Every Puswumquim is a Lumyumvex."
+    ],
+    "idx_to_symbol": [
+      "Fae",
+      "Oliver",
+      "zumpus",
+      "boompus",
+      "scrompus",
+      "gorpus",
+      "terpus",
+      "worpus",
+      "numpus",
+      "fompus",
+      "sterpus",
+      "rempus",
+      "quimpus",
+      "storpus",
+      "dumpus",
+      "timpus",
+      "Max",
+      "gwompus",
+      "kerpus",
+      "vumpus",
+      "jelpus",
+      "Puswumquim",
+      "Lumyumvex"
+    ],
+    "edges": [
+      [
+        1,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        5,
+        9
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        7,
+        9
+      ],
+      [
+        3,
+        10
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        3,
+        11
+      ],
+      [
+        1,
+        12
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        10,
+        13
+      ],
+      [
+        11,
+        13
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        3,
+        13
+      ],
+      [
+        10,
+        14
+      ],
+      [
+        0,
+        14
+      ],
+      [
+        4,
+        14
+      ],
+      [
+        8,
+        15
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        16,
+        17
+      ],
+      [
+        6,
+        18
+      ],
+      [
+        13,
+        18
+      ],
+      [
+        11,
+        18
+      ],
+      [
+        10,
+        18
+      ],
+      [
+        0,
+        19
+      ],
+      [
+        10,
+        19
+      ],
+      [
+        3,
+        19
+      ],
+      [
+        6,
+        20
+      ],
+      [
+        11,
+        20
+      ],
+      [
+        13,
+        20
+      ],
+      [
+        18,
+        20
+      ],
+      [
+        15,
+        21
+      ],
+      [
+        21,
+        22
+      ]
+    ],
+    "root": 1,
+    "target": 22,
+    "neg_target": 20,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        2
+      ],
+      "2": [
+        8
+      ],
+      "3": [
+        15
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 40
+  },
+  {
+    "question": "Gabriel is a hilpus. Fae is a shumpus. Every scrompus is a impus. Every felpus is a numpus. Fae is a gorpus. Gabriel is a gorpus. Every grimpus is a sterpus. Fae is a dumpus. Every gerpus is a dumpus. Every hilpus is a lempus. Stella is a boompus. Every yumpus is a impus. Every lempus is a sterpus. Every rempus is a rompus. Fae is a boompus. Every lempus is a numpus. Fae is a gerpus. Every hilpus is a yumpus. Bob is a yerpus. Every yumpus is a numpus. Every yumpus is a tumpus. Every yumpus is a scrompus. Every gerpus is a sterpus. Every yumpus is a worpus. Gabriel is a yerpus. Every yerpus is a bompus. Every felpus is a impus. Every gerpus is a grimpus. Fae is a grimpus. Gabriel is a lempus. Every hilpus is a yerpus. Every boompus is a yerpus. Every kerpus is a rempus. Every grimpus is a rempus. Every hilpus is a felpus. Every gerpus is a kerpus. Every dumpus is a rempus. Every lempus is a yumpus. Gabriel is a boompus. Every zumpus is a shumpus. Every gorpus is a boompus. Every grimpus is a zumpus. Is Gabriel a impus or rompus? Every impus is a Quimbrimplum. Every Quimbrimplum is a Scromshumyum.",
+    "answer": "Gabriel is a Scromshumyum.",
+    "steps": [
+      "Gabriel is a lempus.",
+      "Every lempus is a yumpus.",
+      "Every yumpus is a impus.",
+      "Every impus is a Quimbrimplum.",
+      "Every Quimbrimplum is a Scromshumyum."
+    ],
+    "idx_to_symbol": [
+      "Fae",
+      "Gabriel",
+      "gorpus",
+      "Stella",
+      "boompus",
+      "hilpus",
+      "Bob",
+      "lempus",
+      "gerpus",
+      "yerpus",
+      "yumpus",
+      "scrompus",
+      "felpus",
+      "grimpus",
+      "dumpus",
+      "kerpus",
+      "sterpus",
+      "numpus",
+      "rempus",
+      "worpus",
+      "rompus",
+      "tumpus",
+      "zumpus",
+      "impus",
+      "bompus",
+      "shumpus",
+      "Quimbrimplum",
+      "Scromshumyum"
+    ],
+    "edges": [
+      [
+        1,
+        2
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        1,
+        9
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        5,
+        9
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        8,
+        13
+      ],
+      [
+        0,
+        13
+      ],
+      [
+        8,
+        14
+      ],
+      [
+        0,
+        14
+      ],
+      [
+        8,
+        15
+      ],
+      [
+        13,
+        16
+      ],
+      [
+        7,
+        16
+      ],
+      [
+        8,
+        16
+      ],
+      [
+        12,
+        17
+      ],
+      [
+        7,
+        17
+      ],
+      [
+        10,
+        17
+      ],
+      [
+        14,
+        18
+      ],
+      [
+        13,
+        18
+      ],
+      [
+        15,
+        18
+      ],
+      [
+        10,
+        19
+      ],
+      [
+        18,
+        20
+      ],
+      [
+        10,
+        21
+      ],
+      [
+        13,
+        22
+      ],
+      [
+        11,
+        23
+      ],
+      [
+        12,
+        23
+      ],
+      [
+        10,
+        23
+      ],
+      [
+        9,
+        24
+      ],
+      [
+        22,
+        25
+      ],
+      [
+        0,
+        25
+      ],
+      [
+        23,
+        26
+      ],
+      [
+        26,
+        27
+      ]
+    ],
+    "root": 1,
+    "target": 27,
+    "neg_target": 20,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        5,
+        7
+      ],
+      "2": [
+        10,
+        12
+      ],
+      "3": [
+        23
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 41
+  },
+  {
+    "question": "Every zumpus is a felpus. Every lempus is a yerpus. Sam is a rempus. Every impus is a fompus. Every grimpus is a shumpus. Every rempus is a felpus. Sam is a shumpus. Every grimpus is a jelpus. Every zhorpus is a brimpus. Carol is a rempus. Every worpus is a fompus. Every grimpus is a zumpus. Every terpus is a brimpus. Every shumpus is a boompus. Every sterpus is a impus. Carol is a impus. Every chorpus is a terpus. Carol is a lempus. Every jelpus is a brimpus. Every sterpus is a lorpus. Every boompus is a jelpus. Every impus is a quimpus. Every boompus is a chorpus. Every dumpus is a lorpus. Every grimpus is a bompus. Every boompus is a dumpus. Every chorpus is a bompus. Every sterpus is a worpus. Every shumpus is a jelpus. Every jelpus is a bompus. Carol is a worpus. Every zumpus is a bompus. Sam is a grimpus. Every impus is a vumpus. Every worpus is a rempus. Sam is a terpus. Every yerpus is a impus. Every worpus is a quimpus. Every sterpus is a lempus. Every lempus is a felpus. Every grimpus is a zhorpus. Every fompus is a gerpus. Every quimpus is a gerpus. Every grimpus is a dumpus. Every vumpus is a dumpus. Every boompus is a brimpus. Carol is a sterpus. Every worpus is a lempus. Every sterpus is a rempus. Is Carol a brimpus or gerpus? Every gerpus is a Wumjelquim. Every Wumjelquim is a Jelzorbrim.",
+    "answer": "Carol is a Jelzorbrim.",
+    "steps": [
+      "Carol is a worpus.",
+      "Every worpus is a quimpus.",
+      "Every quimpus is a gerpus.",
+      "Every gerpus is a Wumjelquim.",
+      "Every Wumjelquim is a Jelzorbrim."
+    ],
+    "idx_to_symbol": [
+      "Sam",
+      "Carol",
+      "grimpus",
+      "sterpus",
+      "worpus",
+      "rempus",
+      "lempus",
+      "shumpus",
+      "boompus",
+      "yerpus",
+      "impus",
+      "fompus",
+      "zumpus",
+      "vumpus",
+      "felpus",
+      "dumpus",
+      "jelpus",
+      "chorpus",
+      "lorpus",
+      "quimpus",
+      "terpus",
+      "zhorpus",
+      "gerpus",
+      "bompus",
+      "brimpus",
+      "Wumjelquim",
+      "Jelzorbrim"
+    ],
+    "edges": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        1,
+        10
+      ],
+      [
+        3,
+        10
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        4,
+        11
+      ],
+      [
+        2,
+        12
+      ],
+      [
+        10,
+        13
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        12,
+        14
+      ],
+      [
+        5,
+        14
+      ],
+      [
+        13,
+        15
+      ],
+      [
+        2,
+        15
+      ],
+      [
+        8,
+        15
+      ],
+      [
+        7,
+        16
+      ],
+      [
+        2,
+        16
+      ],
+      [
+        8,
+        16
+      ],
+      [
+        8,
+        17
+      ],
+      [
+        15,
+        18
+      ],
+      [
+        3,
+        18
+      ],
+      [
+        4,
+        19
+      ],
+      [
+        10,
+        19
+      ],
+      [
+        0,
+        20
+      ],
+      [
+        17,
+        20
+      ],
+      [
+        2,
+        21
+      ],
+      [
+        11,
+        22
+      ],
+      [
+        19,
+        22
+      ],
+      [
+        16,
+        23
+      ],
+      [
+        2,
+        23
+      ],
+      [
+        12,
+        23
+      ],
+      [
+        17,
+        23
+      ],
+      [
+        16,
+        24
+      ],
+      [
+        8,
+        24
+      ],
+      [
+        20,
+        24
+      ],
+      [
+        21,
+        24
+      ],
+      [
+        22,
+        25
+      ],
+      [
+        25,
+        26
+      ]
+    ],
+    "root": 1,
+    "target": 26,
+    "neg_target": 24,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        10,
+        4
+      ],
+      "2": [
+        19,
+        11
+      ],
+      "3": [
+        22
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 42
+  },
+  {
+    "question": "Every kerpus is a sterpus. Every vumpus is a gerpus. Rex is a impus. Rex is a vumpus. Every boompus is a terpus. Every shumpus is a zhorpus. Alex is a kerpus. Every terpus is a felpus. Bob is a zhorpus. Every fompus is a gerpus. Every yimpus is a jelpus. Every gwompus is a sterpus. Every gwompus is a zhorpus. Every yimpus is a kerpus. Alex is a gwompus. Every chorpus is a terpus. Every vumpus is a lempus. Every vumpus is a shumpus. Every shumpus is a boompus. Rex is a chorpus. Every impus is a fompus. Every chorpus is a impus. Every lempus is a boompus. Every vumpus is a fompus. Alex is a jelpus. Every jelpus is a scrompus. Every shumpus is a lempus. Every impus is a shumpus. Every chorpus is a zhorpus. Alex is a tumpus. Every gwompus is a yimpus. Alex is a yimpus. Is Rex a felpus or sterpus? Every felpus is a Jelscromter. Every Jelscromter is a Shumlorzor.",
+    "answer": "Rex is a Shumlorzor.",
+    "steps": [
+      "Rex is a chorpus.",
+      "Every chorpus is a terpus.",
+      "Every terpus is a felpus.",
+      "Every felpus is a Jelscromter.",
+      "Every Jelscromter is a Shumlorzor."
+    ],
+    "idx_to_symbol": [
+      "Alex",
+      "Rex",
+      "Bob",
+      "vumpus",
+      "gwompus",
+      "chorpus",
+      "impus",
+      "yimpus",
+      "kerpus",
+      "sterpus",
+      "jelpus",
+      "shumpus",
+      "lempus",
+      "zhorpus",
+      "boompus",
+      "tumpus",
+      "terpus",
+      "fompus",
+      "scrompus",
+      "felpus",
+      "gerpus",
+      "Jelscromter",
+      "Shumlorzor"
+    ],
+    "edges": [
+      [
+        1,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        0,
+        10
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        3,
+        11
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        11,
+        12
+      ],
+      [
+        3,
+        12
+      ],
+      [
+        4,
+        13
+      ],
+      [
+        2,
+        13
+      ],
+      [
+        11,
+        13
+      ],
+      [
+        5,
+        13
+      ],
+      [
+        12,
+        14
+      ],
+      [
+        11,
+        14
+      ],
+      [
+        0,
+        15
+      ],
+      [
+        14,
+        16
+      ],
+      [
+        5,
+        16
+      ],
+      [
+        3,
+        17
+      ],
+      [
+        6,
+        17
+      ],
+      [
+        10,
+        18
+      ],
+      [
+        16,
+        19
+      ],
+      [
+        3,
+        20
+      ],
+      [
+        17,
+        20
+      ],
+      [
+        19,
+        21
+      ],
+      [
+        21,
+        22
+      ]
+    ],
+    "root": 1,
+    "target": 22,
+    "neg_target": 9,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        5
+      ],
+      "2": [
+        16
+      ],
+      "3": [
+        19
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 43
+  },
+  {
+    "question": "Carol is a yimpus. Every storpus is a zhorpus. Every shumpus is a terpus. Every yimpus is a rompus. Every grimpus is a hilpus. Every quimpus is a gwompus. Every worpus is a timpus. Every wumpus is a storpus. Every wumpus is a quimpus. Every quimpus is a worpus. Every hilpus is a terpus. Every hilpus is a impus. Every grimpus is a terpus. Every chorpus is a scrompus. Every sterpus is a shumpus. Carol is a wumpus. Polly is a sterpus. Every yimpus is a boompus. Every sterpus is a chorpus. Every sterpus is a impus. Every sterpus is a grimpus. Carol is a worpus. Polly is a chorpus. Every worpus is a yumpus. Every yumpus is a rompus. Carol is a timpus. Every chorpus is a shumpus. Every rompus is a rorpus. Every quimpus is a felpus. Every impus is a scrompus. Every wumpus is a worpus. Polly is a grimpus. Every gwompus is a felpus. Is Carol a scrompus or zhorpus? Every zhorpus is a Terbrimpquim. Every Terbrimpquim is a Scromdumpzor.",
+    "answer": "Carol is a Scromdumpzor.",
+    "steps": [
+      "Carol is a wumpus.",
+      "Every wumpus is a storpus.",
+      "Every storpus is a zhorpus.",
+      "Every zhorpus is a Terbrimpquim.",
+      "Every Terbrimpquim is a Scromdumpzor."
+    ],
+    "idx_to_symbol": [
+      "Polly",
+      "Carol",
+      "yimpus",
+      "wumpus",
+      "sterpus",
+      "quimpus",
+      "grimpus",
+      "worpus",
+      "timpus",
+      "chorpus",
+      "shumpus",
+      "boompus",
+      "storpus",
+      "gwompus",
+      "hilpus",
+      "felpus",
+      "yumpus",
+      "rompus",
+      "impus",
+      "terpus",
+      "zhorpus",
+      "rorpus",
+      "scrompus",
+      "Terbrimpquim",
+      "Scromdumpzor"
+    ],
+    "edges": [
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        2,
+        11
+      ],
+      [
+        3,
+        12
+      ],
+      [
+        5,
+        13
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        5,
+        15
+      ],
+      [
+        13,
+        15
+      ],
+      [
+        7,
+        16
+      ],
+      [
+        2,
+        17
+      ],
+      [
+        16,
+        17
+      ],
+      [
+        14,
+        18
+      ],
+      [
+        4,
+        18
+      ],
+      [
+        14,
+        19
+      ],
+      [
+        6,
+        19
+      ],
+      [
+        10,
+        19
+      ],
+      [
+        12,
+        20
+      ],
+      [
+        17,
+        21
+      ],
+      [
+        9,
+        22
+      ],
+      [
+        18,
+        22
+      ],
+      [
+        20,
+        23
+      ],
+      [
+        23,
+        24
+      ]
+    ],
+    "root": 1,
+    "target": 24,
+    "neg_target": 22,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        3
+      ],
+      "2": [
+        12
+      ],
+      "3": [
+        20
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 44
+  },
+  {
+    "question": "Gabriel is a rompus. Every sterpus is a wumpus. Every gerpus is a tumpus. Gabriel is a gorpus. Every yimpus is a fompus. Every sterpus is a grimpus. Every sterpus is a shumpus. Every sterpus is a storpus. Every grimpus is a shumpus. Every rompus is a gwompus. Every zhorpus is a fompus. Every rempus is a timpus. Every grimpus is a brimpus. Every zhorpus is a yimpus. Alex is a chorpus. Every zhorpus is a gwompus. Every brimpus is a bompus. Gabriel is a rempus. Every gerpus is a chorpus. Every rompus is a yimpus. Every quimpus is a bompus. Every tumpus is a storpus. Every quimpus is a sterpus. Wren is a quimpus. Alex is a gerpus. Every fompus is a terpus. Every gorpus is a gwompus. Every gorpus is a terpus. Every numpus is a terpus. Every rempus is a terpus. Alex is a wumpus. Every quimpus is a brimpus. Gabriel is a fompus. Every yimpus is a shumpus. Every fompus is a gwompus. Every rompus is a numpus. Every gerpus is a quimpus. Gabriel is a zhorpus. Is Alex a storpus or gwompus? Every storpus is a Yumpusbrim. Every Yumpusbrim is a Terjelquim.",
+    "answer": "Alex is a Terjelquim.",
+    "steps": [
+      "Alex is a gerpus.",
+      "Every gerpus is a tumpus.",
+      "Every tumpus is a storpus.",
+      "Every storpus is a Yumpusbrim.",
+      "Every Yumpusbrim is a Terjelquim."
+    ],
+    "idx_to_symbol": [
+      "Gabriel",
+      "Alex",
+      "Wren",
+      "gerpus",
+      "chorpus",
+      "quimpus",
+      "rompus",
+      "tumpus",
+      "sterpus",
+      "grimpus",
+      "zhorpus",
+      "yimpus",
+      "gorpus",
+      "wumpus",
+      "rempus",
+      "shumpus",
+      "fompus",
+      "brimpus",
+      "numpus",
+      "terpus",
+      "storpus",
+      "bompus",
+      "gwompus",
+      "timpus",
+      "Yumpusbrim",
+      "Terjelquim"
+    ],
+    "edges": [
+      [
+        1,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        0,
+        10
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        0,
+        12
+      ],
+      [
+        8,
+        13
+      ],
+      [
+        1,
+        13
+      ],
+      [
+        0,
+        14
+      ],
+      [
+        11,
+        15
+      ],
+      [
+        8,
+        15
+      ],
+      [
+        9,
+        15
+      ],
+      [
+        10,
+        16
+      ],
+      [
+        11,
+        16
+      ],
+      [
+        0,
+        16
+      ],
+      [
+        5,
+        17
+      ],
+      [
+        9,
+        17
+      ],
+      [
+        6,
+        18
+      ],
+      [
+        12,
+        19
+      ],
+      [
+        18,
+        19
+      ],
+      [
+        14,
+        19
+      ],
+      [
+        16,
+        19
+      ],
+      [
+        7,
+        20
+      ],
+      [
+        8,
+        20
+      ],
+      [
+        17,
+        21
+      ],
+      [
+        5,
+        21
+      ],
+      [
+        16,
+        22
+      ],
+      [
+        10,
+        22
+      ],
+      [
+        6,
+        22
+      ],
+      [
+        12,
+        22
+      ],
+      [
+        14,
+        23
+      ],
+      [
+        20,
+        24
+      ],
+      [
+        24,
+        25
+      ]
+    ],
+    "root": 1,
+    "target": 25,
+    "neg_target": 22,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        3
+      ],
+      "2": [
+        7
+      ],
+      "3": [
+        20
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 45
+  },
+  {
+    "question": "Every gwompus is a bompus. Every zumpus is a rempus. Bob is a yimpus. Every jompus is a quimpus. Every zumpus is a vumpus. Max is a scrompus. Every jompus is a tumpus. Max is a wumpus. Every grimpus is a worpus. Every grimpus is a lempus. Every wumpus is a timpus. Every yimpus is a gwompus. Every vumpus is a bompus. Every gwompus is a rempus. Every rempus is a tumpus. Every grimpus is a scrompus. Every wumpus is a gorpus. Every gwompus is a worpus. Every gorpus is a zhorpus. Every jompus is a terpus. Every jompus is a vumpus. Every rempus is a jompus. Every yimpus is a rempus. Every rempus is a vumpus. Every scrompus is a chorpus. Every scrompus is a timpus. Every terpus is a quimpus. Every gorpus is a timpus. Every jompus is a bompus. Every gorpus is a scrompus. Every scrompus is a zhorpus. Every gwompus is a vumpus. Every yimpus is a zumpus. Davis is a lempus. Every gwompus is a zumpus. Max is a grimpus. Every rempus is a quimpus. Is Bob a lempus or quimpus? Every quimpus is a Vexwumlor. Every Vexwumlor is a Storplumrom.",
+    "answer": "Bob is a Storplumrom.",
+    "steps": [
+      "Bob is a yimpus.",
+      "Every yimpus is a rempus.",
+      "Every rempus is a quimpus.",
+      "Every quimpus is a Vexwumlor.",
+      "Every Vexwumlor is a Storplumrom."
+    ],
+    "idx_to_symbol": [
+      "Bob",
+      "Max",
+      "yimpus",
+      "wumpus",
+      "gwompus",
+      "zumpus",
+      "rempus",
+      "Davis",
+      "grimpus",
+      "gorpus",
+      "worpus",
+      "jompus",
+      "vumpus",
+      "tumpus",
+      "scrompus",
+      "timpus",
+      "bompus",
+      "terpus",
+      "chorpus",
+      "lempus",
+      "zhorpus",
+      "quimpus",
+      "Vexwumlor",
+      "Storplumrom"
+    ],
+    "edges": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        3,
+        9
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        11,
+        12
+      ],
+      [
+        4,
+        12
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        11,
+        13
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        9,
+        14
+      ],
+      [
+        8,
+        14
+      ],
+      [
+        1,
+        14
+      ],
+      [
+        9,
+        15
+      ],
+      [
+        3,
+        15
+      ],
+      [
+        14,
+        15
+      ],
+      [
+        4,
+        16
+      ],
+      [
+        12,
+        16
+      ],
+      [
+        11,
+        16
+      ],
+      [
+        11,
+        17
+      ],
+      [
+        14,
+        18
+      ],
+      [
+        7,
+        19
+      ],
+      [
+        8,
+        19
+      ],
+      [
+        9,
+        20
+      ],
+      [
+        14,
+        20
+      ],
+      [
+        17,
+        21
+      ],
+      [
+        11,
+        21
+      ],
+      [
+        6,
+        21
+      ],
+      [
+        21,
+        22
+      ],
+      [
+        22,
+        23
+      ]
+    ],
+    "root": 0,
+    "target": 23,
+    "neg_target": 19,
+    "neighbor_k": {
+      "0": [
+        0
+      ],
+      "1": [
+        2
+      ],
+      "2": [
+        6
+      ],
+      "3": [
+        21
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 46
+  },
+  {
+    "question": "Every tumpus is a rorpus. Every rorpus is a lempus. Every chorpus is a brimpus. Every chorpus is a lorpus. Every timpus is a dumpus. Every shumpus is a rorpus. Wren is a jompus. Sally is a hilpus. Every scrompus is a tumpus. Every timpus is a rempus. Wren is a chorpus. Sally is a timpus. Every kerpus is a zumpus. Every jompus is a lempus. Every dumpus is a kerpus. Every lorpus is a tumpus. Every rempus is a hilpus. Every jompus is a rorpus. Every dumpus is a yerpus. Every jompus is a chorpus. Every timpus is a kerpus. Sally is a yerpus. Every chorpus is a scrompus. Every zumpus is a rempus. Every zumpus is a numpus. Every dumpus is a gwompus. Every kerpus is a rempus. Every timpus is a zumpus. Every chorpus is a yimpus. Every dumpus is a rempus. Every chorpus is a shumpus. Every shumpus is a wumpus. Every zumpus is a yerpus. Sally is a kerpus. Sally is a dumpus. Every kerpus is a yumpus. Is Sally a numpus or brimpus? Every numpus is a Brimpromlor. Every Brimpromlor is a Dumprombrim.",
+    "answer": "Sally is a Dumprombrim.",
+    "steps": [
+      "Sally is a kerpus.",
+      "Every kerpus is a zumpus.",
+      "Every zumpus is a numpus.",
+      "Every numpus is a Brimpromlor.",
+      "Every Brimpromlor is a Dumprombrim."
+    ],
+    "idx_to_symbol": [
+      "Wren",
+      "Sally",
+      "jompus",
+      "timpus",
+      "chorpus",
+      "dumpus",
+      "shumpus",
+      "lorpus",
+      "kerpus",
+      "scrompus",
+      "tumpus",
+      "rorpus",
+      "zumpus",
+      "yimpus",
+      "rempus",
+      "wumpus",
+      "brimpus",
+      "yerpus",
+      "hilpus",
+      "numpus",
+      "gwompus",
+      "lempus",
+      "yumpus",
+      "Brimpromlor",
+      "Dumprombrim"
+    ],
+    "edges": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        2,
+        11
+      ],
+      [
+        8,
+        12
+      ],
+      [
+        3,
+        12
+      ],
+      [
+        4,
+        13
+      ],
+      [
+        3,
+        14
+      ],
+      [
+        12,
+        14
+      ],
+      [
+        8,
+        14
+      ],
+      [
+        5,
+        14
+      ],
+      [
+        6,
+        15
+      ],
+      [
+        4,
+        16
+      ],
+      [
+        12,
+        17
+      ],
+      [
+        5,
+        17
+      ],
+      [
+        1,
+        17
+      ],
+      [
+        14,
+        18
+      ],
+      [
+        1,
+        18
+      ],
+      [
+        12,
+        19
+      ],
+      [
+        5,
+        20
+      ],
+      [
+        11,
+        21
+      ],
+      [
+        2,
+        21
+      ],
+      [
+        8,
+        22
+      ],
+      [
+        19,
+        23
+      ],
+      [
+        23,
+        24
+      ]
+    ],
+    "root": 1,
+    "target": 24,
+    "neg_target": 16,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        8,
+        3
+      ],
+      "2": [
+        12
+      ],
+      "3": [
+        19
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 47
+  },
+  {
+    "question": "Every numpus is a rorpus. Polly is a scrompus. Every brimpus is a fompus. Tom is a lempus. Every dumpus is a impus. Every sterpus is a yumpus. Every rorpus is a yumpus. Every brimpus is a grimpus. Every rorpus is a worpus. Every hilpus is a gerpus. Every sterpus is a numpus. Every quimpus is a rorpus. Jack is a quimpus. Every brimpus is a yimpus. Every dumpus is a scrompus. Every hilpus is a brimpus. Jack is a sterpus. Every gerpus is a dumpus. Every brimpus is a gerpus. Every sterpus is a fompus. Polly is a yimpus. Every impus is a grimpus. Every numpus is a quimpus. Polly is a gerpus. Every sterpus is a quimpus. Every sterpus is a rorpus. Polly is a hilpus. Is Jack a worpus or scrompus? Every worpus is a Impdumplum. Every Impdumplum is a Teryumvex.",
+    "answer": "Jack is a Teryumvex.",
+    "steps": [
+      "Jack is a sterpus.",
+      "Every sterpus is a rorpus.",
+      "Every rorpus is a worpus.",
+      "Every worpus is a Impdumplum.",
+      "Every Impdumplum is a Teryumvex."
+    ],
+    "idx_to_symbol": [
+      "Jack",
+      "Polly",
+      "hilpus",
+      "brimpus",
+      "sterpus",
+      "fompus",
+      "numpus",
+      "quimpus",
+      "gerpus",
+      "Tom",
+      "yimpus",
+      "rorpus",
+      "yumpus",
+      "lempus",
+      "dumpus",
+      "impus",
+      "worpus",
+      "scrompus",
+      "grimpus",
+      "Impdumplum",
+      "Teryumvex"
+    ],
+    "edges": [
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        3,
+        10
+      ],
+      [
+        1,
+        10
+      ],
+      [
+        7,
+        11
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        4,
+        11
+      ],
+      [
+        11,
+        12
+      ],
+      [
+        4,
+        12
+      ],
+      [
+        9,
+        13
+      ],
+      [
+        8,
+        14
+      ],
+      [
+        14,
+        15
+      ],
+      [
+        11,
+        16
+      ],
+      [
+        1,
+        17
+      ],
+      [
+        14,
+        17
+      ],
+      [
+        15,
+        18
+      ],
+      [
+        3,
+        18
+      ],
+      [
+        16,
+        19
+      ],
+      [
+        19,
+        20
+      ]
+    ],
+    "root": 0,
+    "target": 20,
+    "neg_target": 17,
+    "neighbor_k": {
+      "0": [
+        0
+      ],
+      "1": [
+        4,
+        7
+      ],
+      "2": [
+        11
+      ],
+      "3": [
+        16
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 48
+  },
+  {
+    "question": "Every storpus is a sterpus. Every jompus is a dumpus. Every fompus is a jompus. Every worpus is a yimpus. Max is a sterpus. Every impus is a dumpus. Every storpus is a worpus. Every lorpus is a rempus. Every bompus is a shumpus. Every fompus is a yimpus. Every sterpus is a bompus. Every lorpus is a dumpus. Every bompus is a yimpus. Max is a storpus. Every worpus is a timpus. Every rempus is a jelpus. Every rempus is a gwompus. Every fompus is a lorpus. Every impus is a jompus. Sally is a shumpus. Every bompus is a lempus. Every bompus is a worpus. Carol is a lorpus. Every sterpus is a worpus. Every worpus is a boompus. Every sterpus is a grimpus. Carol is a fompus. Every grimpus is a shumpus. Every jelpus is a gwompus. Every rempus is a impus. Every rempus is a shumpus. Is Max a boompus or gwompus? Every boompus is a Quimshumger. Every Quimshumger is a Brimplumwum.",
+    "answer": "Max is a Brimplumwum.",
+    "steps": [
+      "Max is a sterpus.",
+      "Every sterpus is a worpus.",
+      "Every worpus is a boompus.",
+      "Every boompus is a Quimshumger.",
+      "Every Quimshumger is a Brimplumwum."
+    ],
+    "idx_to_symbol": [
+      "Carol",
+      "Max",
+      "fompus",
+      "storpus",
+      "Sally",
+      "lorpus",
+      "rempus",
+      "sterpus",
+      "grimpus",
+      "bompus",
+      "worpus",
+      "jelpus",
+      "boompus",
+      "shumpus",
+      "lempus",
+      "gwompus",
+      "impus",
+      "timpus",
+      "yimpus",
+      "jompus",
+      "dumpus",
+      "Quimshumger",
+      "Brimplumwum"
+    ],
+    "edges": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        7,
+        9
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        3,
+        10
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        10,
+        12
+      ],
+      [
+        4,
+        13
+      ],
+      [
+        9,
+        13
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        8,
+        13
+      ],
+      [
+        9,
+        14
+      ],
+      [
+        6,
+        15
+      ],
+      [
+        11,
+        15
+      ],
+      [
+        6,
+        16
+      ],
+      [
+        10,
+        17
+      ],
+      [
+        10,
+        18
+      ],
+      [
+        9,
+        18
+      ],
+      [
+        2,
+        18
+      ],
+      [
+        2,
+        19
+      ],
+      [
+        16,
+        19
+      ],
+      [
+        19,
+        20
+      ],
+      [
+        16,
+        20
+      ],
+      [
+        5,
+        20
+      ],
+      [
+        12,
+        21
+      ],
+      [
+        21,
+        22
+      ]
+    ],
+    "root": 1,
+    "target": 22,
+    "neg_target": 15,
+    "neighbor_k": {
+      "0": [
+        1
+      ],
+      "1": [
+        3,
+        7
+      ],
+      "2": [
+        10
+      ],
+      "3": [
+        12
+      ]
+    },
+    "_variant": "prosqa_extend",
+    "_meta": {
+      "extended_from_hops": 3,
+      "target_hops": 5,
+      "base_hops": 3
+    },
+    "_idx": 49
+  }
+]

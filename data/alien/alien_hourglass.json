@@ -1,0 +1,1318 @@
+[
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Buffer or Core?",
+    "answer": "Alpha is linked to Buffer.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Mid layer 2 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Bus",
+      "Sector",
+      "Unit",
+      "Relay",
+      "Buffer",
+      "Core",
+      "Module"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 40,
+      "topology": "hourglass",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Cache or Matrix?",
+    "answer": "Alpha is linked to Cache.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Mid layer 2 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Unit",
+      "Port",
+      "Pilot",
+      "Relay",
+      "Cache",
+      "Matrix",
+      "Buffer"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 41,
+      "topology": "hourglass",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Signal or Gateway?",
+    "answer": "Alpha is linked to Signal.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Mid layer 2 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Layer",
+      "Module",
+      "Cache",
+      "Sensor",
+      "Signal",
+      "Gateway",
+      "Link"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 42,
+      "topology": "hourglass",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Signal or Buffer?",
+    "answer": "Alpha is linked to Signal.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Mid layer 2 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Gateway",
+      "Engine",
+      "Cell",
+      "Sensor",
+      "Signal",
+      "Buffer",
+      "Grid"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 43,
+      "topology": "hourglass",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Unit or Link?",
+    "answer": "Alpha is linked to Unit.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Mid layer 2 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Node",
+      "Axis",
+      "Port",
+      "Cache",
+      "Unit",
+      "Link",
+      "Core"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 44,
+      "topology": "hourglass",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Frame or Signal?",
+    "answer": "Alpha is linked to Frame.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Mid layer 2 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Sensor",
+      "Unit",
+      "Axis",
+      "Zone",
+      "Frame",
+      "Signal",
+      "Cache"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 45,
+      "topology": "hourglass",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Pilot or Matrix?",
+    "answer": "Alpha is linked to Pilot.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Zone",
+      "Signal",
+      "Pilot",
+      "Matrix"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 46,
+      "topology": "hourglass",
+      "reasoning_hops": 4,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Sector or Link?",
+    "answer": "Alpha is linked to Sector.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Mid layer 2 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Axis",
+      "Unit",
+      "Bus",
+      "Gateway",
+      "Sector",
+      "Link",
+      "Frame"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 47,
+      "topology": "hourglass",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Pilot or Layer?",
+    "answer": "Alpha is linked to Pilot.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Mid layer 2 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Relay",
+      "Port",
+      "Link",
+      "Gateway",
+      "Pilot",
+      "Layer",
+      "Cache"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 48,
+      "topology": "hourglass",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Node or Axis?",
+    "answer": "Alpha is linked to Node.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Signal",
+      "Module",
+      "Node",
+      "Axis"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 49,
+      "topology": "hourglass",
+      "reasoning_hops": 4,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Sensor or Zone?",
+    "answer": "Alpha is linked to Sensor.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Pilot",
+      "Unit",
+      "Sensor",
+      "Zone"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 50,
+      "topology": "hourglass",
+      "reasoning_hops": 4,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Gateway or Matrix?",
+    "answer": "Alpha is linked to Gateway.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Pilot",
+      "Link",
+      "Gateway",
+      "Matrix"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 51,
+      "topology": "hourglass",
+      "reasoning_hops": 4,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Sensor or Engine?",
+    "answer": "Alpha is linked to Sensor.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Axis",
+      "Zone",
+      "Sensor",
+      "Engine"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 52,
+      "topology": "hourglass",
+      "reasoning_hops": 4,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Unit or Buffer?",
+    "answer": "Alpha is linked to Unit.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Mid layer 2 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Module",
+      "Sector",
+      "Engine",
+      "Bus",
+      "Unit",
+      "Buffer",
+      "Pilot"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 53,
+      "topology": "hourglass",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Port or Hub?",
+    "answer": "Alpha is linked to Port.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Mid layer 2 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Buffer",
+      "Matrix",
+      "Layer",
+      "Frame",
+      "Port",
+      "Hub",
+      "Zone"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 54,
+      "topology": "hourglass",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Signal or Layer?",
+    "answer": "Alpha is linked to Signal.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Mid layer 2 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Hub",
+      "Port",
+      "Gateway",
+      "Pilot",
+      "Signal",
+      "Layer",
+      "Matrix"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 55,
+      "topology": "hourglass",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Cell or Grid?",
+    "answer": "Alpha is linked to Cell.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Mid layer 2 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Pilot",
+      "Signal",
+      "Hub",
+      "Layer",
+      "Cell",
+      "Grid",
+      "Cache"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 56,
+      "topology": "hourglass",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Grid or Bus?",
+    "answer": "Alpha is linked to Grid.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Sector",
+      "Core",
+      "Grid",
+      "Bus"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 57,
+      "topology": "hourglass",
+      "reasoning_hops": 4,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Cache or Layer?",
+    "answer": "Alpha is linked to Cache.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Mid layer 2 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Bus",
+      "Node",
+      "Signal",
+      "Port",
+      "Cache",
+      "Layer",
+      "Pilot"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 58,
+      "topology": "hourglass",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Pilot or Layer?",
+    "answer": "Alpha is linked to Pilot.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Module",
+      "Cell",
+      "Pilot",
+      "Layer"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 59,
+      "topology": "hourglass",
+      "reasoning_hops": 4,
+      "benchmark": "AlienBench_v1"
+    }
+  }
+]

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="210" viewBox="0 0 920 210">
+<defs>
+<marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+<path d="M0,0 L7,3 L0,6 Z" fill="#333333"/>
+</marker>
+</defs>
+<rect width="100%" height="100%" fill="white"/>
+<rect x="24" y="22" width="872" height="168" rx="4" fill="#f7f7f7" stroke="#888888" stroke-width="0.9" stroke-dasharray="5,4"/>
+<text x="32" y="36" font-family="'Times New Roman', Times, serif" font-size="9.5" fill="#666">ProsQA inference environment</text>
+<rect x="162" y="48" width="610" height="132" rx="3" fill="#fafafa" stroke="#aaa" stroke-width="0.8"/>
+<text x="170" y="58" font-family="'Times New Roman', Times, serif" font-size="9" font-weight="bold" fill="#777">confidence_fallback agent</text>
+
+    <rect x="44" y="62" width="108" height="52" rx="2" fill="white" stroke="#333333" stroke-width="0.9"/>
+    <text x="98.0" y="78" text-anchor="middle" font-family="'Times New Roman', Times, serif" font-size="10"
+          font-weight="bold" fill="#111">ProsQA instance</text><text x="98.0" y="103" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8.5" fill="#444">graph G, root r, targets</text>
+<text x="98.0" y="56" text-anchor="middle" font-family="'Times New Roman', Times, serif" font-size="9" font-weight="bold" fill="#444">Input x</text>
+
+    <rect x="176" y="62" width="118" height="52" rx="2" fill="white" stroke="#333333" stroke-width="0.9"/>
+    <text x="235.0" y="78" text-anchor="middle" font-family="'Times New Roman', Times, serif" font-size="10"
+          font-weight="bold" fill="#111">Structure route</text><text x="235.0" y="103" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8.5" fill="#444">n0 = clamp(d)</text>
+
+    <rect x="314" y="62" width="118" height="52" rx="2" fill="white" stroke="#333333" stroke-width="0.9"/>
+    <text x="373.0" y="78" text-anchor="middle" font-family="'Times New Roman', Times, serif" font-size="10"
+          font-weight="bold" fill="#111">Coconut</text><text x="373.0" y="103" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8.5" fill="#444">y0, h_n0</text>
+
+    <rect x="450" y="62" width="92" height="52" rx="2" fill="white" stroke="#333333" stroke-width="0.9"/>
+    <text x="496.0" y="78" text-anchor="middle" font-family="'Times New Roman', Times, serif" font-size="10"
+          font-weight="bold" fill="#111">M2 head</text><text x="496.0" y="103" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8.5" fill="#444">p0 = sigmoid(M2)</text>
+
+    <polygon points="590,71.0 619.0,88 590,105.0 561.0,88" fill="#f5f5f5" stroke="#333333" stroke-width="0.9"/>
+    <text x="590" y="92" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="9" fill="#222">p0 &gt;= tau</text>
+
+    <rect x="668" y="62" width="88" height="52" rx="2" fill="white" stroke="#333333" stroke-width="0.9"/>
+    <text x="712.0" y="78" text-anchor="middle" font-family="'Times New Roman', Times, serif" font-size="10"
+          font-weight="bold" fill="#111">Output</text><text x="712.0" y="103" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8.5" fill="#444">y</text>
+
+    <rect x="314" y="132" width="150" height="44" rx="2" fill="white" stroke="#333333" stroke-width="0.9" stroke-dasharray="4,3"/>
+    <text x="389.0" y="148" text-anchor="middle" font-family="'Times New Roman', Times, serif" font-size="10"
+          font-weight="bold" fill="#111">kNN + M2 fallback</text><text x="389.0" y="165" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8.5" fill="#444">online stop search</text>
+<line x1="152" y1="88" x2="176" y2="88" stroke="#333333" stroke-width="1" marker-end="url(#arr)"/>
+<line x1="294" y1="88" x2="314" y2="88" stroke="#333333" stroke-width="1" marker-end="url(#arr)"/>
+<line x1="432" y1="88" x2="450" y2="88" stroke="#333333" stroke-width="1" marker-end="url(#arr)"/>
+<line x1="542" y1="88" x2="561.0" y2="88" stroke="#333333" stroke-width="1" marker-end="url(#arr)"/>
+<line x1="619.0" y1="88" x2="668" y2="88" stroke="#333333" stroke-width="1" marker-end="url(#arr)"/>
+<text x="637.0" y="82" text-anchor="middle" font-family="'Times New Roman', Times, serif" font-size="8.5" fill="#555">yes</text>
+<line x1="590" y1="105.0" x2="590" y2="132" stroke="#333333" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+<text x="576" y="119.0" text-anchor="middle" font-family="'Times New Roman', Times, serif" font-size="8.5" fill="#555">no</text>
+<line x1="389.0" y1="176" x2="389.0" y2="186" stroke="#333333" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+<line x1="389.0" y1="186" x2="712.0" y2="186" stroke="#333333" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+<line x1="712.0" y1="186" x2="712.0" y2="114" stroke="#333333" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+</svg>

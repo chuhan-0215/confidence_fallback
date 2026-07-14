@@ -1,0 +1,2202 @@
+[
+  {
+    "question": "Carol is a Shumbrimpzor. Every Shumbrimpzor is a Jelyumhil. Every Jelyumhil is a Lorimpdump. Is Carol a Lorimpdump or Imppusshum?",
+    "answer": "Carol is a Lorimpdump.",
+    "steps": [
+      "Carol is a Shumbrimpzor.",
+      "Every Shumbrimpzor is a Jelyumhil.",
+      "Every Jelyumhil is a Lorimpdump."
+    ],
+    "idx_to_symbol": [
+      "Carol",
+      "Shumbrimpzor",
+      "Jelyumhil",
+      "Lorimpdump",
+      "Imppusshum",
+      "Brimtervex"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 0,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Max is a Vexdumpyum. Every Vexdumpyum is a Shumterlor. Every Shumterlor is a Vexquimstorp. Is Max a Vexquimstorp or Gervexwum?",
+    "answer": "Max is a Vexquimstorp.",
+    "steps": [
+      "Max is a Vexdumpyum.",
+      "Every Vexdumpyum is a Shumterlor.",
+      "Every Shumterlor is a Vexquimstorp."
+    ],
+    "idx_to_symbol": [
+      "Max",
+      "Vexdumpyum",
+      "Shumterlor",
+      "Vexquimstorp",
+      "Gervexwum",
+      "Shumpusbrim"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 1,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Carol is a Brimpyumzor. Every Brimpyumzor is a Dumpzorjel. Every Dumpzorjel is a Storphilter. Is Carol a Storphilter or Lordumpbrimp?",
+    "answer": "Carol is a Storphilter.",
+    "steps": [
+      "Carol is a Brimpyumzor.",
+      "Every Brimpyumzor is a Dumpzorjel.",
+      "Every Dumpzorjel is a Storphilter."
+    ],
+    "idx_to_symbol": [
+      "Carol",
+      "Brimpyumzor",
+      "Dumpzorjel",
+      "Storphilter",
+      "Lordumpbrimp",
+      "Zorjelshum"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 2,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Henry is a Vexpusimp. Every Vexpusimp is a Jelshumwum. Every Jelshumwum is a Impgerpus. Is Henry a Impgerpus or Lumquimrom?",
+    "answer": "Henry is a Impgerpus.",
+    "steps": [
+      "Henry is a Vexpusimp.",
+      "Every Vexpusimp is a Jelshumwum.",
+      "Every Jelshumwum is a Impgerpus."
+    ],
+    "idx_to_symbol": [
+      "Henry",
+      "Vexpusimp",
+      "Jelshumwum",
+      "Impgerpus",
+      "Lumquimrom",
+      "Terquimimp"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 3,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Alice is a Vexquimjel. Every Vexquimjel is a Wumromlum. Every Wumromlum is a Romzorimp. Is Alice a Romzorimp or Lumimppus?",
+    "answer": "Alice is a Romzorimp.",
+    "steps": [
+      "Alice is a Vexquimjel.",
+      "Every Vexquimjel is a Wumromlum.",
+      "Every Wumromlum is a Romzorimp."
+    ],
+    "idx_to_symbol": [
+      "Alice",
+      "Vexquimjel",
+      "Wumromlum",
+      "Romzorimp",
+      "Lumimppus",
+      "Wumyumter"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 4,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Max is a Yumscromimp. Every Yumscromimp is a Romstorplor. Every Romstorplor is a Scromwumstorp. Is Max a Scromwumstorp or Zoryumbrimp?",
+    "answer": "Max is a Scromwumstorp.",
+    "steps": [
+      "Max is a Yumscromimp.",
+      "Every Yumscromimp is a Romstorplor.",
+      "Every Romstorplor is a Scromwumstorp."
+    ],
+    "idx_to_symbol": [
+      "Max",
+      "Yumscromimp",
+      "Romstorplor",
+      "Scromwumstorp",
+      "Zoryumbrimp",
+      "Lumimpjel"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 5,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Henry is a Romdumplor. Every Romdumplor is a Gerterbrim. Every Gerterbrim is a Pusvexger. Is Henry a Pusvexger or Yumhilshum?",
+    "answer": "Henry is a Pusvexger.",
+    "steps": [
+      "Henry is a Romdumplor.",
+      "Every Romdumplor is a Gerterbrim.",
+      "Every Gerterbrim is a Pusvexger."
+    ],
+    "idx_to_symbol": [
+      "Henry",
+      "Romdumplor",
+      "Gerterbrim",
+      "Pusvexger",
+      "Yumhilshum",
+      "Storpquimshum"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 6,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Dave is a Brimpscromhil. Every Brimpscromhil is a Gerstorplum. Every Gerstorplum is a Hildumpimp. Is Dave a Hildumpimp or Brimstorpter?",
+    "answer": "Dave is a Hildumpimp.",
+    "steps": [
+      "Dave is a Brimpscromhil.",
+      "Every Brimpscromhil is a Gerstorplum.",
+      "Every Gerstorplum is a Hildumpimp."
+    ],
+    "idx_to_symbol": [
+      "Dave",
+      "Brimpscromhil",
+      "Gerstorplum",
+      "Hildumpimp",
+      "Brimstorpter",
+      "Brimwumvex"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 7,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Carol is a Pusjelbrim. Every Pusjelbrim is a Jelvexpus. Every Jelvexpus is a Storpvexzor. Is Carol a Storpvexzor or Vexwumbrimp?",
+    "answer": "Carol is a Storpvexzor.",
+    "steps": [
+      "Carol is a Pusjelbrim.",
+      "Every Pusjelbrim is a Jelvexpus.",
+      "Every Jelvexpus is a Storpvexzor."
+    ],
+    "idx_to_symbol": [
+      "Carol",
+      "Pusjelbrim",
+      "Jelvexpus",
+      "Storpvexzor",
+      "Vexwumbrimp",
+      "Impvexpus"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 8,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Eve is a Quimshumscrom. Every Quimshumscrom is a Dumpterimp. Every Dumpterimp is a Quimlorger. Is Eve a Quimlorger or Storpscromlor?",
+    "answer": "Eve is a Quimlorger.",
+    "steps": [
+      "Eve is a Quimshumscrom.",
+      "Every Quimshumscrom is a Dumpterimp.",
+      "Every Dumpterimp is a Quimlorger."
+    ],
+    "idx_to_symbol": [
+      "Eve",
+      "Quimshumscrom",
+      "Dumpterimp",
+      "Quimlorger",
+      "Storpscromlor",
+      "Pusquimshum"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 9,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Grace is a Brimpquimhil. Every Brimpquimhil is a Gerbrimdump. Every Gerbrimdump is a Pusdumphil. Is Grace a Pusdumphil or Lorwumter?",
+    "answer": "Grace is a Pusdumphil.",
+    "steps": [
+      "Grace is a Brimpquimhil.",
+      "Every Brimpquimhil is a Gerbrimdump.",
+      "Every Gerbrimdump is a Pusdumphil."
+    ],
+    "idx_to_symbol": [
+      "Grace",
+      "Brimpquimhil",
+      "Gerbrimdump",
+      "Pusdumphil",
+      "Lorwumter",
+      "Implorpus"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 10,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Dave is a Wumgervex. Every Wumgervex is a Jelhilzor. Every Jelhilzor is a Vexhildump. Is Dave a Vexhildump or Quimzorshum?",
+    "answer": "Dave is a Vexhildump.",
+    "steps": [
+      "Dave is a Wumgervex.",
+      "Every Wumgervex is a Jelhilzor.",
+      "Every Jelhilzor is a Vexhildump."
+    ],
+    "idx_to_symbol": [
+      "Dave",
+      "Wumgervex",
+      "Jelhilzor",
+      "Vexhildump",
+      "Quimzorshum",
+      "Hiljelbrim"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 11,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Henry is a Scromstorpshum. Every Scromstorpshum is a Hilzoryum. Every Hilzoryum is a Quimlorshum. Is Henry a Quimlorshum or Romjelquim?",
+    "answer": "Henry is a Quimlorshum.",
+    "steps": [
+      "Henry is a Scromstorpshum.",
+      "Every Scromstorpshum is a Hilzoryum.",
+      "Every Hilzoryum is a Quimlorshum."
+    ],
+    "idx_to_symbol": [
+      "Henry",
+      "Scromstorpshum",
+      "Hilzoryum",
+      "Quimlorshum",
+      "Romjelquim",
+      "Shumbrimpbrim"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 12,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Alice is a Brimromger. Every Brimromger is a Dumpyumquim. Every Dumpyumquim is a Hilrompus. Is Alice a Hilrompus or Storplumbrimp?",
+    "answer": "Alice is a Hilrompus.",
+    "steps": [
+      "Alice is a Brimromger.",
+      "Every Brimromger is a Dumpyumquim.",
+      "Every Dumpyumquim is a Hilrompus."
+    ],
+    "idx_to_symbol": [
+      "Alice",
+      "Brimromger",
+      "Dumpyumquim",
+      "Hilrompus",
+      "Storplumbrimp",
+      "Gerstorpscrom"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 13,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Dave is a Scromimpwum. Every Scromimpwum is a Quimterlum. Every Quimterlum is a Lorbrimpscrom. Is Dave a Lorbrimpscrom or Storpscrompus?",
+    "answer": "Dave is a Lorbrimpscrom.",
+    "steps": [
+      "Dave is a Scromimpwum.",
+      "Every Scromimpwum is a Quimterlum.",
+      "Every Quimterlum is a Lorbrimpscrom."
+    ],
+    "idx_to_symbol": [
+      "Dave",
+      "Scromimpwum",
+      "Quimterlum",
+      "Lorbrimpscrom",
+      "Storpscrompus",
+      "Dumpyumwum"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 14,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Eve is a Veximpdump. Every Veximpdump is a Impwumdump. Every Impwumdump is a Storpbrimpwum. Is Eve a Storpbrimpwum or Gerterdump?",
+    "answer": "Eve is a Storpbrimpwum.",
+    "steps": [
+      "Eve is a Veximpdump.",
+      "Every Veximpdump is a Impwumdump.",
+      "Every Impwumdump is a Storpbrimpwum."
+    ],
+    "idx_to_symbol": [
+      "Eve",
+      "Veximpdump",
+      "Impwumdump",
+      "Storpbrimpwum",
+      "Gerterdump",
+      "Dumplumscrom"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 15,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Max is a Dumpstorprom. Every Dumpstorprom is a Implumger. Every Implumger is a Gerquimbrim. Is Max a Gerquimbrim or Hilscrombrimp?",
+    "answer": "Max is a Gerquimbrim.",
+    "steps": [
+      "Max is a Dumpstorprom.",
+      "Every Dumpstorprom is a Implumger.",
+      "Every Implumger is a Gerquimbrim."
+    ],
+    "idx_to_symbol": [
+      "Max",
+      "Dumpstorprom",
+      "Implumger",
+      "Gerquimbrim",
+      "Hilscrombrimp",
+      "Scrompusshum"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 16,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Dave is a Zorbrimpvex. Every Zorbrimpvex is a Jelzordump. Every Jelzordump is a Hilimplor. Is Dave a Hilimplor or Scromwumyum?",
+    "answer": "Dave is a Hilimplor.",
+    "steps": [
+      "Dave is a Zorbrimpvex.",
+      "Every Zorbrimpvex is a Jelzordump.",
+      "Every Jelzordump is a Hilimplor."
+    ],
+    "idx_to_symbol": [
+      "Dave",
+      "Zorbrimpvex",
+      "Jelzordump",
+      "Hilimplor",
+      "Scromwumyum",
+      "Shumterlum"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 17,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Carol is a Storpimpyum. Every Storpimpyum is a Storprombrimp. Every Storprombrimp is a Wumromger. Is Carol a Wumromger or Lorwumbrimp?",
+    "answer": "Carol is a Wumromger.",
+    "steps": [
+      "Carol is a Storpimpyum.",
+      "Every Storpimpyum is a Storprombrimp.",
+      "Every Storprombrimp is a Wumromger."
+    ],
+    "idx_to_symbol": [
+      "Carol",
+      "Storpimpyum",
+      "Storprombrimp",
+      "Wumromger",
+      "Lorwumbrimp",
+      "Lumscromlor"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 18,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Eve is a Zordumpscrom. Every Zordumpscrom is a Hilimppus. Every Hilimppus is a Hilquimzor. Is Eve a Hilquimzor or Brimbrimpvex?",
+    "answer": "Eve is a Hilquimzor.",
+    "steps": [
+      "Eve is a Zordumpscrom.",
+      "Every Zordumpscrom is a Hilimppus.",
+      "Every Hilimppus is a Hilquimzor."
+    ],
+    "idx_to_symbol": [
+      "Eve",
+      "Zordumpscrom",
+      "Hilimppus",
+      "Hilquimzor",
+      "Brimbrimpvex",
+      "Gerscromrom"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 19,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Tom is a Quimvexshum. Every Quimvexshum is a Puswumvex. Every Puswumvex is a Quimbrimwum. Is Tom a Quimbrimwum or Yumzorimp?",
+    "answer": "Tom is a Quimbrimwum.",
+    "steps": [
+      "Tom is a Quimvexshum.",
+      "Every Quimvexshum is a Puswumvex.",
+      "Every Puswumvex is a Quimbrimwum."
+    ],
+    "idx_to_symbol": [
+      "Tom",
+      "Quimvexshum",
+      "Puswumvex",
+      "Quimbrimwum",
+      "Yumzorimp",
+      "Wumstorplum"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 20,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Bob is a Vexscromjel. Every Vexscromjel is a Zorlorbrimp. Every Zorlorbrimp is a Wumstorpzor. Is Bob a Wumstorpzor or Hilterbrimp?",
+    "answer": "Bob is a Wumstorpzor.",
+    "steps": [
+      "Bob is a Vexscromjel.",
+      "Every Vexscromjel is a Zorlorbrimp.",
+      "Every Zorlorbrimp is a Wumstorpzor."
+    ],
+    "idx_to_symbol": [
+      "Bob",
+      "Vexscromjel",
+      "Zorlorbrimp",
+      "Wumstorpzor",
+      "Hilterbrimp",
+      "Lumromger"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 21,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Tom is a Vexstorppus. Every Vexstorppus is a Yumquimshum. Every Yumquimshum is a Scromzorimp. Is Tom a Scromzorimp or Storpshumquim?",
+    "answer": "Tom is a Scromzorimp.",
+    "steps": [
+      "Tom is a Vexstorppus.",
+      "Every Vexstorppus is a Yumquimshum.",
+      "Every Yumquimshum is a Scromzorimp."
+    ],
+    "idx_to_symbol": [
+      "Tom",
+      "Vexstorppus",
+      "Yumquimshum",
+      "Scromzorimp",
+      "Storpshumquim",
+      "Dumpjelscrom"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 22,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Alice is a Brimpushil. Every Brimpushil is a Brimimpter. Every Brimimpter is a Jeldumpscrom. Is Alice a Jeldumpscrom or Wumbrimpter?",
+    "answer": "Alice is a Jeldumpscrom.",
+    "steps": [
+      "Alice is a Brimpushil.",
+      "Every Brimpushil is a Brimimpter.",
+      "Every Brimimpter is a Jeldumpscrom."
+    ],
+    "idx_to_symbol": [
+      "Alice",
+      "Brimpushil",
+      "Brimimpter",
+      "Jeldumpscrom",
+      "Wumbrimpter",
+      "Zorlumwum"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 23,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Eve is a Dumpromzor. Every Dumpromzor is a Terhilbrim. Every Terhilbrim is a Yumterwum. Is Eve a Yumterwum or Zorjelstorp?",
+    "answer": "Eve is a Yumterwum.",
+    "steps": [
+      "Eve is a Dumpromzor.",
+      "Every Dumpromzor is a Terhilbrim.",
+      "Every Terhilbrim is a Yumterwum."
+    ],
+    "idx_to_symbol": [
+      "Eve",
+      "Dumpromzor",
+      "Terhilbrim",
+      "Yumterwum",
+      "Zorjelstorp",
+      "Hilromdump"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 24,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Dave is a Quimstorpzor. Every Quimstorpzor is a Yumlumstorp. Every Yumlumstorp is a Brimprompus. Is Dave a Brimprompus or Lumgerlor?",
+    "answer": "Dave is a Brimprompus.",
+    "steps": [
+      "Dave is a Quimstorpzor.",
+      "Every Quimstorpzor is a Yumlumstorp.",
+      "Every Yumlumstorp is a Brimprompus."
+    ],
+    "idx_to_symbol": [
+      "Dave",
+      "Quimstorpzor",
+      "Yumlumstorp",
+      "Brimprompus",
+      "Lumgerlor",
+      "Hilimpbrim"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 25,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Max is a Terscromshum. Every Terscromshum is a Quimzorger. Every Quimzorger is a Gerquimzor. Is Max a Gerquimzor or Lumgerpus?",
+    "answer": "Max is a Gerquimzor.",
+    "steps": [
+      "Max is a Terscromshum.",
+      "Every Terscromshum is a Quimzorger.",
+      "Every Quimzorger is a Gerquimzor."
+    ],
+    "idx_to_symbol": [
+      "Max",
+      "Terscromshum",
+      "Quimzorger",
+      "Gerquimzor",
+      "Lumgerpus",
+      "Storpdumplum"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 26,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Alice is a Brimpscromimp. Every Brimpscromimp is a Rombrimpbrim. Every Rombrimpbrim is a Vexhilquim. Is Alice a Vexhilquim or Storpbrimpjel?",
+    "answer": "Alice is a Vexhilquim.",
+    "steps": [
+      "Alice is a Brimpscromimp.",
+      "Every Brimpscromimp is a Rombrimpbrim.",
+      "Every Rombrimpbrim is a Vexhilquim."
+    ],
+    "idx_to_symbol": [
+      "Alice",
+      "Brimpscromimp",
+      "Rombrimpbrim",
+      "Vexhilquim",
+      "Storpbrimpjel",
+      "Terwumstorp"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 27,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Dave is a Jelloryum. Every Jelloryum is a Lumgerrom. Every Lumgerrom is a Lumwumdump. Is Dave a Lumwumdump or Brimscromdump?",
+    "answer": "Dave is a Lumwumdump.",
+    "steps": [
+      "Dave is a Jelloryum.",
+      "Every Jelloryum is a Lumgerrom.",
+      "Every Lumgerrom is a Lumwumdump."
+    ],
+    "idx_to_symbol": [
+      "Dave",
+      "Jelloryum",
+      "Lumgerrom",
+      "Lumwumdump",
+      "Brimscromdump",
+      "Storppusimp"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 28,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Max is a Lorbrimter. Every Lorbrimter is a Jelquimwum. Every Jelquimwum is a Quimimpdump. Is Max a Quimimpdump or Lumbrimpbrim?",
+    "answer": "Max is a Quimimpdump.",
+    "steps": [
+      "Max is a Lorbrimter.",
+      "Every Lorbrimter is a Jelquimwum.",
+      "Every Jelquimwum is a Quimimpdump."
+    ],
+    "idx_to_symbol": [
+      "Max",
+      "Lorbrimter",
+      "Jelquimwum",
+      "Quimimpdump",
+      "Lumbrimpbrim",
+      "Scromquimlum"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 29,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Tom is a Hilbrimshum. Every Hilbrimshum is a Shumromyum. Every Shumromyum is a Quimscromwum. Is Tom a Quimscromwum or Quimwumlor?",
+    "answer": "Tom is a Quimscromwum.",
+    "steps": [
+      "Tom is a Hilbrimshum.",
+      "Every Hilbrimshum is a Shumromyum.",
+      "Every Shumromyum is a Quimscromwum."
+    ],
+    "idx_to_symbol": [
+      "Tom",
+      "Hilbrimshum",
+      "Shumromyum",
+      "Quimscromwum",
+      "Quimwumlor",
+      "Impdumpvex"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 30,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Frank is a Yumlorpus. Every Yumlorpus is a Jelstorprom. Every Jelstorprom is a Jelimpyum. Is Frank a Jelimpyum or Scromimpzor?",
+    "answer": "Frank is a Jelimpyum.",
+    "steps": [
+      "Frank is a Yumlorpus.",
+      "Every Yumlorpus is a Jelstorprom.",
+      "Every Jelstorprom is a Jelimpyum."
+    ],
+    "idx_to_symbol": [
+      "Frank",
+      "Yumlorpus",
+      "Jelstorprom",
+      "Jelimpyum",
+      "Scromimpzor",
+      "Quimdumpshum"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 31,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Grace is a Lumhilter. Every Lumhilter is a Zorterstorp. Every Zorterstorp is a Impdumprom. Is Grace a Impdumprom or Quimshumbrim?",
+    "answer": "Grace is a Impdumprom.",
+    "steps": [
+      "Grace is a Lumhilter.",
+      "Every Lumhilter is a Zorterstorp.",
+      "Every Zorterstorp is a Impdumprom."
+    ],
+    "idx_to_symbol": [
+      "Grace",
+      "Lumhilter",
+      "Zorterstorp",
+      "Impdumprom",
+      "Quimshumbrim",
+      "Vexshumzor"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 32,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Henry is a Yumgerwum. Every Yumgerwum is a Brimpwumdump. Every Brimpwumdump is a Brimpterpus. Is Henry a Brimpterpus or Storpbrimbrimp?",
+    "answer": "Henry is a Brimpterpus.",
+    "steps": [
+      "Henry is a Yumgerwum.",
+      "Every Yumgerwum is a Brimpwumdump.",
+      "Every Brimpwumdump is a Brimpterpus."
+    ],
+    "idx_to_symbol": [
+      "Henry",
+      "Yumgerwum",
+      "Brimpwumdump",
+      "Brimpterpus",
+      "Storpbrimbrimp",
+      "Vexromjel"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 33,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Henry is a Lorvexdump. Every Lorvexdump is a Lumromger. Every Lumromger is a Impjelquim. Is Henry a Impjelquim or Gerquimdump?",
+    "answer": "Henry is a Impjelquim.",
+    "steps": [
+      "Henry is a Lorvexdump.",
+      "Every Lorvexdump is a Lumromger.",
+      "Every Lumromger is a Impjelquim."
+    ],
+    "idx_to_symbol": [
+      "Henry",
+      "Lorvexdump",
+      "Lumromger",
+      "Impjelquim",
+      "Gerquimdump",
+      "Shumromimp"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 34,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Frank is a Scrombrimger. Every Scrombrimger is a Storpimpshum. Every Storpimpshum is a Storpromlum. Is Frank a Storpromlum or Yumbrimbrimp?",
+    "answer": "Frank is a Storpromlum.",
+    "steps": [
+      "Frank is a Scrombrimger.",
+      "Every Scrombrimger is a Storpimpshum.",
+      "Every Storpimpshum is a Storpromlum."
+    ],
+    "idx_to_symbol": [
+      "Frank",
+      "Scrombrimger",
+      "Storpimpshum",
+      "Storpromlum",
+      "Yumbrimbrimp",
+      "Yumstorpbrim"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 35,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Max is a Hillorter. Every Hillorter is a Hilgervex. Every Hilgervex is a Hillumzor. Is Max a Hillumzor or Gerterzor?",
+    "answer": "Max is a Hillumzor.",
+    "steps": [
+      "Max is a Hillorter.",
+      "Every Hillorter is a Hilgervex.",
+      "Every Hilgervex is a Hillumzor."
+    ],
+    "idx_to_symbol": [
+      "Max",
+      "Hillorter",
+      "Hilgervex",
+      "Hillumzor",
+      "Gerterzor",
+      "Terbrimpvex"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 36,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Bob is a Zorhilwum. Every Zorhilwum is a Vexquimger. Every Vexquimger is a Yumromjel. Is Bob a Yumromjel or Lorwumjel?",
+    "answer": "Bob is a Yumromjel.",
+    "steps": [
+      "Bob is a Zorhilwum.",
+      "Every Zorhilwum is a Vexquimger.",
+      "Every Vexquimger is a Yumromjel."
+    ],
+    "idx_to_symbol": [
+      "Bob",
+      "Zorhilwum",
+      "Vexquimger",
+      "Yumromjel",
+      "Lorwumjel",
+      "Lorgerlum"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 37,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Dave is a Jelshumstorp. Every Jelshumstorp is a Vexlorbrim. Every Vexlorbrim is a Quimzorlum. Is Dave a Quimzorlum or Shumzorwum?",
+    "answer": "Dave is a Quimzorlum.",
+    "steps": [
+      "Dave is a Jelshumstorp.",
+      "Every Jelshumstorp is a Vexlorbrim.",
+      "Every Vexlorbrim is a Quimzorlum."
+    ],
+    "idx_to_symbol": [
+      "Dave",
+      "Jelshumstorp",
+      "Vexlorbrim",
+      "Quimzorlum",
+      "Shumzorwum",
+      "Vexpusger"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 38,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Alice is a Brimpdumpstorp. Every Brimpdumpstorp is a Dumpromlor. Every Dumpromlor is a Wumbrimyum. Is Alice a Wumbrimyum or Scromlumbrim?",
+    "answer": "Alice is a Wumbrimyum.",
+    "steps": [
+      "Alice is a Brimpdumpstorp.",
+      "Every Brimpdumpstorp is a Dumpromlor.",
+      "Every Dumpromlor is a Wumbrimyum."
+    ],
+    "idx_to_symbol": [
+      "Alice",
+      "Brimpdumpstorp",
+      "Dumpromlor",
+      "Wumbrimyum",
+      "Scromlumbrim",
+      "Quimscromstorp"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 39,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Bob is a Rombrimbrimp. Every Rombrimbrimp is a Dumpterquim. Every Dumpterquim is a Romlorvex. Is Bob a Romlorvex or Jelbrimpstorp?",
+    "answer": "Bob is a Romlorvex.",
+    "steps": [
+      "Bob is a Rombrimbrimp.",
+      "Every Rombrimbrimp is a Dumpterquim.",
+      "Every Dumpterquim is a Romlorvex."
+    ],
+    "idx_to_symbol": [
+      "Bob",
+      "Rombrimbrimp",
+      "Dumpterquim",
+      "Romlorvex",
+      "Jelbrimpstorp",
+      "Terzorquim"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 40,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Tom is a Romscromger. Every Romscromger is a Zorscromshum. Every Zorscromshum is a Rombrimdump. Is Tom a Rombrimdump or Romwumhil?",
+    "answer": "Tom is a Rombrimdump.",
+    "steps": [
+      "Tom is a Romscromger.",
+      "Every Romscromger is a Zorscromshum.",
+      "Every Zorscromshum is a Rombrimdump."
+    ],
+    "idx_to_symbol": [
+      "Tom",
+      "Romscromger",
+      "Zorscromshum",
+      "Rombrimdump",
+      "Romwumhil",
+      "Quimbrimlor"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 41,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Max is a Gerzorbrimp. Every Gerzorbrimp is a Storpyumscrom. Every Storpyumscrom is a Brimterimp. Is Max a Brimterimp or Storpzordump?",
+    "answer": "Max is a Brimterimp.",
+    "steps": [
+      "Max is a Gerzorbrimp.",
+      "Every Gerzorbrimp is a Storpyumscrom.",
+      "Every Storpyumscrom is a Brimterimp."
+    ],
+    "idx_to_symbol": [
+      "Max",
+      "Gerzorbrimp",
+      "Storpyumscrom",
+      "Brimterimp",
+      "Storpzordump",
+      "Vexdumpter"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 42,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Carol is a Terromquim. Every Terromquim is a Lumquimpus. Every Lumquimpus is a Hilgerlum. Is Carol a Hilgerlum or Scromlumpus?",
+    "answer": "Carol is a Hilgerlum.",
+    "steps": [
+      "Carol is a Terromquim.",
+      "Every Terromquim is a Lumquimpus.",
+      "Every Lumquimpus is a Hilgerlum."
+    ],
+    "idx_to_symbol": [
+      "Carol",
+      "Terromquim",
+      "Lumquimpus",
+      "Hilgerlum",
+      "Scromlumpus",
+      "Scromstorphil"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 43,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Henry is a Tershumpus. Every Tershumpus is a Zorjelpus. Every Zorjelpus is a Hilgerquim. Is Henry a Hilgerquim or Shumlumquim?",
+    "answer": "Henry is a Hilgerquim.",
+    "steps": [
+      "Henry is a Tershumpus.",
+      "Every Tershumpus is a Zorjelpus.",
+      "Every Zorjelpus is a Hilgerquim."
+    ],
+    "idx_to_symbol": [
+      "Henry",
+      "Tershumpus",
+      "Zorjelpus",
+      "Hilgerquim",
+      "Shumlumquim",
+      "Hiltershum"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 44,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Grace is a Lorromshum. Every Lorromshum is a Romwumger. Every Romwumger is a Scromlorbrim. Is Grace a Scromlorbrim or Impbrimzor?",
+    "answer": "Grace is a Scromlorbrim.",
+    "steps": [
+      "Grace is a Lorromshum.",
+      "Every Lorromshum is a Romwumger.",
+      "Every Romwumger is a Scromlorbrim."
+    ],
+    "idx_to_symbol": [
+      "Grace",
+      "Lorromshum",
+      "Romwumger",
+      "Scromlorbrim",
+      "Impbrimzor",
+      "Terwumshum"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 45,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Carol is a Lumwumpus. Every Lumwumpus is a Zorscromstorp. Every Zorscromstorp is a Pusyumter. Is Carol a Pusyumter or Vexhilstorp?",
+    "answer": "Carol is a Pusyumter.",
+    "steps": [
+      "Carol is a Lumwumpus.",
+      "Every Lumwumpus is a Zorscromstorp.",
+      "Every Zorscromstorp is a Pusyumter."
+    ],
+    "idx_to_symbol": [
+      "Carol",
+      "Lumwumpus",
+      "Zorscromstorp",
+      "Pusyumter",
+      "Vexhilstorp",
+      "Dumphillum"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 46,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Max is a Lumjelshum. Every Lumjelshum is a Brimpshumzor. Every Brimpshumzor is a Storphilshum. Is Max a Storphilshum or Impshumyum?",
+    "answer": "Max is a Storphilshum.",
+    "steps": [
+      "Max is a Lumjelshum.",
+      "Every Lumjelshum is a Brimpshumzor.",
+      "Every Brimpshumzor is a Storphilshum."
+    ],
+    "idx_to_symbol": [
+      "Max",
+      "Lumjelshum",
+      "Brimpshumzor",
+      "Storphilshum",
+      "Impshumyum",
+      "Pushilyum"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 47,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Grace is a Terjelyum. Every Terjelyum is a Storpbrimimp. Every Storpbrimimp is a Vexgerpus. Is Grace a Vexgerpus or Brimdumpquim?",
+    "answer": "Grace is a Vexgerpus.",
+    "steps": [
+      "Grace is a Terjelyum.",
+      "Every Terjelyum is a Storpbrimimp.",
+      "Every Storpbrimimp is a Vexgerpus."
+    ],
+    "idx_to_symbol": [
+      "Grace",
+      "Terjelyum",
+      "Storpbrimimp",
+      "Vexgerpus",
+      "Brimdumpquim",
+      "Hilwumbrimp"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 48,
+      "chain_hops": 3
+    }
+  },
+  {
+    "question": "Bob is a Impbrimjel. Every Impbrimjel is a Lumbrimpter. Every Lumbrimpter is a Romzorter. Is Bob a Romzorter or Jelterscrom?",
+    "answer": "Bob is a Romzorter.",
+    "steps": [
+      "Bob is a Impbrimjel.",
+      "Every Impbrimjel is a Lumbrimpter.",
+      "Every Lumbrimpter is a Romzorter."
+    ],
+    "idx_to_symbol": [
+      "Bob",
+      "Impbrimjel",
+      "Lumbrimpter",
+      "Romzorter",
+      "Jelterscrom",
+      "Storpimpvex"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_variant": "pure_chain",
+    "_meta": {
+      "sample_id": 49,
+      "chain_hops": 3
+    }
+  }
+]

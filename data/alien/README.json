@@ -1,0 +1,12 @@
+{
+  "benchmark": "AlienBench_v1",
+  "total": 80,
+  "per_topology": {
+    "star": 20,
+    "ladder": 20,
+    "hourglass": 20,
+    "tree": 20
+  },
+  "seed": 20260713,
+  "note": "非 ProsQA 拓扑/命名；用于通解外推真·陌生集验证"
+}

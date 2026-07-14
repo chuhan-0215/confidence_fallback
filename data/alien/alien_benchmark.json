@@ -1,0 +1,9111 @@
+[
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Node or Port?",
+    "answer": "Alpha is linked to Node.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Hub layer 4 forwards to layer 5.",
+      "Hub layer 5 forwards to layer 6.",
+      "Layer 6 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Module",
+      "Cell",
+      "Link",
+      "Sensor",
+      "Layer",
+      "Node",
+      "Port",
+      "Signal"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        1,
+        8
+      ]
+    ],
+    "root": 0,
+    "target": 6,
+    "neg_target": 7,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 0,
+      "topology": "star",
+      "reasoning_hops": 7,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Core or Gateway?",
+    "answer": "Alpha is linked to Core.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Layer 4 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Engine",
+      "Bus",
+      "Module",
+      "Core",
+      "Gateway",
+      "Buffer"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 4,
+    "neg_target": 5,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 1,
+      "topology": "star",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Engine or Signal?",
+    "answer": "Alpha is linked to Engine.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Layer 4 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Axis",
+      "Buffer",
+      "Core",
+      "Engine",
+      "Signal",
+      "Port"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 4,
+    "neg_target": 5,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 2,
+      "topology": "star",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Bus or Zone?",
+    "answer": "Alpha is linked to Bus.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Layer 4 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Engine",
+      "Axis",
+      "Grid",
+      "Bus",
+      "Zone",
+      "Unit"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 4,
+    "neg_target": 5,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 3,
+      "topology": "star",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Link or Axis?",
+    "answer": "Alpha is linked to Link.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Hub layer 4 forwards to layer 5.",
+      "Layer 5 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Unit",
+      "Relay",
+      "Frame",
+      "Sector",
+      "Link",
+      "Axis",
+      "Bus"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        1,
+        7
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 4,
+      "topology": "star",
+      "reasoning_hops": 6,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Buffer or Sensor?",
+    "answer": "Alpha is linked to Buffer.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Hub layer 4 forwards to layer 5.",
+      "Hub layer 5 forwards to layer 6.",
+      "Layer 6 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Engine",
+      "Frame",
+      "Hub",
+      "Gateway",
+      "Grid",
+      "Buffer",
+      "Sensor",
+      "Axis"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        1,
+        8
+      ]
+    ],
+    "root": 0,
+    "target": 6,
+    "neg_target": 7,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 5,
+      "topology": "star",
+      "reasoning_hops": 7,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Cell or Hub?",
+    "answer": "Alpha is linked to Cell.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Hub layer 4 forwards to layer 5.",
+      "Hub layer 5 forwards to layer 6.",
+      "Hub layer 6 forwards to layer 7.",
+      "Layer 7 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Bus",
+      "Pilot",
+      "Buffer",
+      "Module",
+      "Sector",
+      "Core",
+      "Cell",
+      "Hub",
+      "Frame"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        1,
+        9
+      ]
+    ],
+    "root": 0,
+    "target": 7,
+    "neg_target": 8,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 6,
+      "topology": "star",
+      "reasoning_hops": 8,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Sector or Axis?",
+    "answer": "Alpha is linked to Sector.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Hub layer 4 forwards to layer 5.",
+      "Hub layer 5 forwards to layer 6.",
+      "Layer 6 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Hub",
+      "Cache",
+      "Zone",
+      "Cell",
+      "Module",
+      "Sector",
+      "Axis",
+      "Node"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        1,
+        8
+      ]
+    ],
+    "root": 0,
+    "target": 6,
+    "neg_target": 7,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 7,
+      "topology": "star",
+      "reasoning_hops": 7,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Node or Zone?",
+    "answer": "Alpha is linked to Node.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Layer 4 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Unit",
+      "Cell",
+      "Grid",
+      "Node",
+      "Zone",
+      "Port"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 4,
+    "neg_target": 5,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 8,
+      "topology": "star",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Matrix or Zone?",
+    "answer": "Alpha is linked to Matrix.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Hub layer 4 forwards to layer 5.",
+      "Hub layer 5 forwards to layer 6.",
+      "Layer 6 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Grid",
+      "Frame",
+      "Core",
+      "Port",
+      "Link",
+      "Matrix",
+      "Zone",
+      "Layer"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        1,
+        8
+      ]
+    ],
+    "root": 0,
+    "target": 6,
+    "neg_target": 7,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 9,
+      "topology": "star",
+      "reasoning_hops": 7,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Zone or Module?",
+    "answer": "Alpha is linked to Zone.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Layer 4 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Node",
+      "Layer",
+      "Hub",
+      "Zone",
+      "Module",
+      "Core"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 4,
+    "neg_target": 5,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 10,
+      "topology": "star",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Relay or Unit?",
+    "answer": "Alpha is linked to Relay.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Hub layer 4 forwards to layer 5.",
+      "Layer 5 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Axis",
+      "Signal",
+      "Link",
+      "Node",
+      "Relay",
+      "Unit",
+      "Frame"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        1,
+        7
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 11,
+      "topology": "star",
+      "reasoning_hops": 6,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Grid or Node?",
+    "answer": "Alpha is linked to Grid.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Hub layer 4 forwards to layer 5.",
+      "Hub layer 5 forwards to layer 6.",
+      "Hub layer 6 forwards to layer 7.",
+      "Layer 7 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Axis",
+      "Unit",
+      "Gateway",
+      "Cache",
+      "Zone",
+      "Bus",
+      "Grid",
+      "Node",
+      "Cell"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        1,
+        9
+      ]
+    ],
+    "root": 0,
+    "target": 7,
+    "neg_target": 8,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 12,
+      "topology": "star",
+      "reasoning_hops": 8,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Sensor or Cache?",
+    "answer": "Alpha is linked to Sensor.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Hub layer 4 forwards to layer 5.",
+      "Hub layer 5 forwards to layer 6.",
+      "Hub layer 6 forwards to layer 7.",
+      "Layer 7 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Axis",
+      "Engine",
+      "Buffer",
+      "Relay",
+      "Port",
+      "Signal",
+      "Sensor",
+      "Cache",
+      "Matrix"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        1,
+        9
+      ]
+    ],
+    "root": 0,
+    "target": 7,
+    "neg_target": 8,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 13,
+      "topology": "star",
+      "reasoning_hops": 8,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Matrix or Gateway?",
+    "answer": "Alpha is linked to Matrix.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Hub layer 4 forwards to layer 5.",
+      "Layer 5 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Bus",
+      "Unit",
+      "Core",
+      "Module",
+      "Matrix",
+      "Gateway",
+      "Grid"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        1,
+        7
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 14,
+      "topology": "star",
+      "reasoning_hops": 6,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Sector or Signal?",
+    "answer": "Alpha is linked to Sector.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Hub layer 4 forwards to layer 5.",
+      "Hub layer 5 forwards to layer 6.",
+      "Hub layer 6 forwards to layer 7.",
+      "Layer 7 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Engine",
+      "Module",
+      "Axis",
+      "Port",
+      "Cache",
+      "Sensor",
+      "Sector",
+      "Signal",
+      "Gateway"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        1,
+        9
+      ]
+    ],
+    "root": 0,
+    "target": 7,
+    "neg_target": 8,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 15,
+      "topology": "star",
+      "reasoning_hops": 8,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Cache or Engine?",
+    "answer": "Alpha is linked to Cache.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Layer 4 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Matrix",
+      "Relay",
+      "Hub",
+      "Cache",
+      "Engine",
+      "Axis"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 4,
+    "neg_target": 5,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 16,
+      "topology": "star",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Module or Unit?",
+    "answer": "Alpha is linked to Module.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Layer 4 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Cache",
+      "Buffer",
+      "Grid",
+      "Module",
+      "Unit",
+      "Port"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 4,
+    "neg_target": 5,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 17,
+      "topology": "star",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Node or Grid?",
+    "answer": "Alpha is linked to Node.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Hub layer 4 forwards to layer 5.",
+      "Layer 5 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Cache",
+      "Bus",
+      "Sector",
+      "Module",
+      "Node",
+      "Grid",
+      "Sensor"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        1,
+        7
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 18,
+      "topology": "star",
+      "reasoning_hops": 6,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Layer or Cell?",
+    "answer": "Alpha is linked to Layer.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Layer 4 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Sensor",
+      "Engine",
+      "Module",
+      "Layer",
+      "Cell",
+      "Unit"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 4,
+    "neg_target": 5,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 19,
+      "topology": "star",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Engine or Grid?",
+    "answer": "Alpha is linked to Engine.",
+    "steps": [
+      "Alpha enters rail A.",
+      "Rung 1 on rail A advances.",
+      "Rung 2 on rail A advances.",
+      "Rung 3 on rail A advances.",
+      "Rung 4 on rail A advances.",
+      "Rung 5 on rail A advances.",
+      "Target reached at rail A end."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Sensor",
+      "Bus",
+      "Axis",
+      "Signal",
+      "Engine",
+      "Gateway",
+      "Zone",
+      "Node",
+      "Cache",
+      "Relay",
+      "Buffer",
+      "Grid"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        3,
+        9
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        6,
+        12
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 12,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 20,
+      "topology": "ladder",
+      "reasoning_hops": 7,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Gateway or Matrix?",
+    "answer": "Alpha is linked to Gateway.",
+    "steps": [
+      "Alpha enters rail A.",
+      "Rung 1 on rail A advances.",
+      "Rung 2 on rail A advances.",
+      "Rung 3 on rail A advances.",
+      "Target reached at rail A end."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Cache",
+      "Sensor",
+      "Gateway",
+      "Port",
+      "Engine",
+      "Layer",
+      "Node",
+      "Matrix"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        4,
+        8
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 8,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 21,
+      "topology": "ladder",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Zone or Grid?",
+    "answer": "Alpha is linked to Zone.",
+    "steps": [
+      "Alpha enters rail A.",
+      "Rung 1 on rail A advances.",
+      "Rung 2 on rail A advances.",
+      "Rung 3 on rail A advances.",
+      "Rung 4 on rail A advances.",
+      "Rung 5 on rail A advances.",
+      "Target reached at rail A end."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Module",
+      "Buffer",
+      "Hub",
+      "Matrix",
+      "Zone",
+      "Node",
+      "Relay",
+      "Cache",
+      "Gateway",
+      "Core",
+      "Unit",
+      "Grid"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        3,
+        9
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        6,
+        12
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 12,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 22,
+      "topology": "ladder",
+      "reasoning_hops": 7,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Matrix or Sensor?",
+    "answer": "Alpha is linked to Matrix.",
+    "steps": [
+      "Alpha enters rail A.",
+      "Rung 1 on rail A advances.",
+      "Rung 2 on rail A advances.",
+      "Rung 3 on rail A advances.",
+      "Target reached at rail A end."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Frame",
+      "Grid",
+      "Matrix",
+      "Unit",
+      "Zone",
+      "Port",
+      "Signal",
+      "Sensor"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        4,
+        8
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 8,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 23,
+      "topology": "ladder",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Gateway or Sector?",
+    "answer": "Alpha is linked to Gateway.",
+    "steps": [
+      "Alpha enters rail A.",
+      "Rung 1 on rail A advances.",
+      "Rung 2 on rail A advances.",
+      "Rung 3 on rail A advances.",
+      "Target reached at rail A end."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Node",
+      "Matrix",
+      "Gateway",
+      "Zone",
+      "Cell",
+      "Grid",
+      "Bus",
+      "Sector"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        4,
+        8
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 8,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 24,
+      "topology": "ladder",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Unit or Grid?",
+    "answer": "Alpha is linked to Unit.",
+    "steps": [
+      "Alpha enters rail A.",
+      "Rung 1 on rail A advances.",
+      "Rung 2 on rail A advances.",
+      "Rung 3 on rail A advances.",
+      "Rung 4 on rail A advances.",
+      "Rung 5 on rail A advances.",
+      "Target reached at rail A end."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Buffer",
+      "Axis",
+      "Module",
+      "Link",
+      "Unit",
+      "Pilot",
+      "Port",
+      "Matrix",
+      "Relay",
+      "Hub",
+      "Node",
+      "Grid"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        3,
+        9
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        6,
+        12
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 12,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 25,
+      "topology": "ladder",
+      "reasoning_hops": 7,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Sector or Hub?",
+    "answer": "Alpha is linked to Sector.",
+    "steps": [
+      "Alpha enters rail A.",
+      "Rung 1 on rail A advances.",
+      "Rung 2 on rail A advances.",
+      "Rung 3 on rail A advances.",
+      "Rung 4 on rail A advances.",
+      "Target reached at rail A end."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Core",
+      "Signal",
+      "Matrix",
+      "Sector",
+      "Engine",
+      "Bus",
+      "Cell",
+      "Frame",
+      "Unit",
+      "Hub"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        5,
+        10
+      ]
+    ],
+    "root": 0,
+    "target": 4,
+    "neg_target": 10,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 26,
+      "topology": "ladder",
+      "reasoning_hops": 6,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Zone or Link?",
+    "answer": "Alpha is linked to Zone.",
+    "steps": [
+      "Alpha enters rail A.",
+      "Rung 1 on rail A advances.",
+      "Rung 2 on rail A advances.",
+      "Rung 3 on rail A advances.",
+      "Rung 4 on rail A advances.",
+      "Rung 5 on rail A advances.",
+      "Target reached at rail A end."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Signal",
+      "Axis",
+      "Layer",
+      "Grid",
+      "Zone",
+      "Cell",
+      "Node",
+      "Gateway",
+      "Bus",
+      "Sector",
+      "Pilot",
+      "Link"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        3,
+        9
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        6,
+        12
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 12,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 27,
+      "topology": "ladder",
+      "reasoning_hops": 7,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Node or Sensor?",
+    "answer": "Alpha is linked to Node.",
+    "steps": [
+      "Alpha enters rail A.",
+      "Rung 1 on rail A advances.",
+      "Rung 2 on rail A advances.",
+      "Rung 3 on rail A advances.",
+      "Target reached at rail A end."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Signal",
+      "Link",
+      "Node",
+      "Axis",
+      "Matrix",
+      "Core",
+      "Sector",
+      "Sensor"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        4,
+        8
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 8,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 28,
+      "topology": "ladder",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Layer or Cell?",
+    "answer": "Alpha is linked to Layer.",
+    "steps": [
+      "Alpha enters rail A.",
+      "Rung 1 on rail A advances.",
+      "Rung 2 on rail A advances.",
+      "Rung 3 on rail A advances.",
+      "Rung 4 on rail A advances.",
+      "Target reached at rail A end."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Unit",
+      "Frame",
+      "Node",
+      "Layer",
+      "Port",
+      "Gateway",
+      "Cache",
+      "Engine",
+      "Bus",
+      "Cell"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        5,
+        10
+      ]
+    ],
+    "root": 0,
+    "target": 4,
+    "neg_target": 10,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 29,
+      "topology": "ladder",
+      "reasoning_hops": 6,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Signal or Axis?",
+    "answer": "Alpha is linked to Signal.",
+    "steps": [
+      "Alpha enters rail A.",
+      "Rung 1 on rail A advances.",
+      "Rung 2 on rail A advances.",
+      "Rung 3 on rail A advances.",
+      "Rung 4 on rail A advances.",
+      "Rung 5 on rail A advances.",
+      "Target reached at rail A end."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Sensor",
+      "Pilot",
+      "Grid",
+      "Relay",
+      "Signal",
+      "Link",
+      "Cache",
+      "Unit",
+      "Zone",
+      "Layer",
+      "Module",
+      "Axis"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        3,
+        9
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        6,
+        12
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 12,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 30,
+      "topology": "ladder",
+      "reasoning_hops": 7,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Sensor or Layer?",
+    "answer": "Alpha is linked to Sensor.",
+    "steps": [
+      "Alpha enters rail A.",
+      "Rung 1 on rail A advances.",
+      "Rung 2 on rail A advances.",
+      "Rung 3 on rail A advances.",
+      "Rung 4 on rail A advances.",
+      "Target reached at rail A end."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Cell",
+      "Bus",
+      "Matrix",
+      "Sensor",
+      "Link",
+      "Relay",
+      "Gateway",
+      "Port",
+      "Pilot",
+      "Layer"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        5,
+        10
+      ]
+    ],
+    "root": 0,
+    "target": 4,
+    "neg_target": 10,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 31,
+      "topology": "ladder",
+      "reasoning_hops": 6,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Hub or Relay?",
+    "answer": "Alpha is linked to Hub.",
+    "steps": [
+      "Alpha enters rail A.",
+      "Rung 1 on rail A advances.",
+      "Rung 2 on rail A advances.",
+      "Rung 3 on rail A advances.",
+      "Rung 4 on rail A advances.",
+      "Rung 5 on rail A advances.",
+      "Target reached at rail A end."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Bus",
+      "Cell",
+      "Pilot",
+      "Port",
+      "Hub",
+      "Sensor",
+      "Frame",
+      "Gateway",
+      "Buffer",
+      "Grid",
+      "Zone",
+      "Relay"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        3,
+        9
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        6,
+        12
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 12,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 32,
+      "topology": "ladder",
+      "reasoning_hops": 7,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Link or Unit?",
+    "answer": "Alpha is linked to Link.",
+    "steps": [
+      "Alpha enters rail A.",
+      "Rung 1 on rail A advances.",
+      "Rung 2 on rail A advances.",
+      "Rung 3 on rail A advances.",
+      "Rung 4 on rail A advances.",
+      "Target reached at rail A end."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Pilot",
+      "Sensor",
+      "Node",
+      "Link",
+      "Grid",
+      "Relay",
+      "Cache",
+      "Module",
+      "Frame",
+      "Unit"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        5,
+        10
+      ]
+    ],
+    "root": 0,
+    "target": 4,
+    "neg_target": 10,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 33,
+      "topology": "ladder",
+      "reasoning_hops": 6,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Sector or Axis?",
+    "answer": "Alpha is linked to Sector.",
+    "steps": [
+      "Alpha enters rail A.",
+      "Rung 1 on rail A advances.",
+      "Rung 2 on rail A advances.",
+      "Rung 3 on rail A advances.",
+      "Rung 4 on rail A advances.",
+      "Target reached at rail A end."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Cache",
+      "Module",
+      "Matrix",
+      "Sector",
+      "Frame",
+      "Cell",
+      "Core",
+      "Signal",
+      "Buffer",
+      "Axis"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        5,
+        10
+      ]
+    ],
+    "root": 0,
+    "target": 4,
+    "neg_target": 10,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 34,
+      "topology": "ladder",
+      "reasoning_hops": 6,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Matrix or Gateway?",
+    "answer": "Alpha is linked to Matrix.",
+    "steps": [
+      "Alpha enters rail A.",
+      "Rung 1 on rail A advances.",
+      "Rung 2 on rail A advances.",
+      "Rung 3 on rail A advances.",
+      "Rung 4 on rail A advances.",
+      "Rung 5 on rail A advances.",
+      "Target reached at rail A end."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Relay",
+      "Zone",
+      "Signal",
+      "Pilot",
+      "Matrix",
+      "Bus",
+      "Hub",
+      "Cache",
+      "Cell",
+      "Engine",
+      "Core",
+      "Gateway"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        3,
+        9
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        6,
+        12
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 12,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 35,
+      "topology": "ladder",
+      "reasoning_hops": 7,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Node or Cache?",
+    "answer": "Alpha is linked to Node.",
+    "steps": [
+      "Alpha enters rail A.",
+      "Rung 1 on rail A advances.",
+      "Rung 2 on rail A advances.",
+      "Rung 3 on rail A advances.",
+      "Rung 4 on rail A advances.",
+      "Rung 5 on rail A advances.",
+      "Target reached at rail A end."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Relay",
+      "Signal",
+      "Pilot",
+      "Hub",
+      "Node",
+      "Gateway",
+      "Module",
+      "Buffer",
+      "Engine",
+      "Bus",
+      "Axis",
+      "Cache"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        3,
+        9
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        6,
+        12
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 12,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 36,
+      "topology": "ladder",
+      "reasoning_hops": 7,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Relay or Port?",
+    "answer": "Alpha is linked to Relay.",
+    "steps": [
+      "Alpha enters rail A.",
+      "Rung 1 on rail A advances.",
+      "Rung 2 on rail A advances.",
+      "Rung 3 on rail A advances.",
+      "Rung 4 on rail A advances.",
+      "Target reached at rail A end."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Zone",
+      "Frame",
+      "Hub",
+      "Relay",
+      "Buffer",
+      "Grid",
+      "Gateway",
+      "Pilot",
+      "Cell",
+      "Port"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        5,
+        10
+      ]
+    ],
+    "root": 0,
+    "target": 4,
+    "neg_target": 10,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 37,
+      "topology": "ladder",
+      "reasoning_hops": 6,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Node or Unit?",
+    "answer": "Alpha is linked to Node.",
+    "steps": [
+      "Alpha enters rail A.",
+      "Rung 1 on rail A advances.",
+      "Rung 2 on rail A advances.",
+      "Rung 3 on rail A advances.",
+      "Rung 4 on rail A advances.",
+      "Target reached at rail A end."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Engine",
+      "Sector",
+      "Core",
+      "Node",
+      "Port",
+      "Relay",
+      "Buffer",
+      "Axis",
+      "Zone",
+      "Unit"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        5,
+        10
+      ]
+    ],
+    "root": 0,
+    "target": 4,
+    "neg_target": 10,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 38,
+      "topology": "ladder",
+      "reasoning_hops": 6,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Node or Pilot?",
+    "answer": "Alpha is linked to Node.",
+    "steps": [
+      "Alpha enters rail A.",
+      "Rung 1 on rail A advances.",
+      "Rung 2 on rail A advances.",
+      "Rung 3 on rail A advances.",
+      "Target reached at rail A end."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Hub",
+      "Grid",
+      "Node",
+      "Module",
+      "Matrix",
+      "Unit",
+      "Port",
+      "Pilot"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        4,
+        8
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 8,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 39,
+      "topology": "ladder",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Buffer or Core?",
+    "answer": "Alpha is linked to Buffer.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Mid layer 2 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Bus",
+      "Sector",
+      "Unit",
+      "Relay",
+      "Buffer",
+      "Core",
+      "Module"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 40,
+      "topology": "hourglass",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Cache or Matrix?",
+    "answer": "Alpha is linked to Cache.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Mid layer 2 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Unit",
+      "Port",
+      "Pilot",
+      "Relay",
+      "Cache",
+      "Matrix",
+      "Buffer"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 41,
+      "topology": "hourglass",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Signal or Gateway?",
+    "answer": "Alpha is linked to Signal.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Mid layer 2 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Layer",
+      "Module",
+      "Cache",
+      "Sensor",
+      "Signal",
+      "Gateway",
+      "Link"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 42,
+      "topology": "hourglass",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Signal or Buffer?",
+    "answer": "Alpha is linked to Signal.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Mid layer 2 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Gateway",
+      "Engine",
+      "Cell",
+      "Sensor",
+      "Signal",
+      "Buffer",
+      "Grid"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 43,
+      "topology": "hourglass",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Unit or Link?",
+    "answer": "Alpha is linked to Unit.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Mid layer 2 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Node",
+      "Axis",
+      "Port",
+      "Cache",
+      "Unit",
+      "Link",
+      "Core"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 44,
+      "topology": "hourglass",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Frame or Signal?",
+    "answer": "Alpha is linked to Frame.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Mid layer 2 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Sensor",
+      "Unit",
+      "Axis",
+      "Zone",
+      "Frame",
+      "Signal",
+      "Cache"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 45,
+      "topology": "hourglass",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Pilot or Matrix?",
+    "answer": "Alpha is linked to Pilot.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Zone",
+      "Signal",
+      "Pilot",
+      "Matrix"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 46,
+      "topology": "hourglass",
+      "reasoning_hops": 4,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Sector or Link?",
+    "answer": "Alpha is linked to Sector.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Mid layer 2 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Axis",
+      "Unit",
+      "Bus",
+      "Gateway",
+      "Sector",
+      "Link",
+      "Frame"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 47,
+      "topology": "hourglass",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Pilot or Layer?",
+    "answer": "Alpha is linked to Pilot.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Mid layer 2 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Relay",
+      "Port",
+      "Link",
+      "Gateway",
+      "Pilot",
+      "Layer",
+      "Cache"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 48,
+      "topology": "hourglass",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Node or Axis?",
+    "answer": "Alpha is linked to Node.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Signal",
+      "Module",
+      "Node",
+      "Axis"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 49,
+      "topology": "hourglass",
+      "reasoning_hops": 4,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Sensor or Zone?",
+    "answer": "Alpha is linked to Sensor.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Pilot",
+      "Unit",
+      "Sensor",
+      "Zone"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 50,
+      "topology": "hourglass",
+      "reasoning_hops": 4,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Gateway or Matrix?",
+    "answer": "Alpha is linked to Gateway.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Pilot",
+      "Link",
+      "Gateway",
+      "Matrix"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 51,
+      "topology": "hourglass",
+      "reasoning_hops": 4,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Sensor or Engine?",
+    "answer": "Alpha is linked to Sensor.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Axis",
+      "Zone",
+      "Sensor",
+      "Engine"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 52,
+      "topology": "hourglass",
+      "reasoning_hops": 4,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Unit or Buffer?",
+    "answer": "Alpha is linked to Unit.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Mid layer 2 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Module",
+      "Sector",
+      "Engine",
+      "Bus",
+      "Unit",
+      "Buffer",
+      "Pilot"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 53,
+      "topology": "hourglass",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Port or Hub?",
+    "answer": "Alpha is linked to Port.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Mid layer 2 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Buffer",
+      "Matrix",
+      "Layer",
+      "Frame",
+      "Port",
+      "Hub",
+      "Zone"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 54,
+      "topology": "hourglass",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Signal or Layer?",
+    "answer": "Alpha is linked to Signal.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Mid layer 2 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Hub",
+      "Port",
+      "Gateway",
+      "Pilot",
+      "Signal",
+      "Layer",
+      "Matrix"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 55,
+      "topology": "hourglass",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Cell or Grid?",
+    "answer": "Alpha is linked to Cell.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Mid layer 2 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Pilot",
+      "Signal",
+      "Hub",
+      "Layer",
+      "Cell",
+      "Grid",
+      "Cache"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 56,
+      "topology": "hourglass",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Grid or Bus?",
+    "answer": "Alpha is linked to Grid.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Sector",
+      "Core",
+      "Grid",
+      "Bus"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 57,
+      "topology": "hourglass",
+      "reasoning_hops": 4,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Cache or Layer?",
+    "answer": "Alpha is linked to Cache.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Mid layer 2 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Bus",
+      "Node",
+      "Signal",
+      "Port",
+      "Cache",
+      "Layer",
+      "Pilot"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 58,
+      "topology": "hourglass",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Pilot or Layer?",
+    "answer": "Alpha is linked to Pilot.",
+    "steps": [
+      "Alpha splits to path U and path L.",
+      "Paths merge at Mid.",
+      "Mid layer 1 expands.",
+      "Target on upper branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Module",
+      "Cell",
+      "Pilot",
+      "Layer"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        4
+      ]
+    ],
+    "root": 0,
+    "target": 3,
+    "neg_target": 4,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 59,
+      "topology": "hourglass",
+      "reasoning_hops": 4,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to X30 or Gateway?",
+    "answer": "Alpha is linked to X30.",
+    "steps": [
+      "Alpha at tree root.",
+      "Tree depth 1 branch.",
+      "Tree depth 2 branch.",
+      "Tree depth 3 branch.",
+      "Tree depth 4 branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Unit",
+      "Node",
+      "Pilot",
+      "Hub",
+      "Sensor",
+      "Link",
+      "Layer",
+      "Sector",
+      "Signal",
+      "Zone",
+      "Frame",
+      "Grid",
+      "Matrix",
+      "Gateway",
+      "Port",
+      "Buffer",
+      "Relay",
+      "Bus",
+      "Cache",
+      "Axis",
+      "Module",
+      "Core",
+      "Cell",
+      "Engine",
+      "X25",
+      "X26",
+      "X27",
+      "X28",
+      "X29",
+      "X30"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        7,
+        16
+      ],
+      [
+        8,
+        17
+      ],
+      [
+        8,
+        18
+      ],
+      [
+        9,
+        19
+      ],
+      [
+        9,
+        20
+      ],
+      [
+        10,
+        21
+      ],
+      [
+        10,
+        22
+      ],
+      [
+        11,
+        23
+      ],
+      [
+        11,
+        24
+      ],
+      [
+        12,
+        25
+      ],
+      [
+        12,
+        26
+      ],
+      [
+        13,
+        27
+      ],
+      [
+        13,
+        28
+      ],
+      [
+        14,
+        29
+      ],
+      [
+        14,
+        30
+      ]
+    ],
+    "root": 0,
+    "target": 30,
+    "neg_target": 14,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 60,
+      "topology": "tree",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to X62 or X30?",
+    "answer": "Alpha is linked to X62.",
+    "steps": [
+      "Alpha at tree root.",
+      "Tree depth 1 branch.",
+      "Tree depth 2 branch.",
+      "Tree depth 3 branch.",
+      "Tree depth 4 branch.",
+      "Tree depth 5 branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Grid",
+      "Matrix",
+      "Engine",
+      "Cell",
+      "Signal",
+      "Unit",
+      "Hub",
+      "Core",
+      "Node",
+      "Bus",
+      "Relay",
+      "Axis",
+      "Gateway",
+      "Module",
+      "Cache",
+      "Link",
+      "Frame",
+      "Port",
+      "Pilot",
+      "Sensor",
+      "Buffer",
+      "Zone",
+      "Sector",
+      "Layer",
+      "X25",
+      "X26",
+      "X27",
+      "X28",
+      "X29",
+      "X30",
+      "X31",
+      "X32",
+      "X33",
+      "X34",
+      "X35",
+      "X36",
+      "X37",
+      "X38",
+      "X39",
+      "X40",
+      "X41",
+      "X42",
+      "X43",
+      "X44",
+      "X45",
+      "X46",
+      "X47",
+      "X48",
+      "X49",
+      "X50",
+      "X51",
+      "X52",
+      "X53",
+      "X54",
+      "X55",
+      "X56",
+      "X57",
+      "X58",
+      "X59",
+      "X60",
+      "X61",
+      "X62"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        7,
+        16
+      ],
+      [
+        8,
+        17
+      ],
+      [
+        8,
+        18
+      ],
+      [
+        9,
+        19
+      ],
+      [
+        9,
+        20
+      ],
+      [
+        10,
+        21
+      ],
+      [
+        10,
+        22
+      ],
+      [
+        11,
+        23
+      ],
+      [
+        11,
+        24
+      ],
+      [
+        12,
+        25
+      ],
+      [
+        12,
+        26
+      ],
+      [
+        13,
+        27
+      ],
+      [
+        13,
+        28
+      ],
+      [
+        14,
+        29
+      ],
+      [
+        14,
+        30
+      ],
+      [
+        15,
+        31
+      ],
+      [
+        15,
+        32
+      ],
+      [
+        16,
+        33
+      ],
+      [
+        16,
+        34
+      ],
+      [
+        17,
+        35
+      ],
+      [
+        17,
+        36
+      ],
+      [
+        18,
+        37
+      ],
+      [
+        18,
+        38
+      ],
+      [
+        19,
+        39
+      ],
+      [
+        19,
+        40
+      ],
+      [
+        20,
+        41
+      ],
+      [
+        20,
+        42
+      ],
+      [
+        21,
+        43
+      ],
+      [
+        21,
+        44
+      ],
+      [
+        22,
+        45
+      ],
+      [
+        22,
+        46
+      ],
+      [
+        23,
+        47
+      ],
+      [
+        23,
+        48
+      ],
+      [
+        24,
+        49
+      ],
+      [
+        24,
+        50
+      ],
+      [
+        25,
+        51
+      ],
+      [
+        25,
+        52
+      ],
+      [
+        26,
+        53
+      ],
+      [
+        26,
+        54
+      ],
+      [
+        27,
+        55
+      ],
+      [
+        27,
+        56
+      ],
+      [
+        28,
+        57
+      ],
+      [
+        28,
+        58
+      ],
+      [
+        29,
+        59
+      ],
+      [
+        29,
+        60
+      ],
+      [
+        30,
+        61
+      ],
+      [
+        30,
+        62
+      ]
+    ],
+    "root": 0,
+    "target": 62,
+    "neg_target": 30,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 61,
+      "topology": "tree",
+      "reasoning_hops": 6,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to X62 or X30?",
+    "answer": "Alpha is linked to X62.",
+    "steps": [
+      "Alpha at tree root.",
+      "Tree depth 1 branch.",
+      "Tree depth 2 branch.",
+      "Tree depth 3 branch.",
+      "Tree depth 4 branch.",
+      "Tree depth 5 branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Hub",
+      "Matrix",
+      "Bus",
+      "Module",
+      "Link",
+      "Core",
+      "Relay",
+      "Axis",
+      "Layer",
+      "Gateway",
+      "Engine",
+      "Unit",
+      "Pilot",
+      "Grid",
+      "Port",
+      "Zone",
+      "Cell",
+      "Sensor",
+      "Node",
+      "Cache",
+      "Buffer",
+      "Frame",
+      "Sector",
+      "Signal",
+      "X25",
+      "X26",
+      "X27",
+      "X28",
+      "X29",
+      "X30",
+      "X31",
+      "X32",
+      "X33",
+      "X34",
+      "X35",
+      "X36",
+      "X37",
+      "X38",
+      "X39",
+      "X40",
+      "X41",
+      "X42",
+      "X43",
+      "X44",
+      "X45",
+      "X46",
+      "X47",
+      "X48",
+      "X49",
+      "X50",
+      "X51",
+      "X52",
+      "X53",
+      "X54",
+      "X55",
+      "X56",
+      "X57",
+      "X58",
+      "X59",
+      "X60",
+      "X61",
+      "X62"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        7,
+        16
+      ],
+      [
+        8,
+        17
+      ],
+      [
+        8,
+        18
+      ],
+      [
+        9,
+        19
+      ],
+      [
+        9,
+        20
+      ],
+      [
+        10,
+        21
+      ],
+      [
+        10,
+        22
+      ],
+      [
+        11,
+        23
+      ],
+      [
+        11,
+        24
+      ],
+      [
+        12,
+        25
+      ],
+      [
+        12,
+        26
+      ],
+      [
+        13,
+        27
+      ],
+      [
+        13,
+        28
+      ],
+      [
+        14,
+        29
+      ],
+      [
+        14,
+        30
+      ],
+      [
+        15,
+        31
+      ],
+      [
+        15,
+        32
+      ],
+      [
+        16,
+        33
+      ],
+      [
+        16,
+        34
+      ],
+      [
+        17,
+        35
+      ],
+      [
+        17,
+        36
+      ],
+      [
+        18,
+        37
+      ],
+      [
+        18,
+        38
+      ],
+      [
+        19,
+        39
+      ],
+      [
+        19,
+        40
+      ],
+      [
+        20,
+        41
+      ],
+      [
+        20,
+        42
+      ],
+      [
+        21,
+        43
+      ],
+      [
+        21,
+        44
+      ],
+      [
+        22,
+        45
+      ],
+      [
+        22,
+        46
+      ],
+      [
+        23,
+        47
+      ],
+      [
+        23,
+        48
+      ],
+      [
+        24,
+        49
+      ],
+      [
+        24,
+        50
+      ],
+      [
+        25,
+        51
+      ],
+      [
+        25,
+        52
+      ],
+      [
+        26,
+        53
+      ],
+      [
+        26,
+        54
+      ],
+      [
+        27,
+        55
+      ],
+      [
+        27,
+        56
+      ],
+      [
+        28,
+        57
+      ],
+      [
+        28,
+        58
+      ],
+      [
+        29,
+        59
+      ],
+      [
+        29,
+        60
+      ],
+      [
+        30,
+        61
+      ],
+      [
+        30,
+        62
+      ]
+    ],
+    "root": 0,
+    "target": 62,
+    "neg_target": 30,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 62,
+      "topology": "tree",
+      "reasoning_hops": 6,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to X30 or Relay?",
+    "answer": "Alpha is linked to X30.",
+    "steps": [
+      "Alpha at tree root.",
+      "Tree depth 1 branch.",
+      "Tree depth 2 branch.",
+      "Tree depth 3 branch.",
+      "Tree depth 4 branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Unit",
+      "Bus",
+      "Buffer",
+      "Engine",
+      "Grid",
+      "Hub",
+      "Sensor",
+      "Node",
+      "Layer",
+      "Cache",
+      "Matrix",
+      "Gateway",
+      "Cell",
+      "Relay",
+      "Core",
+      "Port",
+      "Axis",
+      "Module",
+      "Link",
+      "Pilot",
+      "Sector",
+      "Signal",
+      "Frame",
+      "Zone",
+      "X25",
+      "X26",
+      "X27",
+      "X28",
+      "X29",
+      "X30"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        7,
+        16
+      ],
+      [
+        8,
+        17
+      ],
+      [
+        8,
+        18
+      ],
+      [
+        9,
+        19
+      ],
+      [
+        9,
+        20
+      ],
+      [
+        10,
+        21
+      ],
+      [
+        10,
+        22
+      ],
+      [
+        11,
+        23
+      ],
+      [
+        11,
+        24
+      ],
+      [
+        12,
+        25
+      ],
+      [
+        12,
+        26
+      ],
+      [
+        13,
+        27
+      ],
+      [
+        13,
+        28
+      ],
+      [
+        14,
+        29
+      ],
+      [
+        14,
+        30
+      ]
+    ],
+    "root": 0,
+    "target": 30,
+    "neg_target": 14,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 63,
+      "topology": "tree",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to X62 or X30?",
+    "answer": "Alpha is linked to X62.",
+    "steps": [
+      "Alpha at tree root.",
+      "Tree depth 1 branch.",
+      "Tree depth 2 branch.",
+      "Tree depth 3 branch.",
+      "Tree depth 4 branch.",
+      "Tree depth 5 branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Gateway",
+      "Cell",
+      "Sensor",
+      "Unit",
+      "Link",
+      "Engine",
+      "Cache",
+      "Signal",
+      "Bus",
+      "Relay",
+      "Sector",
+      "Buffer",
+      "Layer",
+      "Frame",
+      "Port",
+      "Zone",
+      "Module",
+      "Node",
+      "Grid",
+      "Pilot",
+      "Hub",
+      "Matrix",
+      "Core",
+      "Axis",
+      "X25",
+      "X26",
+      "X27",
+      "X28",
+      "X29",
+      "X30",
+      "X31",
+      "X32",
+      "X33",
+      "X34",
+      "X35",
+      "X36",
+      "X37",
+      "X38",
+      "X39",
+      "X40",
+      "X41",
+      "X42",
+      "X43",
+      "X44",
+      "X45",
+      "X46",
+      "X47",
+      "X48",
+      "X49",
+      "X50",
+      "X51",
+      "X52",
+      "X53",
+      "X54",
+      "X55",
+      "X56",
+      "X57",
+      "X58",
+      "X59",
+      "X60",
+      "X61",
+      "X62"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        7,
+        16
+      ],
+      [
+        8,
+        17
+      ],
+      [
+        8,
+        18
+      ],
+      [
+        9,
+        19
+      ],
+      [
+        9,
+        20
+      ],
+      [
+        10,
+        21
+      ],
+      [
+        10,
+        22
+      ],
+      [
+        11,
+        23
+      ],
+      [
+        11,
+        24
+      ],
+      [
+        12,
+        25
+      ],
+      [
+        12,
+        26
+      ],
+      [
+        13,
+        27
+      ],
+      [
+        13,
+        28
+      ],
+      [
+        14,
+        29
+      ],
+      [
+        14,
+        30
+      ],
+      [
+        15,
+        31
+      ],
+      [
+        15,
+        32
+      ],
+      [
+        16,
+        33
+      ],
+      [
+        16,
+        34
+      ],
+      [
+        17,
+        35
+      ],
+      [
+        17,
+        36
+      ],
+      [
+        18,
+        37
+      ],
+      [
+        18,
+        38
+      ],
+      [
+        19,
+        39
+      ],
+      [
+        19,
+        40
+      ],
+      [
+        20,
+        41
+      ],
+      [
+        20,
+        42
+      ],
+      [
+        21,
+        43
+      ],
+      [
+        21,
+        44
+      ],
+      [
+        22,
+        45
+      ],
+      [
+        22,
+        46
+      ],
+      [
+        23,
+        47
+      ],
+      [
+        23,
+        48
+      ],
+      [
+        24,
+        49
+      ],
+      [
+        24,
+        50
+      ],
+      [
+        25,
+        51
+      ],
+      [
+        25,
+        52
+      ],
+      [
+        26,
+        53
+      ],
+      [
+        26,
+        54
+      ],
+      [
+        27,
+        55
+      ],
+      [
+        27,
+        56
+      ],
+      [
+        28,
+        57
+      ],
+      [
+        28,
+        58
+      ],
+      [
+        29,
+        59
+      ],
+      [
+        29,
+        60
+      ],
+      [
+        30,
+        61
+      ],
+      [
+        30,
+        62
+      ]
+    ],
+    "root": 0,
+    "target": 62,
+    "neg_target": 30,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 64,
+      "topology": "tree",
+      "reasoning_hops": 6,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to X62 or X30?",
+    "answer": "Alpha is linked to X62.",
+    "steps": [
+      "Alpha at tree root.",
+      "Tree depth 1 branch.",
+      "Tree depth 2 branch.",
+      "Tree depth 3 branch.",
+      "Tree depth 4 branch.",
+      "Tree depth 5 branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Hub",
+      "Cell",
+      "Bus",
+      "Unit",
+      "Zone",
+      "Pilot",
+      "Matrix",
+      "Engine",
+      "Sector",
+      "Node",
+      "Core",
+      "Relay",
+      "Gateway",
+      "Signal",
+      "Module",
+      "Port",
+      "Layer",
+      "Frame",
+      "Axis",
+      "Cache",
+      "Link",
+      "Grid",
+      "Buffer",
+      "Sensor",
+      "X25",
+      "X26",
+      "X27",
+      "X28",
+      "X29",
+      "X30",
+      "X31",
+      "X32",
+      "X33",
+      "X34",
+      "X35",
+      "X36",
+      "X37",
+      "X38",
+      "X39",
+      "X40",
+      "X41",
+      "X42",
+      "X43",
+      "X44",
+      "X45",
+      "X46",
+      "X47",
+      "X48",
+      "X49",
+      "X50",
+      "X51",
+      "X52",
+      "X53",
+      "X54",
+      "X55",
+      "X56",
+      "X57",
+      "X58",
+      "X59",
+      "X60",
+      "X61",
+      "X62"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        7,
+        16
+      ],
+      [
+        8,
+        17
+      ],
+      [
+        8,
+        18
+      ],
+      [
+        9,
+        19
+      ],
+      [
+        9,
+        20
+      ],
+      [
+        10,
+        21
+      ],
+      [
+        10,
+        22
+      ],
+      [
+        11,
+        23
+      ],
+      [
+        11,
+        24
+      ],
+      [
+        12,
+        25
+      ],
+      [
+        12,
+        26
+      ],
+      [
+        13,
+        27
+      ],
+      [
+        13,
+        28
+      ],
+      [
+        14,
+        29
+      ],
+      [
+        14,
+        30
+      ],
+      [
+        15,
+        31
+      ],
+      [
+        15,
+        32
+      ],
+      [
+        16,
+        33
+      ],
+      [
+        16,
+        34
+      ],
+      [
+        17,
+        35
+      ],
+      [
+        17,
+        36
+      ],
+      [
+        18,
+        37
+      ],
+      [
+        18,
+        38
+      ],
+      [
+        19,
+        39
+      ],
+      [
+        19,
+        40
+      ],
+      [
+        20,
+        41
+      ],
+      [
+        20,
+        42
+      ],
+      [
+        21,
+        43
+      ],
+      [
+        21,
+        44
+      ],
+      [
+        22,
+        45
+      ],
+      [
+        22,
+        46
+      ],
+      [
+        23,
+        47
+      ],
+      [
+        23,
+        48
+      ],
+      [
+        24,
+        49
+      ],
+      [
+        24,
+        50
+      ],
+      [
+        25,
+        51
+      ],
+      [
+        25,
+        52
+      ],
+      [
+        26,
+        53
+      ],
+      [
+        26,
+        54
+      ],
+      [
+        27,
+        55
+      ],
+      [
+        27,
+        56
+      ],
+      [
+        28,
+        57
+      ],
+      [
+        28,
+        58
+      ],
+      [
+        29,
+        59
+      ],
+      [
+        29,
+        60
+      ],
+      [
+        30,
+        61
+      ],
+      [
+        30,
+        62
+      ]
+    ],
+    "root": 0,
+    "target": 62,
+    "neg_target": 30,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 65,
+      "topology": "tree",
+      "reasoning_hops": 6,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to X62 or X30?",
+    "answer": "Alpha is linked to X62.",
+    "steps": [
+      "Alpha at tree root.",
+      "Tree depth 1 branch.",
+      "Tree depth 2 branch.",
+      "Tree depth 3 branch.",
+      "Tree depth 4 branch.",
+      "Tree depth 5 branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Gateway",
+      "Sector",
+      "Port",
+      "Bus",
+      "Axis",
+      "Layer",
+      "Hub",
+      "Zone",
+      "Pilot",
+      "Signal",
+      "Cache",
+      "Matrix",
+      "Engine",
+      "Core",
+      "Unit",
+      "Cell",
+      "Relay",
+      "Module",
+      "Grid",
+      "Link",
+      "Frame",
+      "Node",
+      "Sensor",
+      "Buffer",
+      "X25",
+      "X26",
+      "X27",
+      "X28",
+      "X29",
+      "X30",
+      "X31",
+      "X32",
+      "X33",
+      "X34",
+      "X35",
+      "X36",
+      "X37",
+      "X38",
+      "X39",
+      "X40",
+      "X41",
+      "X42",
+      "X43",
+      "X44",
+      "X45",
+      "X46",
+      "X47",
+      "X48",
+      "X49",
+      "X50",
+      "X51",
+      "X52",
+      "X53",
+      "X54",
+      "X55",
+      "X56",
+      "X57",
+      "X58",
+      "X59",
+      "X60",
+      "X61",
+      "X62"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        7,
+        16
+      ],
+      [
+        8,
+        17
+      ],
+      [
+        8,
+        18
+      ],
+      [
+        9,
+        19
+      ],
+      [
+        9,
+        20
+      ],
+      [
+        10,
+        21
+      ],
+      [
+        10,
+        22
+      ],
+      [
+        11,
+        23
+      ],
+      [
+        11,
+        24
+      ],
+      [
+        12,
+        25
+      ],
+      [
+        12,
+        26
+      ],
+      [
+        13,
+        27
+      ],
+      [
+        13,
+        28
+      ],
+      [
+        14,
+        29
+      ],
+      [
+        14,
+        30
+      ],
+      [
+        15,
+        31
+      ],
+      [
+        15,
+        32
+      ],
+      [
+        16,
+        33
+      ],
+      [
+        16,
+        34
+      ],
+      [
+        17,
+        35
+      ],
+      [
+        17,
+        36
+      ],
+      [
+        18,
+        37
+      ],
+      [
+        18,
+        38
+      ],
+      [
+        19,
+        39
+      ],
+      [
+        19,
+        40
+      ],
+      [
+        20,
+        41
+      ],
+      [
+        20,
+        42
+      ],
+      [
+        21,
+        43
+      ],
+      [
+        21,
+        44
+      ],
+      [
+        22,
+        45
+      ],
+      [
+        22,
+        46
+      ],
+      [
+        23,
+        47
+      ],
+      [
+        23,
+        48
+      ],
+      [
+        24,
+        49
+      ],
+      [
+        24,
+        50
+      ],
+      [
+        25,
+        51
+      ],
+      [
+        25,
+        52
+      ],
+      [
+        26,
+        53
+      ],
+      [
+        26,
+        54
+      ],
+      [
+        27,
+        55
+      ],
+      [
+        27,
+        56
+      ],
+      [
+        28,
+        57
+      ],
+      [
+        28,
+        58
+      ],
+      [
+        29,
+        59
+      ],
+      [
+        29,
+        60
+      ],
+      [
+        30,
+        61
+      ],
+      [
+        30,
+        62
+      ]
+    ],
+    "root": 0,
+    "target": 62,
+    "neg_target": 30,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 66,
+      "topology": "tree",
+      "reasoning_hops": 6,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Bus or Gateway?",
+    "answer": "Alpha is linked to Bus.",
+    "steps": [
+      "Alpha at tree root.",
+      "Tree depth 1 branch.",
+      "Tree depth 2 branch.",
+      "Tree depth 3 branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Axis",
+      "Engine",
+      "Zone",
+      "Frame",
+      "Port",
+      "Gateway",
+      "Unit",
+      "Grid",
+      "Matrix",
+      "Relay",
+      "Node",
+      "Signal",
+      "Cell",
+      "Bus"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        6,
+        14
+      ]
+    ],
+    "root": 0,
+    "target": 14,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 67,
+      "topology": "tree",
+      "reasoning_hops": 4,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Zone or Node?",
+    "answer": "Alpha is linked to Zone.",
+    "steps": [
+      "Alpha at tree root.",
+      "Tree depth 1 branch.",
+      "Tree depth 2 branch.",
+      "Tree depth 3 branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Buffer",
+      "Link",
+      "Unit",
+      "Grid",
+      "Matrix",
+      "Node",
+      "Module",
+      "Axis",
+      "Port",
+      "Engine",
+      "Signal",
+      "Bus",
+      "Sensor",
+      "Zone"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        6,
+        14
+      ]
+    ],
+    "root": 0,
+    "target": 14,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 68,
+      "topology": "tree",
+      "reasoning_hops": 4,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to X62 or X30?",
+    "answer": "Alpha is linked to X62.",
+    "steps": [
+      "Alpha at tree root.",
+      "Tree depth 1 branch.",
+      "Tree depth 2 branch.",
+      "Tree depth 3 branch.",
+      "Tree depth 4 branch.",
+      "Tree depth 5 branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Cache",
+      "Matrix",
+      "Hub",
+      "Unit",
+      "Grid",
+      "Axis",
+      "Relay",
+      "Signal",
+      "Zone",
+      "Bus",
+      "Buffer",
+      "Engine",
+      "Module",
+      "Sector",
+      "Cell",
+      "Pilot",
+      "Sensor",
+      "Frame",
+      "Core",
+      "Node",
+      "Gateway",
+      "Link",
+      "Port",
+      "Layer",
+      "X25",
+      "X26",
+      "X27",
+      "X28",
+      "X29",
+      "X30",
+      "X31",
+      "X32",
+      "X33",
+      "X34",
+      "X35",
+      "X36",
+      "X37",
+      "X38",
+      "X39",
+      "X40",
+      "X41",
+      "X42",
+      "X43",
+      "X44",
+      "X45",
+      "X46",
+      "X47",
+      "X48",
+      "X49",
+      "X50",
+      "X51",
+      "X52",
+      "X53",
+      "X54",
+      "X55",
+      "X56",
+      "X57",
+      "X58",
+      "X59",
+      "X60",
+      "X61",
+      "X62"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        7,
+        16
+      ],
+      [
+        8,
+        17
+      ],
+      [
+        8,
+        18
+      ],
+      [
+        9,
+        19
+      ],
+      [
+        9,
+        20
+      ],
+      [
+        10,
+        21
+      ],
+      [
+        10,
+        22
+      ],
+      [
+        11,
+        23
+      ],
+      [
+        11,
+        24
+      ],
+      [
+        12,
+        25
+      ],
+      [
+        12,
+        26
+      ],
+      [
+        13,
+        27
+      ],
+      [
+        13,
+        28
+      ],
+      [
+        14,
+        29
+      ],
+      [
+        14,
+        30
+      ],
+      [
+        15,
+        31
+      ],
+      [
+        15,
+        32
+      ],
+      [
+        16,
+        33
+      ],
+      [
+        16,
+        34
+      ],
+      [
+        17,
+        35
+      ],
+      [
+        17,
+        36
+      ],
+      [
+        18,
+        37
+      ],
+      [
+        18,
+        38
+      ],
+      [
+        19,
+        39
+      ],
+      [
+        19,
+        40
+      ],
+      [
+        20,
+        41
+      ],
+      [
+        20,
+        42
+      ],
+      [
+        21,
+        43
+      ],
+      [
+        21,
+        44
+      ],
+      [
+        22,
+        45
+      ],
+      [
+        22,
+        46
+      ],
+      [
+        23,
+        47
+      ],
+      [
+        23,
+        48
+      ],
+      [
+        24,
+        49
+      ],
+      [
+        24,
+        50
+      ],
+      [
+        25,
+        51
+      ],
+      [
+        25,
+        52
+      ],
+      [
+        26,
+        53
+      ],
+      [
+        26,
+        54
+      ],
+      [
+        27,
+        55
+      ],
+      [
+        27,
+        56
+      ],
+      [
+        28,
+        57
+      ],
+      [
+        28,
+        58
+      ],
+      [
+        29,
+        59
+      ],
+      [
+        29,
+        60
+      ],
+      [
+        30,
+        61
+      ],
+      [
+        30,
+        62
+      ]
+    ],
+    "root": 0,
+    "target": 62,
+    "neg_target": 30,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 69,
+      "topology": "tree",
+      "reasoning_hops": 6,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to X62 or X30?",
+    "answer": "Alpha is linked to X62.",
+    "steps": [
+      "Alpha at tree root.",
+      "Tree depth 1 branch.",
+      "Tree depth 2 branch.",
+      "Tree depth 3 branch.",
+      "Tree depth 4 branch.",
+      "Tree depth 5 branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Buffer",
+      "Zone",
+      "Matrix",
+      "Sector",
+      "Port",
+      "Axis",
+      "Sensor",
+      "Bus",
+      "Core",
+      "Pilot",
+      "Engine",
+      "Module",
+      "Frame",
+      "Signal",
+      "Layer",
+      "Unit",
+      "Cell",
+      "Node",
+      "Link",
+      "Cache",
+      "Gateway",
+      "Relay",
+      "Hub",
+      "Grid",
+      "X25",
+      "X26",
+      "X27",
+      "X28",
+      "X29",
+      "X30",
+      "X31",
+      "X32",
+      "X33",
+      "X34",
+      "X35",
+      "X36",
+      "X37",
+      "X38",
+      "X39",
+      "X40",
+      "X41",
+      "X42",
+      "X43",
+      "X44",
+      "X45",
+      "X46",
+      "X47",
+      "X48",
+      "X49",
+      "X50",
+      "X51",
+      "X52",
+      "X53",
+      "X54",
+      "X55",
+      "X56",
+      "X57",
+      "X58",
+      "X59",
+      "X60",
+      "X61",
+      "X62"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        7,
+        16
+      ],
+      [
+        8,
+        17
+      ],
+      [
+        8,
+        18
+      ],
+      [
+        9,
+        19
+      ],
+      [
+        9,
+        20
+      ],
+      [
+        10,
+        21
+      ],
+      [
+        10,
+        22
+      ],
+      [
+        11,
+        23
+      ],
+      [
+        11,
+        24
+      ],
+      [
+        12,
+        25
+      ],
+      [
+        12,
+        26
+      ],
+      [
+        13,
+        27
+      ],
+      [
+        13,
+        28
+      ],
+      [
+        14,
+        29
+      ],
+      [
+        14,
+        30
+      ],
+      [
+        15,
+        31
+      ],
+      [
+        15,
+        32
+      ],
+      [
+        16,
+        33
+      ],
+      [
+        16,
+        34
+      ],
+      [
+        17,
+        35
+      ],
+      [
+        17,
+        36
+      ],
+      [
+        18,
+        37
+      ],
+      [
+        18,
+        38
+      ],
+      [
+        19,
+        39
+      ],
+      [
+        19,
+        40
+      ],
+      [
+        20,
+        41
+      ],
+      [
+        20,
+        42
+      ],
+      [
+        21,
+        43
+      ],
+      [
+        21,
+        44
+      ],
+      [
+        22,
+        45
+      ],
+      [
+        22,
+        46
+      ],
+      [
+        23,
+        47
+      ],
+      [
+        23,
+        48
+      ],
+      [
+        24,
+        49
+      ],
+      [
+        24,
+        50
+      ],
+      [
+        25,
+        51
+      ],
+      [
+        25,
+        52
+      ],
+      [
+        26,
+        53
+      ],
+      [
+        26,
+        54
+      ],
+      [
+        27,
+        55
+      ],
+      [
+        27,
+        56
+      ],
+      [
+        28,
+        57
+      ],
+      [
+        28,
+        58
+      ],
+      [
+        29,
+        59
+      ],
+      [
+        29,
+        60
+      ],
+      [
+        30,
+        61
+      ],
+      [
+        30,
+        62
+      ]
+    ],
+    "root": 0,
+    "target": 62,
+    "neg_target": 30,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 70,
+      "topology": "tree",
+      "reasoning_hops": 6,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Layer or Relay?",
+    "answer": "Alpha is linked to Layer.",
+    "steps": [
+      "Alpha at tree root.",
+      "Tree depth 1 branch.",
+      "Tree depth 2 branch.",
+      "Tree depth 3 branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Core",
+      "Unit",
+      "Module",
+      "Port",
+      "Hub",
+      "Relay",
+      "Grid",
+      "Axis",
+      "Zone",
+      "Cache",
+      "Signal",
+      "Bus",
+      "Link",
+      "Layer"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        6,
+        14
+      ]
+    ],
+    "root": 0,
+    "target": 14,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 71,
+      "topology": "tree",
+      "reasoning_hops": 4,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to X30 or Sector?",
+    "answer": "Alpha is linked to X30.",
+    "steps": [
+      "Alpha at tree root.",
+      "Tree depth 1 branch.",
+      "Tree depth 2 branch.",
+      "Tree depth 3 branch.",
+      "Tree depth 4 branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Cell",
+      "Hub",
+      "Zone",
+      "Engine",
+      "Node",
+      "Core",
+      "Port",
+      "Signal",
+      "Relay",
+      "Pilot",
+      "Sensor",
+      "Grid",
+      "Cache",
+      "Sector",
+      "Module",
+      "Axis",
+      "Layer",
+      "Gateway",
+      "Bus",
+      "Matrix",
+      "Buffer",
+      "Link",
+      "Frame",
+      "Unit",
+      "X25",
+      "X26",
+      "X27",
+      "X28",
+      "X29",
+      "X30"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        7,
+        16
+      ],
+      [
+        8,
+        17
+      ],
+      [
+        8,
+        18
+      ],
+      [
+        9,
+        19
+      ],
+      [
+        9,
+        20
+      ],
+      [
+        10,
+        21
+      ],
+      [
+        10,
+        22
+      ],
+      [
+        11,
+        23
+      ],
+      [
+        11,
+        24
+      ],
+      [
+        12,
+        25
+      ],
+      [
+        12,
+        26
+      ],
+      [
+        13,
+        27
+      ],
+      [
+        13,
+        28
+      ],
+      [
+        14,
+        29
+      ],
+      [
+        14,
+        30
+      ]
+    ],
+    "root": 0,
+    "target": 30,
+    "neg_target": 14,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 72,
+      "topology": "tree",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to X62 or X30?",
+    "answer": "Alpha is linked to X62.",
+    "steps": [
+      "Alpha at tree root.",
+      "Tree depth 1 branch.",
+      "Tree depth 2 branch.",
+      "Tree depth 3 branch.",
+      "Tree depth 4 branch.",
+      "Tree depth 5 branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Core",
+      "Frame",
+      "Module",
+      "Buffer",
+      "Engine",
+      "Signal",
+      "Gateway",
+      "Hub",
+      "Grid",
+      "Zone",
+      "Cell",
+      "Unit",
+      "Pilot",
+      "Relay",
+      "Cache",
+      "Axis",
+      "Sensor",
+      "Port",
+      "Matrix",
+      "Node",
+      "Layer",
+      "Sector",
+      "Bus",
+      "Link",
+      "X25",
+      "X26",
+      "X27",
+      "X28",
+      "X29",
+      "X30",
+      "X31",
+      "X32",
+      "X33",
+      "X34",
+      "X35",
+      "X36",
+      "X37",
+      "X38",
+      "X39",
+      "X40",
+      "X41",
+      "X42",
+      "X43",
+      "X44",
+      "X45",
+      "X46",
+      "X47",
+      "X48",
+      "X49",
+      "X50",
+      "X51",
+      "X52",
+      "X53",
+      "X54",
+      "X55",
+      "X56",
+      "X57",
+      "X58",
+      "X59",
+      "X60",
+      "X61",
+      "X62"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        7,
+        16
+      ],
+      [
+        8,
+        17
+      ],
+      [
+        8,
+        18
+      ],
+      [
+        9,
+        19
+      ],
+      [
+        9,
+        20
+      ],
+      [
+        10,
+        21
+      ],
+      [
+        10,
+        22
+      ],
+      [
+        11,
+        23
+      ],
+      [
+        11,
+        24
+      ],
+      [
+        12,
+        25
+      ],
+      [
+        12,
+        26
+      ],
+      [
+        13,
+        27
+      ],
+      [
+        13,
+        28
+      ],
+      [
+        14,
+        29
+      ],
+      [
+        14,
+        30
+      ],
+      [
+        15,
+        31
+      ],
+      [
+        15,
+        32
+      ],
+      [
+        16,
+        33
+      ],
+      [
+        16,
+        34
+      ],
+      [
+        17,
+        35
+      ],
+      [
+        17,
+        36
+      ],
+      [
+        18,
+        37
+      ],
+      [
+        18,
+        38
+      ],
+      [
+        19,
+        39
+      ],
+      [
+        19,
+        40
+      ],
+      [
+        20,
+        41
+      ],
+      [
+        20,
+        42
+      ],
+      [
+        21,
+        43
+      ],
+      [
+        21,
+        44
+      ],
+      [
+        22,
+        45
+      ],
+      [
+        22,
+        46
+      ],
+      [
+        23,
+        47
+      ],
+      [
+        23,
+        48
+      ],
+      [
+        24,
+        49
+      ],
+      [
+        24,
+        50
+      ],
+      [
+        25,
+        51
+      ],
+      [
+        25,
+        52
+      ],
+      [
+        26,
+        53
+      ],
+      [
+        26,
+        54
+      ],
+      [
+        27,
+        55
+      ],
+      [
+        27,
+        56
+      ],
+      [
+        28,
+        57
+      ],
+      [
+        28,
+        58
+      ],
+      [
+        29,
+        59
+      ],
+      [
+        29,
+        60
+      ],
+      [
+        30,
+        61
+      ],
+      [
+        30,
+        62
+      ]
+    ],
+    "root": 0,
+    "target": 62,
+    "neg_target": 30,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 73,
+      "topology": "tree",
+      "reasoning_hops": 6,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Engine or Link?",
+    "answer": "Alpha is linked to Engine.",
+    "steps": [
+      "Alpha at tree root.",
+      "Tree depth 1 branch.",
+      "Tree depth 2 branch.",
+      "Tree depth 3 branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Layer",
+      "Axis",
+      "Node",
+      "Zone",
+      "Hub",
+      "Link",
+      "Relay",
+      "Matrix",
+      "Pilot",
+      "Module",
+      "Port",
+      "Core",
+      "Sensor",
+      "Engine"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        6,
+        14
+      ]
+    ],
+    "root": 0,
+    "target": 14,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 74,
+      "topology": "tree",
+      "reasoning_hops": 4,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Axis or Cache?",
+    "answer": "Alpha is linked to Axis.",
+    "steps": [
+      "Alpha at tree root.",
+      "Tree depth 1 branch.",
+      "Tree depth 2 branch.",
+      "Tree depth 3 branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Signal",
+      "Buffer",
+      "Cell",
+      "Sensor",
+      "Port",
+      "Cache",
+      "Hub",
+      "Bus",
+      "Node",
+      "Layer",
+      "Zone",
+      "Gateway",
+      "Matrix",
+      "Axis"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        6,
+        14
+      ]
+    ],
+    "root": 0,
+    "target": 14,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 75,
+      "topology": "tree",
+      "reasoning_hops": 4,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to X62 or X30?",
+    "answer": "Alpha is linked to X62.",
+    "steps": [
+      "Alpha at tree root.",
+      "Tree depth 1 branch.",
+      "Tree depth 2 branch.",
+      "Tree depth 3 branch.",
+      "Tree depth 4 branch.",
+      "Tree depth 5 branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Core",
+      "Cell",
+      "Cache",
+      "Pilot",
+      "Frame",
+      "Unit",
+      "Port",
+      "Sector",
+      "Node",
+      "Grid",
+      "Buffer",
+      "Module",
+      "Sensor",
+      "Gateway",
+      "Axis",
+      "Hub",
+      "Layer",
+      "Relay",
+      "Zone",
+      "Link",
+      "Engine",
+      "Matrix",
+      "Bus",
+      "Signal",
+      "X25",
+      "X26",
+      "X27",
+      "X28",
+      "X29",
+      "X30",
+      "X31",
+      "X32",
+      "X33",
+      "X34",
+      "X35",
+      "X36",
+      "X37",
+      "X38",
+      "X39",
+      "X40",
+      "X41",
+      "X42",
+      "X43",
+      "X44",
+      "X45",
+      "X46",
+      "X47",
+      "X48",
+      "X49",
+      "X50",
+      "X51",
+      "X52",
+      "X53",
+      "X54",
+      "X55",
+      "X56",
+      "X57",
+      "X58",
+      "X59",
+      "X60",
+      "X61",
+      "X62"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        7,
+        16
+      ],
+      [
+        8,
+        17
+      ],
+      [
+        8,
+        18
+      ],
+      [
+        9,
+        19
+      ],
+      [
+        9,
+        20
+      ],
+      [
+        10,
+        21
+      ],
+      [
+        10,
+        22
+      ],
+      [
+        11,
+        23
+      ],
+      [
+        11,
+        24
+      ],
+      [
+        12,
+        25
+      ],
+      [
+        12,
+        26
+      ],
+      [
+        13,
+        27
+      ],
+      [
+        13,
+        28
+      ],
+      [
+        14,
+        29
+      ],
+      [
+        14,
+        30
+      ],
+      [
+        15,
+        31
+      ],
+      [
+        15,
+        32
+      ],
+      [
+        16,
+        33
+      ],
+      [
+        16,
+        34
+      ],
+      [
+        17,
+        35
+      ],
+      [
+        17,
+        36
+      ],
+      [
+        18,
+        37
+      ],
+      [
+        18,
+        38
+      ],
+      [
+        19,
+        39
+      ],
+      [
+        19,
+        40
+      ],
+      [
+        20,
+        41
+      ],
+      [
+        20,
+        42
+      ],
+      [
+        21,
+        43
+      ],
+      [
+        21,
+        44
+      ],
+      [
+        22,
+        45
+      ],
+      [
+        22,
+        46
+      ],
+      [
+        23,
+        47
+      ],
+      [
+        23,
+        48
+      ],
+      [
+        24,
+        49
+      ],
+      [
+        24,
+        50
+      ],
+      [
+        25,
+        51
+      ],
+      [
+        25,
+        52
+      ],
+      [
+        26,
+        53
+      ],
+      [
+        26,
+        54
+      ],
+      [
+        27,
+        55
+      ],
+      [
+        27,
+        56
+      ],
+      [
+        28,
+        57
+      ],
+      [
+        28,
+        58
+      ],
+      [
+        29,
+        59
+      ],
+      [
+        29,
+        60
+      ],
+      [
+        30,
+        61
+      ],
+      [
+        30,
+        62
+      ]
+    ],
+    "root": 0,
+    "target": 62,
+    "neg_target": 30,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 76,
+      "topology": "tree",
+      "reasoning_hops": 6,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to X30 or Buffer?",
+    "answer": "Alpha is linked to X30.",
+    "steps": [
+      "Alpha at tree root.",
+      "Tree depth 1 branch.",
+      "Tree depth 2 branch.",
+      "Tree depth 3 branch.",
+      "Tree depth 4 branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Link",
+      "Core",
+      "Engine",
+      "Port",
+      "Layer",
+      "Cell",
+      "Relay",
+      "Sensor",
+      "Matrix",
+      "Hub",
+      "Grid",
+      "Signal",
+      "Axis",
+      "Buffer",
+      "Pilot",
+      "Unit",
+      "Module",
+      "Sector",
+      "Frame",
+      "Cache",
+      "Bus",
+      "Node",
+      "Zone",
+      "Gateway",
+      "X25",
+      "X26",
+      "X27",
+      "X28",
+      "X29",
+      "X30"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        7,
+        16
+      ],
+      [
+        8,
+        17
+      ],
+      [
+        8,
+        18
+      ],
+      [
+        9,
+        19
+      ],
+      [
+        9,
+        20
+      ],
+      [
+        10,
+        21
+      ],
+      [
+        10,
+        22
+      ],
+      [
+        11,
+        23
+      ],
+      [
+        11,
+        24
+      ],
+      [
+        12,
+        25
+      ],
+      [
+        12,
+        26
+      ],
+      [
+        13,
+        27
+      ],
+      [
+        13,
+        28
+      ],
+      [
+        14,
+        29
+      ],
+      [
+        14,
+        30
+      ]
+    ],
+    "root": 0,
+    "target": 30,
+    "neg_target": 14,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 77,
+      "topology": "tree",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to X62 or X30?",
+    "answer": "Alpha is linked to X62.",
+    "steps": [
+      "Alpha at tree root.",
+      "Tree depth 1 branch.",
+      "Tree depth 2 branch.",
+      "Tree depth 3 branch.",
+      "Tree depth 4 branch.",
+      "Tree depth 5 branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Core",
+      "Frame",
+      "Gateway",
+      "Relay",
+      "Bus",
+      "Pilot",
+      "Zone",
+      "Hub",
+      "Sensor",
+      "Engine",
+      "Axis",
+      "Cell",
+      "Layer",
+      "Matrix",
+      "Unit",
+      "Link",
+      "Buffer",
+      "Cache",
+      "Module",
+      "Sector",
+      "Port",
+      "Signal",
+      "Node",
+      "Grid",
+      "X25",
+      "X26",
+      "X27",
+      "X28",
+      "X29",
+      "X30",
+      "X31",
+      "X32",
+      "X33",
+      "X34",
+      "X35",
+      "X36",
+      "X37",
+      "X38",
+      "X39",
+      "X40",
+      "X41",
+      "X42",
+      "X43",
+      "X44",
+      "X45",
+      "X46",
+      "X47",
+      "X48",
+      "X49",
+      "X50",
+      "X51",
+      "X52",
+      "X53",
+      "X54",
+      "X55",
+      "X56",
+      "X57",
+      "X58",
+      "X59",
+      "X60",
+      "X61",
+      "X62"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        7,
+        16
+      ],
+      [
+        8,
+        17
+      ],
+      [
+        8,
+        18
+      ],
+      [
+        9,
+        19
+      ],
+      [
+        9,
+        20
+      ],
+      [
+        10,
+        21
+      ],
+      [
+        10,
+        22
+      ],
+      [
+        11,
+        23
+      ],
+      [
+        11,
+        24
+      ],
+      [
+        12,
+        25
+      ],
+      [
+        12,
+        26
+      ],
+      [
+        13,
+        27
+      ],
+      [
+        13,
+        28
+      ],
+      [
+        14,
+        29
+      ],
+      [
+        14,
+        30
+      ],
+      [
+        15,
+        31
+      ],
+      [
+        15,
+        32
+      ],
+      [
+        16,
+        33
+      ],
+      [
+        16,
+        34
+      ],
+      [
+        17,
+        35
+      ],
+      [
+        17,
+        36
+      ],
+      [
+        18,
+        37
+      ],
+      [
+        18,
+        38
+      ],
+      [
+        19,
+        39
+      ],
+      [
+        19,
+        40
+      ],
+      [
+        20,
+        41
+      ],
+      [
+        20,
+        42
+      ],
+      [
+        21,
+        43
+      ],
+      [
+        21,
+        44
+      ],
+      [
+        22,
+        45
+      ],
+      [
+        22,
+        46
+      ],
+      [
+        23,
+        47
+      ],
+      [
+        23,
+        48
+      ],
+      [
+        24,
+        49
+      ],
+      [
+        24,
+        50
+      ],
+      [
+        25,
+        51
+      ],
+      [
+        25,
+        52
+      ],
+      [
+        26,
+        53
+      ],
+      [
+        26,
+        54
+      ],
+      [
+        27,
+        55
+      ],
+      [
+        27,
+        56
+      ],
+      [
+        28,
+        57
+      ],
+      [
+        28,
+        58
+      ],
+      [
+        29,
+        59
+      ],
+      [
+        29,
+        60
+      ],
+      [
+        30,
+        61
+      ],
+      [
+        30,
+        62
+      ]
+    ],
+    "root": 0,
+    "target": 62,
+    "neg_target": 30,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 78,
+      "topology": "tree",
+      "reasoning_hops": 6,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Port or Axis?",
+    "answer": "Alpha is linked to Port.",
+    "steps": [
+      "Alpha at tree root.",
+      "Tree depth 1 branch.",
+      "Tree depth 2 branch.",
+      "Tree depth 3 branch."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Unit",
+      "Pilot",
+      "Layer",
+      "Cell",
+      "Module",
+      "Axis",
+      "Zone",
+      "Link",
+      "Grid",
+      "Sector",
+      "Node",
+      "Core",
+      "Engine",
+      "Port"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        6,
+        14
+      ]
+    ],
+    "root": 0,
+    "target": 14,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 79,
+      "topology": "tree",
+      "reasoning_hops": 4,
+      "benchmark": "AlienBench_v1"
+    }
+  }
+]

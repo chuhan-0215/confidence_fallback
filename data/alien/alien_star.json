@@ -1,0 +1,1286 @@
+[
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Node or Port?",
+    "answer": "Alpha is linked to Node.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Hub layer 4 forwards to layer 5.",
+      "Hub layer 5 forwards to layer 6.",
+      "Layer 6 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Module",
+      "Cell",
+      "Link",
+      "Sensor",
+      "Layer",
+      "Node",
+      "Port",
+      "Signal"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        1,
+        8
+      ]
+    ],
+    "root": 0,
+    "target": 6,
+    "neg_target": 7,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 0,
+      "topology": "star",
+      "reasoning_hops": 7,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Core or Gateway?",
+    "answer": "Alpha is linked to Core.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Layer 4 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Engine",
+      "Bus",
+      "Module",
+      "Core",
+      "Gateway",
+      "Buffer"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 4,
+    "neg_target": 5,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 1,
+      "topology": "star",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Engine or Signal?",
+    "answer": "Alpha is linked to Engine.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Layer 4 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Axis",
+      "Buffer",
+      "Core",
+      "Engine",
+      "Signal",
+      "Port"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 4,
+    "neg_target": 5,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 2,
+      "topology": "star",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Bus or Zone?",
+    "answer": "Alpha is linked to Bus.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Layer 4 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Engine",
+      "Axis",
+      "Grid",
+      "Bus",
+      "Zone",
+      "Unit"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 4,
+    "neg_target": 5,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 3,
+      "topology": "star",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Link or Axis?",
+    "answer": "Alpha is linked to Link.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Hub layer 4 forwards to layer 5.",
+      "Layer 5 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Unit",
+      "Relay",
+      "Frame",
+      "Sector",
+      "Link",
+      "Axis",
+      "Bus"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        1,
+        7
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 4,
+      "topology": "star",
+      "reasoning_hops": 6,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Buffer or Sensor?",
+    "answer": "Alpha is linked to Buffer.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Hub layer 4 forwards to layer 5.",
+      "Hub layer 5 forwards to layer 6.",
+      "Layer 6 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Engine",
+      "Frame",
+      "Hub",
+      "Gateway",
+      "Grid",
+      "Buffer",
+      "Sensor",
+      "Axis"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        1,
+        8
+      ]
+    ],
+    "root": 0,
+    "target": 6,
+    "neg_target": 7,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 5,
+      "topology": "star",
+      "reasoning_hops": 7,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Cell or Hub?",
+    "answer": "Alpha is linked to Cell.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Hub layer 4 forwards to layer 5.",
+      "Hub layer 5 forwards to layer 6.",
+      "Hub layer 6 forwards to layer 7.",
+      "Layer 7 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Bus",
+      "Pilot",
+      "Buffer",
+      "Module",
+      "Sector",
+      "Core",
+      "Cell",
+      "Hub",
+      "Frame"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        1,
+        9
+      ]
+    ],
+    "root": 0,
+    "target": 7,
+    "neg_target": 8,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 6,
+      "topology": "star",
+      "reasoning_hops": 8,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Sector or Axis?",
+    "answer": "Alpha is linked to Sector.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Hub layer 4 forwards to layer 5.",
+      "Hub layer 5 forwards to layer 6.",
+      "Layer 6 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Hub",
+      "Cache",
+      "Zone",
+      "Cell",
+      "Module",
+      "Sector",
+      "Axis",
+      "Node"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        1,
+        8
+      ]
+    ],
+    "root": 0,
+    "target": 6,
+    "neg_target": 7,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 7,
+      "topology": "star",
+      "reasoning_hops": 7,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Node or Zone?",
+    "answer": "Alpha is linked to Node.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Layer 4 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Unit",
+      "Cell",
+      "Grid",
+      "Node",
+      "Zone",
+      "Port"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 4,
+    "neg_target": 5,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 8,
+      "topology": "star",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Matrix or Zone?",
+    "answer": "Alpha is linked to Matrix.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Hub layer 4 forwards to layer 5.",
+      "Hub layer 5 forwards to layer 6.",
+      "Layer 6 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Grid",
+      "Frame",
+      "Core",
+      "Port",
+      "Link",
+      "Matrix",
+      "Zone",
+      "Layer"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        1,
+        8
+      ]
+    ],
+    "root": 0,
+    "target": 6,
+    "neg_target": 7,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 9,
+      "topology": "star",
+      "reasoning_hops": 7,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Zone or Module?",
+    "answer": "Alpha is linked to Zone.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Layer 4 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Node",
+      "Layer",
+      "Hub",
+      "Zone",
+      "Module",
+      "Core"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 4,
+    "neg_target": 5,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 10,
+      "topology": "star",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Relay or Unit?",
+    "answer": "Alpha is linked to Relay.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Hub layer 4 forwards to layer 5.",
+      "Layer 5 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Axis",
+      "Signal",
+      "Link",
+      "Node",
+      "Relay",
+      "Unit",
+      "Frame"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        1,
+        7
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 11,
+      "topology": "star",
+      "reasoning_hops": 6,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Grid or Node?",
+    "answer": "Alpha is linked to Grid.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Hub layer 4 forwards to layer 5.",
+      "Hub layer 5 forwards to layer 6.",
+      "Hub layer 6 forwards to layer 7.",
+      "Layer 7 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Axis",
+      "Unit",
+      "Gateway",
+      "Cache",
+      "Zone",
+      "Bus",
+      "Grid",
+      "Node",
+      "Cell"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        1,
+        9
+      ]
+    ],
+    "root": 0,
+    "target": 7,
+    "neg_target": 8,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 12,
+      "topology": "star",
+      "reasoning_hops": 8,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Sensor or Cache?",
+    "answer": "Alpha is linked to Sensor.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Hub layer 4 forwards to layer 5.",
+      "Hub layer 5 forwards to layer 6.",
+      "Hub layer 6 forwards to layer 7.",
+      "Layer 7 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Axis",
+      "Engine",
+      "Buffer",
+      "Relay",
+      "Port",
+      "Signal",
+      "Sensor",
+      "Cache",
+      "Matrix"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        1,
+        9
+      ]
+    ],
+    "root": 0,
+    "target": 7,
+    "neg_target": 8,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 13,
+      "topology": "star",
+      "reasoning_hops": 8,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Matrix or Gateway?",
+    "answer": "Alpha is linked to Matrix.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Hub layer 4 forwards to layer 5.",
+      "Layer 5 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Bus",
+      "Unit",
+      "Core",
+      "Module",
+      "Matrix",
+      "Gateway",
+      "Grid"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        1,
+        7
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 14,
+      "topology": "star",
+      "reasoning_hops": 6,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Sector or Signal?",
+    "answer": "Alpha is linked to Sector.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Hub layer 4 forwards to layer 5.",
+      "Hub layer 5 forwards to layer 6.",
+      "Hub layer 6 forwards to layer 7.",
+      "Layer 7 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Engine",
+      "Module",
+      "Axis",
+      "Port",
+      "Cache",
+      "Sensor",
+      "Sector",
+      "Signal",
+      "Gateway"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        1,
+        9
+      ]
+    ],
+    "root": 0,
+    "target": 7,
+    "neg_target": 8,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 15,
+      "topology": "star",
+      "reasoning_hops": 8,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Cache or Engine?",
+    "answer": "Alpha is linked to Cache.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Layer 4 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Matrix",
+      "Relay",
+      "Hub",
+      "Cache",
+      "Engine",
+      "Axis"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 4,
+    "neg_target": 5,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 16,
+      "topology": "star",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Module or Unit?",
+    "answer": "Alpha is linked to Module.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Layer 4 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Cache",
+      "Buffer",
+      "Grid",
+      "Module",
+      "Unit",
+      "Port"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 4,
+    "neg_target": 5,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 17,
+      "topology": "star",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Node or Grid?",
+    "answer": "Alpha is linked to Node.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Hub layer 4 forwards to layer 5.",
+      "Layer 5 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Cache",
+      "Bus",
+      "Sector",
+      "Module",
+      "Node",
+      "Grid",
+      "Sensor"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        1,
+        7
+      ]
+    ],
+    "root": 0,
+    "target": 5,
+    "neg_target": 6,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 18,
+      "topology": "star",
+      "reasoning_hops": 6,
+      "benchmark": "AlienBench_v1"
+    }
+  },
+  {
+    "question": "Alpha connects through subsystem graph. Is Alpha linked to Layer or Cell?",
+    "answer": "Alpha is linked to Layer.",
+    "steps": [
+      "Alpha reaches Hub.",
+      "Hub layer 1 forwards to layer 2.",
+      "Hub layer 2 forwards to layer 3.",
+      "Hub layer 3 forwards to layer 4.",
+      "Layer 4 connects to Target."
+    ],
+    "idx_to_symbol": [
+      "Alpha",
+      "Sensor",
+      "Engine",
+      "Module",
+      "Layer",
+      "Cell",
+      "Unit"
+    ],
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        6
+      ]
+    ],
+    "root": 0,
+    "target": 4,
+    "neg_target": 5,
+    "neighbor_k": {},
+    "_alien": true,
+    "_meta": {
+      "sample_id": 19,
+      "topology": "star",
+      "reasoning_hops": 5,
+      "benchmark": "AlienBench_v1"
+    }
+  }
+]

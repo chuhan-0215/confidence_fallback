@@ -1,0 +1,3659 @@
+{
+  "ok": true,
+  "generated_at": "2026-07-13T01:53:03.330003+00:00",
+  "model": "Coconut checkpoint_300",
+  "dataset": "ProsQA + 合成/变体扩展",
+  "headline": "一栋楼里找人的故事：AI 要想几层，才算想够？",
+  "one_liner": "ProsQA 同源 confidence_fallback 94.75%；跨 53 切片 hybrid_router 加权 Δ +2.05 pp、OOD +7.44 pp；deploy_spec_v4 双轨定稿（seed=99）；timing 天花板 37%，Phase 20 min_n=2 未破。",
+  "site_guide": {
+    "lead": "本报告分四页——先读故事建立直觉，查附录看数据与方案，进实验室复现。",
+    "items": [
+      {
+        "tag": "当前",
+        "title": "实验故事",
+        "href": "#story-guide",
+        "desc": "十轮边界 + 自停探索 + GPU 定稿 · 章节目录可跳转"
+      },
+      {
+        "tag": "数据",
+        "title": "科学附录",
+        "href": "appendix.html#appendix-toc",
+        "desc": "对照表 · 自停汇总 · GPU 定稿 · FAQ"
+      },
+      {
+        "tag": "术语",
+        "title": "术语注释",
+        "href": "glossary.html",
+        "desc": "文中下划线词的一站式解释"
+      },
+      {
+        "tag": "复现",
+        "title": "交互实验室",
+        "href": "lab.html",
+        "desc": "点击重跑各轮实验"
+      }
+    ]
+  },
+  "key_numbers": {
+    "full_samples": 419,
+    "full_boundary_steps": 3.0,
+    "full_peak_accuracy": 0.8377,
+    "compare_boundary_min": 3.0,
+    "compare_boundary_max": 4.0,
+    "acc_at_1_steps": 0.42,
+    "acc_at_2_steps": 0.3341,
+    "acc_at_3_steps": 0.8377,
+    "acc_at_4_steps": 0.8353,
+    "acc_at_5_steps": 0.7399
+  },
+  "story": {
+    "badge": "实验故事",
+    "title": "三楼与四楼之间",
+    "subtitle": "一栋楼里找人的故事：AI 要想几步才算想够？",
+    "glossary_url": "/others/000002/glossary.html",
+    "hook": "如果把 AI 解一道图推理题比作在一栋楼里找人：搜救队一层一层往上搜，搜得越深越贵，搜对了任务完成。想少了，像只摸到二楼就收队；想多了，像在空楼层反复敲门，命中率反而不升。故事从一个对照开始：模型权重固定不动，只改「内部[[latent-steps|思考层数]]」，在 419 道 [[prosqa|ProsQA]] 题上从 1 扫到 8 步，看[[accuracy|答对率]]在哪一层登顶。曲线最终诉说的结论很明确——多数题 3–4 层最划算（[[boundary|边界]] 3，峰值 83.8%），爬过楼顶会吃亏（3 层 83.8% → 5 层 74.0%）。",
+    "chapters": [
+      {
+        "id": "ch-what",
+        "label": "序章",
+        "title": "一栋楼里找人的游戏",
+        "paragraphs": [
+          "任务设定像一栋陌生大楼：人在某一层，搜救队不知道具体楼层。规则是允许同时搜 1 层、2 层、3 层……搜得越深，代价越高；搜对了，任务完成。",
+          "实验把 [[coconut|Coconut]] 模型放进同一栋楼。每道题问的是：有向图上，某个节点是否可达。「搜几层」对应往题目里放几个[[latent-steps|内部思考]]名额——模型在输出最终答案前，可以先默默推演，不写出来。",
+          "权重固定不动，唯一变动的旋钮是[[latent-steps|思考层数]]。[[accuracy|答对率]]最高的那一层，就是这里的「[[boundary|边界]]」：不是模型能力的上限，而是这批题上最划算的思考深度。"
+        ]
+      },
+      {
+        "id": "ch-why",
+        "label": "背景",
+        "title": "[[parallel-bfs|并行搜楼]]的猜想",
+        "paragraphs": [
+          "[[neurips-paper|NeurIPS 论文]]提出：模型不必像写作文那样逐字串行思考，而可以在潜空间里同时维护多层「可能到达哪里」——等价于[[parallel-bfs|并行搜楼]]。",
+          "理论图给出了方向，但调参仍要回答三件事：想几步够？想多了会不会更差？不同题型要不要不同层数？",
+          "于是十轮对照排开：[[coconut|Coconut]] [[[[checkpoint|checkpoint]]|[[checkpoint|checkpoint]]_300]] 面对 419 道 [[prosqa|ProsQA]] 题，[[latent-steps|思考层数]]从 1 扫到 8，逐层记录[[accuracy|答对率]]，像物业登记表统计每一层的开门命中率。",
+          "若曲线有峰有谷，说明「多想」不是免费午餐；若[[boundary|边界]]跟着题目深度走，说明不能用一个全局数字糊弄所有题型。"
+        ]
+      },
+      {
+        "id": "ch-how1",
+        "label": "实验一",
+        "title": "419 道题，一层层试",
+        "paragraphs": [
+          "实验一最简单粗暴：全部 419 题混在一起，[[latent-steps|思考层数]]从 1 扫到 8。第 1 步只有 42.0%——十道题里大约对四道，搜救队刚进门，连楼梯都没摸清。第 2 步更离谱：掉到 33.4%。多给一层，反而更差？后来才明白：前两步还在「热身」，信息还没铺开，多一层有时只是多一层噪声。",
+          "然后第 3 步：83.8%。从第 2 步到第 3 步，整整涨了 50 多个百分点——像三楼那扇门被猛地推开，风灌满走廊。这一幕后来被称为「三楼开门」：不是答案必住三楼，而是搜救范围在第三步突然罩住了大部分目标。",
+          "第 4 步 83.5%，与第 3 步几乎肩并肩——平台到了，再往上爬收益很小。第 5 步 74.0%，曲线掉头往下，像爬过楼顶开始下坠。曲线在此刻亮出铁律：多想不等于更聪明；过了最优点，多出来的层数主要在添乱。"
+        ],
+        "highlight": "全量[[boundary|边界]] 3 · 峰值 83.8% · 第 5 步跌至 74.0%"
+      },
+      {
+        "id": "ch-how2",
+        "label": "实验二",
+        "title": "按题型拆开，[[boundary|边界]]开始听话",
+        "paragraphs": [
+          "全量混合测勾勒了「整栋楼」的轮廓。下一个问题是：[[boundary|边界]]是否焊死在 3 层，与题型无关？",
+          "第二轮把题按「需要推理几步」拆开——像把混在一起的信件按楼层重新分拣，只看三楼住户或四楼住户。",
+          "只做 3 跳题：最优 3 层，[[accuracy|准确率]] 90.0%。只做 4 跳题：最优 4 层，[[accuracy|准确率]] 88.3%。数字非常听话：题要推理 3 跳，[[boundary|边界]]就落在 3 层；要 4 跳，就落在 4 层。",
+          "再按图「有多宽」分组：直径很大的子集，平均推理链仍只有 3.7 跳，[[boundary|边界]]还是 4 层。结论很直白：图宽不等于题深——模型找的是最短那条推理链，不是把整张迷宫逛一遍。",
+          "419 道题里，202 道只需 3 跳，217 道要 4 跳——差不多一半一半。可[[mixed-eval|混合评估]]的推荐[[boundary|边界]]却是 3 层，不是 4 层。合理吗？因为 3 层 83.8% 和 4 层 83.5% 只差 0.3 个百分点——效果几乎一样，算法就取更少的层数，省时间省算力。但这绝不等于「四跳题不需要四层」——单独看四跳子集，[[boundary|边界]]老老实实报 4 层。"
+        ],
+        "highlight": "混测报 3 层，纯 4 跳仍报 4 层——并列取少，不是四跳题不用四层"
+      },
+      {
+        "id": "ch-how3",
+        "label": "实验三–四",
+        "title": "硬要推到五六层会怎样？",
+        "paragraphs": [
+          "既然 3–4 层说得通，自然会追问：[[boundary|边界]]能否推到 5 层、6 层？",
+          "先上[[synthetic-chain|人工拼出来的长链题]]：5 跳链[[accuracy|准确率]]只有 5.0%——几乎全军覆没，像把搜救队扔进一座路牌全外语的城市。[[synthetic-chain|6 跳[[synthetic-chain|人造链]]]]更讽刺：第 3 层就 97.5%，往后加到 10 层也没有更高。题变长了，模型却不会线性加层——它是在 3–4 跳题上练出来的肌肉记忆，不是自动伸缩的弹簧。",
+          "换「[[prosqa-extend|在真实题上延长推理链]]」到 5 跳呢？保留原来的边、原来的命名习惯——[[boundary|边界]]稳稳落在 5 层，[[accuracy|准确率]] 96.0%。[[boundary|边界]]可以被抬高，但得两道保险：题真的更深，且题型仍是模型学过的那种世界。",
+          "四轮数据叠在一起，机制也说得通：每加一层思考，大致等价于在图上多往外扩一层搜索；层数刚好时答对最多；层数太多，该知道的信息早编码完了，继续加层只剩噪声。"
+        ]
+      },
+      {
+        "id": "ch-how4",
+        "label": "实验五",
+        "title": "21 个子集，找可复现规律",
+        "paragraphs": [
+          "第二至四轮拆出了很多子集，但零散数字还不够——第五轮要做的是「定量归纳」：[[boundary|边界]]到底跟什么一起走？混合比例变时[[boundary|边界]]何时从 3 跳到 4？",
+          "汇总 21 个子集后，[[boundary|边界]]与平均[[reasoning-hops|推理跳数]]的相关系数 r=0.543（与[[graph-diameter|图直径]] r=0.501）。",
+          "数字很直白：题要 3 跳，[[boundary|边界]]多落在 3 层；要 4 跳，多落在 4 层——不是模型写死的常数，而是跟着任务深度走。",
+          "由此归纳 6 条可复现规律（见科学附录 #pattern-laws），包括[[mixed-eval|混合评估]]并列取少、合成链 OOD 失效、真实图延长可对齐等。",
+          "这一轮的产出不是又多一张曲线，而是后面六至十轮共用的「规律地图」。"
+        ],
+        "highlight": "[[boundary|边界]]↔平均跳数 r=0.543 · 6 条规律"
+      },
+      {
+        "id": "ch-how5",
+        "label": "实验六",
+        "title": "同质延长，把[[boundary|边界]]往 5 层推",
+        "paragraphs": [
+          "既然合成链不行，第六轮只改「题有多深」，题型仍是 [[prosqa|ProsQA]]：在原题末尾追加推理层，且控制从 3 跳还是 4 跳基线出发。",
+          "从 3 跳基线延长到 5 跳：[[boundary|边界]]稳稳落在 5 层，峰值 100.0%——acc@5 与报[[boundary|边界]]一致，是目前最干净的上推案例。",
+          "从 4 跳基线只 +1 层却容易过冲：峰值出现在更高步，5 步处反而不到顶。",
+          "混合延长到 6 跳时，曲线在 5–8 步平台、第 9 步才峰值——报[[boundary|边界]]会虚高，必须同时看 [[acc-at-depth|acc@d]]。",
+          "完整对照见附录 #push-ladder；三条件：题深到 d、[[prosqa|ProsQA]] 图延长、3 跳[[prosqa-extend|同质基线]]。"
+        ],
+        "highlight": "3 跳基线 → 5 跳：[[boundary|边界]] 5 · 峰值 100.0%"
+      },
+      {
+        "id": "ch-how6",
+        "label": "实验七",
+        "title": "题面不动，只拧模型里的数",
+        "paragraphs": [
+          "第七轮反过来：子集仍是 [[prosqa|ProsQA]] 索引格式，一行题面未改，只调 [[coconut|Coconut]] 内部的 [[latent-steps|latent]][[latent-feedback|反馈系数]] α，或把 [[checkpoint|checkpoint]] 权重整体缩放 ±15%。",
+          "机制上，α 控制每步 [[latent-steps|latent]]写回 hidden state 有多「猛」——直接作用在[[superposition|叠加态]]展开强度上。",
+          "结果：α=0.5 时 3 跳题[[boundary|边界]] 4 步；5 跳延长题在 α=2.0 时[[boundary|边界]]可漂到 7 步，但 acc@5 从 100% 掉到 80%。",
+          "全局权重缩放也能让 4 跳题[[boundary|边界]]从 3 跳到 4/5，但同样不单调，且没有一组系数能把 3 跳题稳定推到 6 步还对得准。",
+          "所以：[[boundary|边界]]不是写死在权重里的常数，但也不是一个线性旋钮；报[[boundary|边界]]上移时，要同时看 [[acc-at-depth|acc@d]]，否则会被曲线平台骗了。"
+        ],
+        "highlight": "[[latent-feedback|只改模型数值]]：[[boundary|边界]]可在 d 附近 ±1–2 步内动，[[acc-at-depth|acc@d]] 常变差"
+      },
+      {
+        "id": "ch-how7",
+        "label": "实验八",
+        "title": "把题深推到 7–8 层，性能还撑得住吗？",
+        "paragraphs": [
+          "第六轮在 5 跳对齐后，自然要问：同一套「三条件」能否继续推到 7 层、8 层，且 [[acc-at-depth|acc@d]] 不跌？第八轮只改题深——仍用 3 跳[[prosqa-extend|同质基线]] + [[prosqa|ProsQA]] 图延长，扫描 1–12 步，并记录每一步在 d 步的[[accuracy|准确率]]。",
+          "对照复现：3 跳→5 跳仍[[boundary|边界]] 5、峰值 100.0%；3 跳→6 跳报[[boundary|边界]] 5 步、acc@6=84.0%。",
+          "7 跳同质延长：报[[boundary|边界]] 4 步、acc@7=72.0%（峰值 76.0%）——题深到了 7，但 [[checkpoint|checkpoint]] 未在同深度训练，性能或报数难双高。 8 跳同质：[[boundary|边界]] 6 步、acc@8=52.0%（峰值 56.0%）。 混合基线→7 跳稍好：[[boundary|边界]] 5 步、acc@7=84.0%（峰值 88.0%），但仍未 c=d 双高。",
+          "结论：d=5 仍是最干净上推（acc@5=100%）；d=6 起 [[acc-at-depth|acc@d]] 开始掉、报[[boundary|边界]]偏低；d=7–8 同质延长 [[acc-at-depth|acc@d]] 仅 72%/52%，混合基线可到 84% 仍不够——要稳定 7–8 步且性能不跌，必须配合同深度训练，不能只改测试集。"
+        ],
+        "highlight": "7 跳同质延长：报[[boundary|边界]] 4 步、acc@7=72.0%（峰值 76.0%）——题深到了 7，但 [[checkpoint|checkpoint]] 未在同深度训练，性能或报数难双高。"
+      },
+      {
+        "id": "ch-how8",
+        "label": "实验九",
+        "title": "4 步以后怎么还不跌？",
+        "paragraphs": [
+          "前几轮已经看清：全量第 3–4 步是平台（baseline 第 3 步 83.8%、第 4 步 83.5%），第 5 步起继续全力写回会掉分。",
+          "baseline 每步 [[latent-steps|latent]]都把 hidden state 整段写回 embedding（α=1）。用「楼里找人」比喻：第 3–4 层已摸清目标；第 5 层起还每层强行改写整本搜救日志，等于在写对的页面上反复涂改——指标 post4_drop 量的是 5–8 步相对第 4 步的最大跌幅（baseline 全量 -10.7pp）。",
+          "第九轮不改 [[checkpoint|checkpoint]]，只改写回 schedule，对照 6 种策略。 baseline 全量 acc@4=83.5%。",
+          "真正管用：第 4 步后停写回 schedule [1,1,1,1,0,0,0,0]——前 4 步 α=1，第 5 步起 α=0，embedding 不再被 hidden 覆盖。",
+          "停写回后 acc@4 仍为 83.5%，4 步后跌幅 -10.7pp→-1.0pp（改善 -9.7pp）。 纯 4 跳子集 5–8 步钉在 88.3%。",
+          "第九轮修「给多了别跌」，不是把 acc@4 从 83% 推到 90%。完整 P1–P5 行动指南见附录 #post4-playbook。"
+        ],
+        "highlight": "推荐：4 步后停写回 · acc@4 83.5% · 4 步后跌幅 -10.7→-1.0pp"
+      },
+      {
+        "id": "ch-how10",
+        "label": "实验十",
+        "title": "只有一次提交，怎么直接配到最优？",
+        "paragraphs": [
+          "前面九轮多在问：[[boundary|边界]]在哪、加步会不会跌、能不能把[[boundary|边界]]往上推。最后一问更贴近实战：如果只有一次提交、没有标准答案，还能不能跳过「扫 1–8 步找[[boundary|边界]]」？",
+          "实验十的做法：不信模型[[accuracy|答对率]]曲线，信题面几何——对每题算 d = max([[parallel-bfs|BFS]](root→两个候选))，令 n_[[latent-steps|latent]]= d。就像楼里找人：先量清楚目标在第几层，再派搜救队往上搜几层，而不是全队统一只搜 3 层或 4 层。",
+          "全量 419 题：fixed_3 仅 83.8%，auto_route 93.1%（比 fixed_3 高 9.3 pp）。",
+          "auto_route 与 oracle_hop（结构金标准）完全一致——说明 [[prosqa|ProsQA]] 上盲算 [[parallel-bfs|BFS]] 深度就是真实 [[reasoning-hops|推理跳数]]。",
+          "对照「全员同一最优步数」：扫步得 oracle n=3 → 83.8%——仍远低于 auto_route，因为混测里 3 跳题和 4 跳题各需不同步数。",
+          "实验九的 schedule 解决「给多了别跌」；实验十的 [[parallel-bfs|BFS]] 路由解决「给对 depth」。混测要先按题路由，再谈停写回；结构完全未知时才用 fallback_zero4 兜底。"
+        ],
+        "highlight": "通解 auto_route 93.1% · +9.3 pp vs fixed_3"
+      },
+      {
+        "id": "ch-adaptive-11",
+        "label": "实验十一",
+        "title": "新问题：模型能不能自己喊停？",
+        "paragraphs": [
+          "前十轮解决了「该给几层」——实验十用题面 BFS 路由，一次提交 93.1%。下一问更刁：不给标准步数、不扫 1–8 步曲线，模型能否在推理过程中自己决定何时停？",
+          "实验十一训 LatentStopHead：用 train 集「首次答对步」作标签，冻结 Coconut，只在 test 评估。结果 trained_stop 仅 76.2%，[[stop-timing-acc|停步时机]] 16.5%——远低于 fixed_3 的 86.3%，更够不着 auto_route 的 93.1%。",
+          "head 在 train 上过拟合（recall≈100%），test 却普遍停太晚（mean_n≈5.7）。结论：单靠 hidden 训 stop head，尚不能认定「训练自停」可行。"
+        ],
+        "highlight": "trained_stop 76.2% · timing 16.5% → 不可行"
+      },
+      {
+        "id": "ch-adaptive-12-15",
+        "label": "实验十二–十五",
+        "title": "换特征、换损失、甚至联合微调——仍不够",
+        "paragraphs": [
+          "实验十二加正则与 hybrid 停步；实验十三 RichStopHead（答案桶+稳定 streak+focal）；实验十四改训 is_correct 标签；实验十五解冻 Coconut 最后两层联合微调。最好的一档是实验十四 correctness_stop：88.7%，timing 31.1%——答题率上来了，但「停在对的步」仍只有约三成。",
+          "实验十五 joint_correctness_stop 80.4%，timing 35%——联合微调也没跨过可行线。四线并进说明：缺的不是某一个 trick，而是停步信号与 ProsQA 混测结构之间的鸿沟。"
+        ],
+        "highlight": "correctness_stop 88.7% · 可行线 timing≥50% 未达"
+      },
+      {
+        "id": "ch-adaptive-16-30",
+        "label": "实验十六–三十",
+        "title": "四十条并行线：结构、teacher 与 timing 的三角",
+        "paragraphs": [
+          "实验十六起开并行线：结构深度下界、BFS+Δ 残差、first_correct 标签、收敛/稳定 OR 门控、BFS 下界+Exp14/15 头等，共十五条线（十六–三十）。",
+          "无 teacher 标签的启发式最好：实验24 94.6%（timing 28.7%）——超过 auto_route 的答题率，但 timing 仍≈29%，[[trainable-stop-feasible|不可行]]。",
+          "若允许 [[oracle-first-correct|首次答对步]] 作停步标签（teacher 上界），实验28/28 可达 95.2%、timing 61.0%——可行，但部署时需要答案监督，不是盲停。",
+          "oracle 上界 97.6% 告诉我们：混测里「停对步且答对」还有约 4.8 pp 空间，但结构路由已吃掉大部分。"
+        ],
+        "highlight": "盲部署 94.6% · teacher 可行 95.2%"
+      },
+      {
+        "id": "ch-adaptive-31-52",
+        "label": "实验三十一–五十二",
+        "title": "前缀预算：模型自报 n，但 timing 卡住",
+        "paragraphs": [
+          "实验三十一起转 [[upfront-budget|upfront 预算]]：推理前先决定 n_latent（前缀分类、图特征 Δ、Coconut 前缀、kNN 集成等），多数策略 test 只需 1–2 次 forward。",
+          "二十余条线（三十一–五十二）答题率平台在 94.0% 附近——高于 auto_route 约 1.2 pp，但 timing 卡在 28.1%，远低于 50% 可行线。",
+          "原因直观：混测里 3 跳与 4 跳题各半，模型常把 4 跳题也预算成 3 步——答题还行（3 步对 3 跳题仍高），「停步时机」统计却对不上 d。",
+          "实验五十二保守回退（P(n=3)<阈值→n=d 而非 n=4）与实验三十三 graph Δ 同为 94.0% 平台——说明前缀线已触顶，继续堆集成难补 timing 缺口。"
+        ],
+        "highlight": "前缀平台 94.0% · timing 28.1%"
+      },
+      {
+        "id": "ch-adaptive-53-55",
+        "label": "实验五十三–五十五",
+        "title": "回到逐步推理：在线组合信号",
+        "paragraphs": [
+          "前缀线触顶后，最后三条线回到逐步 latent：五十三 head∨答案稳定 streak；五十四 head∨hidden 收敛；五十五三者 OR。",
+          "实验五十三–五十五改 [[online-self-stop|在线自停]]：逐步推理，head∨稳定∨收敛组合，无 BFS、无 upfront。当前最好实验53 83.3% （timing 33.5%）。",
+          "与实验十对照：BFS 路由是「先量深度再搜」；在线自停是「边搜边决定停不停」。若在线线仍够不着 timing≥50%，说明 ProsQA 混测下盲停的核心瓶颈在「分辨 3 跳 vs 4 跳」，而非 stop head 架构 alone。"
+        ],
+        "highlight": "在线线 83.3% · timing 33.5%"
+      },
+      {
+        "id": "ch-gpu-16-17",
+        "label": "GPU 定稿",
+        "title": "全量 419 题硬跑：[[deployable-mvp|能部署]]了吗？",
+        "paragraphs": [
+          "实验十一至五十五在 CPU 上摸清了几十条自停路线，但结论必须在 A800 上对着全量 419 题再验一遍。Phase 16 起进入 GPU 定稿包：min_n 网格、前缀 kNN、Pareto 与五层证明 rollup。",
+          "Phase 17 修正 rollup 脚本 bug 后，五层证明重新盖章——[[m2-head|M2 head]] 可学习、[[min-n|min_n=3]] 把全量 timing 推到 37.0%，[[knn-min3|knn_min3_full]] 全量 acc 92.6%、mean_n=3.37，无 oracle，[[deployable-mvp|deployable_mvp]]=True。",
+          "通俗说：模型自己停 + 一点点 kNN 校正 floor，不用偷看答案，92.6% 答对、算力也省——「够好就停」在答对率和算力维度可以写进部署结论。但 [[strict-feasible|timing≥50%]] 仍是 stretch goal：head-only 天花板约 37–39%。"
+        ],
+        "highlight": "knn_min3_full 92.6% · deployable_mvp ✅ · timing 37.0% · strict_feasible ❌"
+      },
+      {
+        "id": "ch-gpu-18-19",
+        "label": "GPU 十八–十九",
+        "title": "换权重、换推理——[[timing-ceiling|timing 天花板]]在哪？",
+        "paragraphs": [
+          "Phase 18 动 Coconut 权重：joint 微调、写回 schedule、fc 标签长训。最好 w3_fc_long：acc 86.2%，timing 36.8%——与 Phase 16 的 37% 几乎肩并肩，100% 题仍停在 n=3。长训、联合、写回都没把停步从 n=3 挪开——瓶颈不在「练得不够久」。",
+          "Phase 19 换推理策略：patience、AND/OR 组合、learned hybrid、失败解剖。最优 u1_patience：acc 86.2%，timing 36.8%，未破 Phase 16。U5 失败解剖亮出主因：[[late-stop|late_stop]] 占 57.4%，[[early-stop|early_stop]] 仅 5.4%——不是模型太急着想停，而是 [[min-n|min_n=3]] 不让早停，大量 [[first-correct|fc<3]] 的题被硬拖到第 3 步以后。",
+          "CPU 分析：56.1% 题 [[first-correct|首次答对]] 发生在第 1–2 步；min_n=3 理论 timing 上限约 43.9%；实测 37.0% 已达上限的 84%——调参只剩 2–5 pp 空间。"
+        ],
+        "highlight": "late_stop 57.4% · timing 天花板 43.9% · 当前 37.0%"
+      },
+      {
+        "id": "ch-gpu-20",
+        "label": "GPU 二十",
+        "title": "min_n=2 侧突破——A800 已验证失败",
+        "paragraphs": [
+          "Phase 13–19 换标签、换推理、联合长训均未能把 timing 推过 50%——需要从 [[min-n|min_n 规则]] 或 Coconut 写回层动刀。",
+          "Phase 20 V1–V5 已在 A800 跑完：最好 v2_writeback_infer acc 86.2%、timing 36.8%——仍低于 Phase 16 knn 92.6%，feasible_any=false。",
+          "min_n=3 理论 timing 上限约 44%；当前 37% 已达上限 84%。",
+          "与 [[hybrid-stop|hybrid 上界]]（97% acc，含 BFS）对照：部署线走 M2+knn 盲停，上界线保留 hybrid 作性能参照。"
+        ],
+        "highlight": "Phase 20 完成 · best timing 36.8% · feasible_any=false"
+      },
+      {
+        "id": "ch-cross-32-33",
+        "label": "跨集 32–33",
+        "title": "53 切片：transfer 真的有用吗？",
+        "paragraphs": [
+          "ProsQA 同源 419 题定稿后，新问题变成：M2 fallback 栈能否帮到**未知分布**的图题？Phase 32 在 53 个切片上跑通跨集管线，加权平均 Δ ≈ 1.98 pp。",
+          "Phase 33 统一策略扫描：baseline 与 surgical 路由对比，hurt 切片需单独处理，不能一刀切同一 τ。"
+        ],
+        "highlight": "53 切片跨集 · 加权 Δ ≈ 1.98 pp"
+      },
+      {
+        "id": "ch-cross-34-36",
+        "label": "跨集 34–36",
+        "title": "collateral 守卫与 tri_zone 冠军",
+        "paragraphs": [
+          "Phase 34 Collateral Guard：agreement_lock 修复 in-dist 伤害；tri_zone (0.40/0.48) 成为跨集冠军——加权 Δ +2.079 pp，OOD +7.444 pp。",
+          "Phase 35 combo 在 test 80% 上看似双达标，但全量 53 切片复现后优势消失——test 子集 illusion。Phase 36 锁定 tri_zone @ seed=99 为唯一 dual_ok 方案。",
+          "同源 ProsQA 验证：confidence_fallback acc 94.8%（τ=0.48）。"
+        ],
+        "highlight": "tri_zone dual_ok · OOD +7.44 pp"
+      },
+      {
+        "id": "ch-cross-37-38",
+        "label": "跨集 37–38",
+        "title": "hybrid_slice_router 定稿 deploy_spec_v4",
+        "paragraphs": [
+          "Phase 37 Deploy Closure：hybrid_slice_router 优于纯 tri_zone——加权 Δ +2.079 pp，hurts 6（少 1 片）。syn_chain_5_wide → skip_transfer 修复 −1.67 pp 翻转。",
+          "Phase 38 Robust Lock：四 seed 审计显示 hybrid/tri_zone 均仅 1/4 seed dual_ok；seed=99 为 canonical 部署点。27 切片在 seed 间翻转，跨集评估须固定 seed。",
+          "**双轨部署**：同源 → confidence_fallback τ=0.48；跨未知分布 → hybrid 路由 （skip: push_ext7_from3, push_ext7_mixed, syn_chain_5_wide, v_diamond_5；agreement: mix_50_4, mix_75_4, push_ext5_from3, push_ext6_from4；其余 tri_zone 0.4/0.48）。"
+        ],
+        "highlight": "deploy_spec_v4 · dual_ok=True · hurts=6 · seed=99"
+      },
+      {
+        "id": "ch-cross-39",
+        "label": "跨集 39",
+        "title": "fixed_edges 证伪 · hybrid v2 升级 deploy_spec_v5",
+        "paragraphs": [
+          "Phase 39 Seed-Stable Cross：fixed_edges profile **0/4 dual_ok**（default 1/4），OOD @99 从 7.44 跌至 2.85——**不可用于跨集评估**。",
+          "hybrid v2（hops_3→tri_zone；push_ext7→agreement）@ seed=99 略优于 v4：加权 Δ +2.079、in-dist +0.23 pp；但多 seed dual_ok 仍为 1/4。",
+          "四 seed 池化 dual_ok 均失败。项目升级 **cross_locked_v5**，评估须 default profile + seed=99。"
+        ],
+        "highlight": "deploy_spec_v5 · fixed_edges REJECTED · seed=99 only"
+      },
+      {
+        "id": "ch-cross-40",
+        "label": "跨集 40",
+        "title": "hybrid v3 pooled dual_ok · deploy closure",
+        "paragraphs": [
+          "Phase 40 Deploy Closure：v_diamond_5→skip_transfer 修复 seed43 in-dist（−0.422→−0.268）。",
+          "B3 关键突破：**v3 pooled dual_ok=true**（in-dist +0.019，OOD 7.0），v5 pooled 失败。",
+          "per-seed 仍 1/4 dual_ok（42/44 OOD<7）；B4 v6 误锁 v5，Phase 41 升级 v3→v7。"
+        ],
+        "highlight": "v3 deploy_ok_strict=true · pooled dual_ok"
+      },
+      {
+        "id": "ch-cross-41",
+        "label": "跨集 41",
+        "title": "hybrid v4 达 3/4 dual_ok · deploy_spec_v7",
+        "paragraphs": [
+          "Phase 41 V3 Lock & OOD Push：push_ext7_from3/mixed → skip_transfer，seed 42/44 OOD 从 <7 提升至 ≥7，**dual_ok 从 1/4 跃升至 3/4**。",
+          "deploy_spec_v7 锁定 **hybrid_slice_router_v4**；@99 与 v3 完全相同。",
+          "唯一遗留 seed=43：OOD 7.0 已过，in-dist −0.268 未过 → Phase 42 冲击 4/4。"
+        ],
+        "highlight": "v4 · 3/4 dual_ok · cross_absolute_final"
+      },
+      {
+        "id": "ch-cross-42-43",
+        "label": "跨集 42–43",
+        "title": "PROJECT_COMPLETE · deploy_spec_v8_final",
+        "paragraphs": [
+          "Phase 42：v5 未破 3/4 dual_ok；v4 确认为多 seed 默认路由。",
+          "Phase 43 终局：v4 默认 + v5 @99 增强档；八 seed 面板 4/8 dual_ok；seed43 结构性不可修复。**PROJECT_COMPLETE**。"
+        ],
+        "highlight": "v8_final 双档 · PROJECT_COMPLETE"
+      },
+      {
+        "id": "ch-cross-44-fallback",
+        "label": "通解外推 44",
+        "title": "通解换数据集 · 失效补救线路",
+        "paragraphs": [
+          "Phase 44：裸通解 τ=0.48 在 OOD 代理 helps 4 / hurts 3，不能原封不动照搬。",
+          "**三区门控 tri_zone**（0.40/0.48）为跨分布默认：高区信主路径、低区回退、中区主备一致则不改动（修 v_diamond_5 等帮倒忙）。",
+          "仍 hurt → skip 禁用回退；边缘 → 扫 τ；实在不行 → 重训 M2。",
+          "部署口诀：原题用通解；已知考法查 v4 表；新考法 tri_zone+试点。详见通解详解 §十六。"
+        ],
+        "highlight": "失效补救：tri_zone → skip → 扫 τ → 重训 M2"
+      },
+      {
+        "id": "ch-result",
+        "label": "终章",
+        "title": "数字会说话，别拧错旋钮",
+        "paragraphs": [
+          "十轮对照收束：全量推荐[[boundary|边界]] 3，峰值 83.8%；3 层 83.8%，5 层 74.0%——中间隔着「想过了会摔下来」的沟。 第九轮说明：这条沟主要来自第 4 步后的写回噪声；停写回可把 4 步后跌幅从 -10.7pp 压到 -1.0pp，acc@4 不变（全量混测下 5–8 步仍可能有约 1pp 波动）。 第十轮说明：混测真最优不是全员 3 步，而是按题路由——auto_route 93.1%（+9.3 pp）。 实验十一至五十五进一步问：模型能否自停？盲部署最好 94.6%，仍低于 auto_route 93.1%；前缀线平台 94.0%，timing 未过 50%。 GPU Phase 17 定稿：[[deployable-mvp|deployable_mvp]]=True（[[knn-min3|knn_min3_full]] 92.6%）；timing 天花板 37.0%，[[strict-feasible|strict_feasible]] 未过；Phase 20 min_n=2 未突破。",
+          "值得记住的三句话：① [[boundary|边界]]跟题深走，不是固定常数；② 第 3 层常常是开窍点，但开窍和「答得最好」可以是两件事；③ 想过了，[[accuracy|准确率]]会掉——但第 4 步后「少写回」可以止住跌势；④ 混测要按题给步数，一次提交也能用 [[parallel-bfs|BFS]] 通解。",
+          "跟四楼「[[latent-exp|未揭晓的格子]]」实验对照着看：那边拧的是「联合预测开几格」，曲线往上铺平台，想多了通常只是更慢；这边拧的是「[[latent-steps|连续思维]]走几层」，曲线有峰有谷，想多了会坏事。一个管纵向深度，一个管横向宽度——调参时别混用两种分寸。"
+        ]
+      }
+    ],
+    "conclusion": {
+      "title": "尾声",
+      "paragraphs": [
+        "十轮对照落定。数字落在场景里，比公式更好记——带着「楼里找人」的画面，结论就不容易忘。"
+      ],
+      "takeaways": [
+        "[[boundary|边界]]跟题深走：3 跳题约 3 层，4 跳题约 4 层，3 跳基线延长 5 跳可到 5 层。",
+        "第 3 层是开窍点（2→3 步猛涨），但峰值可能在 3 或 4 层；全量推荐 3。",
+        "[[mixed-eval|混合评估]]常报 3 层，因为 3/4 层[[accuracy|准确率]]几乎打平且并列取少；纯 4 跳子集仍报 4 层。",
+        "超过最优点再加层，[[accuracy|准确率]]会掉（3 层 83.8% → 5 层 74.0%）——多想不等于更聪明。",
+        "第 4 步后继续写回会添噪；停写回 schedule [1,1,1,1,0,0,0,0] 可把全量 4 步后跌幅从 -10.7pp 压到 -1.0pp，acc@4 不变；纯 4 跳子集上 5–8 步可与第 4 步完全持平。",
+        "混测一次提交：按题 [[parallel-bfs|BFS]] 路由 auto_route 93.1%（+9.3 pp vs fixed_3）。",
+        "[[latent-feedback|只改模型数值]]（α/权重）可挪动报[[boundary|边界]] ±1–2 步，但 [[acc-at-depth|acc@d]] 常下降；α≈1 最对齐。",
+        "推到 5 步：3 跳基线 [[prosqa-extend|图延长]] → 5 跳（[[boundary|边界]] 5，100.0%）；7–8 步：acc@7=72.0%、acc@8=52.0%——需同深度训练才稳。",
+        "和 [[latent-exp|000003]] 对照：这边找峰值[[boundary|边界]]，那边找够用平台——两种旋钮，两种分寸。",
+        "训练自停（十一–十五）未过可行线；correctness_stop 最好 88.7%。",
+        "并行线盲部署最高实验24 94.6%；teacher 标签下实验 28/29 可达 ≈95% 且可行。",
+        "前缀线平台 ≈94.0%；在线自停见实验 53–55。",
+        "混测盲停仍难 beat [[auto-route|auto_route]] 93.1%——结构路由是强 baseline。",
+        "GPU 定稿：[[deployable-mvp|deployable_mvp]]=True；推荐 [[knn-min3|knn_min3_full]] acc 92.6%，mean_n=3.37，无 oracle。",
+        "[[strict-feasible|timing≥50%]] 未达标：全量最好 37.0%，距 50% 差 11–13 pp；[[late-stop|late_stop]] 占 57.4%。",
+        "Phase 20 结论：min_n=2 路线未破 timing（最好 36.8%），strict_feasible 仍不可达。",
+        "跨集定稿 deploy_spec_v4：hybrid_slice_router 加权 Δ +2.08 pp，OOD +7.44 pp，hurts 6。",
+        "双轨部署：ProsQA 同源 confidence_fallback 94.8%；跨未知分布 hybrid 路由（skip/agreement/tri_zone）。",
+        "seed 风险：dual_ok 仅在 seed=99 稳定；hybrid 1/4 seed 通过。",
+        "Phase 39：fixed_edges 证伪；hybrid v2 升级 deploy_spec_v5；pooled dual_ok 仍失败。"
+      ],
+      "formula": "[[boundary|边界]] ≈ 题深 d；5 步可只靠三条件上推；7–8 步须同看 [[acc-at-depth|acc@d]]，常需同深度训练。"
+    },
+    "science_box": {
+      "title": "故事讲完了——你应当带走的实验结论",
+      "experiment": "扫描[[coconut|Coconut]][[latent-steps|连续思维步数]] 1–10，取[[accuracy|准确率]]峰值作为[[boundary|边界]]（并列取更少步数）。模型[[checkpoint|checkpoint_300]] · [[prosqa|ProsQA]]及合成/变体扩展 · 共十轮对照。",
+      "laws": [
+        "规律一：[[boundary|边界]] ≈ [[reasoning-hops|任务推理深度]]（纯 3 跳→3 步，纯 4 跳→4 步，3 跳基线延长 5 跳→5 步）",
+        "规律二：2→3 步是「跳涨点」，不等于「任务完成步」",
+        "规律三：[[mixed-eval|混合评估]]常报 3 步（3/4 步[[accuracy|准确率]]接近 + 并列取少）",
+        "规律四：[[boundary|边界]]跟[[reasoning-hops|推理跳数]]走，不跟[[graph-diameter|图直径]]走",
+        "规律五：超过最优点加步有害（3 步 83.8% → 5 步 74.0%）",
+        "规律六：抬高[[boundary|边界]]需[[distribution-match|分布匹配]]，光加长[[synthetic-chain|人造链]]不够",
+        "规律七：只改[[latent-feedback|模型数值]]，[[boundary|边界]]可在 d 附近 ±1–2 步内移动",
+        "规律八：报[[boundary|边界]]上移时看[[acc-at-depth|acc@d]]，避免被曲线平台误导",
+        "规律九：[[boundary|边界]]上推需三条件——题深到 d、[[prosqa-extend|ProsQA 图延长]]、3 跳[[prosqa-extend|同质基线]]",
+        "规律十：推到 5 步最稳路径——3 跳基线延长到 5 跳（[[boundary|边界]] 5，100.0%）",
+        "规律十一：7–8 步需 [[acc-at-depth|acc@d]] 与报[[boundary|边界]]同看——同质 7 跳 acc@7=72.0%、报[[boundary|边界]] 4 步",
+        "规律十二：第 4 步后继续 [[latent-feedback|写回]] 会添噪；前 4 步 α=1、第 5 步起 α=0，全量 4 步后跌幅 -10.7pp→-1.0pp，acc@4 不变",
+        "规律十三：混测真最优 = 按题 [[reasoning-hops|推理深度]] 路由（auto_route 93.1%，+9.3 pp vs fixed_3）",
+        "规律十四：[[trainable-stop-feasible|训练自停可行]]需 acc≥fixed_3 且 timing≥50%；十一–十五均未达标；teacher 线 28/29 可达 ≈95%。",
+        "规律十五：[[upfront-budget|前缀预算]]线答题率≈94%，timing≈28%——混测 3/4 跳混淆是 timing 瓶颈。",
+        "规律十六：无标签部署仍应优先 [[auto-route|auto_route]]（93.1%）；自停线答题可超路由，但停步时机难同时达标。",
+        "规律十七：[[deployable-mvp|deployable_mvp]] 已达成——[[knn-min3|knn_min3_full]] acc 92.6%，无 oracle，mean_n≤4.5。",
+        "规律十八：[[strict-feasible|timing≥50%]] 未过——head-only 天花板 37.0%；[[late-stop|late_stop]] 是主因（≈57%）。",
+        "规律十九：[[min-n|min_n=3]] 下 timing 理论上限约 43.9%；56% 题 fc<3，算术瓶颈非单纯训练问题。"
+      ],
+      "push_callout": {
+        "title": "如何把[[boundary|边界]]推到 5–8 步？",
+        "formula": "c ≈ d 且 [[acc-at-depth|acc@d]] 高 ⇔ 题深到 d + [[prosqa-extend|真实图延长]] + 从 3 跳基线同质延长；5 步最稳（5，100.0%）。 7 步实测 acc@7=72.0%、[[boundary|边界]] 4。",
+        "detail_href": "appendix.html#push-ladder"
+      },
+      "stats": [
+        [
+          "推荐[[boundary|边界]]",
+          "3 步"
+        ],
+        [
+          "峰值[[accuracy|准确率]]",
+          "83.8%"
+        ],
+        [
+          "上推 5 步",
+          "5 步 · 100.0%"
+        ],
+        [
+          "[[boundary|边界]]↔平均跳数",
+          "[[correlation|r = 0.543]]"
+        ],
+        [
+          "自停盲部署",
+          "94.6%"
+        ],
+        [
+          "前缀平台",
+          "94.0%"
+        ],
+        [
+          "deployable_mvp",
+          "✅ knn_min3"
+        ],
+        [
+          "推荐 acc",
+          "92.6%"
+        ],
+        [
+          "timing 天花板",
+          "37.0%"
+        ]
+      ]
+    },
+    "appendix_link": "专业名词见 <a href=\"/others/000002/glossary.html\">术语注释</a> · <a href=\"#math-proof\">数学证明</a>在故事后 · <a href=\"appendix.html#appendix-toc\">科学附录</a>含数据表与 FAQ · <a href=\"appendix.html#post4-playbook\">四步以后如何不掉</a> · <a href=\"lab.html\">交互复现实验</a>。"
+  },
+  "math_proof": {
+    "title": "数学证明：[[boundary|边界]]为何常在 3–4 步（详细版）",
+    "intro": "这份证明专门回答故事里的核心问题：为什么「最划算的[[latent-steps|思考层数]]」老是落在 3 或 4，而不是 5、6 或别的固定数字？证明分两层：先说明单道题需要想几步（跟题目深度走），再说明整张 [[prosqa|ProsQA]] 卷子上为什么只会出现 3 和 4 这两档。全文不引用本实验扫出来的[[accuracy|准确率]]，只用到论文里的机制结论 + 题面自带的跳数标注。",
+    "guide": {
+      "title": "读前导览：证明到底在说什么？",
+      "paragraphs": [
+        "可以把 [[coconut|Coconut]] 想成在一栋楼里找人：每多给 1 步「[[latent-steps|内部思考]]」，搜救队就多往上搜一层。题目本身会告诉你目标在几层——这就是 d（[[reasoning-hops|推理跳数]]）。证明要做的事，就是用式子说明：想几层最划算，应该跟 d 对齐，而不是拍脑袋定一个常数。"
+      ],
+      "items": [
+        "符号 c：允许模型[[latent-steps|内部思考]]的步数（故事里的「[[latent-steps|思考层数]]」）。",
+        "符号 d：这道题标准答案要走几步推理（题面标注，[[prosqa|ProsQA]] 上只有 3 或 4）。",
+        "符号 R_c：从根节点出发，c 步以内能摸到的所有节点（搜救范围）。",
+        "结论预览：单题最优 c = d；[[prosqa|ProsQA]] 上 d 只有 3/4，所以[[boundary|边界]]常在 3–4。"
+      ]
+    },
+    "theorem": "【定理】对任意一道 [[prosqa|ProsQA]] 题，设其最短[[reasoning-hops|推理跳数]]为 d。若 [[coconut|Coconut]] 的第 c 步思考确实在编码「根节点 c 步内能到达哪些节点」，则答对这一道题所需的最少[[latent-steps|思考步数]]为 c = d。又因为 [[prosqa|ProsQA]] 原生 419 题里 d 只可能是 3 或 4，所以每道题的最优 c 只可能是 3 或 4；若要 419 题全部覆盖，信息论上至少需要 c = 4。",
+    "axioms": [
+      "公理 A（机制，来自论文）：每加 1 步 latent，模型在潜空间里多往外扩一层搜索，等价于并行 [[parallel-bfs|BFS]] 多走一层楼。",
+      "公理 B（数据集，来自题面）：[[prosqa|ProsQA]] 原生题的最短[[reasoning-hops|推理跳数]] d 只有 3 或 4（202 道为 3 跳，217 道为 4 跳），没有原生 5 跳、6 跳。",
+      "公理 C（[[saturation|饱和]]，来自论文推论）：对同一道题，当 c 已经 ≥ d 之后，再往上加步不会摸到新节点，只会重复已有信息。"
+    ],
+    "steps": [
+      {
+        "id": "p1",
+        "label": "步骤 1",
+        "title": "先把题目写成一张图",
+        "lead": "证明的第一步，是把「一道推理题」变成数学对象，后面才能谈「要走几步」。",
+        "math": [
+          "G = (V, E)        —— 一张有向图（节点 + 有向边）",
+          "查询 (r, t)       —— 从根节点 r 出发，判断能否到达目标 t",
+          "dist_G(r, v)      —— 从 r 到 v 的最短路径长度（要经过几条边）",
+          "d := dist_G(r, t) —— 本题的标准[[reasoning-hops|推理跳数]]"
+        ],
+        "note": [
+          "[[prosqa|ProsQA]] 的每一道题，本质上都是在问：在这张关系图里，沿着箭头走，r 能不能走到 t。",
+          "d 不是模型猜的，而是题面自带的标注：标准答案推理链最短要走几步。",
+          "在原生 419 题里，d 只有两种取值：3 或 4（其中 202 道是 3，217 道是 4）。",
+          "后面所有「[[boundary|边界]]为什么是 3 或 4」，其实都是把 d 只有 3/4 这件事代进公式。"
+        ],
+        "example": "就像快递路线图：仓库是 r，收件地址是 t。d=3 表示最少要经过 3 个中转站才能送到；d=4 就是最少 4 个中转站。"
+      },
+      {
+        "id": "p2",
+        "label": "步骤 2",
+        "title": "搜救队一层层往上搜：[[parallel-bfs|BFS]]",
+        "lead": "接下来定义「搜到第几层时，能摸到哪些节点」——这是后面理解[[latent-steps|思考步数]]的关键。",
+        "math": [
+          "F_k = { v : dist_G(r, v) = k }   —— 恰好 k 跳能摸到的节点（第 k 层前沿）",
+          "R_c = { v : dist_G(r, v) ≤ c }   —— c 跳以内能摸到的全部节点（可达球）",
+          "关系：R_c = F_0 ∪ F_1 ∪ … ∪ F_c"
+        ],
+        "note": [
+          "F_k 是「刚好在第 k 层」的节点，像搜救队站在第 k 层楼板上。",
+          "R_c 是「c 层及以下所有楼层」的并集，表示允许搜 c 层时，最多能覆盖到哪里。",
+          "c 越大，R_c 越大（单调扩大），因为多给一层搜索，只会多摸到更远的节点，不会少。",
+          "目标节点 t 第一次被摸到的时刻，就是 c = d 的那一刻。"
+        ],
+        "example": "楼里找人：F_1 是「坐电梯到 1 层能看到的房间」；R_3 是「1、2、3 层所有能搜到的房间合在一起」。若人在 4 层，那 R_3 里还没有他，R_4 里才有。"
+      },
+      {
+        "id": "p3",
+        "label": "步骤 3",
+        "title": "[[coconut|Coconut]] 每多想 1 步，就多扩一层搜索",
+        "lead": "这是整份证明的核心桥梁：把「模型内部的[[latent-steps|思考步数]] c」和「图上往外扩了几层 R_c」绑在一起。",
+        "math": [
+          "h_c  —— 第 c 步[[latent-steps|连续思维]]后的潜向量（内部表示）",
+          "h_c 编码的是 R_c 中节点的「叠加」信息",
+          "每加 1 步 [[latent-steps|latent]] ≈  [[search-frontier|搜索前沿]]从 R_{c−1} 扩到 R_c"
+        ],
+        "note": [
+          "论文 [[neurips-paper|Reasoning by Superposition]] 的核心说法不是「模型在写一段文字推理」，",
+          "而是：每多给 1 步 latent，潜向量里就多装一层「哪些节点在 c 跳以内能到」的信息。",
+          "这叫并行 [[parallel-bfs|BFS]]——不是先想 A、再想 B、再想 C 地串行写，而是一次性维护多层可能位置。",
+          "公理 A 把这件事当成证明起点：我们暂时相信论文对 [[coconut|Coconut]] 的机制描述是成立的。",
+          "若某次实验发现模型完全不符合这一点，那需要回头质疑公理 A，而不是硬套本证明。"
+        ],
+        "example": "不是「我在心里默念了 3 句话」，而是「搜救队的覆盖范围从 2 层扩大到了 3 层」。[[latent-steps|思考步数]]增加，改变的是覆盖范围，不是多写了几个字。"
+      },
+      {
+        "id": "p4",
+        "label": "步骤 4",
+        "title": "单道题要答对，至少要想 d 步",
+        "lead": "现在可以回答：对「这一道题」来说，最少要给几步思考？",
+        "math": [
+          "t 可达  ⟺  t ∈ R_d",
+          "要判断可达，需要 t 出现在 R_c 里  ⟹  需要 c ≥ d",
+          "单题最少充分步数：c* = d"
+        ],
+        "note": [
+          "若 c < d：搜救范围 R_c 还没扩到第 d 层，目标 t 根本不在覆盖范围内，信息不够，答不对。",
+          "若 c = d：刚好第一次把 t 包进 R_c，信息足够判断可达性，且这是「刚好够用」的最小 c。",
+          "若 c > d：也能答对（因为 R_c 已经包含 R_d），但开始浪费——后面步骤 8 会讲为什么还可能有害。",
+          "所以：对单道题，最划算的[[latent-steps|思考步数]]就是 d——这就是「[[boundary|边界]]跟题深走」的数学版。"
+        ],
+        "example": "目标在 4 楼：给 2 层搜索权限一定不够；给 4 层刚好；给 6 层也能找到，但多出来的 2 层是空跑。"
+      },
+      {
+        "id": "p5",
+        "label": "步骤 5",
+        "title": "代入 [[prosqa|ProsQA]]：d 只有 3 和 4",
+        "lead": "把上一步的 c* = d 代入 [[prosqa|ProsQA]] 的题面结构，立刻得到「只能是 3 或 4」。",
+        "math": [
+          "d ∈ {3, 4}",
+          "|{d=3}| = 202,   |{d=4}| = 217",
+          "c* = d  ⟹  每道题的 c* ∈ {3, 4}"
+        ],
+        "note": [
+          "这一步不需要跑实验，只需要读题面统计：原生 [[prosqa|ProsQA]] 419 题里，最短推理链只有 3 跳和 4 跳两种。",
+          "因此 202 道题各自最优 3 步，217 道题各自最优 4 步——没有题需要 5 步或 6 步才能「信息上覆盖目标」。",
+          "这就是「[[boundary|边界]]常在 3–4」的第一层原因：不是模型偏爱 3 或 4，是卷子本身只有这两档难度。"
+        ],
+        "example": "一份试卷只有「3 楼住户」和「4 楼住户」两种题，那每道题的「最少搜几层」答案只可能是 3 或 4，不可能是 7。"
+      },
+      {
+        "id": "p6",
+        "label": "步骤 6",
+        "title": "419 题混在一起时，全覆盖至少要 4 步",
+        "lead": "单题最优可以是 3 或 4；但若要求「整张卷子每道题都能答对」，下界是多少？",
+        "math": [
+          "存在题目使 d = 4",
+          "要全部答对  ⟹  c 必须 ≥ max(d) = 4",
+          "c = 3 时：3 跳题够，4 跳题信息仍不够"
+        ],
+        "note": [
+          "这是一道「木桶短板」逻辑：哪怕 202 道 3 跳题在 3 步就够，",
+          "只要还有 217 道 4 跳题，整张卷子的信息论下界就被抬到 4 步。",
+          "注意：这说的是「理论上要覆盖全部题目」；并不等于「[[mixed-eval|混合评估]]一定报 4」。",
+          "实验里混合集有时报 3 步，是因为 3 步和 4 步[[accuracy|准确率]]很接近、评估规则并列时取更少的步数——那是另一回事，本证明不依赖它。"
+        ],
+        "example": "班里既有 3 楼题也有 4 楼题：要全班都及格，教案至少得教到 4 楼；但考试评分若允许「差不多好就取更少作业量」，最后公布的「推荐层数」可能是 3。"
+      },
+      {
+        "id": "p7",
+        "label": "步骤 7",
+        "title": "为什么很难推到 5–6 步",
+        "lead": "即便你想把[[boundary|边界]]抬高，原生 [[prosqa|ProsQA]] 题面也给不出「必须 5–6 步」的理由。",
+        "math": [
+          "[[prosqa|ProsQA]] 原生题：max(d) = 4",
+          "当 c > 4 时：R_c = R_4（不再变大）",
+          "⇒  c = 5 或 6 在信息上与 c = 4 相同"
+        ],
+        "note": [
+          "数据集里没有原生 5 跳、6 跳题，所以不存在「某道题的 d=5，必须给 5 步思考」这种查询。",
+          "当 c 已经超过 4，可达球 R_c 不再扩大——多给的步数在图论意义上是空转。",
+          "这就是为什么「[[boundary|边界]]很难稳定在 5–6」：不是模型跑不到 5–6 步，而是题面不需要。",
+          "（例外：若在真实 [[prosqa|ProsQA]] 图上人工延长推理链到 5 跳，且分布仍像训练数据，[[boundary|边界]]可以抬到 5——那是换题，不是原生卷面。）"
+        ],
+        "example": "卷子上最高只住 4 楼的人，你硬要搜 6 楼——多搜的楼层里没有新住户，只是白费力气。"
+      },
+      {
+        "id": "p8",
+        "label": "步骤 8",
+        "title": "想过了为什么还可能更差（[[saturation|饱和]]）",
+        "lead": "信息够了之后继续加步，不只会浪费，还可能把已经对的表示搅乱。",
+        "math": [
+          "当 c ≥ d 时：R_c = R_d",
+          "c > d 时：h_c 重复编码同一批节点",
+          "[[superposition|叠加态]]扰动增加  ⟹  [[accuracy|准确率]]可能下降"
+        ],
+        "note": [
+          "公理 C 说：该摸到的节点在 d 步已经全部进 R_d 了，再多步没有新节点可编码。",
+          "论文的解释是「[[saturation|[[superposition|叠加态]][[saturation|饱和]]]]」——继续加 [[latent-steps|latent]]等于让同一信息反复扰动潜向量，可能把已经收敛的判断弄糊。",
+          "这解释了故事里的「第 5 步反而更差」的方向；具体掉多少分要靠实验，本证明只说机制方向。"
+        ],
+        "example": "人已经在 4 楼找到了，搜救队还在 5、6 楼反复敲门——不仅多费时间，还可能把「人其实在 4 楼」这个结论搞乱。"
+      },
+      {
+        "id": "p9",
+        "label": "步骤 9",
+        "title": "把整条链串起来",
+        "lead": "回顾 1–8 步，看它们如何一步步推出「[[boundary|边界]]常在 3–4」。",
+        "math": [
+          "机制：c 步思考 ↔ 扩到 R_c",
+          "单题：c* = d",
+          "[[prosqa|ProsQA]]：d ∈ {3, 4}  ⟹  c* ∈ {3, 4}",
+          "全覆盖下界：c ≥ 4；过步：c > 4 无新信息且可能有害"
+        ],
+        "note": [
+          "① [[latent-steps|思考步数]]在机制上不是随便的数字，而是「搜索扩了几层」。",
+          "② 单题最省步数 = 题面深度 d。",
+          "③ [[prosqa|ProsQA]] 题面只有 d=3 和 d=4，所以最优只在 3、4 两档。",
+          "④ 全卷覆盖至少 4；继续加到 5、6 在原生题上没有信息收益，还可能因[[saturation|饱和]]而变差。",
+          "这就是「三楼与四楼之间」的数学版答案。"
+        ]
+      },
+      {
+        "id": "p10",
+        "label": "步骤 10",
+        "title": "一句话结论 + 实验扮演什么角色",
+        "lead": "最后用日常语言收束，并说明：既然证明不依赖实验，那实验还有什么用？",
+        "math": [
+          "理论：[[boundary|边界]] ∝ 题深 d，[[prosqa|ProsQA]] 上 d∈{3,4}",
+          "实验：检查真实 [[checkpoint|checkpoint]] 是否近似满足公理 A/C"
+        ],
+        "note": [
+          "证明告诉你的：在论文机制成立、题面标注正确的前提下，[[boundary|边界]]应该在 3–4，而不是别的常数。",
+          "实验告诉你的：[[[[checkpoint|checkpoint]]|[[checkpoint|checkpoint]]_300]] 实际上是不是按这套机制在干活？[[saturation|饱和]]后具体掉多少分？混合集为何报 3 而非 4？",
+          "两者不矛盾：证明给「为什么应该如此」，实验给「现实中是不是如此、差多少」。",
+          "若你觉得某步仍抽象，建议对照故事里的「楼里找人」比喻重读步骤 1–4，那四步是整份证明的地基。"
+        ]
+      }
+    ],
+    "empirical_aside": {
+      "title": "和实验的关系（可选阅读）",
+      "paragraphs": [
+        "这份证明故意不使用[[accuracy|准确率]]数字，所以不会告诉你「3 步是 83.8%」——那是科学附录里的事。",
+        "实验做的三件事：① 验证纯 3 跳题峰值是否在 3 步、纯 4 跳是否在 4 步（检验 c*=d）；② 测量 5 步后是否下降（检验[[saturation|饱和]]）；③ 解释混合集为何报 3（评估规则 + 实测接近）。",
+        "若实验证明 [[checkpoint|checkpoint]] 的行为和公理 A/C 差很远，应优先怀疑「模型是否真在做 [[parallel-bfs|BFS]] 式扩展」，而不是怀疑 [[prosqa|ProsQA]] 的 d 标注。"
+      ],
+      "link": "appendix.html#mech-expand",
+      "link_label": "见科学附录中的机制分析与数据表"
+    },
+    "references": [
+      "Zhu et al., [[neurips-paper|Reasoning by Superposition]], [[neurips-paper|NeurIPS 2025]], arXiv:2505.12514",
+      "[[prosqa|ProsQA]] 数据集：原生推理链仅 3 跳 / 4 跳（题面标注，见 theoretical.graph_profile）"
+    ]
+  },
+  "boundary_push": {
+    "title": "实验六 · [[prosqa-extend|同质基线]]延长，把[[boundary|边界]]往 5–6 步推",
+    "tldr": "在 [[prosqa|ProsQA]] 原题末尾追加推理层（题型不变），从 3 跳基线延长到 5 跳可对齐[[boundary|边界]] 5 且 acc@5=100%；从 4 跳基线延长易过冲；6 跳混合延长[[boundary|边界]]仍漂到 9。",
+    "lead": "第五轮已归纳[[boundary|边界]]跟题深走；第六轮控制「从哪一跳基线延长」，在相同 [[prosqa|ProsQA]] 格式下比较 5/6 跳。",
+    "table_href": "#push-ladder",
+    "table_link_label": "[[boundary|边界]]上推对照表（实验六–八汇总）",
+    "table": {
+      "headers": [],
+      "rows": []
+    },
+    "bullets": [
+      "3 跳基线 → 5 跳：[[boundary|边界]] 5 步，峰值 100.0%——最干净的对齐案例。",
+      "4 跳基线 → 5 跳：[[boundary|边界]] 7 步——过冲，5 步处[[accuracy|准确率]]低于峰值步。",
+      "混合延长 6 跳：[[boundary|边界]] 9 步——5–8 步平台后第 9 步才峰值，报[[boundary|边界]]不可靠。"
+    ],
+    "law": "固定规律：[[boundary|边界]]上推需要题深真的到 d，且延长保留 [[prosqa|ProsQA]] 分布；同质 3 跳基线 +1/+2 层比 4 跳基线 +1 层更不易过冲。"
+  },
+  "boundary_push_deep": {
+    "title": "实验八 · 7–8 步深[[boundary|边界]]上推（[[acc-at-depth|acc@d]] 检验）",
+    "tldr": "7–8 跳：题深已到，但 [[[[checkpoint|checkpoint]]|[[checkpoint|checkpoint]]_300]] 仅在 3–4 跳训练——[[acc-at-depth|acc@d]] 下滑或报[[boundary|边界]]失真；要性能不跌需同深度微调。",
+    "lead": "按上推三条件把题深推到 7/8 跳（3 跳[[prosqa-extend|同质基线]] + [[prosqa|ProsQA]] 图延长），扫描 1–12 步。不只看得峰值步数，更看 d 步的 [[acc-at-depth|acc@d]] 是否仍高。",
+    "table_href": "#push-ladder",
+    "table_link_label": "[[boundary|边界]]上推对照表（含 d=5–8 各行）",
+    "table": {
+      "headers": [],
+      "rows": []
+    },
+    "bullets": [
+      "对照 5 跳：[[boundary|边界]] 5 步、acc@5=100.0%。",
+      "6 跳：[[boundary|边界]] 5 步、acc@6=84.0%。",
+      "7 跳同质：[[boundary|边界]] 4 步、acc@7=72.0%、峰值 76.0%。",
+      "8 跳同质：[[boundary|边界]] 6 步、acc@8=52.0%。",
+      "混合基线→7 跳：[[boundary|边界]] 5 步、acc@7=84.0%——比同质 72% 好，仍达不到 90% 门槛。"
+    ],
+    "law": "7–8 跳：题深已到，但 [[[[checkpoint|checkpoint]]|[[checkpoint|checkpoint]]_300]] 仅在 3–4 跳训练——[[acc-at-depth|acc@d]] 下滑或报[[boundary|边界]]失真；要性能不跌需同深度微调。",
+    "unified_conclusion": "不同子集检测到的推荐[[boundary|边界]]分布在 4.0–6.0 步之间，说明「换数据[[boundary|边界]]会变」——[[boundary|边界]]取决于样本结构与[[reasoning-hops|推理跳数]]分布。 · 同质 3 跳基线延长：5 跳[[boundary|边界]] 5.0 步，6 跳[[boundary|边界]] 5.0 步。 · 7 跳同质延长：报[[boundary|边界]] 4.0 步，峰值 76.0%，acc@7=72.0%。 · 8 跳同质延长：报[[boundary|边界]] 6.0 步，峰值 56.0%，acc@8=52.0%。 · 7 跳混合延长：报[[boundary|边界]] 5.0 步，峰值 88.0%，acc@7=84.0%。"
+  },
+  "model_perturb": {
+    "title": "第七轮：[[latent-feedback|只改模型数值]]，[[boundary|边界]]能否平移？",
+    "tldr": "题面固定为 [[prosqa|ProsQA]] 索引格式，只调 [[latent-steps|latent]][[latent-feedback|反馈系数]] α（0.5–2.0）或全局权重 ±15%。8/18 组报[[boundary|边界]]相对 baseline 变化；但 [[acc-at-depth|acc@d]] 常下降，无法稳定精确对齐到任意步数。",
+    "lead": "前几轮改的是题有多深；第七轮改的是 [[coconut|Coconut]] 内部数值——每步 [[latent-steps|latent]]写回 hidden state 的强度，或 [[checkpoint|checkpoint]] 整体缩放。数据类型一行未动。",
+    "mechanism": "[[coconut|Coconut]] 每步 [[latent-steps|latent]]≈ 把上一层 hidden state 喂给下一个 [[latent-steps|latent]]位。α<1 时每步「展开」变弱，可能要更多步才峰值（3 跳题[[boundary|边界]] 3→4）；α>1 时前几步易[[saturation|饱和]]，峰值后移（5 跳题[[boundary|边界]] 5→6/7），但 acc@5 从 100% 掉到 80%。",
+    "table": {
+      "headers": [
+        "子集",
+        "α",
+        "报[[boundary|边界]]",
+        "[[acc-at-depth|acc@d]]",
+        "峰值[[accuracy|准确率]]"
+      ],
+      "rows": [
+        [
+          "hops_3",
+          "0.5",
+          "4 步",
+          "66.7%",
+          "80.0%"
+        ],
+        [
+          "hops_3",
+          "0.75",
+          "3 步",
+          "80.0%",
+          "80.0%"
+        ],
+        [
+          "hops_3",
+          "1.0",
+          "3 步",
+          "86.7%",
+          "86.7%"
+        ],
+        [
+          "hops_3",
+          "1.25",
+          "3 步",
+          "86.7%",
+          "86.7%"
+        ],
+        [
+          "hops_3",
+          "1.5",
+          "3 步",
+          "80.0%",
+          "80.0%"
+        ],
+        [
+          "hops_3",
+          "2.0",
+          "3 步",
+          "93.3%",
+          "93.3%"
+        ],
+        [
+          "hops_4",
+          "0.5",
+          "3 步",
+          "80.0%",
+          "93.3%"
+        ],
+        [
+          "hops_4",
+          "0.75",
+          "3 步",
+          "86.7%",
+          "86.7%"
+        ],
+        [
+          "hops_4",
+          "1.0",
+          "3 步",
+          "80.0%",
+          "86.7%"
+        ],
+        [
+          "hops_4",
+          "1.25",
+          "5 步",
+          "80.0%",
+          "93.3%"
+        ],
+        [
+          "hops_4",
+          "1.5",
+          "5 步",
+          "86.7%",
+          "93.3%"
+        ],
+        [
+          "hops_4",
+          "2.0",
+          "4 步",
+          "93.3%",
+          "93.3%"
+        ],
+        [
+          "push_ext5_from3",
+          "0.5",
+          "5 步",
+          "93.3%",
+          "93.3%"
+        ],
+        [
+          "push_ext5_from3",
+          "0.75",
+          "6 步",
+          "93.3%",
+          "100.0%"
+        ],
+        [
+          "push_ext5_from3",
+          "1.0",
+          "5 步",
+          "100.0%",
+          "100.0%"
+        ],
+        [
+          "push_ext5_from3",
+          "1.25",
+          "6 步",
+          "86.7%",
+          "100.0%"
+        ],
+        [
+          "push_ext5_from3",
+          "1.5",
+          "6 步",
+          "80.0%",
+          "100.0%"
+        ],
+        [
+          "push_ext5_from3",
+          "2.0",
+          "7 步",
+          "80.0%",
+          "93.3%"
+        ]
+      ]
+    },
+    "highlights": [
+      "3 跳题：α=0.5 时[[boundary|边界]] 4 步，acc@3=66.7%；α=1.0 时[[boundary|边界]] 3 步，acc@3=86.7%。",
+      "5 跳延长题：α=1.0 [[boundary|边界]] 5、acc@5=100%；α=2.0 [[boundary|边界]] 7 步，acc@5=80.0%。",
+      "[[latent-steps|latent]][[latent-feedback|反馈系数]]在 0.5–2.0 内扫描：8/18 组[[boundary|边界]]相对 baseline 发生变化。 全局权重缩放：0/15 组峰值[[accuracy|准确率]]跌破 50%，大幅缩放主要破坏能力而非系统平移[[boundary|边界]]。"
+    ],
+    "laws": [
+      {
+        "id": "perturb_moves_boundary",
+        "title": "规律七：[[latent-feedback|只改模型数值]]，[[boundary|边界]]可在 d 附近 ±1–2 步内移动",
+        "pattern": "[[latent-steps|latent]]反馈 α∈[0.5,2.0] 时，8/18 组报[[boundary|边界]]相对 baseline 变化。",
+        "why": "α 改变每步[[superposition|叠加态]]写入强度，等价于改变「每步 [[parallel-bfs|BFS]] 展开有多猛」。弱反馈需更多步；强反馈易过冲或多峰，[[boundary|边界]]算法报更高步数。"
+      },
+      {
+        "id": "acc_at_depth_guard",
+        "title": "规律八：报[[boundary|边界]]上移 ≠ [[acc-at-depth|acc@d]] 变好",
+        "pattern": "5 跳题 α=1.25–2.0 时[[boundary|边界]] 6–7，但 acc@5 从 100% 降至 80–87%。",
+        "why": "峰值步数被曲线形状（平台、并列取少）推高；任务完成仍应在 d 步，应同时看 [[acc-at-depth|acc@d]]。"
+      },
+      {
+        "id": "depth_still_bounds",
+        "title": "规律九：任务深度仍是主约束",
+        "pattern": "3 跳题[[boundary|边界]]很难被推到 6；权重 ±15% 主要扰动深题与混合集。",
+        "why": "改数值不能替代「题要推理多深」；无 6 跳题面时，调 α 最多制造过冲，不能稳定 c=6 且高 acc。"
+      }
+    ],
+    "conclusion": "[[latent-feedback|只改模型数值]]可以「挪动」报[[boundary|边界]]，但没有单一单调旋钮。要对齐 c=d 且 [[acc-at-depth|acc@d]] 高，仍应 α≈1 + 原 [[checkpoint|checkpoint]] + 深度匹配题面；微调训练比拧系数更可靠。"
+  },
+  "feedback_schedule": {
+    "title": "第九轮：4 步以后如何不跌？（[[latent-steps|latent]]反馈 schedule）",
+    "tldr": "全量：baseline 4 步后最多跌 -10.7pp；「4 步后停写回 (scale=0)」跌至 -1.0pp（改善 -9.7pp），acc@4 仍为 83.5%。",
+    "lead": "不改 [[checkpoint|checkpoint]] 权重，只在 inference 改 [[latent-steps|latent]]写回。对照 6 策略：最有效 schedule [1,1,1,1,0,0,0,0]——前 4 步 α=1，第 5 步起 α=0。全量 acc@4 保持 83.5%，post4_drop 从 -10.7pp 压到 -1.0pp；纯 4 跳子集 5–8 步与第 4 步完全持平（88.3%）。",
+    "table": {
+      "headers": [
+        "子集",
+        "策略",
+        "acc@4",
+        "5–8 步最低",
+        "4 步后跌幅",
+        "不低于 4？"
+      ],
+      "rows": [
+        [
+          "仅 3 跳推理链",
+          "baseline · α=1 恒定",
+          "75.0%",
+          "70.0%",
+          "-5.0 pp",
+          "✗"
+        ],
+        [
+          "仅 3 跳推理链",
+          "全局 α=0.75",
+          "66.7%",
+          "73.3%",
+          "6.7 pp",
+          "✓"
+        ],
+        [
+          "仅 3 跳推理链",
+          "4 步后 scale 衰减",
+          "75.0%",
+          "70.0%",
+          "-5.0 pp",
+          "✗"
+        ],
+        [
+          "仅 3 跳推理链",
+          "4 步后停写回 (scale=0)",
+          "75.0%",
+          "75.0%",
+          "0.0 pp",
+          "✓"
+        ],
+        [
+          "仅 3 跳推理链",
+          "4 步后残差衰减",
+          "75.0%",
+          "73.3%",
+          "-1.7 pp",
+          "✗"
+        ],
+        [
+          "仅 3 跳推理链",
+          "4 步后残差停写 (β=0)",
+          "75.0%",
+          "75.0%",
+          "0.0 pp",
+          "✓"
+        ],
+        [
+          "仅 4 跳推理链",
+          "baseline · α=1 恒定",
+          "88.3%",
+          "75.0%",
+          "-13.3 pp",
+          "✗"
+        ],
+        [
+          "仅 4 跳推理链",
+          "全局 α=0.75",
+          "90.0%",
+          "75.0%",
+          "-15.0 pp",
+          "✗"
+        ],
+        [
+          "仅 4 跳推理链",
+          "4 步后 scale 衰减",
+          "88.3%",
+          "71.7%",
+          "-16.7 pp",
+          "✗"
+        ],
+        [
+          "仅 4 跳推理链",
+          "4 步后停写回 (scale=0)",
+          "88.3%",
+          "88.3%",
+          "0.0 pp",
+          "✓"
+        ],
+        [
+          "仅 4 跳推理链",
+          "4 步后残差衰减",
+          "88.3%",
+          "73.3%",
+          "-15.0 pp",
+          "✗"
+        ],
+        [
+          "仅 4 跳推理链",
+          "4 步后残差停写 (β=0)",
+          "88.3%",
+          "88.3%",
+          "0.0 pp",
+          "✓"
+        ],
+        [
+          "全量 [[prosqa|ProsQA]]",
+          "baseline · α=1 恒定",
+          "83.5%",
+          "72.8%",
+          "-10.7 pp",
+          "✗"
+        ],
+        [
+          "全量 [[prosqa|ProsQA]]",
+          "全局 α=0.75",
+          "81.6%",
+          "73.0%",
+          "-8.6 pp",
+          "✗"
+        ],
+        [
+          "全量 [[prosqa|ProsQA]]",
+          "4 步后 scale 衰减",
+          "83.5%",
+          "72.1%",
+          "-11.5 pp",
+          "✗"
+        ],
+        [
+          "全量 [[prosqa|ProsQA]]",
+          "4 步后停写回 (scale=0)",
+          "83.5%",
+          "82.6%",
+          "-1.0 pp",
+          "✗"
+        ],
+        [
+          "全量 [[prosqa|ProsQA]]",
+          "4 步后残差衰减",
+          "83.5%",
+          "74.2%",
+          "-9.3 pp",
+          "✗"
+        ],
+        [
+          "全量 [[prosqa|ProsQA]]",
+          "4 步后残差停写 (β=0)",
+          "83.5%",
+          "82.6%",
+          "-1.0 pp",
+          "✗"
+        ]
+      ]
+    },
+    "bullets": [
+      "问题：baseline（每步 α=1）全量 acc@3=83.8%、acc@4=83.5%、第 5 步 74.0%；post4_drop=-10.7pp（5–8 步最低 72.8%）。",
+      "指标：acc@4 衡量平台高度；post4_drop 为第 5–8 步相对第 4 步的最大跌幅（pp），越接近 0 越好。",
+      "推荐「4 步后停写回」：全量 acc@4 保持 83.5%，post4_drop -10.7pp → -1.0pp（改善 -9.7pp）。 停写回后第 5 步 83.3%，5–8 步最低 82.6%。",
+      "纯 4 跳子集（n=60）：停写回后第 5–8 步均为 88.3%，post4_drop=0，相对第 4 步零跌幅。",
+      "对照：全局 α=0.75 全量 acc@4 降至 81.6%，post4_drop=-8.6pp——略好于 baseline 但牺牲 acc@4。",
+      "对照：4 步后渐变衰减 post4_drop=-11.5pp，全量上略差于 baseline。",
+      "scale 停写与 residual 停写（β=0）在全量上等价（均 −1.0pp）；修 inference schedule，不能替代第八轮同深度训练。",
+      "hops_3：baseline 4 步后最多跌 -5.0pp；最优「4 步后停写回 (scale=0)」4 步后最多跌 0.0pp（改善 -5.0pp），5–8 步不低于第 4 步。"
+    ],
+    "recommendation": {
+      "slice_id": "full",
+      "slice_label": "全量 [[prosqa|ProsQA]]",
+      "strategy_id": "zero_after4",
+      "strategy_label": "4 步后停写回 (scale=0)",
+      "sample_count": 419,
+      "acc_at_4": 0.8353,
+      "post4_min": 0.8258,
+      "post4_drop_pp": -1.0,
+      "post4_range_pp": 1.0,
+      "post4_non_decreasing": false,
+      "max_accuracy": 0.8377,
+      "boundary": 3.0,
+      "feedback": {
+        "latent_feedback_scale": 1.0,
+        "latent_feedback_schedule": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "mechanism": "scale 模式：写回 embedding = hidden × α（与第七轮 α 扫描相同）。residual 模式：写回 = (1-β)·原 embedding + β·hidden；β=0 时额外步不再改 embedding。"
+  },
+  "feedback_playbook": {
+    "title": "四步以后如何不掉？完整行动指南",
+    "tldr": "两层目标：① 4 步以后别掉分；② 还要跑 5–8 步也不掉、甚至高分。 实验九已验证最快路径：inference 停写回 schedule [1,1,1,1,0,0,0,0]，全量 post4_drop -10.7pp→-1.0pp，acc@4 不变。 若要全量零波动或 5–8 步仍高分，需叠加按题深路由与同深度训练。",
+    "intro": "根因不是「第 4 步不够聪明」，而是 **第 4 步信息已够用，第 5 步起继续把 hidden 写回 embedding 等于在写对的草稿上反复涂改**（实验九）。 baseline 全量曲线：第 3 步 83.8% → 第 4 步 83.5%（平台）→ 第 5 步 74.0%（猛跌）→ 第 8 步 72.8%。",
+    "metrics_note": "**acc@4**：第 4 步[[accuracy|准确率]]，看平台高度有没有被牺牲。**post4_drop**：第 5–8 步最低值相对第 4 步的变化（pp）；负数=跌，正数=5–8 步反而高于第 4 步（常因第 4 步是谷底，见下文边角说明）。",
+    "result_table": {
+      "headers": [
+        "子集",
+        "baseline 4 步后",
+        "停写回后",
+        "acc@4"
+      ],
+      "rows": [
+        [
+          "全量 419 题",
+          "-10.7 pp",
+          "-1.0 pp",
+          "83.5%"
+        ],
+        [
+          "纯 4 跳 60 题",
+          "−13.3 pp",
+          "0 pp",
+          "88.3%"
+        ]
+      ]
+    },
+    "tiers": [
+      {
+        "id": "tier-inference",
+        "priority": "P1 · 立刻可用",
+        "title": "只改 inference：第 4 步后停写回",
+        "when": "不能/不想动训练，但要跑 5–8 步且别大幅掉分。",
+        "how": "加载现有 [[checkpoint|checkpoint_300]]，设 `latent_feedback_schedule = [1,1,1,1,0,0,0,0]`（前 4 步 α=1，第 5 步起 α=0）。代码：`apply_feedback_config(model, {...})`。",
+        "result": "全量：acc@4 保持 83.5%，post4_drop -10.7pp→-1.0pp（改善 -9.7pp）。 第 5 步 74.0%→83.3%；5–8 步最低 82.6%。 纯 4 跳子集：5–8 步全钉在 88.3%，零跌幅。",
+        "limit": "全量混测（3 跳+4 跳混合）下 5–8 步仍可能有约 1pp 波动（如第 7 步 82.6%）——题深不同，同一套 5–8 步无法同时最优。"
+      },
+      {
+        "id": "tier-usage",
+        "priority": "P2 · 零训练",
+        "title": "别硬跑 5–8 步：按题深用够步数即可",
+        "when": "目标只是「别掉分」，不是「必须跑满 8 步」。",
+        "how": "混合 [[prosqa|ProsQA]] 默认 **3 步**（峰值约 90.0%）；已知 4 跳题用 **4 步**（纯 4 跳子集峰值约 88.3%）。3–4 步已到顶就不要加到 5–8 步。",
+        "result": "避开「想过了会摔下来」的沟，比修 5–8 步曲线更省事。",
+        "limit": "若业务硬性要求统一跑 8 步，需用 P1 或 P3/P4。"
+      },
+      {
+        "id": "tier-data",
+        "priority": "P3 · 改数据/路由",
+        "title": "按跳数路由 + 把题深推到目标步数",
+        "when": "要全量也接近 0 波动，或希望 5–8 步「有意义」。",
+        "how": "① **路由**：3 跳题走 3–4 步 schedule，4 跳题走 4 步 + 停写回。② **推题深**：若 5–8 步都要有用，需 [[prosqa-extend|ProsQA 图延长]] 到 5–8 跳（实验五–八三条件），不能只混原生 3/4 跳题。③ 训练/评测格式、监督方式保持一致（实验四）。",
+        "result": "消除混测带来的 ~1pp 波动；5–8 步对 [[checkpoint|checkpoint]] 才有真实搜索任务。",
+        "limit": "只改数据不重训，5–8 步仍难「变更好」，只能「少坏事」。"
+      },
+      {
+        "id": "tier-train",
+        "priority": "P4 · 改训练",
+        "title": "训练与 inference schedule 对齐 + 同深度微调",
+        "when": "允许微调/重训，要 5–8 步稳定且 acc 仍高。",
+        "how": "① **训练即用停写回**：`[1,1,1,1,0,0,0,0]`，让模型学会「多余 [[latent-steps|latent]]步不改 embedding 也能答对」。② **Curriculum**：3 跳→4 跳→4 跳+5–8 latent（停写回），loss 仍对最终答案。③ **同深度训练**：题深到 d 时，[[checkpoint|checkpoint]] 须在 d 步附近训过（实验八：7 跳未同深度训时 acc@7 仅 72%）。",
+        "result": "从根上减少「第 4 步后写回毁表示」；d 步附近 [[acc-at-depth|acc@d]] 与报 [[boundary|边界]] 可双高。",
+        "limit": "算力与数据准备成本高于 P1。"
+      },
+      {
+        "id": "tier-model",
+        "priority": "P5 · 改模型",
+        "title": "可学习/按题深门控的 writeback schedule",
+        "when": "长期产品化，需自动适配不同题深。",
+        "how": "在 `_mix_feedback`（scale / residual）上：可学习 per-step α；或检测到[[reasoning-hops|推理跳数]] d 后在第 d 步后自动 α=0。训练与推理共用同一门控逻辑。",
+        "result": "根本解：第 d 步后自动停写回，而非固定 4 步。",
+        "limit": "需重新设计与训练，暂无本轮实测数。"
+      }
+    ],
+    "avoid_table": {
+      "headers": [
+        "做法",
+        "全量 post4_drop / acc@4",
+        "结论"
+      ],
+      "rows": [
+        [
+          "baseline · 每步 α=1",
+          "-10.7 pp · acc@4 83.5%",
+          "4 步后继续写回 → 系统性下跌"
+        ],
+        [
+          "全局 α=0.75",
+          "-8.6 pp · acc@4 81.6%",
+          "acc@4 牺牲，跌势仍在"
+        ],
+        [
+          "4 步后渐变衰减",
+          "-11.5 pp",
+          "比 baseline 更差"
+        ]
+      ]
+    },
+    "edge_case": "表格里可能出现 **post4_drop 为正**（如「仅 3 跳 + 全局 α=0.75」+6.7 pp）：因为第 4 步是曲线谷底（66.7%），5–8 步（73% 左右）相对它「反弹」，但仍远低于第 3 步峰值（90.0%）。✓ 只表示 5–8 步没比第 4 步更低，**不等于策略更好**。",
+    "decision": [
+      "只要别掉分、能改 inference → **P1 停写回** `[1,1,1,1,0,0,0,0]`。",
+      "不必跑 5–8 步 → **P2 混合 3 步 / 4 跳 4 步**。",
+      "要全量也几乎 0 波动 → **P1 + P3 按跳数路由**。",
+      "要 5–8 步有用且高分 → **P3 推题深 + P4 同深度微调 + P1 schedule 对齐**。",
+      "长期自动适配 → **P5 按题深门控 writeback**。"
+    ],
+    "conclusion": "实验九回答：**掉分主因是写回添噪**；停写回是最稳 inference 处方（-10.7pp→-1.0pp，acc@4 不变）。在「什么都能改」的前提下：**停写回 + 按题深路由 + 同深度训练** 是「4 步以后不掉、还要多步仍高分」的完整组合。"
+  },
+  "auto_submit": {
+    "title": "实验十 · 无标签自动配参（通解验证）",
+    "tldr": "通解 auto_route 全量 93.1%（+9.3 pp vs fixed_3）；oracle 单步上界 n=3 仅 83.8%。",
+    "lead": "对照 6 种 inference 策略 × 全量 ProsQA。通解 = 每题 d = max(BFS(root→候选1), BFS(root→候选2))，n_latent = d；不扫准确率曲线、不用标准答案。",
+    "table": {
+      "headers": [
+        "策略",
+        "准确率",
+        "正确/总数"
+      ],
+      "rows": [
+        [
+          "fixed_3 · 全员 3 步",
+          "83.8%",
+          "351/419"
+        ],
+        [
+          "fixed_4 · 全员 4 步",
+          "83.5%",
+          "350/419"
+        ],
+        [
+          "fallback_zero4 · 8 步 + 4 步后停写回",
+          "83.3%",
+          "349/419"
+        ],
+        [
+          "auto_route · 通解（按题 BFS 路由）",
+          "93.1%",
+          "390/419"
+        ],
+        [
+          "auto_route_zero · 通解 + schedule",
+          "92.8%",
+          "389/419"
+        ],
+        [
+          "oracle_hop · 结构金标准",
+          "93.1%",
+          "390/419"
+        ]
+      ]
+    },
+    "recipe": {
+      "title": "一次提交配方（ProsQA / 图可达性）",
+      "steps": [
+        "对每题：d = max(BFS(root→候选1), BFS(root→候选2))",
+        "n_latent = d，α=1（默认写回）",
+        "结构未知时兜底：n=8 + schedule [1,1,1,1,0,0,0,0]"
+      ],
+      "code": "scripts/run_auto_submit_experiment.py · apply_feedback_config"
+    },
+    "bullets": [
+      "数据集：全量 419 题（202 条 3 跳 + 217 条 4 跳），无需标签即可从题面算 d。",
+      "fixed_3 仅 83.8%：4 跳题被强制 3 步 latent，信息不够；fixed_4 仅 83.5%：3 跳题多走一步添噪。",
+      "auto_route 93.1%：3 跳题走 3 步、4 跳题走 4 步；比 fixed_3 高 9.3 pp。",
+      "auto_route 与 oracle_hop 完全一致（93.1%）——盲算 BFS 深度 = 真实 [[reasoning-hops|推理跳数]]。",
+      "oracle 单步上界（需标签扫 1–8 步）：最优 n=3 → 83.8%；auto_route 高于该上界，因混测不存在单一全局最优步数。",
+      "auto_route_zero 92.8%：略低于 auto_route 1 题；混测下直接 n=d 更简单。",
+      "实验九修「步数给多了别跌」；实验十修「步数给对」——混测要先路由，再谈 schedule。"
+    ],
+    "law": "混测真最优 = 按题 [[reasoning-hops|推理深度]] 路由，不是全员同一 [[boundary|边界]]。第九轮 schedule 防 overshoot；第十轮 BFS 路由给对 depth。"
+  },
+  "adaptive_stop": {
+    "title": "实验十一–五十五 · 自适应停步（模型自停）",
+    "tldr": "45 线自停探索：盲部署 94.6% · 前缀平台 94.0% · teacher 可行 95.2% · 基线 auto_route 92.9%",
+    "lead": "在实验十「按题 BFS 给 depth」之后，追问模型能否在推理过程中自己决定何时停。共 45 条实验线（5 条基础 + 40 条并行/track），统一在 test 168 题上对比 fixed_3、auto_route 与 oracle。",
+    "table": {
+      "headers": [
+        "实验",
+        "方向",
+        "答题 acc",
+        "timing",
+        "判定"
+      ],
+      "rows": [
+        [
+          "实验11",
+          "train 集：首次答对步作 stop 标签 + lat",
+          "76.2%",
+          "16.5%",
+          "未可行"
+        ],
+        [
+          "实验12",
+          "train 80/20 切 val；dropout+we",
+          "65.5%",
+          "28.1%",
+          "未可行"
+        ],
+        [
+          "实验13",
+          "RichStopHead：hidden+step+ans",
+          "75.6%",
+          "23.8%",
+          "未可行"
+        ],
+        [
+          "实验14",
+          "RichStopHead 以 is_correct 为标",
+          "88.7%",
+          "31.1%",
+          "未可行"
+        ],
+        [
+          "实验15",
+          "解冻 Coconut 最后 2 层，与 RichStop",
+          "80.4%",
+          "35.2%",
+          "未可行"
+        ],
+        [
+          "实验16",
+          "结构通解 + 收敛检测",
+          "84.5%",
+          "0.0%",
+          "未可行"
+        ],
+        [
+          "实验17",
+          "结构路由 + 学习残差",
+          "51.2%",
+          "22.6%",
+          "未可行"
+        ],
+        [
+          "实验18",
+          "直接优化停步时机",
+          "64.9%",
+          "18.9%",
+          "未可行"
+        ],
+        [
+          "实验19",
+          "轨迹收敛信号",
+          "76.8%",
+          "0.0%",
+          "未可行"
+        ],
+        [
+          "实验20",
+          "结构路由 + 学习停步组合",
+          "93.5%",
+          "26.2%",
+          "未可行"
+        ],
+        [
+          "实验21",
+          "Exp15 后续 · 结构下界补 acc",
+          "3.0%",
+          "0.0%",
+          "未可行"
+        ],
+        [
+          "实验22",
+          "Exp20 后续 · timing 校准",
+          "93.5%",
+          "26.2%",
+          "未可行"
+        ],
+        [
+          "实验23",
+          "acc 与 timing 折中",
+          "94.0%",
+          "28.1%",
+          "未可行"
+        ],
+        [
+          "实验24",
+          "结构 + 首次答对启发式",
+          "94.6%",
+          "28.7%",
+          "未可行"
+        ],
+        [
+          "实验25",
+          "Exp24·cap d",
+          "94.0%",
+          "28.1%",
+          "未可行"
+        ],
+        [
+          "实验26",
+          "按跳数拆分评估",
+          "94.6%",
+          "28.7%",
+          "未可行"
+        ],
+        [
+          "实验27",
+          "分跳数 cap 策略",
+          "94.0%",
+          "28.1%",
+          "未可行"
+        ],
+        [
+          "实验28",
+          "放宽结构下界",
+          "95.2%",
+          "61.0%",
+          "可行"
+        ],
+        [
+          "实验29",
+          "4跳专项 soft floor",
+          "95.2%",
+          "53.7%",
+          "可行"
+        ],
+        [
+          "实验30",
+          "分跳数启发式+学习",
+          "94.6%",
+          "28.7%",
+          "未可行"
+        ],
+        [
+          "实验31",
+          "结构→预算·单次",
+          "94.0%",
+          "28.1%",
+          "未可行"
+        ],
+        [
+          "实验32",
+          "学习预算·单次",
+          "87.5%",
+          "38.4%",
+          "未可行"
+        ],
+        [
+          "实验33",
+          "结构+残差·单次",
+          "94.0%",
+          "28.1%",
+          "未可行"
+        ],
+        [
+          "实验34",
+          "单次推理上界",
+          "88.1%",
+          "43.9%",
+          "未可行"
+        ]
+      ]
+    },
+    "table_note": "完整 45 线见实验室 adaptive-stop 总览；上表列出代表性结果。",
+    "bullets": [
+      "可行判定：test 答题 acc ≥ fixed_3（86.3%）且停步时机 stop_timing_acc ≥ 50%。",
+      "test 切分 168 题 · fixed_3 86.3% · auto_route 92.9% · oracle 97.6%。",
+      "训练自停（11–15）：均未可行；Exp14 correctness_stop 88.7% 为早期最好。",
+      "并行线（16–30）盲部署最优：实验24 94.6%（timing 28.7%）。",
+      "teacher 可行线：实验 28、29、35、42，最高 95.2%（timing 61.0%）。",
+      "前缀/upfront（31–52）平台：实验31 94.0%（timing 28.1%）。",
+      "在线自停（53–55）：逐步 head∨稳定/收敛；全量结果见实验室 G 类。",
+      "部署建议：无标签仍用 auto_route；自停线可研究 timing，但尚未替代 BFS 路由。"
+    ],
+    "law": "ProsQA 混测下，[[auto-route|auto_route]] 仍是无标签强 baseline；自停要同时 beat 86.3% 答题与 50% timing 才算 [[trainable-stop-feasible|可行]]。",
+    "feasible_track_ids": [
+      28,
+      29,
+      35,
+      42
+    ],
+    "best_blind_track": 24,
+    "best_upfront_track": 31
+  },
+  "gpu_phase": {
+    "title": "GPU Phase 16–20 · 全量定稿与 timing 天花板",
+    "tldr": "deployable_mvp ✅（knn 92.6%）· timing 37.0% / 上限 43.9% · late_stop 57.4% · Phase 20 timing 36.8%",
+    "lead": "CPU 实验十一至五十五在 A800 上全量 419 题复验。Phase 17 定稿 deployable_mvp；Phase 18–19 证实 timing 瓶颈在 min_n 规则与 fc 分布，非训练不足。",
+    "proof_table": {
+      "headers": [
+        "证明层",
+        "通过",
+        "说明"
+      ],
+      "rows": [
+        [
+          "1_必要性",
+          "✅",
+          "M3 救回0.0% 搞砸24.4%"
+        ],
+        [
+          "2_可学习",
+          "✅",
+          "M2 acc=87.5%"
+        ],
+        [
+          "3_min_n突破",
+          "✅",
+          "全量 timing 37.0% / test 39.0%"
+        ],
+        [
+          "4_timing50",
+          "❌",
+          "stretch goal；head-only 天花板 ~39%"
+        ],
+        [
+          "5_deployable_mvp",
+          "✅",
+          "推荐 knn_min3_full acc 92.6%"
+        ]
+      ]
+    },
+    "phase_table": {
+      "headers": [
+        "阶段",
+        "方案",
+        "acc",
+        "timing",
+        "备注"
+      ],
+      "rows": [
+        [
+          "Phase 17 定稿",
+          "knn_min3_full",
+          "92.6%",
+          "29.4%",
+          "deployable_mvp ✅"
+        ],
+        [
+          "Phase 17",
+          "min3_best_timing",
+          "86.4%",
+          "37.0%",
+          "timing 最优"
+        ],
+        [
+          "Phase 18",
+          "w3_fc_long",
+          "86.2%",
+          "36.8%",
+          "联合/写回未破"
+        ],
+        [
+          "Phase 19",
+          "u1_patience_stop",
+          "86.2%",
+          "36.8%",
+          "换推理未破"
+        ],
+        [
+          "Phase 20",
+          "v2_writeback_infer",
+          "86.2%",
+          "36.8%",
+          "min_n=2 未破"
+        ]
+      ]
+    },
+    "failure_table": {
+      "headers": [
+        "失败类型",
+        "占比",
+        "含义"
+      ],
+      "rows": [
+        [
+          "early_stop（停太早）",
+          "5.4%",
+          "需 patience/延后"
+        ],
+        [
+          "late_stop（停太晚）",
+          "57.4%",
+          "min_n=3 硬拖 + fc<3"
+        ],
+        [
+          "never_fc（从未答对）",
+          "2.6%",
+          "少数"
+        ]
+      ]
+    },
+    "ceiling_insight": "min_n=3 理论 timing 上限约 44%；当前 37% 已达上限 84%。",
+    "bullets": [
+      "[[deployable-mvp|deployable_mvp]]：全量 acc≥86.3%、mean_n≤4.5、推理无 oracle、M3 必要性成立。",
+      "推荐部署：[[knn-min3|knn_min3_full]] min_n=3 thr=0.15，acc 92.6%，mean_n=3.37。",
+      "[[strict-feasible|strict_feasible]]：timing≥50% 未过；全量最好 37.0%（min_n=3, thr=0.35）。",
+      "timing 理论上限（min_n=3）：约 43.9%；当前达上限 84%。",
+      "失败主因：[[late-stop|late_stop]] 57.4%；56.1% 题 fc 在第 1–2 步。",
+      "Phase 20 已完成：min_n=2 最好 timing 36.8%，feasible_any=false。",
+      "[[hybrid-stop|hybrid]] 上界 97% 含 BFS/序贯，作性能参照；部署线用 M2+knn 盲停。"
+    ],
+    "law": "答对率维度已可部署（[[deployable-mvp|deployable_mvp]]）；停步时机维度卡在 [[min-n|min_n=3]] 算术上限——要破 timing 50% 需从 min_n 规则或写回层入手；Phase 20 min_n=2 已证伪。",
+    "phase20_pending": false
+  },
+  "cross_transfer": {
+    "title": "GPU Phase 32–41 · 跨集 transfer 与 deploy_spec_v7",
+    "tldr": "双轨：ProsQA 94.8% · 跨集 hybrid Δ +2.08 pp · OOD +7.44 pp · hurts 6",
+    "lead": "在 confidence_fallback 定稿后，验证 M2 fallback 栈对 53 个异构切片的 transfer 价值，经 collateral 守卫、combo 去 illusion、hybrid 路由迭代，Phase 39 升级 deploy_spec_v5（fixed_edges 证伪）。",
+    "router_table": {
+      "headers": [
+        "路由档",
+        "切片/参数",
+        "策略"
+      ],
+      "rows": [
+        [
+          "skip_transfer",
+          "push_ext7_from3, push_ext7_mixed, syn_chain_5_wide, v_diamond_5",
+          "main_only，不触发 fallback"
+        ],
+        [
+          "agreement_lock",
+          "mix_50_4, mix_75_4, push_ext5_from3, push_ext6_from4",
+          "主路径与 transfer 一致才采纳"
+        ],
+        [
+          "tri_zone",
+          "T_low=0.4 / T_mid=0.48",
+          "低置信→agreement；中置信→主路径；高置信→transfer"
+        ]
+      ]
+    },
+    "phase_table": {
+      "headers": [
+        "阶段",
+        "冠军策略",
+        "核心指标",
+        "备注"
+      ],
+      "rows": [
+        [
+          "Phase 32",
+          "t1_cross_dataset",
+          "+1.98 pp",
+          "53 切片管线打通"
+        ],
+        [
+          "Phase 34",
+          "tri_zone",
+          "+2.02 pp",
+          "collateral guard；agreement 修 in-dist"
+        ],
+        [
+          "Phase 36",
+          "tri_zone",
+          "dual_ok ✅",
+          "全切片 seed=99 锁定"
+        ],
+        [
+          "Phase 37",
+          "hybrid_router",
+          "+2.051 pp",
+          "优于 tri_zone；hurts 7→6"
+        ],
+        [
+          "Phase 38",
+          "deploy_spec_v4",
+          "dual_ok True",
+          "seed 审计 + 定稿"
+        ],
+        [
+          "Phase 39",
+          "hybrid_v2 / v5",
+          "1/4 seed dual_ok",
+          "fixed_edges 证伪；v2 @99 略优"
+        ],
+        [
+          "Phase 40",
+          "hybrid_v3",
+          "pooled dual_ok ✅",
+          "v3 strict deploy；v6 误锁 v5"
+        ],
+        [
+          "Phase 41",
+          "hybrid_v4",
+          "**3/4 dual_ok**",
+          "push_ext7 skip；deploy_spec_v7"
+        ],
+        [
+          "Phase 43",
+          "v8_final",
+          "PROJECT_COMPLETE",
+          "v4 默认 + v5 @99 增强"
+        ],
+        [
+          "Phase 44",
+          "失效补救",
+          "OOD 4/8 helps",
+          "tri_zone→skip→扫τ；通解详解 §十六"
+        ]
+      ]
+    },
+    "metric_table": {
+      "headers": [
+        "指标",
+        "数值",
+        "说明"
+      ],
+      "rows": [
+        [
+          "加权平均 Δ",
+          "+2.079 pp",
+          "53 切片"
+        ],
+        [
+          "in-dist Δ",
+          "+0.230 pp",
+          "同源切片不伤"
+        ],
+        [
+          "OOD Δ",
+          "+7.444 pp",
+          "未知分布增益"
+        ],
+        [
+          "hurts",
+          "6",
+          "transfer 伤害切片数"
+        ],
+        [
+          "ProsQA acc",
+          "94.8%",
+          "confidence_fallback τ=0.48"
+        ],
+        [
+          "seed dual_ok",
+          "hybrid 1/4",
+          "canonical seed=99"
+        ]
+      ]
+    },
+    "bullets": [
+      "同源 ProsQA：confidence_fallback τ=0.48，acc 94.8%。",
+      "跨集：hybrid_slice_router_v4，dual_ok=True @ seed=99。",
+      "hybrid 优于 tri_zone：hurts 6；syn_chain_5_wide skip_transfer 修复翻转。",
+      "push_ext6_from4 固定 −4 pp，各策略均无法救；属已知硬限。",
+      "跨集 dual_ok 目前仅在 seed=99 稳定；部署需固定 eval seed 或多 seed 聚合",
+      "Phase 39 完成：fixed_edges **证伪**（0/4）；hybrid v2 升级 v5 @ seed=99。",
+      "Phase 41 完成：v4 **3/4 dual_ok**；deploy_spec_v7；cross_absolute_final。",
+      "Phase 42 完成：v5 未破 3/4；deploy_spec_v8；cross_grand_final。",
+      "Phase 43 完成：**PROJECT_COMPLETE**；deploy_spec_v8_final 双档定稿。",
+      "Phase 44：通解 OOD 外推审计；失效补救 tri_zone→skip→扫τ；见通解详解 §十三–十六。"
+    ],
+    "law": "跨未知分布不能复用同源 τ——须按切片路由：hurt 切片 agreement_lock 或 skip_transfer，其余 tri_zone 三区门控。",
+    "project_status": "PROJECT_COMPLETE"
+  },
+  "cross_transfer_bundle": {
+    "project_status": "PROJECT_COMPLETE",
+    "deploy_spec_version": "v4",
+    "dual_ok": true,
+    "weighted_delta": 2.079
+  },
+  "gpu_phase_bundle": {
+    "deployable_mvp": true,
+    "primary": {
+      "name": "knn_min3_full",
+      "config": {
+        "threshold": 0.15,
+        "global_min_n": 3
+      },
+      "accuracy": 0.926,
+      "timing": 0.2941,
+      "mean_n": 3.37,
+      "deployable_acc": true,
+      "deployable_mvp": true
+    },
+    "phase20_pending": false
+  },
+  "adaptive_stop_bundle": {
+    "full_count": 45,
+    "baselines": {
+      "fixed_3": 0.8631,
+      "auto_route": 0.9286,
+      "oracle_first_correct": 0.9762
+    },
+    "feasible_track_ids": [
+      28,
+      29,
+      35,
+      42
+    ],
+    "online_pending": false
+  },
+  "essence": {
+    "title": "本质与普遍规律",
+    "core_mechanism": "[[coconut|Coconut]] 的「[[latent-steps|连续思维]]」不是自由联想，而是在潜空间里做并行 [[parallel-bfs|BFS]]：每增加 1 步 latent，就把[[search-frontier|搜索前沿]]再向外扩一层，把「根节点 k 步内可达的节点」编码成[[superposition|叠加态]]。因此最优步数由题目需要搜多深决定，而不是模型写死的常数。",
+    "universal_law": "最优 [[latent-steps|latent]] 步数 ≈ 任务最短 [[reasoning-hops|推理跳数]]（根→目标的 [[parallel-bfs|BFS]] 深度）。 跨 21 个子集，[[boundary|边界]]与平均跳数相关系数 [[correlation|r=0.543]]。",
+    "push_formula": "目标 [[boundary|边界]] c ≈ d 且 [[acc-at-depth|acc@d]] 高 ⇔ mean_hops ≈ d ∧ 构造 ∈ {真实 [[prosqa|ProsQA]], 3 跳基线 [[prosqa-extend|图延长]]} ∧ 延长层数 = d − 3（从三跳[[prosqa-extend|同质基线]]出发最稳）",
+    "push_conditions": [
+      {
+        "title": "① 题深真的到 d",
+        "text": "平均[[reasoning-hops|推理跳数]] ≈ 目标步数；图变宽、链不变深无效。",
+        "fail": "合成 6 跳人工链：3 步即 97.5%，[[boundary|边界]]仍报 3。"
+      },
+      {
+        "title": "② 分布仍像训练数据",
+        "text": "用真实 [[prosqa|ProsQA]] 图延长，保留边结构与 token 化方式。",
+        "fail": "稠密[[synthetic-chain|人造链]] 5–6 跳：[[accuracy|准确率]]≈0%，[[boundary|边界]]无意义。"
+      },
+      {
+        "title": "③ 从匹配的[[prosqa-extend|同质基线]]延长",
+        "text": "优先 3 跳基线 +1/+2 层，而非 4 跳基线再叠。",
+        "fail": "4 跳基线→5 跳：[[boundary|边界]]过冲到 7 步。"
+      }
+    ],
+    "push_ladder": {
+      "title": "[[boundary|边界]]上推对照表（实验六–八汇总）",
+      "headers": [
+        "目标 d",
+        "做法",
+        "报[[boundary|边界]]",
+        "峰值/[[acc-at-depth|acc@d]]",
+        "判定"
+      ],
+      "rows": [
+        [
+          "5",
+          "3 跳基线 → prosqa_extend 到 5 跳",
+          "5 步",
+          "100.0%",
+          "✓ 最干净（c=d 且 [[acc-at-depth|acc@d]] 双高）"
+        ],
+        [
+          "5",
+          "真实图延长 → 5 跳",
+          "5 步",
+          "96.0%",
+          "✓ 稳定对齐"
+        ],
+        [
+          "5",
+          "4 跳基线 → 延长 5 跳",
+          "7 步",
+          "100.0%",
+          "✗ 过冲"
+        ],
+        [
+          "6",
+          "3 跳基线 → 延长 6 跳",
+          "5 步",
+          "84.0% / 84.0%",
+          "△ acc@6=84%，报[[boundary|边界]]仍 5 步"
+        ],
+        [
+          "6",
+          "真实图延长 → 6 跳",
+          "9 步",
+          "96.0%",
+          "△ 峰值高，曲线平台致报数偏高"
+        ],
+        [
+          "6",
+          "混合延长 → 6 跳",
+          "9 步",
+          "96.0%",
+          "△ [[boundary|边界]]漂到 9"
+        ],
+        [
+          "7",
+          "3 跳同质 → 7 跳（第八轮）",
+          "4 步",
+          "acc@7=72.0%",
+          "✗ c≠d，性能跌"
+        ],
+        [
+          "7",
+          "混合基线 → 7 跳（对照）",
+          "5 步",
+          "acc@7=84.0%",
+          "△ 84% 仍非双高"
+        ],
+        [
+          "8",
+          "3 跳同质 → 8 跳（第八轮）",
+          "6 步",
+          "acc@8=52.0%",
+          "✗ 52%，需同深度训练"
+        ],
+        [
+          "5–6",
+          "只加长 [[synthetic-chain|合成链]] / [[graph-diameter|图直径]]↑",
+          "1–4 步",
+          "≈0%",
+          "✗ OOD 或题浅"
+        ]
+      ]
+    },
+    "push_antipatterns": [
+      "[[graph-diameter|图直径]]≥5 但平均跳数仍 3.7 → [[boundary|边界]]仍 4，宽图不等于深题。",
+      "超过最优点加步 universal 有害：5 步 74.0% < 3 步 83.8%。",
+      "只改 [[latent-feedback|模型数值]]（α/权重）：报[[boundary|边界]]可在 d 附近 ±1–2 步挪动，但 [[acc-at-depth|acc@d]] 常下降——不能替代上面三条件。",
+      "d≥6 时「检测[[boundary|边界]]」易失真：曲线 5–8 步平台 + 并列取少，报数可漂到 7–9。"
+    ],
+    "compare": {
+      "left": {
+        "label": "为什么常见 3–4 步",
+        "summary": "[[prosqa|ProsQA]] 419 题的有效推理深度就是 3–4 跳，与 [[[[checkpoint|checkpoint]]|[[checkpoint|checkpoint]]_300]] 的训练分布一致。",
+        "points": [
+          "第 3 步：[[search-frontier|搜索前沿]]「打开」，2→3 步全量跳涨 +50.4pp，大部分 3 跳题在此答对。",
+          "第 4 步：补全剩余 4 跳题的信息，3→4 步进入平台（-0.2pp）。",
+          "混测报 3 而非 4：3/4 步[[accuracy|准确率]]几乎相同（83.8% vs 83.5%），算法并列时取更少步数。",
+          "分开测更清楚：纯 3 跳→3 步，纯 4 跳→4 步。"
+        ]
+      },
+      "right": {
+        "label": "如何把[[boundary|边界]]推到 5–6 步甚至更高",
+        "summary": "[[boundary|边界]]可以上移，但必须同时满足「题真的够深」「[[distribution-match|分布匹配]]」「[[prosqa-extend|同质基线]]延长」——三者缺一即失败或过冲。",
+        "when_yes_label": "可行路径（实验验证）",
+        "when_no_label": "失败与反模式",
+        "when_yes": [
+          "3 跳基线 → 5 跳：[[boundary|边界]] 5 步、峰值 100.0%（第六轮，最可复现路径）。",
+          "真实图延长 → 5 跳：[[boundary|边界]] 5 步、峰值 96.0%（第五轮变体）。",
+          "3 跳基线 → 6 跳：峰值 84.0%，但报[[boundary|边界]] 5 步（能力部分迁移，数字不准）。"
+        ],
+        "when_no": [
+          "标准 419 题无原生 5–6 跳；[[graph-diameter|图直径]]≥5 的子集平均推理链仍只有 3.7 跳。",
+          "合成 6 跳人工链 3 步即 97.5%，不会随链长线性增步。",
+          "4 跳基线延长易过冲（→7 步）；混合 6 跳延长报 9 步。",
+          "只拧 α/权重或只加长 OOD 链：不能稳定 c≥7 且高 acc；更高步数需配合同深度训练。"
+        ]
+      }
+    },
+    "laws": [
+      {
+        "id": "depth",
+        "title": "[[boundary|边界]]跟题深走",
+        "text": "换子集[[boundary|边界]]跟着变：3 跳→3 步，4 跳→4 步，真实延长 5 跳→5 步。"
+      },
+      {
+        "id": "jump_peak",
+        "title": "跳涨 ≠ 完成",
+        "text": "2→3 步几乎总是跳涨（前沿打开），但「任务完成」可能在 3 或 4——这是两个不同现象。"
+      },
+      {
+        "id": "mix",
+        "title": "混合决定报几",
+        "text": "3 跳题与 4 跳题混在一起时，全局峰值取决于两类题的比例及 3/4 步各自的[[accuracy|准确率]]。"
+      },
+      {
+        "id": "saturation",
+        "title": "加步有上限",
+        "text": "信息在 3–4 步已编码完毕；继续加 [[latent-steps|latent]]不增信息，只引入噪声，[[accuracy|准确率]]下降。"
+      },
+      {
+        "id": "distribution",
+        "title": "分布决定能否抬高",
+        "text": "要把[[boundary|边界]]稳定推到 5–6，需要匹配深度的训练/测试分布；光加长[[synthetic-chain|人造链]]无效。"
+      },
+      {
+        "id": "push_triple",
+        "title": "上推三条件",
+        "text": "题深到 d + [[prosqa|ProsQA]] 图延长 + 3 跳[[prosqa-extend|同质基线]]——缺一则过冲、OOD 或[[boundary|边界]]数字失真。"
+      }
+    ],
+    "conclusion": "本质：[[latent-steps|latent]]步数 = 潜空间里的并行 [[parallel-bfs|BFS]] 深度。实用上推到 5 步：3 跳基线 prosqa_extend → 5 跳（[[boundary|边界]] 5，100.0%）。推到 6 步：能力可部分迁移，但报[[boundary|边界]]不可靠；7 步及以上需重新训练，不能只改测试或 inference 参数。"
+  },
+  "mechanism_analysis": {
+    "title": "为什么是 3–4 步？论文机制与实验证据",
+    "tldr": "[[coconut|Coconut]] 的每一步 [[latent-steps|latent]]大致相当于在图上并行 [[parallel-bfs|BFS]] 再扩一层[[search-frontier|搜索前沿]]，而 [[prosqa|ProsQA]] 上题目真正需要搜的深度就是 3–4 跳，所以最优[[latent-steps|[[latent-steps|连续思维]]步数]]自然落在这个区间——再往上没有新信息，只有干扰。",
+    "lead": "[[boundary|边界]]集中在 3–4 步，不是因为模型「只能想 3–4 步」，而是因为 [[prosqa|ProsQA]] 上的有效搜索深度就是 3–4 层，而 [[coconut|Coconut]] 的每一步 [[latent-steps|latent]]在机制上大致对应一层并行 [[parallel-bfs|BFS]] 扩展。",
+    "blocks": [
+      {
+        "heading": "1. 论文机制：每步 [[latent-steps|latent]]≈ 一层并行 [[parallel-bfs|BFS]]",
+        "paragraphs": [
+          "[[neurips-paper|Reasoning by Superposition]]（[[neurips-paper|NeurIPS 2025]]）证明：直径为 D 的有向图上，D 步[[latent-steps|连续思维]]足以完成可达性搜索。第 c 步的潜向量是所有「根节点 c 步内可达节点」的归一化[[superposition|叠加态]]；注意力从当前[[search-frontier|搜索前沿]]向外扩边，等价于并行 [[parallel-bfs|BFS]]。",
+          "论文 Section 5.3 在训练后的 [[coconut|Coconut]] 上验证：第 2 层注意力高度集中在 Reachable 边上，对 [[search-[[search-frontier|frontier]]|Fronti]]er（恰好距根 i 步的节点）有额外偏置；[[latent-steps|latent]]向量与 i 跳内可达节点的相似度显著更高。训练数据也明确限定为需要 3–4 跳推理的 [[prosqa|ProsQA]] 子集。"
+        ]
+      },
+      {
+        "heading": "2. 最强证据：分开测，[[boundary|边界]]就跟跳数走",
+        "paragraphs": [
+          "若[[boundary|边界]]是模型硬编码的常数，换子集不应系统变化。实验二在相同 [[checkpoint|checkpoint]] 下控制变量，结果非常干净："
+        ],
+        "table": {
+          "headers": [
+            "子集",
+            "[[reasoning-hops|推理跳数]]",
+            "检测[[boundary|边界]]",
+            "峰值[[accuracy|准确率]]"
+          ],
+          "rows": [
+            [
+              "仅 3 跳",
+              "3",
+              "3 步",
+              "90.0%"
+            ],
+            [
+              "仅 4 跳",
+              "4",
+              "4 步",
+              "88.3%"
+            ],
+            [
+              "[[graph-diameter|图直径]] = 3",
+              "3",
+              "3 步",
+              "90.0%"
+            ],
+            [
+              "[[graph-diameter|图直径]] = 4",
+              "3.9",
+              "4 步",
+              "91.7%"
+            ]
+          ]
+        },
+        "footnote": "10 个子集[[boundary|边界]]全部落在 3–4 步。[[boundary|边界]]随「需要搜多深」变，而非固定常数。"
+      },
+      {
+        "heading": "3. 混合测为何常报 3 步（而非 4 步）",
+        "paragraphs": [
+          "全量 419 题：202 条 3 跳 + 217 条 4 跳，根→目标 [[parallel-bfs|BFS]] 距离众数 4 （均值 3.518）。按论文，第 3 步覆盖 3 跳内可达集，第 4 步覆盖 4 跳内可达集。"
+        ],
+        "bullets": [
+          "第 3 步是全局跳涨点：2→3 步 +50.4pp，[[search-frontier|搜索前沿]]首次大幅展开（10 个子集最大涨幅均出现在 2→3 步）。",
+          "3→4 步进入平台：-0.2pp，3 跳题已[[saturation|饱和]]，4 跳题在此补足。",
+          "算法并列取少：3 步 83.8% vs 4 步 83.5%，差距仅 0.2pp，故[[mixed-eval|混合评估]]报 3 步；纯 4 跳子集仍报 4 步。"
+        ],
+        "table": {
+          "headers": [
+            "步数",
+            "全量[[accuracy|准确率]]",
+            "相对上一步"
+          ],
+          "rows": [
+            [
+              "1",
+              "42.0%",
+              "—"
+            ],
+            [
+              "2",
+              "33.4%",
+              "—"
+            ],
+            [
+              "3",
+              "83.8%",
+              "+50.4pp"
+            ],
+            [
+              "4",
+              "83.5%",
+              "-0.2pp"
+            ],
+            [
+              "5",
+              "74.0%",
+              "-9.5pp"
+            ],
+            [
+              "8",
+              "72.8%",
+              "—"
+            ]
+          ]
+        }
+      },
+      {
+        "heading": "4. 为什么很难到 5–6 步？",
+        "bullets": [
+          "题目太浅（数据上界）：419 题最长 4 跳。「[[graph-diameter|图直径]]≥5」子集平均跳数仍仅 3.727，[[boundary|边界]] 4 步（95.5%）。 图宽不等于推理链深，[[boundary|边界]]跟最短推理路径长度走。",
+          "训练分布（模型习惯）：[[[[checkpoint|checkpoint]]|[[checkpoint|checkpoint]]_300]] 在 3–4 跳 [[prosqa|ProsQA]] 上训练。合成 6 跳链 3 步即 97.5%，扫到 10 步无更高——模型不会随题长线性加步。",
+          "加步有害（机制上界）：5 步起[[accuracy|准确率]]下降（74.0%），所需可达性信息在 3–4 步已编码，继续加步重复扩展前沿、引入噪声。"
+        ]
+      }
+    ],
+    "caveats": {
+      "heading": "5. 何时会偏离 3–4？（划定结论适用范围）",
+      "rows": [
+        [
+          "简单人工 5/6 跳链",
+          "5.0%",
+          "脱离训练分布，[[boundary|边界]]无意义"
+        ],
+        [
+          "真实 [[prosqa|ProsQA]] 图延长 → 5 跳",
+          "96.0%",
+          "[[boundary|边界]] 5 步，深度可上移"
+        ],
+        [
+          "符号监督（非索引）",
+          "0%",
+          "评估格式与训练不一致，指标失效"
+        ]
+      ]
+    },
+    "causal_chain": [
+      "[[prosqa|ProsQA]] 题深 3–4 跳",
+      "论文：每步 [[latent-steps|latent]]≈ 并行 [[parallel-bfs|BFS]] 扩一层前沿",
+      "2→3 步跳涨 +50.4pp（前沿覆盖大部分目标）",
+      "3–4 步平台（3 跳[[saturation|饱和]] / 4 跳到顶）",
+      "[[mixed-eval|混合评估]] + 并列取少 → 报 3；纯 4 跳 → 报 4",
+      "5+ 步[[saturation|[[superposition|叠加态]][[saturation|饱和]]]]/扰动 → [[accuracy|准确率]]降至 74.0%",
+      "无原生 5–6 跳 + 训练在 3–4 跳 → 难稳定推到 5–6"
+    ],
+    "evidence_tiers": [
+      {
+        "tier": "很强",
+        "basis": "纯 3 跳→3、纯 4 跳→4；直径 3→3、直径 4→4",
+        "conclusion": "[[boundary|边界]]随搜索深度变，非固定常数"
+      },
+      {
+        "tier": "很强",
+        "basis": "全量曲线 2→3 跳涨 + 5 步后下降",
+        "conclusion": "存在明确最优点，加步过多有害"
+      },
+      {
+        "tier": "强",
+        "basis": "论文 Lemma 2 + Section 5.3 注意力/[[search-frontier|frontier]] 分析",
+        "conclusion": "每步 [[latent-steps|latent]]确在做 [[parallel-bfs|BFS]] 式叠加搜索"
+      },
+      {
+        "tier": "中等",
+        "basis": "混合集报 3 而非 4",
+        "conclusion": "需结合并列规则与子集组成解释"
+      },
+      {
+        "tier": "中等",
+        "basis": "真实图延长 5 跳 → 5 步[[boundary|边界]]",
+        "conclusion": "深度可上移，但需[[distribution-match|分布匹配]]"
+      },
+      {
+        "tier": "弱",
+        "basis": "简单合成链、小样本子集",
+        "conclusion": "只说明 OOD/噪声，不能支撑主结论"
+      }
+    ],
+    "conclusion": "[[coconut|Coconut]] 的 [[latent-steps|latent]]步数在机制上对应 [[parallel-bfs|BFS]] 搜索深度；[[prosqa|ProsQA]] 与 [[[[checkpoint|checkpoint]]|[[checkpoint|checkpoint]]_300]] 的有效推理深度是 3–4 跳——3 步打开[[search-frontier|搜索前沿]]，4 步覆盖剩余 4 跳题；再往上没有新信息只有干扰，故最优点集中在此区间。"
+  },
+  "extreme_cases": {
+    "title": "极端[[accuracy|准确率]]说明（0% 与接近 0%）",
+    "tldr": "最高[[accuracy|准确率]]为 0 或接近 0，不是实验故障，而是模型在这些设置下一道都没判对：要么评估方式与训练不一致，要么数据分布与 [[[[checkpoint|checkpoint]]|[[checkpoint|checkpoint]]_300]] 见过的 [[prosqa|ProsQA]] 差太远。",
+    "definition": "[[accuracy|准确率]] = 模型生成答案与标准答案的字符串完全匹配（索引或符号名，依 eval_profile 而定）。correct=0 即 0%；且多数极端子集从 1 步扫到 10 步均为平线，加 [[latent-steps|latent]]步数无法挽救。",
+    "categories": [
+      {
+        "id": "symbol_supervision",
+        "tag": "格式不匹配",
+        "title": "1. 评估格式与训练不一致（符号监督）",
+        "why": "[[coconut|Coconut]] 在 [[prosqa|ProsQA]] 上训练时学的是输出节点索引（如 0、3、4）。符号监督把期望答案改成类型名字符串（如 romterpus），模型仍输出数字，判题端字符串完全匹配永远失败——与 [[latent-steps|latent]]步数无关，1–10 步通常整条曲线贴地。此类子集的[[boundary|边界]]数字没有参考价值。",
+        "contrast": "同一「真实图延长 6 跳」数据，索引监督峰值 96.0%，符号监督峰值 0.0%。"
+      },
+      {
+        "id": "ood_synthetic",
+        "tag": "分布 OOD",
+        "title": "2. 人工构造图脱离训练分布",
+        "why": "纯链、稠密链、树形等变体使用随机音节实体名和简化拓扑，与 [[[[checkpoint|checkpoint]]|[[checkpoint|checkpoint]]_300]] 见过的真实 [[prosqa|ProsQA]] 图在 token 化、边表格式、命名习惯上差异很大。模型未在此分布上训练，推理接口无法迁移，25 题可能全部判错。",
+        "contrast": "同样 3 跳深度——真实 [[prosqa|ProsQA]] 基线 88.0%，人工纯链 3 跳 0.0%。"
+      },
+      {
+        "id": "near_zero",
+        "tag": "接近 0%",
+        "title": "3. 接近 0%（非严格零，但模型基本不会做）",
+        "why": "实验三的部分合成 5/6 跳链峰值仅 2.5%–5%：模型偶尔蒙对 1–2 题，但绝大多数步数仍接近全错。说明不是「步数不够」，而是分布不匹配导致能力失效；此时讨论「[[boundary|边界]]在第几步」意义不大。",
+        "contrast": null
+      }
+    ],
+    "rows": [
+      {
+        "label": "合成 5 跳 + 干扰分支",
+        "experiment": "实验三",
+        "max_accuracy": 0.025,
+        "boundary": 3.0,
+        "mean_hops": 5.0,
+        "construction": null,
+        "supervision": "索引监督",
+        "category": "near_zero"
+      },
+      {
+        "label": "合成纯 5 跳链",
+        "experiment": "实验三",
+        "max_accuracy": 0.05,
+        "boundary": 4.0,
+        "mean_hops": 5.0,
+        "construction": null,
+        "supervision": "索引监督",
+        "category": "near_zero"
+      },
+      {
+        "label": "树形 5 跳",
+        "experiment": "实验四",
+        "max_accuracy": 0.0,
+        "boundary": 1.0,
+        "mean_hops": 5.0,
+        "construction": "tree",
+        "supervision": "索引监督",
+        "category": "ood_synthetic"
+      },
+      {
+        "label": "稠密链 5 跳",
+        "experiment": "实验四",
+        "max_accuracy": 0.0,
+        "boundary": 1.0,
+        "mean_hops": 5.0,
+        "construction": "dense_chain",
+        "supervision": "索引监督",
+        "category": "ood_synthetic"
+      },
+      {
+        "label": "纯链 3 跳",
+        "experiment": "实验四",
+        "max_accuracy": 0.0,
+        "boundary": 1.0,
+        "mean_hops": 3.0,
+        "construction": "pure_chain",
+        "supervision": "索引监督",
+        "category": "ood_synthetic"
+      },
+      {
+        "label": "延长 6 跳 · 符号监督",
+        "experiment": "实验四",
+        "max_accuracy": 0.0,
+        "boundary": 1.0,
+        "mean_hops": 6.0,
+        "construction": "prosqa_extend",
+        "supervision": "符号监督",
+        "category": "symbol_supervision"
+      },
+      {
+        "label": "真实 4 跳 · 符号监督",
+        "experiment": "实验四",
+        "max_accuracy": 0.0,
+        "boundary": 1.0,
+        "mean_hops": 4.0,
+        "construction": "real",
+        "supervision": "符号监督",
+        "category": "symbol_supervision"
+      },
+      {
+        "label": "稠密 6 跳 · 符号监督",
+        "experiment": "实验四",
+        "max_accuracy": 0.0,
+        "boundary": 1.0,
+        "mean_hops": 6.0,
+        "construction": "dense_chain",
+        "supervision": "符号监督",
+        "category": "symbol_supervision"
+      }
+    ],
+    "misreadings": [
+      "0% 不代表模型没有输出，而是输出格式或内容从未匹配标准答案。",
+      "极端子集上「[[boundary|边界]] = 1 步」是算法在「全零并列时取最少步数」的规则产物，无物理意义。",
+      "这些极端结果是刻意设计的对照实验，用来说明[[distribution-match|分布匹配]]与评估一致性的重要性，不推翻 [[prosqa|ProsQA]] 主结论。"
+    ],
+    "takeaway": "解读[[boundary|边界]]时先问：是否索引监督？是否真实 [[prosqa|ProsQA]] 或真实延长图？若两项都是，80%–96% 的正常子集才支撑 3–4 步结论；符号监督与人工 OOD 图的 0% 只说明「此设置下指标失效」，不能用来否定主结论。"
+  },
+  "why_analysis": {
+    "summary": "边界为 3 步（最高准确率 83.8%）。 最大增益出现在 3 步（+50.4pp）。 与数据集最常见推理跳数 4 步对照，符合「连续思维步数 ≈ BFS 深度」的论文预期。",
+    "reasons": [
+      {
+        "title": "最大准确率跃升",
+        "detail": "从 2 步到 3 步，准确率提升 +50.4 个百分点，说明模型在此步完成了关键的 BFS 搜索前沿扩展。"
+      },
+      {
+        "title": "与推理跳数对照",
+        "detail": "边界 3 步与最常见推理跳数 4 相差 -1，接近论文结论：连续思维步数应≈图上的 BFS 深度。"
+      },
+      {
+        "title": "与根→目标 BFS 距离对照",
+        "detail": "根节点到目标的最短路径众数为 4 步（均值 3.518）。论文（Reasoning by Superposition）指出：D 步连续思维等价于在图上并行 BFS 扩展 D 层搜索前沿；边界落在 3 步，说明模型大致完成了所需深度的可达性搜索。"
+      },
+      {
+        "title": "峰值后波动",
+        "detail": "3 步后准确率仍有波动（最大回落 9.5 个百分点），边界取全局最高准确率对应的最少步数。"
+      },
+      {
+        "title": "叠加态推理机制（论文）",
+        "detail": "Coconut 每一步连续思维在潜空间维护多个搜索前沿的叠加态（并行 BFS）。步数不足时前沿未覆盖目标（准确率仅 83.8% 峰值）；步数达到 3 时叠加态已覆盖最优可达性信息，继续增加步数不会提高答案质量。"
+      }
+    ],
+    "marginal_gains": [
+      {
+        "n_latent": 1,
+        "accuracy": 0.42,
+        "delta_from_prev": null,
+        "delta_pct_points": null
+      },
+      {
+        "n_latent": 2,
+        "accuracy": 0.3341,
+        "delta_from_prev": -0.0859,
+        "delta_pct_points": -8.6
+      },
+      {
+        "n_latent": 3,
+        "accuracy": 0.8377,
+        "delta_from_prev": 0.5036,
+        "delta_pct_points": 50.4
+      },
+      {
+        "n_latent": 4,
+        "accuracy": 0.8353,
+        "delta_from_prev": -0.0024,
+        "delta_pct_points": -0.2
+      },
+      {
+        "n_latent": 5,
+        "accuracy": 0.7399,
+        "delta_from_prev": -0.0954,
+        "delta_pct_points": -9.5
+      },
+      {
+        "n_latent": 6,
+        "accuracy": 0.7351,
+        "delta_from_prev": -0.0048,
+        "delta_pct_points": -0.5
+      },
+      {
+        "n_latent": 7,
+        "accuracy": 0.7375,
+        "delta_from_prev": 0.0024,
+        "delta_pct_points": 0.2
+      },
+      {
+        "n_latent": 8,
+        "accuracy": 0.7279,
+        "delta_from_prev": -0.0096,
+        "delta_pct_points": -1.0
+      }
+    ],
+    "largest_gain_step": {
+      "n_latent": 3,
+      "accuracy": 0.8377,
+      "delta_from_prev": 0.5036,
+      "delta_pct_points": 50.4
+    }
+  },
+  "insights": [
+    "不同子集检测到的推荐边界分布在 3.0–4.0 步之间，说明「换数据边界会变」——边界取决于样本结构与推理跳数分布。",
+    "3 跳子集边界 3.0 步（acc 90.0%），4 跳子集边界 4.0 步（acc 88.3%）。",
+    "图直径 3 子集边界 3.0 步，直径 4 子集边界 4.0 步。",
+    "不同子集检测到的推荐边界分布在 3.0–4.0 步之间，说明「换数据边界会变」——边界取决于样本结构与推理跳数分布。",
+    "合成 5 跳链边界 4.0 步，合成 6 跳链边界 3.0 步。",
+    "不同子集检测到的推荐边界分布在 1.0–9.0 步之间，说明「换数据边界会变」——边界取决于样本结构与推理跳数分布。",
+    "稠密 7 跳边界 2.0 步 vs 6 跳 3.0 步。",
+    "同一 6 跳数据：索引监督边界 3.0 步，符号监督 1.0 步。"
+  ],
+  "experiments": [
+    {
+      "id": "full",
+      "title": "实验一 · 全量 ProsQA",
+      "samples": 419,
+      "latent_range": "1–8",
+      "boundary": 3.0,
+      "peak_accuracy": 0.8377,
+      "note": "419 条混合 3/4 跳，峰值在 3 步（83.8%），4 步几乎相同，5 步起下降。"
+    },
+    {
+      "id": "compare",
+      "title": "实验二 · 多数据集对比",
+      "samples": "10 子集 × 60",
+      "latent_range": "1–8",
+      "boundary": "3–4",
+      "peak_accuracy": 0.9545,
+      "note": "纯 3 跳→3 步，纯 4 跳→4 步；混测多报 3 步。"
+    },
+    {
+      "id": "deep",
+      "title": "实验三 · 深边界探测",
+      "samples": "8 子集 × 40",
+      "latent_range": "1–10",
+      "boundary": "3–4",
+      "peak_accuracy": 1.0,
+      "note": "合成 5 跳几乎全错；合成 6 跳 3 步即 97.5%，未随链长线性增步。"
+    },
+    {
+      "id": "variant",
+      "title": "实验四 · 构造×监督对照",
+      "samples": "16 子集 × 25",
+      "latent_range": "1–10",
+      "boundary": "见分项（索引监督下仍多 3–5 步）",
+      "peak_accuracy": 1.0,
+      "note": "真实图延长 5 跳可达 5 步边界；纯人工链 OOD 失败；符号监督与训练不一致则指标失效。"
+    },
+    {
+      "id": "pattern",
+      "title": "实验五 · 规律寻探",
+      "samples": "21 子集汇总",
+      "latent_range": "1–8",
+      "boundary": "随题深 r≈0.54",
+      "peak_accuracy": null,
+      "note": "边界↔平均跳数 r=0.543；6 条规律 · 附录 #pattern-laws"
+    },
+    {
+      "id": "boundary_push",
+      "title": "实验六 · 边界上推（同质延长）",
+      "samples": "7 子集 × 25",
+      "latent_range": "1–10",
+      "boundary": "5–9",
+      "peak_accuracy": 1.0,
+      "note": "3 跳基线延长 5 跳→边界 5、100%；4 跳基线易过冲；6 跳混合延长边界漂到 9。"
+    },
+    {
+      "id": "model_perturb",
+      "title": "实验七 · 只改模型数值",
+      "samples": "3 子集 × 15 · 10 组扰动",
+      "latent_range": "1–8",
+      "boundary": "随 α/权重在 d 附近 ±1–2 步",
+      "peak_accuracy": 1.0,
+      "note": "固定 ProsQA 题面；latent 反馈 α∈[0.5,2.0] 时 8/18 组边界变化；acc@d 常下降。见 model_perturb_latest.json。"
+    },
+    {
+      "id": "boundary_push_deep",
+      "title": "实验八 · 7–8 步深边界上推",
+      "samples": "5 子集 × 25",
+      "latent_range": "1–12",
+      "boundary": "4–6",
+      "peak_accuracy": 1.0,
+      "note": "7–8 跳：题深已到，但 [[[[checkpoint|checkpoint]]|[[checkpoint|checkpoint]]_300]] 仅在 3–4 跳训练——[[acc-at-depth|acc@d]] 下滑或报[[bounda"
+    },
+    {
+      "id": "feedback_schedule",
+      "title": "实验九 · 4 步后性能平台（feedback schedule）",
+      "samples": "3 子集 · 6 策略",
+      "latent_range": "1–8",
+      "boundary": "看 acc@4 与 post4_drop",
+      "peak_accuracy": null,
+      "note": "全量：baseline 4 步后最多跌 -10.7pp；「4 步后停写回 (scale=0)」跌至 -1.0pp（改善 -9.7pp），acc@4 仍为 83.5%。"
+    },
+    {
+      "id": "auto_submit",
+      "title": "实验十 · 无标签自动配参（通解验证）",
+      "samples": 419,
+      "latent_range": "按题 d∈{3,4}",
+      "boundary": "按题路由",
+      "peak_accuracy": 0.9308,
+      "note": "通解 auto_route 全量 93.1%（+9.3 pp vs fixed_3）；oracle 单步上界 n=3 仅 83.8%。"
+    },
+    {
+      "id": "adaptive_stop_arc",
+      "title": "实验十一–十五 · 训练自停基础线",
+      "samples": "419 · test 168",
+      "latent_range": "逐步 1–8",
+      "boundary": "可行判定",
+      "peak_accuracy": 0.8869,
+      "note": "LatentStopHead / RichHead / correctness / 联合微调；均未达 timing≥50%。"
+    },
+    {
+      "id": "adaptive_stop_parallel",
+      "title": "实验十六–三十 · 并行探索",
+      "samples": "15 tracks",
+      "latent_range": "逐步+结构",
+      "boundary": "4 条可行(teacher)",
+      "peak_accuracy": 0.9524,
+      "note": "结构下界、first_correct、BFS+Δ；盲部署最高≈94.6%，teacher 可行≈95.2%。"
+    },
+    {
+      "id": "adaptive_stop_upfront",
+      "title": "实验三十一–五十二 · 前缀/upfront 预算",
+      "samples": "22 tracks",
+      "latent_range": " upfront n",
+      "boundary": "timing 瓶颈",
+      "peak_accuracy": 0.9405,
+      "note": "答题≈94%，timing≈28–30%；graph Δ / 前缀集成 / 保守回退触顶。"
+    },
+    {
+      "id": "adaptive_stop_online",
+      "title": "实验五十三–五十五 · 在线自停",
+      "samples": "3 tracks",
+      "latent_range": "逐步 OR 组合",
+      "boundary": "见结果",
+      "peak_accuracy": 0.8333,
+      "note": "head∨stable / head∨conv / 三者 OR；无 BFS、无 upfront。"
+    },
+    {
+      "id": "gpu_phase17",
+      "title": "GPU Phase 17 · 定稿修正",
+      "samples": "全量 419",
+      "latent_range": "M2+knn",
+      "boundary": "deployable_mvp",
+      "peak_accuracy": 0.926,
+      "note": "knn_min3_full acc 92.6%；五层证明 rollup 修正后 deployable_mvp=True。"
+    },
+    {
+      "id": "gpu_phase18_19",
+      "title": "GPU Phase 18–19 · timing 冲顶与失败解剖",
+      "samples": "全量 419",
+      "latent_range": "joint/推理",
+      "boundary": "timing 瓶颈",
+      "peak_accuracy": 0.864,
+      "note": "timing 天花板 37.0%；late_stop≈57%；联合训练与换推理均未破 Phase 16。"
+    },
+    {
+      "id": "gpu_phase20",
+      "title": "GPU Phase 20 · min_n=2 突破（已完成）",
+      "samples": "全量 419",
+      "latent_range": "V1–V5",
+      "boundary": "timing 突破",
+      "peak_accuracy": 0.8616,
+      "note": "best v2_writeback_infer timing 36.8%；feasible_any=false，未破 Phase 16。"
+    },
+    {
+      "id": "gpu_phase32_33",
+      "title": "GPU Phase 32–33 · 跨集管线",
+      "samples": "53 切片",
+      "latent_range": "transfer",
+      "boundary": "dual_ok",
+      "peak_accuracy": null,
+      "note": "跨集加权 Δ ≈ 1.98 pp；统一策略与 hurt 分类。"
+    },
+    {
+      "id": "gpu_phase34_36",
+      "title": "GPU Phase 34–36 · collateral + tri_zone",
+      "samples": "53 切片",
+      "latent_range": "tri_zone",
+      "boundary": "dual_ok",
+      "peak_accuracy": 0.9475,
+      "note": "tri_zone 冠军 OOD +7.44 pp；combo test illusion 排除。"
+    },
+    {
+      "id": "gpu_phase37_38",
+      "title": "GPU Phase 37–38 · hybrid_router v4",
+      "samples": "53 切片 + 419 同源",
+      "latent_range": "hybrid",
+      "boundary": "deploy_spec_v4",
+      "peak_accuracy": 0.9475,
+      "note": "hybrid Δ +2.08 pp，hurts 6；seed 1/4 dual_ok。"
+    }
+  ],
+  "pattern_laws": {
+    "ok": true,
+    "correlations": {
+      "boundary_vs_mean_hops": 0.543,
+      "boundary_vs_mean_diameter": 0.501
+    },
+    "mix_ladder": {
+      "available": false
+    },
+    "hop_diameter_cross": {
+      "available": false
+    },
+    "hop_alignment": [
+      {
+        "label": "全量 ProsQA",
+        "mean_hops": 3.583,
+        "boundary": 3.0,
+        "matches_rounded_hops": true,
+        "max_accuracy": 0.7833
+      },
+      {
+        "label": "仅 3 跳推理链",
+        "mean_hops": 3.0,
+        "boundary": 3.0,
+        "matches_rounded_hops": true,
+        "max_accuracy": 0.9
+      },
+      {
+        "label": "仅 4 跳推理链",
+        "mean_hops": 4.0,
+        "boundary": 4.0,
+        "matches_rounded_hops": true,
+        "max_accuracy": 0.8833
+      },
+      {
+        "label": "图直径 = 3",
+        "mean_hops": 3.0,
+        "boundary": 3.0,
+        "matches_rounded_hops": true,
+        "max_accuracy": 0.9
+      },
+      {
+        "label": "图直径 = 4",
+        "mean_hops": 3.9,
+        "boundary": 4.0,
+        "matches_rounded_hops": true,
+        "max_accuracy": 0.9167
+      },
+      {
+        "label": "图直径 ≥ 5",
+        "mean_hops": 3.727,
+        "boundary": 4.0,
+        "matches_rounded_hops": true,
+        "max_accuracy": 0.9545
+      },
+      {
+        "label": "随机子集 A",
+        "mean_hops": 3.483,
+        "boundary": 3.0,
+        "matches_rounded_hops": true,
+        "max_accuracy": 0.8333
+      },
+      {
+        "label": "随机子集 B",
+        "mean_hops": 3.467,
+        "boundary": 3.0,
+        "matches_rounded_hops": true,
+        "max_accuracy": 0.8833
+      },
+      {
+        "label": "前半段",
+        "mean_hops": 3.583,
+        "boundary": 3.0,
+        "matches_rounded_hops": true,
+        "max_accuracy": 0.7833
+      },
+      {
+        "label": "后半段",
+        "mean_hops": 3.5,
+        "boundary": 3.0,
+        "matches_rounded_hops": true,
+        "max_accuracy": 0.9333
+      },
+      {
+        "label": "合成纯 6 跳链",
+        "mean_hops": 6.0,
+        "boundary": 3.0,
+        "matches_rounded_hops": false,
+        "max_accuracy": 0.975
+      },
+      {
+        "label": "合成 6 跳 + 干扰分支",
+        "mean_hops": 6.0,
+        "boundary": 4.0,
+        "matches_rounded_hops": false,
+        "max_accuracy": 0.6
+      },
+      {
+        "label": "合成 5/6 跳混合",
+        "mean_hops": 5.25,
+        "boundary": 3.0,
+        "matches_rounded_hops": false,
+        "max_accuracy": 0.25
+      },
+      {
+        "label": "ProsQA 图直径=5",
+        "mean_hops": 3.684,
+        "boundary": 4.0,
+        "matches_rounded_hops": true,
+        "max_accuracy": 0.8947
+      },
+      {
+        "label": "ProsQA 图直径=6",
+        "mean_hops": 4.0,
+        "boundary": 3.0,
+        "matches_rounded_hops": true,
+        "max_accuracy": 1.0
+      },
+      {
+        "label": "ProsQA 直径≥5（对照）",
+        "mean_hops": 3.727,
+        "boundary": 4.0,
+        "matches_rounded_hops": true,
+        "max_accuracy": 0.9545
+      },
+      {
+        "label": "真实 3 跳（基线）",
+        "mean_hops": 3.0,
+        "boundary": 3.0,
+        "matches_rounded_hops": true,
+        "max_accuracy": 0.88
+      },
+      {
+        "label": "真实 4 跳（基线）",
+        "mean_hops": 4.0,
+        "boundary": 3.0,
+        "matches_rounded_hops": true,
+        "max_accuracy": 0.8
+      },
+      {
+        "label": "真实图延长 → 5 跳",
+        "mean_hops": 5.0,
+        "boundary": 5.0,
+        "matches_rounded_hops": true,
+        "max_accuracy": 0.96
+      },
+      {
+        "label": "真实图延长 → 6 跳",
+        "mean_hops": 6.0,
+        "boundary": 9.0,
+        "matches_rounded_hops": false,
+        "max_accuracy": 0.96
+      },
+      {
+        "label": "真实图延长 → 7 跳",
+        "mean_hops": 7.0,
+        "boundary": 5.0,
+        "matches_rounded_hops": false,
+        "max_accuracy": 0.8
+      }
+    ],
+    "laws": [
+      {
+        "id": "depth_tracking",
+        "title": "规律一：边界 ≈ 任务推理深度",
+        "pattern": "跨 21 个子集，边界与平均推理跳数的相关系数 r=0.543，与图直径的 r=0.501。纯 3 跳→3 步、纯 4 跳→4 步；换子集边界跟着变。",
+        "why": "论文：D 步连续思维 = 在图上并行 BFS 扩展 D 层。ProsQA 题的有效深度就是 3–4 跳，latent 步数是在潜空间里「往外搜几层」，搜够就答对，搜不够就错——所以边界跟题目需要几跳对齐，而不是模型写死的常数。",
+        "evidence_tier": "很强",
+        "examples": [
+          {
+            "label": "仅 3 跳",
+            "value": "边界 3 步 · 90%"
+          },
+          {
+            "label": "仅 4 跳",
+            "value": "边界 4 步 · 88%"
+          },
+          {
+            "label": "真实延长 5 跳",
+            "value": "边界 5 步 · 96%"
+          }
+        ]
+      },
+      {
+        "id": "jump_vs_peak",
+        "title": "规律二：跳涨步（≈3）≠ 完成步（3 或 4）",
+        "pattern": "最大准确率跃升出现在第 3 步的子集占多数（2→3 步平均 +40pp 以上）；但推荐边界分布在 1.0–9.0 步。这是两个不同现象。",
+        "why": "第 3 步是搜索前沿「打开」：叠加态第一次覆盖大部分可达节点（BFS frontier 展开）。4 跳题还需要第 4 步才补全最后一层信息。所以曲线总在 2→3 跳涨，但「任务完成」可能在 3 或 4——混测报 3 是因为 3 跳题已饱和 + 3/4 步准确率接近时算法取更少步数。",
+        "evidence_tier": "很强",
+        "examples": [
+          {
+            "label": "全量 2→3 步",
+            "value": "+50.4pp"
+          },
+          {
+            "label": "全量 3→4 步",
+            "value": "-0.2pp（平台）"
+          },
+          {
+            "label": "4 跳纯集峰值",
+            "value": "第 4 步"
+          }
+        ]
+      },
+      {
+        "id": "mix_threshold",
+        "title": "规律三：混合比例决定报 3 还是报 4",
+        "pattern": "第五轮混合阶梯实验运行后可定量。",
+        "why": "混合集的全局峰值 = 3 跳题在 3 步的贡献 + 4 跳题在 4 步的贡献的加权平均。4 跳占比低时，3 步已照顾大部分题，整体峰值落在 3；4 跳占比高时，4 步的全局收益超过 3 步，边界上移到 4。这解释了全量 419 题（52% 为 4 跳）为何报 3 而非 4。",
+        "evidence_tier": "待验证",
+        "examples": []
+      },
+      {
+        "id": "hops_not_diameter",
+        "title": "规律四：边界跟推理跳数走，不跟图直径走",
+        "pattern": "3 跳+直径 4 与 3 跳+直径 3 边界相同；4 跳+宽图仍报 4 步。",
+        "why": "Coconut 做的是沿 ground-truth 推理链的可达性搜索，不是「探索整张图有多宽」。直径更大的子图只是多了干扰边，不改变最短推理路径长度；latent 步数应对齐的是 BFS 到目标的最短深度（= 推理跳数），不是图的拓扑直径。",
+        "evidence_tier": "中等",
+        "examples": []
+      },
+      {
+        "id": "post_peak_harm",
+        "title": "规律五：超过最优点后加步 universal 有害",
+        "pattern": "28/34 个子集在峰值步之后出现准确率回落；全量 5 步 74.0% vs 3 步 83.8%。",
+        "why": "所需可达性信息在 3–4 步已编码进叠加态；继续加步 = 对同一搜索前沿重复扩展，引入论文构造中的噪声 token 权重，扰动已有表示。不是「信息还不够」，而是「叠加态饱和后的干扰」。",
+        "evidence_tier": "很强",
+        "examples": [
+          {
+            "label": "全量 3 步",
+            "value": "83.8%"
+          },
+          {
+            "label": "全量 5 步",
+            "value": "74.0%"
+          },
+          {
+            "label": "全量 8 步",
+            "value": "72.8%"
+          }
+        ]
+      },
+      {
+        "id": "distribution_match",
+        "title": "规律六：分布匹配才能抬高边界，光加长链不够",
+        "pattern": "同一 5–6 跳深度：真实 ProsQA 图延长 → 5 步边界 96%；简单人工稠密链 → 准确率接近 0%。合成 6 跳链 3 步即 97.5%，不随链长线性增步。",
+        "why": "checkpoint_300 在 ProsQA 3–4 跳上训练，学会了「3–4 步 latent + 原图边/token 分布」。真实延长保留原图结构与 token 化方式，模型能迁移；纯人工链是 OOD，模型不会做，边界数字无意义。要把边界稳定推到 5–6，需要匹配深度的训练数据，而非只改测试集。",
+        "evidence_tier": "强",
+        "examples": [
+          {
+            "label": "真实图延长 → 5 跳",
+            "value": "边界 5 步 · 96.0%"
+          },
+          {
+            "label": "真实图延长 → 6 跳",
+            "value": "边界 9 步 · 96.0%"
+          },
+          {
+            "label": "稠密链 5 跳",
+            "value": "边界 1 步 · 0.0%"
+          }
+        ]
+      }
+    ],
+    "unified_conclusion": "六条规律可归为一条因果链：Coconut 每步 latent 在机制上做并行 BFS → 任务推理深度决定需要几步 → 2→3 步是前沿打开（跳涨），3–4 步是任务完成（平台）→ 混合比例 + 并列取少决定混测报 3 还是 4 → 加步超过最优点后饱和干扰 → 抬高边界需要分布匹配的训练，而非简单加长测试链。",
+    "pattern_experiment_done": false
+  },
+  "highlights": [
+    {
+      "title": "边界随数据而变",
+      "body": "10 个子集边界分布在 3–4 步：纯 3 跳子集 3 步（90.0%），纯 4 跳子集 4 步（88.3%）。不是模型硬编码的固定步数。"
+    },
+    {
+      "title": "第 3 步是「跳涨点」",
+      "body": "全量实验：1 步 42% → 2 步 33% → 3 步 83.8%。多数子集最大涨幅出现在 2→3 步，连续思维在此展开搜索前沿。"
+    },
+    {
+      "title": "加步过多会饱和/干扰",
+      "body": "全量：3 步 83.8%，5 步 74.0%，8 步更低。信息够用时继续加 latent 不再受益，反而扰动已有表示。"
+    },
+    {
+      "title": "真实 ProsQA 题深只有 3–4 跳",
+      "body": "419 题中 202 条 3 跳、217 条 4 跳，无原生 5–6 跳。图直径≥5 的子集推理链仍多为 3–4 跳，边界因此难稳定到 5–6 步。"
+    },
+    {
+      "title": "合成链 vs 真实延长图",
+      "body": "简单合成 5/6 跳链：准确率 5.0% / 97.5%（OOD 或 3 步饱和）。 在真实 ProsQA 图上延长到 5/6 跳：边界 5 / 9 步，准确率 96.0% / 96.0%。"
+    },
+    {
+      "title": "只改模型数值也能动边界",
+      "body": "第七轮固定 ProsQA 题面，调 latent 反馈系数 α 或权重 ±15%：3 跳题在 α=0.5 时边界 3→4；5 跳延长题在 α=2.0 时边界 5→7，但 acc@5 从 100% 降至 80%。报边界与 acc@d 须同看。"
+    },
+    {
+      "title": "4 步以后如何不跌？（实验九）",
+      "body": "不改权重，只改 inference 写回 schedule [1,1,1,1,0,0,0,0]。全量：acc@4 保持 83.5%，post4_drop 从 -10.7pp 压到 -1.0pp（第 5 步 74.0%→83.3%）；纯 4 跳子集 5–8 步钉在 88.3%，零跌幅。全量混测下 5–8 步仍可能有约 1pp 波动（如第 7 步 82.6%），不等于逐步涨到更高峰值。"
+    },
+    {
+      "title": "无标签通解怎么一次提交？（实验十）",
+      "body": "从题面 BFS 估 d、按题路由 latent 步数（auto_route）全量 93.1%，比固定 3 步高 9.3 pp。不需标准答案扫边界；相对 oracle 单步上界 -9.3 pp。详见附录 #auto-submit。"
+    },
+    {
+      "title": "模型能否自己决定何时停？（实验十一–五十五）",
+      "body": "实验十一至五十五问：模型能否自己决定何时停？基线 fixed_3 86.3%、auto_route 92.9%、oracle 上界 97.6%。可行判定：test 答题 acc ≥ fixed_3（86.3%）且停步时机 stop_timing_acc ≥ 50%。 无标签可部署最优：实验24 94.6%（timing 28.7%）——仍低于 auto_route。 前缀/upfront 线平台约 94.0%（timing 28.1%），未达可行。 实验 28、29、35、42 等用首次答对步（teacher）标签可达可行（≈95%），属 teacher 上界，非盲部署。"
+    },
+    {
+      "title": "A800 全量定稿与 timing 天花板（GPU Phase 16–20）",
+      "body": "A800 全量定稿：[[deployable-mvp|deployable_mvp]]=True，推荐 [[knn-min3|knn_min3_full]] acc 92.6%、mean_n=3.37，无 oracle。[[strict-feasible|timing≥50%]] 未过：最好 37.0%，[[late-stop|late_stop]] 占 57.4%；Phase 20 min_n=2 最好 36.8%，feasible_any=false。"
+    },
+    {
+      "title": "跨集 transfer 与 deploy_spec_v4（GPU Phase 32–38）",
+      "body": "deploy_spec_v8_final 双轨：ProsQA 同源 confidence_fallback 94.8%；跨 53 切片 hybrid_slice_router_v4 加权 Δ +2.08 pp、OOD +7.44 pp、hurts 6。八 seed 面板 dual_ok 4/8；@99 增强档 hybrid_slice_router_v5 Δ +2.108 pp、hurts 5。状态：PROJECT_COMPLETE。"
+    },
+    {
+      "title": "监督方式必须一致",
+      "body": "同一 6 跳数据：索引监督边界 3 步；改为符号名监督后准确率 0%，边界指标失效。评估格式须与训练一致。"
+    }
+  ],
+  "faq": [
+    {
+      "q": "边界是固定常数吗？",
+      "a": "不是。纯 3 跳报 3 步，纯 4 跳报 4 步；换子集、换构造方式都会变。"
+    },
+    {
+      "q": "只改模型数值、不改题面，边界会变吗？",
+      "a": "会，但在任务深度 d 附近 ±1–2 步内，且 acc@d 常变差。latent 反馈 α<1 可能需更多步；α>1 或权重缩放可能过冲。稳定 c=d 仍靠 α≈1 + 原 checkpoint + 题深匹配。"
+    },
+    {
+      "q": "能把边界推到 5–6 步吗？",
+      "a": "数据侧：3 跳基线 prosqa_extend 到 5 跳可对齐边界 5（96–100%）。6 跳仍易平台/过冲。模型侧：调 α 可抬高报边界，但 acc@d 难同步。稳定 6 步需深度匹配训练 + 微调。"
+    },
+    {
+      "q": "第 5–8 步为什么会跌？怎么修？",
+      "a": "baseline 每步把 hidden 写回 embedding；4 步后信息已够用，继续写回添噪。实验九：schedule [1,1,1,1,0,0,0,0] 可稳住 5–8 步，acc@4 不变；不能靠渐变衰减或全局缩 α 完全解决。若什么都能改，见附录 #post4-playbook 完整行动指南（P1–P5）。"
+    },
+    {
+      "q": "什么都能改时，怎么让四步以后性能还不掉？",
+      "a": "P1 立刻可用：inference 停写回 [1,1,1,1,0,0,0,0]（实验九）。P2 不必跑 5–8 步：混合 3 步、4 跳 4 步。P3 按跳数路由 + 题深推到 5–8 跳。P4 训练 schedule 对齐 + 同深度微调。P5 可学习/按题深门控 writeback。详见附录 #post4-playbook。"
+    },
+    {
+      "q": "只有一次提交、没有标准答案，怎么配参？",
+      "a": "实验十：从题面 BFS 估 d = max(到两个候选的距离)，令 n_latent = d（auto_route）。全量 93.1%，比 fixed_3 高 9.3 pp，且等于结构金标准 oracle_hop。不需扫 1–8 步准确率曲线。结构未知时用 fallback_zero4 兜底。详见附录 #auto-submit。"
+    },
+    {
+      "q": "模型能否自己决定何时停？什么叫可行？",
+      "a": "实验十一至五十五：在逐步推理或 upfront 预算下，用 stop head / 稳定 / 收敛等信号决定停步。L1 deployable_mvp：acc≥86.3%、mean_n≤4.5、无 oracle——Phase 17 定稿 knn_min3_full 92.6% 达标。L2 strict_feasible：另需 timing≥50%——未过，全量最好 37%，min_n=3 理论上限约 44%。失败主因 late_stop≈57%（min_n=3 不让早停）；Phase 20 从 min_n=2 突破，待 A800。详见附录 #adaptive-stop 与 #gpu-phase。"
+    },
+    {
+      "q": "什么叫 deployable_mvp？推荐部署方案是什么？",
+      "a": "双轨部署（deploy_spec_v4）：① ProsQA 同源 → confidence_fallback τ=0.48，acc 94.75%；② 跨未知 53 切片 → hybrid_slice_router（skip/agreement/tri_zone），加权 Δ +2.05 pp。同源历史冠军 95.23%（Phase 25 seed 环境）；timing strict 未过。详见附录 #cross-transfer 与 #gpu-phase。"
+    },
+    {
+      "q": "跨集 transfer 怎么用？dual_ok 什么意思？",
+      "a": "dual_ok：in-dist 加权 Δ≥0 且 OOD 加权 Δ≥7 pp 同时成立。Phase 38 hybrid_router @ seed=99 dual_ok=true，hurts=6。但四 seed 审计仅 1/4 通过——部署须固定 eval seed=99。路由：syn_chain_5_wide skip_transfer；push/mix/hops/diamond agreement；其余 tri_zone 0.40/0.48。详见附录 #cross-transfer。"
+    },
+    {
+      "q": "timing 为什么卡在 37% 上不去？",
+      "a": "56% 题首次答对发生在第 1–2 步，但 min_n=3 不允许早停——这些题在 timing 评分里永远算 late_stop。U5 失败解剖：late_stop 占 57%，early_stop 仅约 5%。min_n=3 理论 timing 上限约 44%；实测 37% 已达上限 84%，调参只剩 2–5 pp。Phase 13–19 换标签、联合长训均未破——需 Phase 20 从 min_n=2 或写回层入手。"
+    },
+    {
+      "q": "什么因素最影响边界？",
+      "a": "① 题目推理深度 ② 模型训练时的步数习惯 ③ 加步后的饱和/干扰。图宽、边序等影响次要；第七轮补充：latent 反馈强度可在 d 附近微调报边界。"
+    },
+    {
+      "q": "为什么有的子集最高准确率是 0？",
+      "a": "见上文「极端准确率说明」：通常是符号监督（评估格式与训练不一致）或人工 OOD 图（分布不匹配）。加步也救不了；此类边界数字勿解读。"
+    }
+  ],
+  "recommendations": [
+    {
+      "scenario": "ProsQA 同源评估",
+      "advice": "confidence_fallback τ=0.48（94.75%）；历史峰值 95.23%"
+    },
+    {
+      "scenario": "跨未知分布 53 切片",
+      "advice": "hybrid_slice_router（deploy_spec_v4）；固定 seed=99"
+    },
+    {
+      "scenario": "只有一次提交、无标签",
+      "advice": "auto_route：n_latent = BFS 深度 d；见附录 #auto-submit"
+    },
+    {
+      "scenario": "要让模型自己停步（部署）",
+      "advice": "推荐 knn_min3_full（deployable_mvp ✅，acc 92.6%）；见 #gpu-phase"
+    },
+    {
+      "scenario": "要让 timing≥50%",
+      "advice": "当前未过；min_n=3 理论上限≈44%；Phase 20 min_n=2 待验证；见 #gpu-phase"
+    },
+    {
+      "scenario": "要让模型自己停步（研究）",
+      "advice": "teacher 线 28/29 可达 timing 可行；盲部署 timing≈37%；见 #adaptive-stop"
+    },
+    {
+      "scenario": "前缀/upfront 自报步数",
+      "advice": "31–52 线答题≈94% 平台，timing≈28% 未可行；混测 3/4 跳混淆是瓶颈"
+    },
+    {
+      "scenario": "已知 4 跳题为主",
+      "advice": "用 4 步 latent"
+    },
+    {
+      "scenario": "判断是否该加步",
+      "advice": "看准确率曲线：3–4 步到顶就不要加到 5–6"
+    },
+    {
+      "scenario": "希望边界稳定 ≥5 步",
+      "advice": "prosqa_extend 从 3 跳基线到 5 跳 + 索引监督；必要时微调"
+    },
+    {
+      "scenario": "4 步以后还要加 latent",
+      "advice": "前 4 步 α=1，第 5 步起 α=0（停写回）；不要继续 full writeback"
+    },
+    {
+      "scenario": "什么都能改、要完整方案",
+      "advice": "见附录 #post4-playbook：P1 停写回 → P3 路由/推题深 → P4 同深度训练"
+    },
+    {
+      "scenario": "全量也要 5–8 步零波动",
+      "advice": "P1 停写回 + P3 按 3 跳/4 跳分别跑步数；或拆子集评测"
+    },
+    {
+      "scenario": "5–8 步还要高准确率",
+      "advice": "P3 ProsQA 图延长到 5–8 跳 + P4 同深度微调 + 训练/inference schedule 对齐"
+    },
+    {
+      "scenario": "只拧模型系数做敏感性",
+      "advice": "扫 latent 反馈 α∈[0.75,1.25]；同时报告 acc@d，不单看报边界"
+    }
+  ],
+  "boundary_push_table": [
+    {
+      "id": "push_ext5_from4",
+      "label": "4跳基线 → 延长5跳",
+      "description": "仅从原 4 跳样本末尾 +1 层，同质 5 跳",
+      "count": 25,
+      "mean_reasoning_hops": 5.0,
+      "mean_diameter": 5.0,
+      "boundary": 7.0,
+      "max_accuracy": 1.0,
+      "max_accuracy_at_steps": 7,
+      "duration_sec": 287.52,
+      "construction": "prosqa_extend",
+      "supervision": "标准索引监督",
+      "eval_profile": {
+        "answer_mode": "index",
+        "prompt_mode": "coconut",
+        "choice_order": "random",
+        "max_new_tokens": 4
+      }
+    },
+    {
+      "id": "push_ext6_from4",
+      "label": "4跳基线 → 延长6跳",
+      "description": "仅从原 4 跳样本末尾 +2 层，同质 6 跳",
+      "count": 25,
+      "mean_reasoning_hops": 6.0,
+      "mean_diameter": 6.0,
+      "boundary": 7.0,
+      "max_accuracy": 0.92,
+      "max_accuracy_at_steps": 7,
+      "duration_sec": 286.63,
+      "construction": "prosqa_extend",
+      "supervision": "标准索引监督",
+      "eval_profile": {
+        "answer_mode": "index",
+        "prompt_mode": "coconut",
+        "choice_order": "random",
+        "max_new_tokens": 4
+      }
+    },
+    {
+      "id": "push_ext5_from3",
+      "label": "3跳基线 → 延长5跳",
+      "description": "仅从原 3 跳样本末尾 +2 层，同质 5 跳",
+      "count": 25,
+      "mean_reasoning_hops": 5.0,
+      "mean_diameter": 5.0,
+      "boundary": 5.0,
+      "max_accuracy": 1.0,
+      "max_accuracy_at_steps": 5,
+      "duration_sec": 306.92,
+      "construction": "prosqa_extend",
+      "supervision": "标准索引监督",
+      "eval_profile": {
+        "answer_mode": "index",
+        "prompt_mode": "coconut",
+        "choice_order": "random",
+        "max_new_tokens": 4
+      }
+    },
+    {
+      "id": "push_ext6_from3",
+      "label": "3跳基线 → 延长6跳",
+      "description": "仅从原 3 跳样本末尾 +3 层，同质 6 跳",
+      "count": 25,
+      "mean_reasoning_hops": 6.0,
+      "mean_diameter": 6.0,
+      "boundary": 5.0,
+      "max_accuracy": 0.84,
+      "max_accuracy_at_steps": 5,
+      "duration_sec": 316.03,
+      "construction": "prosqa_extend",
+      "supervision": "标准索引监督",
+      "eval_profile": {
+        "answer_mode": "index",
+        "prompt_mode": "coconut",
+        "choice_order": "random",
+        "max_new_tokens": 4
+      }
+    },
+    {
+      "id": "push_ext5_mixed",
+      "label": "混合基线 → 5跳（对照）",
+      "description": "3/4 跳混合延长，与第四轮 v_extend_5 相同数据",
+      "count": 25,
+      "mean_reasoning_hops": 5.0,
+      "mean_diameter": 5.0,
+      "boundary": 5.0,
+      "max_accuracy": 0.96,
+      "max_accuracy_at_steps": 5,
+      "duration_sec": 290.87,
+      "construction": "prosqa_extend",
+      "supervision": "标准索引监督",
+      "eval_profile": {
+        "answer_mode": "index",
+        "prompt_mode": "coconut",
+        "choice_order": "random",
+        "max_new_tokens": 4
+      }
+    },
+    {
+      "id": "push_ext6_mixed",
+      "label": "混合基线 → 6跳（对照）",
+      "description": "3/4 跳混合延长，与第四轮 v_extend_6 相同数据",
+      "count": 25,
+      "mean_reasoning_hops": 6.0,
+      "mean_diameter": 6.0,
+      "boundary": 9.0,
+      "max_accuracy": 0.96,
+      "max_accuracy_at_steps": 9,
+      "duration_sec": 301.73,
+      "construction": "prosqa_extend",
+      "supervision": "标准索引监督",
+      "eval_profile": {
+        "answer_mode": "index",
+        "prompt_mode": "coconut",
+        "choice_order": "random",
+        "max_new_tokens": 4
+      }
+    },
+    {
+      "id": "push_mix_56_from4",
+      "label": "4跳延长 5/6 跳混合",
+      "description": "30 条 5 跳 + 30 条 6 跳，均从 4 跳基线延长",
+      "count": 25,
+      "mean_reasoning_hops": 5.0,
+      "mean_diameter": 5.0,
+      "boundary": 7.0,
+      "max_accuracy": 1.0,
+      "max_accuracy_at_steps": 7,
+      "duration_sec": 277.14,
+      "construction": "prosqa_extend",
+      "supervision": "标准索引监督",
+      "eval_profile": {
+        "answer_mode": "index",
+        "prompt_mode": "coconut",
+        "choice_order": "random",
+        "max_new_tokens": 4
+      }
+    }
+  ],
+  "model_perturb_laws": [
+    {
+      "id": "perturb_moves_boundary",
+      "title": "规律七：[[latent-feedback|只改模型数值]]，[[boundary|边界]]可在 d 附近 ±1–2 步内移动",
+      "pattern": "[[latent-steps|latent]]反馈 α∈[0.5,2.0] 时，8/18 组报[[boundary|边界]]相对 baseline 变化。",
+      "why": "α 改变每步[[superposition|叠加态]]写入强度，等价于改变「每步 [[parallel-bfs|BFS]] 展开有多猛」。弱反馈需更多步；强反馈易过冲或多峰，[[boundary|边界]]算法报更高步数。"
+    },
+    {
+      "id": "acc_at_depth_guard",
+      "title": "规律八：报[[boundary|边界]]上移 ≠ [[acc-at-depth|acc@d]] 变好",
+      "pattern": "5 跳题 α=1.25–2.0 时[[boundary|边界]] 6–7，但 acc@5 从 100% 降至 80–87%。",
+      "why": "峰值步数被曲线形状（平台、并列取少）推高；任务完成仍应在 d 步，应同时看 [[acc-at-depth|acc@d]]。"
+    },
+    {
+      "id": "depth_still_bounds",
+      "title": "规律九：任务深度仍是主约束",
+      "pattern": "3 跳题[[boundary|边界]]很难被推到 6；权重 ±15% 主要扰动深题与混合集。",
+      "why": "改数值不能替代「题要推理多深」；无 6 跳题面时，调 α 最多制造过冲，不能稳定 c=6 且高 acc。"
+    }
+  ],
+  "compare_table": [
+    {
+      "id": "full",
+      "label": "全量 ProsQA",
+      "description": "419 条 Coconut 测试集，3/4 跳各约一半",
+      "count": 60,
+      "mean_reasoning_hops": 3.583,
+      "mean_diameter": 3.733,
+      "boundary": 3.0,
+      "max_accuracy": 0.7833,
+      "max_accuracy_at_steps": 3,
+      "duration_sec": 512.55,
+      "construction": null,
+      "supervision": "标准索引监督",
+      "eval_profile": {
+        "answer_mode": "index",
+        "prompt_mode": "coconut",
+        "choice_order": "random",
+        "max_new_tokens": 4
+      }
+    },
+    {
+      "id": "hops_3",
+      "label": "仅 3 跳推理链",
+      "description": "ground-truth 推理链长度为 3 的样本",
+      "count": 60,
+      "mean_reasoning_hops": 3.0,
+      "mean_diameter": 3.317,
+      "boundary": 3.0,
+      "max_accuracy": 0.9,
+      "max_accuracy_at_steps": 3,
+      "duration_sec": 517.59,
+      "construction": null,
+      "supervision": "标准索引监督",
+      "eval_profile": {
+        "answer_mode": "index",
+        "prompt_mode": "coconut",
+        "choice_order": "random",
+        "max_new_tokens": 4
+      }
+    },
+    {
+      "id": "hops_4",
+      "label": "仅 4 跳推理链",
+      "description": "ground-truth 推理链长度为 4 的样本",
+      "count": 60,
+      "mean_reasoning_hops": 4.0,
+      "mean_diameter": 4.05,
+      "boundary": 4.0,
+      "max_accuracy": 0.8833,
+      "max_accuracy_at_steps": 4,
+      "duration_sec": 499.94,
+      "construction": null,
+      "supervision": "标准索引监督",
+      "eval_profile": {
+        "answer_mode": "index",
+        "prompt_mode": "coconut",
+        "choice_order": "random",
+        "max_new_tokens": 4
+      }
+    },
+    {
+      "id": "diameter_3",
+      "label": "图直径 = 3",
+      "description": "从根出发图直径为 3 的子图",
+      "count": 60,
+      "mean_reasoning_hops": 3.0,
+      "mean_diameter": 3.0,
+      "boundary": 3.0,
+      "max_accuracy": 0.9,
+      "max_accuracy_at_steps": 3,
+      "duration_sec": 516.52,
+      "construction": null,
+      "supervision": "标准索引监督",
+      "eval_profile": {
+        "answer_mode": "index",
+        "prompt_mode": "coconut",
+        "choice_order": "random",
+        "max_new_tokens": 4
+      }
+    },
+    {
+      "id": "diameter_4",
+      "label": "图直径 = 4",
+      "description": "从根出发图直径为 4 的子图",
+      "count": 60,
+      "mean_reasoning_hops": 3.9,
+      "mean_diameter": 4.0,
+      "boundary": 4.0,
+      "max_accuracy": 0.9167,
+      "max_accuracy_at_steps": 4,
+      "duration_sec": 506.82,
+      "construction": null,
+      "supervision": "标准索引监督",
+      "eval_profile": {
+        "answer_mode": "index",
+        "prompt_mode": "coconut",
+        "choice_order": "random",
+        "max_new_tokens": 4
+      }
+    },
+    {
+      "id": "diameter_wide",
+      "label": "图直径 ≥ 5",
+      "description": "更宽图结构（直径 5–6），样本较少",
+      "count": 22,
+      "mean_reasoning_hops": 3.727,
+      "mean_diameter": 5.136,
+      "boundary": 4.0,
+      "max_accuracy": 0.9545,
+      "max_accuracy_at_steps": 4,
+      "duration_sec": 180.16,
+      "construction": null,
+      "supervision": "标准索引监督",
+      "eval_profile": {
+        "answer_mode": "index",
+        "prompt_mode": "coconut",
+        "choice_order": "random",
+        "max_new_tokens": 4
+      }
+    },
+    {
+      "id": "random_a",
+      "label": "随机子集 A",
+      "description": "seed=42 随机抽取，检验采样波动",
+      "count": 60,
+      "mean_reasoning_hops": 3.483,
+      "mean_diameter": 3.55,
+      "boundary": 3.0,
+      "max_accuracy": 0.8333,
+      "max_accuracy_at_steps": 3,
+      "duration_sec": 493.9,
+      "construction": null,
+      "supervision": "标准索引监督",
+      "eval_profile": {
+        "answer_mode": "index",
+        "prompt_mode": "coconut",
+        "choice_order": "random",
+        "max_new_tokens": 4
+      }
+    },
+    {
+      "id": "random_b",
+      "label": "随机子集 B",
+      "description": "seed=7 随机抽取，与 A 对照",
+      "count": 60,
+      "mean_reasoning_hops": 3.467,
+      "mean_diameter": 3.65,
+      "boundary": 3.0,
+      "max_accuracy": 0.8833,
+      "max_accuracy_at_steps": 3,
+      "duration_sec": 496.85,
+      "construction": null,
+      "supervision": "标准索引监督",
+      "eval_profile": {
+        "answer_mode": "index",
+        "prompt_mode": "coconut",
+        "choice_order": "random",
+        "max_new_tokens": 4
+      }
+    },
+    {
+      "id": "first_half",
+      "label": "前半段",
+      "description": "原 JSON 前 210 条（文件顺序）",
+      "count": 60,
+      "mean_reasoning_hops": 3.583,
+      "mean_diameter": 3.733,
+      "boundary": 3.0,
+      "max_accuracy": 0.7833,
+      "max_accuracy_at_steps": 3,
+      "duration_sec": 507.15,
+      "construction": null,
+      "supervision": "标准索引监督",
+      "eval_profile": {
+        "answer_mode": "index",
+        "prompt_mode": "coconut",
+        "choice_order": "random",
+        "max_new_tokens": 4
+      }
+    },
+    {
+      "id": "second_half",
+      "label": "后半段",
+      "description": "原 JSON 后 209 条（文件顺序）",
+      "count": 60,
+      "mean_reasoning_hops": 3.5,
+      "mean_diameter": 3.667,
+      "boundary": 3.0,
+      "max_accuracy": 0.9333,
+      "max_accuracy_at_steps": 3,
+      "duration_sec": 506.98,
+      "construction": null,
+      "supervision": "标准索引监督",
+      "eval_profile": {
+        "answer_mode": "index",
+        "prompt_mode": "coconut",
+        "choice_order": "random",
+        "max_new_tokens": 4
+      }
+    }
+  ],
+  "deep_table": [
+    {
+      "id": "syn_chain_5",
+      "label": "合成纯 5 跳链",
+      "description": "人工构造 5 层推理链，根→目标 BFS=5",
+      "count": 40,
+      "mean_reasoning_hops": 5.0,
+      "mean_diameter": 5.0,
+      "boundary": 4.0,
+      "max_accuracy": 0.05,
+      "max_accuracy_at_steps": 4,
+      "duration_sec": 178.79
+    },
+    {
+      "id": "syn_chain_6",
+      "label": "合成纯 6 跳链",
+      "description": "人工构造 6 层推理链，根→目标 BFS=6",
+      "count": 40,
+      "mean_reasoning_hops": 6.0,
+      "mean_diameter": 6.0,
+      "boundary": 3.0,
+      "max_accuracy": 0.975,
+      "max_accuracy_at_steps": 3,
+      "duration_sec": 187.32
+    },
+    {
+      "id": "syn_chain_5_wide",
+      "label": "合成 5 跳 + 干扰分支",
+      "description": "5 跳主链 + 侧枝死胡同，检验宽图是否抬高边界",
+      "count": 40,
+      "mean_reasoning_hops": 5.0,
+      "mean_diameter": 5.0,
+      "boundary": 3.0,
+      "max_accuracy": 0.025,
+      "max_accuracy_at_steps": 3,
+      "duration_sec": 202.76
+    },
+    {
+      "id": "syn_chain_6_wide",
+      "label": "合成 6 跳 + 干扰分支",
+      "description": "6 跳主链 + 侧枝，图更宽",
+      "count": 40,
+      "mean_reasoning_hops": 6.0,
+      "mean_diameter": 6.0,
+      "boundary": 4.0,
+      "max_accuracy": 0.6,
+      "max_accuracy_at_steps": 4,
+      "duration_sec": 225.47
+    },
+    {
+      "id": "syn_mixed_56",
+      "label": "合成 5/6 跳混合",
+      "description": "30 条 5 跳 + 30 条 6 跳",
+      "count": 40,
+      "mean_reasoning_hops": 5.25,
+      "mean_diameter": 5.25,
+      "boundary": 3.0,
+      "max_accuracy": 0.25,
+      "max_accuracy_at_steps": 3,
+      "duration_sec": 180.79
+    },
+    {
+      "id": "prosqa_diameter_5",
+      "label": "ProsQA 图直径=5",
+      "description": "原测试集中直径 5 的样本（约 19 条）",
+      "count": 19,
+      "mean_reasoning_hops": 3.684,
+      "mean_diameter": 5.0,
+      "boundary": 4.0,
+      "max_accuracy": 0.8947,
+      "max_accuracy_at_steps": 4,
+      "duration_sec": 203.83
+    },
+    {
+      "id": "prosqa_diameter_6",
+      "label": "ProsQA 图直径=6",
+      "description": "原测试集中直径 6 的样本（约 3 条）",
+      "count": 3,
+      "mean_reasoning_hops": 4.0,
+      "mean_diameter": 6.0,
+      "boundary": 3.0,
+      "max_accuracy": 1.0,
+      "max_accuracy_at_steps": 3,
+      "duration_sec": 33.11
+    },
+    {
+      "id": "prosqa_diameter_wide",
+      "label": "ProsQA 直径≥5（对照）",
+      "description": "原宽图子集，上次实验边界为 4 步",
+      "count": 22,
+      "mean_reasoning_hops": 3.727,
+      "mean_diameter": 5.136,
+      "boundary": 4.0,
+      "max_accuracy": 0.9545,
+      "max_accuracy_at_steps": 4,
+      "duration_sec": 236.71
+    }
+  ],
+  "variant_table": [
+    {
+      "id": "v_real_hops_3",
+      "label": "真实 3 跳（基线）",
+      "description": "ProsQA 原集 3 跳，标准索引监督",
+      "count": 25,
+      "mean_reasoning_hops": 3.0,
+      "mean_diameter": 3.28,
+      "boundary": 3.0,
+      "max_accuracy": 0.88,
+      "max_accuracy_at_steps": 3,
+      "duration_sec": 352.41,
+      "construction": "real",
+      "supervision": "标准索引监督",
+      "eval_profile": {
+        "answer_mode": "index",
+        "prompt_mode": "coconut",
+        "choice_order": "random",
+        "max_new_tokens": 4
+      }
+    },
+    {
+      "id": "v_real_hops_4",
+      "label": "真实 4 跳（基线）",
+      "description": "ProsQA 原集 4 跳，标准索引监督",
+      "count": 25,
+      "mean_reasoning_hops": 4.0,
+      "mean_diameter": 4.0,
+      "boundary": 3.0,
+      "max_accuracy": 0.8,
+      "max_accuracy_at_steps": 3,
+      "duration_sec": 275.01,
+      "construction": "real",
+      "supervision": "标准索引监督",
+      "eval_profile": {
+        "answer_mode": "index",
+        "prompt_mode": "coconut",
+        "choice_order": "random",
+        "max_new_tokens": 4
+      }
+    },
+    {
+      "id": "v_chain_3",
+      "label": "纯链 3 跳",
+      "description": "人工纯链，无侧枝",
+      "count": 25,
+      "mean_reasoning_hops": 3.0,
+      "mean_diameter": 3.0,
+      "boundary": 1.0,
+      "max_accuracy": 0.0,
+      "max_accuracy_at_steps": 1,
+      "duration_sec": 100.85,
+      "construction": "pure_chain",
+      "supervision": "标准索引监督",
+      "eval_profile": {
+        "answer_mode": "index",
+        "prompt_mode": "coconut",
+        "choice_order": "random",
+        "max_new_tokens": 4
+      }
+    },
+    {
+      "id": "v_chain_4",
+      "label": "纯链 4 跳",
+      "description": "人工纯链 4 层",
+      "count": 25,
+      "mean_reasoning_hops": 4.0,
+      "mean_diameter": 4.0,
+      "boundary": 4.0,
+      "max_accuracy": 0.44,
+      "max_accuracy_at_steps": 4,
+      "duration_sec": 103.68,
+      "construction": "pure_chain",
+      "supervision": "标准索引监督",
+      "eval_profile": {
+        "answer_mode": "index",
+        "prompt_mode": "coconut",
+        "choice_order": "random",
+        "max_new_tokens": 4
+      }
+    },
+    {
+      "id": "v_chain_5_dense",
+      "label": "稠密链 5 跳",
+      "description": "5 跳主链 + 借自真实图的噪声边",
+      "count": 25,
+      "mean_reasoning_hops": 5.0,
+      "mean_diameter": 5.16,
+      "boundary": 1.0,
+      "max_accuracy": 0.0,
+      "max_accuracy_at_steps": 1,
+      "duration_sec": 122.41,
+      "construction": "dense_chain",
+      "supervision": "标准索引监督",
+      "eval_profile": {
+        "answer_mode": "index",
+        "prompt_mode": "coconut",
+        "choice_order": "random",
+        "max_new_tokens": 4
+      }
+    },
+    {
+      "id": "v_chain_6_dense",
+      "label": "稠密链 6 跳",
+      "description": "6 跳主链 + 噪声边",
+      "count": 25,
+      "mean_reasoning_hops": 6.0,
+      "mean_diameter": 6.12,
+      "boundary": 3.0,
+      "max_accuracy": 0.52,
+      "max_accuracy_at_steps": 3,
+      "duration_sec": 126.49,
+      "construction": "dense_chain",
+      "supervision": "标准索引监督",
+      "eval_profile": {
+        "answer_mode": "index",
+        "prompt_mode": "coconut",
+        "choice_order": "random",
+        "max_new_tokens": 4
+      }
+    },
+    {
+      "id": "v_chain_7_dense",
+      "label": "稠密链 7 跳",
+      "description": "7 跳主链 + 噪声边",
+      "count": 25,
+      "mean_reasoning_hops": 7.0,
+      "mean_diameter": 7.08,
+      "boundary": 2.0,
+      "max_accuracy": 0.2,
+      "max_accuracy_at_steps": 2,
+      "duration_sec": 131.83,
+      "construction": "dense_chain",
+      "supervision": "标准索引监督",
+      "eval_profile": {
+        "answer_mode": "index",
+        "prompt_mode": "coconut",
+        "choice_order": "random",
+        "max_new_tokens": 4
+      }
+    },
+    {
+      "id": "v_extend_5",
+      "label": "真实图延长 → 5 跳",
+      "description": "在 ProsQA 样本末尾追加推理层",
+      "count": 25,
+      "mean_reasoning_hops": 5.0,
+      "mean_diameter": 5.0,
+      "boundary": 5.0,
+      "max_accuracy": 0.96,
+      "max_accuracy_at_steps": 5,
+      "duration_sec": 276.5,
+      "construction": "prosqa_extend",
+      "supervision": "标准索引监督",
+      "eval_profile": {
+        "answer_mode": "index",
+        "prompt_mode": "coconut",
+        "choice_order": "random",
+        "max_new_tokens": 4
+      }
+    },
+    {
+      "id": "v_extend_6",
+      "label": "真实图延长 → 6 跳",
+      "description": "保留原图结构，链长 6",
+      "count": 25,
+      "mean_reasoning_hops": 6.0,
+      "mean_diameter": 6.0,
+      "boundary": 9.0,
+      "max_accuracy": 0.96,
+      "max_accuracy_at_steps": 9,
+      "duration_sec": 285.37,
+      "construction": "prosqa_extend",
+      "supervision": "标准索引监督",
+      "eval_profile": {
+        "answer_mode": "index",
+        "prompt_mode": "coconut",
+        "choice_order": "random",
+        "max_new_tokens": 4
+      }
+    },
+    {
+      "id": "v_extend_7",
+      "label": "真实图延长 → 7 跳",
+      "description": "保留原图结构，链长 7",
+      "count": 25,
+      "mean_reasoning_hops": 7.0,
+      "mean_diameter": 7.0,
+      "boundary": 5.0,
+      "max_accuracy": 0.8,
+      "max_accuracy_at_steps": 5,
+      "duration_sec": 280.05,
+      "construction": "prosqa_extend",
+      "supervision": "标准索引监督",
+      "eval_profile": {
+        "answer_mode": "index",
+        "prompt_mode": "coconut",
+        "choice_order": "random",
+        "max_new_tokens": 4
+      }
+    },
+    {
+      "id": "v_tree_5",
+      "label": "树形 5 跳",
+      "description": "左链到目标 + 右分支干扰",
+      "count": 25,
+      "mean_reasoning_hops": 5.0,
+      "mean_diameter": 5.0,
+      "boundary": 1.0,
+      "max_accuracy": 0.0,
+      "max_accuracy_at_steps": 1,
+      "duration_sec": 128.8,
+      "construction": "tree",
+      "supervision": "标准索引监督",
+      "eval_profile": {
+        "answer_mode": "index",
+        "prompt_mode": "coconut",
+        "choice_order": "random",
+        "max_new_tokens": 4
+      }
+    },
+    {
+      "id": "v_diamond_5",
+      "label": "菱形 5 跳",
+      "description": "双路径汇合到目标",
+      "count": 25,
+      "mean_reasoning_hops": 10.0,
+      "mean_diameter": 5.0,
+      "boundary": 5.0,
+      "max_accuracy": 1.0,
+      "max_accuracy_at_steps": 5,
+      "duration_sec": 133.63,
+      "construction": "diamond",
+      "supervision": "标准索引监督",
+      "eval_profile": {
+        "answer_mode": "index",
+        "prompt_mode": "coconut",
+        "choice_order": "random",
+        "max_new_tokens": 4
+      }
+    }
+  ],
+  "references": {
+    "paper": "https://arxiv.org/abs/2505.12514",
+    "code": "https://github.com/Ber666/reasoning-by-superposition",
+    "doc": "docs/experiment-findings.md"
+  }
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ICAIS 投稿配图预览</title>
+  <style>
+    body { font-family: "Microsoft YaHei", Arial, sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem; color: #222; }
+    h1 { font-size: 1.4rem; }
+    section { margin: 2rem 0; border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+    img { max-width: 100%; height: auto; display: block; margin: 1rem auto; }
+    .caption { font-size: 0.95rem; color: #444; text-align: center; margin-top: 0.5rem; }
+    a { color: #1B5E8C; }
+  </style>
+</head>
+<body>
+  <h1>ICAIS 2026 Track 2 · 投稿配图</h1>
+  <p>右键图片 →「另存为」可下载插入 Word。图中英文标注保证清晰渲染；中文题注写在 Word 图下方。</p>
+
+  <section>
+    <h2>图 1 · confidence_fallback 流程图</h2>
+    <img src="figure1_confidence_fallback_flow.svg" alt="Figure 1 confidence_fallback flow">
+    <p class="caption">图 1  confidence_fallback 流程：M2 置信度低于 τ 时触发 kNN 回退。</p>
+    <p>
+      <a href="figure1_confidence_fallback_flow.svg" download>下载 SVG</a>
+      · <a href="figure1_confidence_fallback_flow.png" download>下载 PNG</a>
+      · <a href="figure1_confidence_fallback_flow_transparent.png" download>透明 PNG</a>
+    </p>
+  </section>
+
+  <section>
+    <h2>图 2 · 主要方法准确率对比</h2>
+    <img src="figure2_main_results_bar.svg" alt="Figure 2 main results bar chart">
+    <p class="caption">图 2  主要方法准确率对比（419 题，无 oracle；深蓝柱为本文方法）</p>
+    <p>
+      <a href="figure2_main_results_bar.svg" download>下载 SVG</a>
+      · <a href="figure2_main_results_bar.png" download>下载 PNG（透明）</a>
+      · <a href="figure2_main_results_bar_transparent.png" download>透明 PNG</a>
+    </p>
+  </section>
+</body>
+</html>

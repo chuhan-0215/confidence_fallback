@@ -1,0 +1,4 @@
+﻿checkpoints/checkpoint_300
+.venv/
+__pycache__/
+*.pyc

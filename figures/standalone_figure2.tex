@@ -1,0 +1,51 @@
+\documentclass[tikz,border=6pt]{standalone}
+\usepackage{times}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\begin{document}
+\small
+\begin{tikzpicture}
+\begin{axis}[
+  width=12.5cm,
+  height=5.4cm,
+  ybar,
+  bar width=11pt,
+  enlarge x limits=0.14,
+  ymin=79.8,
+  ymax=99.5,
+  ytick={80,85,90,95,100},
+  ylabel={Accuracy (\%)},
+  symbolic x coords={fixed\_3,auto\_route,structure\_d,knn\_min3,ours},
+  xticklabels={
+    {fixed\_3},{auto\_route},{structure\_d},{knn\_min3},{conf.\ fallback}
+  },
+  xticklabel style={font=\scriptsize, align=center},
+  ylabel style={font=\small},
+  tick label style={font=\scriptsize},
+  axis line style={black!70, line width=0.4pt},
+  tick style={black!55, line width=0.35pt},
+  ymajorgrids=true,
+  grid style={black!8, line width=0.25pt},
+  nodes near coords={\pgfmathprintnumber[fixed,precision=2]{\pgfplotspointmeta}\%},
+  every node near coord/.append style={
+    font=\scriptsize, yshift=2pt, text=black!80
+  },
+  title={\small Comparison of answer accuracy on ProsQA (419 questions)},
+  title style={yshift=-2pt}
+]
+
+\addplot[fill=black!10, draw=black!50, line width=0.35pt] coordinates {
+  (fixed\_3,83.8) (auto\_route,93.1) (structure\_d,93.6) (knn\_min3,92.6) (ours,0)
+};
+\addplot[fill=black!28, draw=black!75, line width=0.55pt] coordinates {
+  (fixed\_3,0) (auto\_route,0) (structure\_d,0) (knn\_min3,0) (ours,95.23)
+};
+
+\draw[black!45, line width=0.45pt, dashed]
+  (axis cs:fixed\_3,83.8) -- (axis cs:ours,83.8);
+\node[anchor=south east, font=\scriptsize, text=black!55]
+  at (axis cs:ours,83.85) {fixed\_3 baseline};
+
+\end{axis}
+\end{tikzpicture}
+\end{document}

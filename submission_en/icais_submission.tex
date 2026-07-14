@@ -1,0 +1,143 @@
+\documentclass{article}
+\usepackage{icais_conference,times}
+\input{math_commands.tex}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning,fit,backgrounds,calc,arrows.meta,shapes.geometric}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!70!black,citecolor=green!60!black,urlcolor=red!60!black}
+\usepackage{url}
+
+\title{Confidence Fallback: Selective Stopping for Continuous Latent Reasoning}
+
+\author{Songyang Pang \\
+Beijing Youth AI Academy \\
+Experimental School Affiliated to Haidian Teachers Training College \\
+\texttt{3478053618@qq.com} \\
+Supervisor: Jingwen Fu \\
+Beijing Zhongguancun Academy
+}
+
+% Youth Scientist Track: show real author (not double-blind anonymous)
+\iclrfinalcopy
+
+\begin{document}
+\maketitle
+\fancyhead[L]{}
+\fancyhead[R]{}
+\fancyhead[C]{}
+\renewcommand{\headrulewidth}{0pt}
+
+\begin{abstract}
+Continuous latent reasoning methods such as Coconut can maintain parallel search frontiers in hidden space, improving graph reasoning over discrete chain-of-thought prompting. However, most existing stopping strategies either apply a fixed latent-step budget to every instance or run fine-grained neighborhood search on all samples, which is often insufficient for accurate deployment under instance heterogeneity and too expensive for routine inference. In this work, we propose \textbf{confidence\_fallback}, a deployable stopping method that keeps a structure-routed main path and invokes kNN--M2 backup search only when an M2 stop head is uncertain. On Coconut/ProsQA (419 questions; 91 controlled runs), \texttt{confidence\_fallback} reaches \textbf{95.23\%} accuracy with a \textbf{7.2\%} fallback rate at $\tau=0.48$, improving over \texttt{fixed\_3} by 11.4 percentage points; across 53 out-of-distribution (OOD) slices, \texttt{tri\_zone} with hybrid slice routing yields a weighted gain of 2.08 percentage points.
+\end{abstract}
+
+\textbf{Keywords:} confidence fallback; continuous latent reasoning; adaptive stopping; Coconut; ProsQA
+
+\section{Introduction}
+
+Large language models (LLMs) have achieved strong results on reasoning benchmarks, yet discrete chain-of-thought (CoT) prompting \citep{wei2022cot} still makes per-instance control of reasoning depth difficult. Coconut \citep{hao2024coconut} instead performs continuous-thought reasoning in latent space. Its hidden states can encode superposition over multiple search frontiers, enabling implicit parallel breadth-first search (BFS) \citep{zhu2025superposition}. On ProsQA graph reachability \citep{hao2024prosqa}, this continuous-thought formulation substantially outperforms discrete CoT. Related work also studies latent-space reasoning and early exiting \citep{goyal2023thoughts,pfau2024dotbydot,zhou2023earlyexit}.
+
+Most current Coconut deployments, however, rely on a single-step budget chosen independently of instance difficulty. This setup works when all questions require similar reasoning depth, but it breaks down on mixed-hop ProsQA subsets where optimal latent depth correlates with graph depth ($r\approx0.543$ in our analysis). More complex instances require instance-adaptive stopping and, for uncertain cases, selective recovery. Multi-step stopping can be viewed as a search-control problem over latent reasoning trajectories. One direction routes latent steps from graph structure \citep{hao2024coconut,zhu2025superposition}, but a single main path cannot correct low-confidence predictions. Another direction applies neighborhood-based online stopping to every sample; this improves reliability but increases inference cost on nearly all instances. Confidence-adaptive language modeling \citep{schuster2022calm} shows that model confidence can modulate computation, yet Coconut deployment still requires structure routing, stop discrimination, and backup search to be integrated into one deployable pipeline rather than used in isolation.
+
+In this work, we focus on developing a resource-efficient deployable stopping strategy for continuous latent reasoning. Instead of running backup search on every instance, we gate a structure-routed main path with an M2 stop head and invoke kNN--M2 fallback only when stopping confidence is low. Our preliminary ProsQA study shows that fixed-step \texttt{fixed\_3} reaches only 83.8\%, structure routing improves to 93.6\%, and overthinking reduces accuracy (3-step 83.8\% vs.\ 5-step 74.0\%). Building on these observations, we propose \texttt{confidence\_fallback} and evaluate it against fixed-step, structure-routing, and online-stopping baselines under both in-distribution and OOD settings. Our contributions are the following:
+\begin{itemize}
+\item We propose \texttt{confidence\_fallback}, a selective stopping method that gates main-path and fallback-path inference with an M2 confidence head.
+\item We show that on ProsQA, \texttt{confidence\_fallback} reaches 95.23\% accuracy while invoking fallback on only 7.2\% of instances, outperforming all compared baselines.
+\item We introduce \texttt{tri\_zone} and \texttt{hybrid\_slice\_router} for OOD deployment, yielding a weighted gain of 2.08 percentage points across 53 slices.
+\end{itemize}
+
+\section{Method}
+
+\subsection{Preliminaries}
+
+Let $\mathcal{D}=\{(x,y)\}$ denote ProsQA instances, where $x$ specifies a directed graph, a root node, and two candidate targets, and $y$ is the reachability label \citep{hao2024prosqa}. Each instance requires selecting the number of continuous-thought steps $n$ before producing an answer. We model deployable inference as a two-stage procedure: (i) choose a main-path budget $n_0$ from graph structure; (ii) decide whether to accept the main-path prediction or invoke fallback search.
+
+Formally, given input $x$, structure routing estimates BFS depth $d$ and sets
+\[
+n_0=\max(\mathrm{min\_n},\min(d,\mathrm{cap})).
+\]
+A Coconut model $f$ then performs one forward pass, yielding prediction $\hat y_0$ and hidden state $h_{n_0}$. An M2 stop head $g$ outputs confidence
+\[
+p_0=\sigma(g(h_{n_0},n_0,x)),
+\]
+where $\sigma(\cdot)$ is the logistic function. If $p_0\ge\tau$, inference returns $\hat y_0$; otherwise the kNN--M2 online-stop fallback path refines stopping and returns final answer $y$.
+
+Deployment constraints are: (1) no exhaustive sweep over latent steps 1--8 at inference time; (2) mean latent steps $\mathrm{mean\_n}\le 4.5$. All experiments use Coconut \texttt{checkpoint\_300} \citep{hao2024coconut}, i.e., the ProsQA fine-tuned checkpoint saved at training step 300, evaluated on 419 in-distribution questions and 53 OOD slices.
+
+\subsection{Confidence Fallback}
+
+Figure~\ref{fig:flow} summarizes \texttt{confidence\_fallback}. At inference time, the method first routes $n_0$ from BFS depth, performs one Coconut forward pass, and evaluates stop confidence with the M2 head. High-confidence instances terminate on the main path; low-confidence instances trigger kNN--M2 fallback. The threshold $\tau=0.48$ is selected by sweeping $[0.42,0.55]$ on the validation split.
+
+\input{figures/figure1_flow.tex}
+
+\noindent\textbf{Algorithm 1} \texttt{confidence\_fallback} inference\\
+\textbf{Input:} instance $x$, threshold $\tau$, Coconut model $f$, M2 head $g$, kNN fallback module\\
+\textbf{Output:} answer $y$\\
+1:\ $n_0\leftarrow\max(\mathrm{min\_n},\min(\mathrm{BFS\_depth}(x),\mathrm{cap}))$;\ $\hat y_0, h_{n_0}\leftarrow f(x,n_0)$\\
+2:\ $p_0\leftarrow\sigma(g(h_{n_0},n_0,x))$\\
+3:\ \textbf{if} $p_0<\tau$ \textbf{then} $y\leftarrow\mathrm{KNN\_M2\_online\_stop}(x)$ \textbf{else} $y\leftarrow\hat y_0$\\
+4:\ \textbf{return} $y$
+
+\subsection{Tri-Zone Gating for OOD Deployment}
+
+For in-distribution ProsQA we fix $\tau=0.48$. Under distribution shift, a single threshold can over-trigger fallback on some slices. We therefore introduce \texttt{tri\_zone} with $t_{\mathrm{low}}=0.40$ and $t_{\mathrm{mid}}=0.48$: accept the main path if $p_0\ge t_{\mathrm{mid}}$; fallback if $p_0<t_{\mathrm{low}}$; in the middle band, fallback only when the predicted answer changes. Slice-specific rules in \texttt{hybrid\_slice\_router} further apply skip/agreement policies to vulnerable OOD slices and default to \texttt{tri\_zone} elsewhere.
+
+\section{Experiments}
+
+\subsection{Experimental Setup}
+
+We evaluate \texttt{confidence\_fallback} on ProsQA graph reachability with 419 in-distribution questions and 53 OOD slices. All methods share Coconut \texttt{checkpoint\_300}, the same test partition, and the same 91-run experimental protocol. We compare five methods: \texttt{fixed\_3}, \texttt{auto\_route}, \texttt{structure\_d}, \texttt{knn\_min3}, and \texttt{confidence\_fallback}. Metrics are full-set accuracy, gain relative to \texttt{fixed\_3} ($\Delta$), and fallback rate. OOD results report weighted $\Delta$ over 53 slices.
+
+We mark baselines as follows: $\times$ fixed-budget ablation (\texttt{fixed\_3}); $\checkmark$ reproduced controls evaluated on our split (\texttt{auto\_route}, \texttt{structure\_d}, \texttt{knn\_min3}); $\bullet$ our method and OOD variants.
+
+\subsection{Main Results on ProsQA}
+
+As shown in Figure~\ref{fig:bar} and Table~\ref{tab:main}, \texttt{confidence\_fallback} achieves the highest accuracy on the full 419-question set. It reaches 95.23\% with a 7.2\% fallback rate, so 92.8\% of instances remain on the main path with a single Coconut forward pass. This improves over the strongest single-path baseline \texttt{structure\_d} by 1.6 percentage points and over \texttt{fixed\_3} by 11.4 percentage points. The largest gains occur on mixed-hop and low-confidence subsets, where fixed budgets and single-path routing fail to recover from unreliable stopping.
+
+\input{figures/figure2_bar.tex}
+
+\begin{table}[t]
+\caption{Comparison of methods on ProsQA (419 questions). Bold and underline denote the best and second-best accuracy, respectively.}
+\label{tab:main}
+\vspace{1mm}
+\begin{center}
+\small
+\begin{tabular}{l l c c c l}
+\toprule
+\textbf{Method} & \textbf{Mark} & \textbf{Acc. (\%)} & \textbf{$\Delta$ (pp)} & \textbf{Fallback (\%)} & \textbf{Mechanism} \\
+\midrule
+\texttt{fixed\_3} & $\times$ & 83.8 & --- & --- & Fixed latent steps \\
+\texttt{auto\_route} & $\checkmark$ & 93.1 & +9.3 & --- & BFS step routing \\
+\texttt{structure\_d} & $\checkmark$ & \underline{93.6} & +9.8 & --- & Depth-budget routing \\
+\texttt{knn\_min3} & $\checkmark$ & 92.6 & +8.8 & --- & Universal kNN stopping \\
+\textbf{\texttt{confidence\_fallback}} & $\bullet$ & \textbf{95.23} & \textbf{+11.4} & \textbf{7.2} & Selective gated fallback \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+
+\subsection{Analysis and OOD Results}
+
+Expected accuracy decomposes as
+\[
+\mathbb{E}[\mathrm{Acc}]=p_0(1-f)+p_1 f,
+\]
+where $p_0$ and $p_1$ denote main-path and fallback-path accuracy and $f$ is the fallback rate. When $p_1>p_0$ and $f$ is controlled by $\tau$, overall accuracy can increase at bounded extra compute. In our setting, structure routing raises $p_0$ to 93.6\%; \texttt{confidence\_fallback} further increases accuracy to 95.23\% with $f=7.2\%$.
+
+\texttt{fixed\_3} ignores instance heterogeneity and degrades on mixed 3/4-hop subsets. \texttt{auto\_route} and \texttt{structure\_d} improve step budgeting but cannot repair unreliable stopping when the budget itself is reasonable. \texttt{knn\_min3} applies neighborhood-based stopping to all instances and therefore incurs extra compute on every sample. By contrast, \texttt{confidence\_fallback} preserves the efficient \texttt{structure\_d} main path and invokes fallback only on low-confidence cases, yielding the best accuracy--compute trade-off in our comparison.
+
+Five random seeds give mean accuracy 93.89\%, indicating that $\tau=0.48$ is not a brittle validation choice. Across 53 OOD slices, \texttt{tri\_zone} and \texttt{hybrid\_slice\_router} provide a weighted gain of 2.08 percentage points (+7.44 percentage points on the OOD subset), suggesting that the gating mechanism reduces false fallback triggers under distribution shift.
+
+\section{Conclusion}
+
+This work proposes \texttt{confidence\_fallback} for deployable stopping in continuous latent reasoning. The method combines structure routing, M2 confidence gating, and selective kNN backup search. On ProsQA, it reaches 95.23\% accuracy (+11.4 percentage points over \texttt{fixed\_3}) while invoking fallback on only 7.2\% of instances. For OOD deployment, \texttt{tri\_zone} and \texttt{hybrid\_slice\_router} provide additional gains across 53 slices. Our results indicate that selective correction---rather than universal fixed steps or universal fine-grained stopping---is the key to accurate and efficient Coconut-style inference.
+
+\bibliography{icais_submission}
+\bibliographystyle{icais_conference}
+
+\end{document}

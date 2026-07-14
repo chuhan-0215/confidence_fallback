@@ -1,0 +1,96 @@
+% Figure 1 — agent/environment schematic (single-row, no overflow)
+\begin{figure}[t]
+\centering
+\resizebox{0.98\linewidth}{!}{%
+\begin{tikzpicture}[
+  font=\small,
+  >=Stealth,
+  module/.style={
+    rectangle, draw=black!70, line width=0.35pt,
+    fill=white, rounded corners=1pt,
+    minimum height=9mm, inner sep=3pt, align=center
+  },
+  widemod/.style={module, minimum width=24mm, font=\scriptsize},
+  narrowmod/.style={module, minimum width=18mm, font=\scriptsize},
+  inst/.style={
+    rectangle, draw=black!55, line width=0.35pt,
+    fill=white, rounded corners=1pt,
+    minimum width=27mm, minimum height=16mm,
+    align=left, font=\scriptsize
+  },
+  gate/.style={
+    diamond, draw=black!75, line width=0.35pt,
+    fill=black!4, aspect=2.2, inner sep=0.5pt,
+    minimum width=11mm, font=\scriptsize, align=center
+  },
+  fb/.style={
+    module, minimum width=30mm, draw=black!60, dashed,
+    fill=white, font=\scriptsize
+  },
+  arr/.style={->, line width=0.45pt, draw=black!75},
+  dasharr/.style={->, line width=0.45pt, draw=black!60, dashed},
+  lbl/.style={font=\scriptsize, fill=white, inner sep=1pt, text=black!70}
+]
+
+\node[inst] (inst) {%
+  \textbf{ProsQA input $x$}\\[-1pt]
+  graph $G=(V,E)$\\
+  root $r$, targets $\{a,b\}$%
+};
+
+\node[widemod, right=5mm of inst] (route) {%
+  \textbf{Structure router}\\[-1pt]
+  $d\leftarrow \mathrm{BFS}(G,r)$\\
+  $n_0\leftarrow \mathrm{clamp}(d)$%
+};
+\node[widemod, right=4mm of route] (coco) {%
+  \textbf{Coconut forward}\\[-1pt]
+  $\hat y_0 \leftarrow f(x,n_0)$\\
+  $h_{n_0}$%
+};
+\node[narrowmod, right=4mm of coco] (m2) {%
+  \textbf{M2 stop head}\\[-1pt]
+  $p_0=\sigma(g(\cdot))$%
+};
+\node[gate, right=5mm of m2] (gate) {$p_0{\ge}\tau$};
+\node[narrowmod, right=7mm of gate] (out) {%
+  \textbf{Output}\\[-1pt]
+  $y$%
+};
+
+\node[fb, below=9mm of coco] (fb) {%
+  \textbf{kNN--M2 fallback}\\[-1pt]
+  online stop search%
+};
+
+\begin{scope}[on background layer]
+  \node[rectangle, draw=black!45, line width=0.35pt, fill=black!2,
+        rounded corners=2pt, inner sep=7pt,
+        fit=(route) (coco) (m2) (gate) (fb) (out)] (agent) {};
+  \node[anchor=north west, font=\scriptsize\bfseries, text=black!60]
+    at ([xshift=1pt,yshift=-1pt]agent.north west)
+    {confidence\_fallback agent};
+\end{scope}
+\begin{scope}[on background layer]
+  \node[rectangle, draw=black!40, line width=0.45pt, dashed,
+        fill=black!1, rounded corners=3pt, inner sep=9pt,
+        fit=(inst) (agent) (fb)] (env) {};
+  \node[anchor=north west, font=\scriptsize, text=black!55]
+    at ([xshift=1pt,yshift=-1pt]env.north west)
+    {ProsQA inference environment};
+\end{scope}
+
+\draw[arr] (inst) -- (route);
+\draw[arr] (route) -- (coco);
+\draw[arr] (coco) -- (m2);
+\draw[arr] (m2) -- (gate);
+\draw[arr] (gate.east) -- node[lbl, above] {yes} (out.west);
+
+\draw[dasharr] (gate.south) -- ++(0,-3mm) -| node[lbl, pos=0.25, below] {no} (fb.north);
+\draw[dasharr] (fb.east) -| (out.south);
+
+\end{tikzpicture}%
+}
+\caption{\textbf{confidence\_fallback} interacts with the ProsQA inference environment. The input $x$ contains a directed graph and a reachability query (e.g., which candidate target is reachable from $r$ within $n_0$ latent steps). The agent routes $n_0$ from BFS depth, performs one Coconut forward pass to obtain $\hat y_0$ and $h_{n_0}$, and queries the M2 stop head for $p_0=\sigma(g(h_{n_0},n_0,x))$. If $p_0\ge\tau$, it returns $\hat y_0$; otherwise it invokes the kNN--M2 fallback path.}
+\label{fig:flow}
+\end{figure}

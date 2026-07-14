@@ -1,0 +1,100 @@
+{
+  "version": "v8_final",
+  "locked_at": "2026-07-12T11:45:39.859759+00:00",
+  "supersedes": "deploy_spec_v8.json",
+  "prosqa_in_distribution": {
+    "policy": "confidence_fallback",
+    "fallback_thr": 0.48,
+    "accuracy": 0.9475,
+    "eval_profile": {
+      "answer_mode": "index",
+      "prompt_mode": "coconut",
+      "choice_order": "random",
+      "max_new_tokens": 4
+    },
+    "canonical_seed": 99
+  },
+  "cross_dataset_ood": {
+    "policy": "hybrid_slice_router_v4",
+    "tier": "default",
+    "router_rules": {
+      "skip_transfer": [
+        "push_ext7_from3",
+        "push_ext7_mixed",
+        "syn_chain_5_wide",
+        "v_diamond_5"
+      ],
+      "agreement_lock": [
+        "mix_50_4",
+        "mix_75_4",
+        "push_ext5_from3",
+        "push_ext6_from4"
+      ],
+      "tri_zone_default": "all other slices (incl. hops_3)",
+      "params": {
+        "t_low": 0.4,
+        "t_mid": 0.48
+      },
+      "changes_vs_v3": [
+        "push_ext7_from3/mixed → skip_transfer（B1 seed43 翻转）"
+      ]
+    },
+    "weighted_mean_delta_pp": 2.079,
+    "in_dist_weighted_delta_pp": 0.23,
+    "ood_weighted_delta_pp": 7.444,
+    "hurts_count": 6,
+    "dual_ok": true,
+    "per_seed_dual_ok": "3/4"
+  },
+  "cross_dataset_canonical_enhanced": {
+    "policy": "hybrid_slice_router_v5",
+    "tier": "canonical_only",
+    "router_rules": {
+      "skip_transfer": [
+        "push_ext5_from3",
+        "push_ext7_from3",
+        "push_ext7_mixed",
+        "syn_chain_5_wide",
+        "v_diamond_5"
+      ],
+      "agreement_lock": [
+        "mix_50_4",
+        "mix_75_4",
+        "push_ext6_from4"
+      ],
+      "tri_zone_default": "all other slices (incl. hops_3)",
+      "params": {
+        "t_low": 0.4,
+        "t_mid": 0.48
+      },
+      "changes_vs_v4": [
+        "push_ext5_from3 → skip_transfer（seed43 in-dist 修复候选）"
+      ]
+    },
+    "weighted_mean_delta_pp": 2.108,
+    "in_dist_weighted_delta_pp": 0.269,
+    "ood_weighted_delta_pp": 7.444,
+    "hurts_count": 5,
+    "dual_ok": true,
+    "recommended_when": "仅 canonical eval @seed=99；多 seed 部署仍用 v4",
+    "active": true
+  },
+  "eval_stability": {
+    "recommended_profile": {
+      "answer_mode": "index",
+      "prompt_mode": "coconut",
+      "choice_order": "random",
+      "max_new_tokens": 4
+    },
+    "canonical_seed": 99,
+    "per_seed_dual_ok_v4": "3/4",
+    "seed43_irreducible": true,
+    "fixed_edges_rejected": true
+  },
+  "deploy_bounds": {
+    "canonical_dual_ok_required": true,
+    "pooled_dual_ok": true,
+    "multi_seed_limit": "3/4 on {42,43,44,99}；seed43 in-dist 不可修复"
+  },
+  "rule_summary": "默认 v4（3/4 seed）；@99 可选 v5 增强（hurts 更少）"
+}
