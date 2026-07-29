@@ -1,0 +1,61 @@
+{
+  "datasets": [
+    {
+      "dataset": "strategyqa",
+      "status": "ok",
+      "n_samples": 161,
+      "checkpoint": "/vepfs-mlp2/queue013/public/experiments/psy/coconut-boundary/inbox/000002/checkpoints/strategyqa_best",
+      "tau": 0.01,
+      "knn_thr": null,
+      "fallback_mode": "scan",
+      "tuned_fixed_n": null,
+      "baseline_mode": "native_step_route",
+      "baseline_best_acc": 0.6087,
+      "baseline_best_policy": "step_route",
+      "fixed_n_acc": 0.6025,
+      "step_route_acc": 0.6087,
+      "confidence_fallback_acc": 0.6149,
+      "cf_refine_rate": 0.9503,
+      "delta_pp": 0.62,
+      "delta_pp_vs_fixed_n": null
+    },
+    {
+      "dataset": "proofwriter",
+      "status": "ok",
+      "n_samples": 1200,
+      "checkpoint": "/vepfs-mlp2/queue013/public/experiments/psy/coconut-boundary/inbox/000002/checkpoints/proofwriter_best",
+      "tau": 0.01,
+      "knn_thr": 0.05,
+      "fallback_mode": "knn",
+      "tuned_fixed_n": null,
+      "baseline_mode": "native_step_route",
+      "baseline_best_acc": 0.9975,
+      "baseline_best_policy": "step_route",
+      "fixed_n_acc": 0.9975,
+      "step_route_acc": 0.9975,
+      "confidence_fallback_acc": 0.9975,
+      "cf_refine_rate": 0.0,
+      "delta_pp": 0.0,
+      "delta_pp_vs_fixed_n": null
+    },
+    {
+      "dataset": "math500",
+      "status": "ok",
+      "n_samples": 50,
+      "checkpoint": "/vepfs-mlp2/queue013/public/experiments/psy/coconut-boundary/inbox/000002/checkpoints/math500_best",
+      "tau": 0.65,
+      "knn_thr": null,
+      "fallback_mode": "scan",
+      "tuned_fixed_n": null,
+      "baseline_mode": "native_step_route",
+      "baseline_best_acc": 0.08,
+      "baseline_best_policy": "step_route",
+      "fixed_n_acc": 0.12,
+      "step_route_acc": 0.08,
+      "confidence_fallback_acc": 0.14,
+      "cf_refine_rate": 0.92,
+      "delta_pp": 6.0,
+      "delta_pp_vs_fixed_n": null
+    }
+  ]
+}
