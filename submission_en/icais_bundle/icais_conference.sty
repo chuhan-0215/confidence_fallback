@@ -91,7 +91,7 @@
 {\LARGE\sc \@title\par}
 %\bottomtitlebar % \vskip 0.1in %  minus
 \ificlrfinal
-    \lhead{}
+    \lhead{Published as a conference paper at ICAIS}
     \def\And{\end{tabular}\hfil\linebreak[0]\hfil
             \begin{tabular}[t]{l}\bf\rule{\z@}{24pt}\ignorespaces}%
   \def\AND{\end{tabular}\hfil\linebreak[4]\hfil
@@ -103,7 +103,7 @@
             \begin{tabular}[t]{l}\bf\rule{\z@}{24pt}\ignorespaces}%
   \def\AND{\end{tabular}\hfil\linebreak[4]\hfil
             \begin{tabular}[t]{l}\bf\rule{\z@}{24pt}\ignorespaces}%
-    \begin{tabular}[t]{l}\bf\rule{\z@}{24pt}Anonymous authors\\Paper under double-blind review\end{tabular}%
+    \begin{tabular}[t]{l}\bf\rule{\z@}{24pt}Anonymous authors\end{tabular}%
 \fi
 \vskip 0.3in minus 0.1in}}
 
@@ -232,18 +232,7 @@ plus      -0.5ex minus -.2ex}{0.5ex plus
 % ----- end of vruler
 
 % \makevruler[<SCALE>][<INITIAL_COUNT>][<STEP>][<DIGITS>][<HEIGHT>]
-\def\iclrruler#1{\makevruler[12pt][#1][1][3][0.993\textheight]\usebox{\iclrrulerbox}}
-\AddToShipoutPicture{%
-\ificlrfinal\else
-\iclrruleroffset=\textheight
-\advance\iclrruleroffset by -3.7pt
-  \color[rgb]{.7,.7,.7}
-  \AtTextUpperLeft{%
-    \put(\LenToUnit{-35pt},\LenToUnit{-\iclrruleroffset}){%left ruler
-      \iclrruler{\iclrrulercount}}
-  }
-\fi
-}
+% Line-number ruler disabled per submission preference.
 % %% To add a vertical bar on the side
 % \AddToShipoutPicture{
 % \AtTextLowerLeft{

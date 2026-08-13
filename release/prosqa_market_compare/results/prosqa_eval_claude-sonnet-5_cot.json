@@ -1,0 +1,815 @@
+{
+ "model": "claude-sonnet-5",
+ "prompt_mode": "cot",
+ "n": 100,
+ "n_ok_api": 100,
+ "accuracy": 1.0,
+ "avg_prompt_tokens": 477.2,
+ "avg_completion_tokens": 203.0,
+ "avg_total_tokens": 680.2,
+ "avg_latency_sec": 6.28,
+ "errors": 0,
+ "rows": [
+  {
+   "idx": 379,
+   "ok": true,
+   "text": "Jack is a yumpus.",
+   "prompt_tokens": 517,
+   "completion_tokens": 122,
+   "latency_sec": 3.79
+  },
+  {
+   "idx": 125,
+   "ok": true,
+   "text": "Wren is a gerpus, and every gerpus is a brimpus. Every brimpus is a grimpus, and every grimpus is a yimpus.\n\nWren is a yimpus.",
+   "prompt_tokens": 489,
+   "completion_tokens": 110,
+   "latency_sec": 3.9
+  },
+  {
+   "idx": 140,
+   "ok": true,
+   "text": "Stella is a numpus, and every numpus is a yerpus; every yerpus is a scrompus; every scrompus is a yumpus; every yumpus is a vumpus.\n\nStella is a vumpus.",
+   "prompt_tokens": 514,
+   "completion_tokens": 147,
+   "latency_sec": 4.16
+  },
+  {
+   "idx": 12,
+   "ok": true,
+   "text": "Max is a rorpus, every rorpus is a tumpus, every tumpus is a lorpus, and every lorpus is a gwompus.\n\nMax is a gwompus.",
+   "prompt_tokens": 580,
+   "completion_tokens": 122,
+   "latency_sec": 4.17
+  },
+  {
+   "idx": 327,
+   "ok": true,
+   "text": "Davis is a quimpus.",
+   "prompt_tokens": 595,
+   "completion_tokens": 157,
+   "latency_sec": 4.29
+  },
+  {
+   "idx": 57,
+   "ok": true,
+   "text": "Max is a quimpus → gerpus (every quimpus is a gerpus) → rorpus (every gerpus is a rorpus) → felpus (every rorpus is a felpus).\n\nMax is a felpus.",
+   "prompt_tokens": 375,
+   "completion_tokens": 130,
+   "latency_sec": 4.3
+  },
+  {
+   "idx": 415,
+   "ok": true,
+   "text": "Sam is a gorpus, and every gorpus is a yerpus, and every yerpus is a dumpus.\n\nSam is a dumpus.",
+   "prompt_tokens": 449,
+   "completion_tokens": 98,
+   "latency_sec": 2.9
+  },
+  {
+   "idx": 52,
+   "ok": true,
+   "text": "Rex is a jompus, and every jompus is a rempus, and every rempus is a zhorpus.\n\nRex is a zhorpus.",
+   "prompt_tokens": 431,
+   "completion_tokens": 94,
+   "latency_sec": 3.54
+  },
+  {
+   "idx": 114,
+   "ok": true,
+   "text": "Sally is a yimpus → every yimpus is a shumpus → every shumpus is a tumpus.\n\nSally is a tumpus.",
+   "prompt_tokens": 510,
+   "completion_tokens": 96,
+   "latency_sec": 4.02
+  },
+  {
+   "idx": 71,
+   "ok": true,
+   "text": "Gabriel is a bompus.",
+   "prompt_tokens": 537,
+   "completion_tokens": 123,
+   "latency_sec": 4.27
+  },
+  {
+   "idx": 346,
+   "ok": true,
+   "text": "Jack is a vumpus, every vumpus is a boompus, every boompus is a shumpus, and every shumpus is a bompus — so Jack is a bompus.\n\nJack is a bompus.",
+   "prompt_tokens": 412,
+   "completion_tokens": 345,
+   "latency_sec": 5.54
+  },
+  {
+   "idx": 279,
+   "ok": true,
+   "text": "Stella is a storpus → scrompus → jelpus → grimpus.\n\nStella is a grimpus.",
+   "prompt_tokens": 481,
+   "completion_tokens": 274,
+   "latency_sec": 4.58
+  },
+  {
+   "idx": 302,
+   "ok": true,
+   "text": "Max is a quimpus, every quimpus is a zhorpus, and every zhorpus is a worpus.\n\nMax is a worpus.",
+   "prompt_tokens": 415,
+   "completion_tokens": 139,
+   "latency_sec": 4.14
+  },
+  {
+   "idx": 44,
+   "ok": true,
+   "text": "Jack is a yerpus, every yerpus is a felpus, every felpus is a grimpus, and every grimpus is a rorpus.\n\nJack is a rorpus.",
+   "prompt_tokens": 466,
+   "completion_tokens": 97,
+   "latency_sec": 4.42
+  },
+  {
+   "idx": 15,
+   "ok": true,
+   "text": "Alex is gerpus → quimpus → sterpus → storpus, so Alex is a storpus.\n\nAlex is a storpus.",
+   "prompt_tokens": 523,
+   "completion_tokens": 158,
+   "latency_sec": 3.58
+  },
+  {
+   "idx": 216,
+   "ok": true,
+   "text": "Bob is a gwompus.",
+   "prompt_tokens": 507,
+   "completion_tokens": 796,
+   "latency_sec": 8.97
+  },
+  {
+   "idx": 111,
+   "ok": true,
+   "text": "Following the chain: Eva is a sterpus → sterpus is a zumpus → zumpus is a timpus → timpus is a tumpus → tumpus is a terpus → terpus is a gerpus.\n\nEva is a gerpus.",
+   "prompt_tokens": 243,
+   "completion_tokens": 300,
+   "latency_sec": 5.12
+  },
+  {
+   "idx": 16,
+   "ok": true,
+   "text": "Alex is a jompus, and every jompus is a numpus.\nEvery numpus is a gerpus.\nEvery gerpus is a felpus.\nEvery felpus is a sterpus.\n\nSo Alex is a sterpus (not necessarily shown to be a vumpus through this chain).\n\nAlex is a sterpus.",
+   "prompt_tokens": 331,
+   "completion_tokens": 164,
+   "latency_sec": 7.86
+  },
+  {
+   "idx": 119,
+   "ok": true,
+   "text": "Polly is a bompus, and every bompus is a terpus, and every terpus is a jelpus.\n\nPolly is a jelpus.",
+   "prompt_tokens": 477,
+   "completion_tokens": 101,
+   "latency_sec": 3.32
+  },
+  {
+   "idx": 47,
+   "ok": true,
+   "text": "Rex is a fompus → every fompus is a zumpus → every zumpus is a terpus.\n\nRex is a terpus.",
+   "prompt_tokens": 357,
+   "completion_tokens": 88,
+   "latency_sec": 9.01
+  },
+  {
+   "idx": 258,
+   "ok": true,
+   "text": "Carol is a felpus.",
+   "prompt_tokens": 502,
+   "completion_tokens": 162,
+   "latency_sec": 4.01
+  },
+  {
+   "idx": 308,
+   "ok": true,
+   "text": "Eva is a yimpus.",
+   "prompt_tokens": 579,
+   "completion_tokens": 175,
+   "latency_sec": 4.06
+  },
+  {
+   "idx": 13,
+   "ok": true,
+   "text": "Bob is a numpus, and every numpus is a kerpus; every kerpus is a grimpus; every grimpus is a brimpus.\n\nBob is a brimpus.",
+   "prompt_tokens": 493,
+   "completion_tokens": 331,
+   "latency_sec": 4.8
+  },
+  {
+   "idx": 366,
+   "ok": true,
+   "text": "Alex is a hilpus → chorpus → worpus → lorpus.\n\nAlex is a lorpus.",
+   "prompt_tokens": 480,
+   "completion_tokens": 84,
+   "latency_sec": 3.6
+  },
+  {
+   "idx": 287,
+   "ok": true,
+   "text": "Jack is a brimpus (vumpus→brimpus), a brimpus is a numpus, and every numpus is a impus.\n\nJack is a impus.",
+   "prompt_tokens": 427,
+   "completion_tokens": 144,
+   "latency_sec": 6.27
+  },
+  {
+   "idx": 332,
+   "ok": true,
+   "text": "Jack is a jelpus → Jack is a rompus (every jelpus is a rompus) → Jack is a chorpus (every rompus is a chorpus) → Jack is a storpus (every chorpus is a storpus).\n\nJack is a storpus.",
+   "prompt_tokens": 480,
+   "completion_tokens": 143,
+   "latency_sec": 3.71
+  },
+  {
+   "idx": 359,
+   "ok": true,
+   "text": "Davis is a dumpus, every dumpus is an impus, every impus is a rompus, and every rompus is a yerpus.\n\nDavis is a yerpus.",
+   "prompt_tokens": 481,
+   "completion_tokens": 141,
+   "latency_sec": 4.13
+  },
+  {
+   "idx": 101,
+   "ok": true,
+   "text": "Eva is a chorpus.",
+   "prompt_tokens": 522,
+   "completion_tokens": 429,
+   "latency_sec": 6.21
+  },
+  {
+   "idx": 229,
+   "ok": true,
+   "text": "Alex is a quimpus → quimpus is a jompus → jompus is a tumpus.\n\nAlex is a tumpus.",
+   "prompt_tokens": 700,
+   "completion_tokens": 93,
+   "latency_sec": 3.43
+  },
+  {
+   "idx": 301,
+   "ok": true,
+   "text": "Sally is a tumpus → tumpus is hilpus → hilpus is timpus.\n\nSally is a timpus.",
+   "prompt_tokens": 484,
+   "completion_tokens": 88,
+   "latency_sec": 3.0
+  },
+  {
+   "idx": 214,
+   "ok": true,
+   "text": "Max is a zhorpus.",
+   "prompt_tokens": 351,
+   "completion_tokens": 412,
+   "latency_sec": 5.53
+  },
+  {
+   "idx": 81,
+   "ok": true,
+   "text": "Bob is a dumpus → Bob is a jelpus (dumpus→jelpus) → Bob is a sterpus (jelpus→sterpus) → Bob is a rorpus (sterpus→rorpus).\n\nBob is a rorpus.",
+   "prompt_tokens": 499,
+   "completion_tokens": 147,
+   "latency_sec": 3.21
+  },
+  {
+   "idx": 406,
+   "ok": true,
+   "text": "Alex is a yumpus → fompus → hilpus → brimpus → terpus.\n\nAlex is a terpus.",
+   "prompt_tokens": 499,
+   "completion_tokens": 116,
+   "latency_sec": 9.99
+  },
+  {
+   "idx": 112,
+   "ok": true,
+   "text": "Sam is a shumpus.",
+   "prompt_tokens": 454,
+   "completion_tokens": 107,
+   "latency_sec": 10.16
+  },
+  {
+   "idx": 357,
+   "ok": true,
+   "text": "Stella is a sterpus.",
+   "prompt_tokens": 506,
+   "completion_tokens": 127,
+   "latency_sec": 3.94
+  },
+  {
+   "idx": 3,
+   "ok": true,
+   "text": "Rex is a rompus.",
+   "prompt_tokens": 542,
+   "completion_tokens": 124,
+   "latency_sec": 8.81
+  },
+  {
+   "idx": 174,
+   "ok": true,
+   "text": "**Step-by-step reasoning:**\n\n1. Sally is a lempus.\n2. Every lempus is a scrompus → Sally is a scrompus.\n3. Every scrompus is a kerpus → Sally is a kerpus.\n4. Every kerpus is a timpus → Sally is a timpus.\n5. Every timpus is a felpus → Sally is a felpus.\n\nSince we reached \"felpus\" through a valid chain, we don't need to check \"wumpus\" further — the answer is felpus.\n\n**Sally is a felpus.**",
+   "prompt_tokens": 463,
+   "completion_tokens": 296,
+   "latency_sec": 4.71
+  },
+  {
+   "idx": 142,
+   "ok": true,
+   "text": "**Reasoning:**\n\n- Max is a felpus.\n- Every felpus is a terpus → Max is a terpus.\n- Every terpus is a fompus → Max is a fompus.\n- Every fompus is a quimpus → Max is a quimpus.\n\nMax is a quimpus.",
+   "prompt_tokens": 445,
+   "completion_tokens": 231,
+   "latency_sec": 10.6
+  },
+  {
+   "idx": 403,
+   "ok": true,
+   "text": "**Reasoning:**\n\nStella is a kerpus.\n- Every kerpus is a rompus → Stella is a rompus.\n- Every rompus is a zumpus → Stella is a zumpus.\n\nChecking for \"gerpus\": \n- kerpus → rompus → storpus/chorpus → timpus → brimpus/quimpus (no gerpus reached through this path).\n\nSo Stella is confirmed a zumpus, but not shown to be a gerpus.\n\n**Stella is a zumpus.**",
+   "prompt_tokens": 441,
+   "completion_tokens": 385,
+   "latency_sec": 6.68
+  },
+  {
+   "idx": 384,
+   "ok": true,
+   "text": "Carol is a zhorpus → grimpus → fompus → bompus.\n\nCarol is a bompus.",
+   "prompt_tokens": 578,
+   "completion_tokens": 97,
+   "latency_sec": 5.36
+  },
+  {
+   "idx": 110,
+   "ok": true,
+   "text": "Carol is a jompus → jompus is a zumpus → zumpus is a fompus → fompus is a vumpus.\n\nCarol is a vumpus.",
+   "prompt_tokens": 456,
+   "completion_tokens": 152,
+   "latency_sec": 4.06
+  },
+  {
+   "idx": 377,
+   "ok": true,
+   "text": "Fae is a terpus.",
+   "prompt_tokens": 437,
+   "completion_tokens": 305,
+   "latency_sec": 39.89
+  },
+  {
+   "idx": 172,
+   "ok": true,
+   "text": "Looking at Eva's chain of memberships:\n\n1. Eva is a dumpus.\n2. Every dumpus is a boompus → Eva is a boompus.\n3. Every boompus is a chorpus → Eva is a chorpus.\n4. Every chorpus is a rompus → Eva is a rompus.\n5. Every rompus is a lorpus → Eva is a lorpus.\n\nEva is a lorpus.",
+   "prompt_tokens": 567,
+   "completion_tokens": 257,
+   "latency_sec": 4.17
+  },
+  {
+   "idx": 409,
+   "ok": true,
+   "text": "Jack is a timpus, every timpus is a zumpus, every zumpus is a terpus, and every terpus is a jompus.\n\nJack is a jompus.",
+   "prompt_tokens": 430,
+   "completion_tokens": 171,
+   "latency_sec": 3.97
+  },
+  {
+   "idx": 400,
+   "ok": true,
+   "text": "Sam is a rempus.",
+   "prompt_tokens": 434,
+   "completion_tokens": 153,
+   "latency_sec": 4.09
+  },
+  {
+   "idx": 176,
+   "ok": true,
+   "text": "Max is a jompus, every jompus is a fompus, every fompus is a zumpus, and every zumpus is a yimpus.\n\nMax is a yimpus.",
+   "prompt_tokens": 405,
+   "completion_tokens": 111,
+   "latency_sec": 3.6
+  },
+  {
+   "idx": 194,
+   "ok": true,
+   "text": "Carol is a dumpus.",
+   "prompt_tokens": 481,
+   "completion_tokens": 291,
+   "latency_sec": 5.75
+  },
+  {
+   "idx": 22,
+   "ok": true,
+   "text": "Sally is a storpus → storpus is a chorpus → chorpus is a felpus → felpus is a sterpus.\n\nSally is a sterpus.",
+   "prompt_tokens": 578,
+   "completion_tokens": 110,
+   "latency_sec": 3.34
+  },
+  {
+   "idx": 79,
+   "ok": true,
+   "text": "Alex is a numpus, and every numpus is a storpus, every storpus is a rempus, every rempus is a jompus, and every jompus is a wumpus.\n\nAlex is a wumpus.",
+   "prompt_tokens": 459,
+   "completion_tokens": 189,
+   "latency_sec": 14.38
+  },
+  {
+   "idx": 49,
+   "ok": true,
+   "text": "Alex is a vumpus.",
+   "prompt_tokens": 541,
+   "completion_tokens": 183,
+   "latency_sec": 10.53
+  },
+  {
+   "idx": 309,
+   "ok": true,
+   "text": "Oliver is a chorpus → chorpus is a numpus → numpus is a quimpus → quimpus is a kerpus → kerpus is a zumpus.\n\nOliver is a zumpus.",
+   "prompt_tokens": 588,
+   "completion_tokens": 702,
+   "latency_sec": 10.68
+  },
+  {
+   "idx": 63,
+   "ok": true,
+   "text": "Oliver is grimpus → gorpus → gwompus → lempus → fompus.\n\nOliver is a fompus.",
+   "prompt_tokens": 511,
+   "completion_tokens": 221,
+   "latency_sec": 4.57
+  },
+  {
+   "idx": 183,
+   "ok": true,
+   "text": "Stella is a timpus, every timpus is a gerpus, and every gerpus is a sterpus.\n\nStella is a sterpus.",
+   "prompt_tokens": 484,
+   "completion_tokens": 95,
+   "latency_sec": 14.73
+  },
+  {
+   "idx": 235,
+   "ok": true,
+   "text": "Let's trace Stella's category chain:\n\n- Stella is a storpus.\n- Every storpus is a gwompus.\n- Every gwompus is an impus.\n- Every impus is a gorpus.\n- Every gorpus is a kerpus.\n\nSo Stella is a kerpus (via storpus → gwompus → impus → gorpus → kerpus).\n\nChecking for sterpus: sterpus is reached only via numpus or jompus, and Stella's storpus chain does not lead to either of these, so Stella is not shown to be a sterpus.\n\nStella is a kerpus.",
+   "prompt_tokens": 409,
+   "completion_tokens": 436,
+   "latency_sec": 7.7
+  },
+  {
+   "idx": 193,
+   "ok": true,
+   "text": "Gabriel is a brimpus → rempus (brimpus→rempus) → felpus (rempus→felpus) → zhorpus (felpus→zhorpus).\n\nGabriel is a zhorpus.",
+   "prompt_tokens": 428,
+   "completion_tokens": 215,
+   "latency_sec": 4.45
+  },
+  {
+   "idx": 135,
+   "ok": true,
+   "text": "Alex is a yimpus.",
+   "prompt_tokens": 491,
+   "completion_tokens": 105,
+   "latency_sec": 13.52
+  },
+  {
+   "idx": 282,
+   "ok": true,
+   "text": "Eva is a worpus, and every worpus is a dumpus, and every dumpus is a brimpus.\n\nEva is a brimpus.",
+   "prompt_tokens": 392,
+   "completion_tokens": 189,
+   "latency_sec": 4.16
+  },
+  {
+   "idx": 274,
+   "ok": true,
+   "text": "Polly is a gerpus → every gerpus is a timpus → every timpus is a fompus.\n\nPolly is a fompus.",
+   "prompt_tokens": 587,
+   "completion_tokens": 89,
+   "latency_sec": 11.88
+  },
+  {
+   "idx": 316,
+   "ok": true,
+   "text": "Bob is a rempus, and every rempus is a lempus; every lempus is a shumpus; every shumpus is a boompus.\n\nBob is a boompus.",
+   "prompt_tokens": 387,
+   "completion_tokens": 110,
+   "latency_sec": 3.48
+  },
+  {
+   "idx": 321,
+   "ok": true,
+   "text": "Oliver is a sterpus, and every sterpus is a zumpus, every zumpus is a grimpus, and every grimpus is a zhorpus.\n\nOliver is a zhorpus.",
+   "prompt_tokens": 504,
+   "completion_tokens": 116,
+   "latency_sec": 4.28
+  },
+  {
+   "idx": 150,
+   "ok": true,
+   "text": "Wren is a impus.",
+   "prompt_tokens": 352,
+   "completion_tokens": 326,
+   "latency_sec": 5.75
+  },
+  {
+   "idx": 185,
+   "ok": true,
+   "text": "Sally is a yimpus. Every yimpus is a lorpus. Every lorpus is a vumpus. Therefore, Sally is a vumpus.\n\nSally is a vumpus.",
+   "prompt_tokens": 442,
+   "completion_tokens": 153,
+   "latency_sec": 4.68
+  },
+  {
+   "idx": 295,
+   "ok": true,
+   "text": "Tom is a rorpus, and every rorpus is a scrompus, and every scrompus is a lempus. So Tom is a lempus.\n\nTom is a lempus.",
+   "prompt_tokens": 515,
+   "completion_tokens": 153,
+   "latency_sec": 4.12
+  },
+  {
+   "idx": 98,
+   "ok": true,
+   "text": "Oliver is a zumpus, and every zumpus is an impus; every impus is a storpus; every storpus is a chorpus.\n\nOliver is a chorpus.",
+   "prompt_tokens": 402,
+   "completion_tokens": 110,
+   "latency_sec": 3.44
+  },
+  {
+   "idx": 23,
+   "ok": true,
+   "text": "Jack is a fompus.",
+   "prompt_tokens": 505,
+   "completion_tokens": 139,
+   "latency_sec": 4.14
+  },
+  {
+   "idx": 40,
+   "ok": true,
+   "text": "Rex is a dumpus → every dumpus is a sterpus → every sterpus is a gwompus → every gwompus is a jompus.\n\nRex is a jompus.",
+   "prompt_tokens": 424,
+   "completion_tokens": 120,
+   "latency_sec": 11.58
+  },
+  {
+   "idx": 35,
+   "ok": true,
+   "text": "Bob is a scrompus.",
+   "prompt_tokens": 511,
+   "completion_tokens": 202,
+   "latency_sec": 4.46
+  },
+  {
+   "idx": 148,
+   "ok": true,
+   "text": "Carol is a wumpus, and every wumpus is a storpus, and every storpus is a zhorpus.\n\nCarol is a zhorpus.",
+   "prompt_tokens": 452,
+   "completion_tokens": 99,
+   "latency_sec": 3.76
+  },
+  {
+   "idx": 338,
+   "ok": true,
+   "text": "Alex is a scrompus, so Alex is a gwompus (every scrompus is a gwompus).\nEvery gwompus is a lorpus, so Alex is a lorpus.\nEvery lorpus is a impus, so Alex is a impus.\n\nAlex is a impus.",
+   "prompt_tokens": 564,
+   "completion_tokens": 330,
+   "latency_sec": 5.21
+  },
+  {
+   "idx": 116,
+   "ok": true,
+   "text": "Eva is a lempus (via brimpus → storpus → gorpus → lempus).\n\n**Eva is a lempus.**",
+   "prompt_tokens": 520,
+   "completion_tokens": 165,
+   "latency_sec": 4.67
+  },
+  {
+   "idx": 361,
+   "ok": true,
+   "text": "Tom is a rempus.",
+   "prompt_tokens": 359,
+   "completion_tokens": 174,
+   "latency_sec": 3.72
+  },
+  {
+   "idx": 398,
+   "ok": true,
+   "text": "Wren is a vumpus.",
+   "prompt_tokens": 564,
+   "completion_tokens": 531,
+   "latency_sec": 6.81
+  },
+  {
+   "idx": 378,
+   "ok": true,
+   "text": "Sally is a rorpus → Sally is a bompus (every rorpus is a bompus) → Sally is a chorpus (every bompus is a chorpus) → Sally is a rempus (every chorpus is a rempus).\n\nSally is a rempus.",
+   "prompt_tokens": 401,
+   "completion_tokens": 180,
+   "latency_sec": 4.21
+  },
+  {
+   "idx": 325,
+   "ok": true,
+   "text": "Gabriel is a gorpus → gorpus is a zumpus → zumpus is a gerpus → gerpus is a timpus.\n\nGabriel is a timpus.",
+   "prompt_tokens": 467,
+   "completion_tokens": 122,
+   "latency_sec": 3.69
+  },
+  {
+   "idx": 232,
+   "ok": true,
+   "text": "Wren is a jompus → kerpus → rompus → gorpus → quimpus.\n\nWren is a quimpus.",
+   "prompt_tokens": 522,
+   "completion_tokens": 171,
+   "latency_sec": 4.44
+  },
+  {
+   "idx": 51,
+   "ok": true,
+   "text": "Let's trace the chain from Alex:\n\n- Alex is a scrompus.\n- Every scrompus is a yimpus.\n- Every yimpus is a chorpus.\n- Every chorpus is a rorpus.\n- Every rorpus is a felpus.\n\nSo Alex is a felpus (no direct path to gwompus was found).\n\nAlex is a felpus.",
+   "prompt_tokens": 565,
+   "completion_tokens": 539,
+   "latency_sec": 7.58
+  },
+  {
+   "idx": 181,
+   "ok": true,
+   "text": "Fae is kerpus → worpus → scrompus → shumpus.\n\nFae is a shumpus.",
+   "prompt_tokens": 438,
+   "completion_tokens": 178,
+   "latency_sec": 3.65
+  },
+  {
+   "idx": 107,
+   "ok": true,
+   "text": "Bob is a rompus.",
+   "prompt_tokens": 406,
+   "completion_tokens": 159,
+   "latency_sec": 3.73
+  },
+  {
+   "idx": 189,
+   "ok": true,
+   "text": "Oliver is a storpus → storpus is a jompus → jompus is a zumpus → zumpus is a dumpus → dumpus is a yimpus.\n\nOliver is a yimpus.",
+   "prompt_tokens": 474,
+   "completion_tokens": 142,
+   "latency_sec": 4.4
+  },
+  {
+   "idx": 372,
+   "ok": true,
+   "text": "Alex is a lempus, every lempus is a gwompus, every gwompus is a shumpus, and every shumpus is a hilpus.\n\nAlex is a hilpus.",
+   "prompt_tokens": 503,
+   "completion_tokens": 98,
+   "latency_sec": 11.24
+  },
+  {
+   "idx": 136,
+   "ok": true,
+   "text": "Carol is a hilpus.",
+   "prompt_tokens": 468,
+   "completion_tokens": 158,
+   "latency_sec": 4.02
+  },
+  {
+   "idx": 331,
+   "ok": true,
+   "text": "Oliver is a terpus. Every terpus is a yerpus. Every yerpus is a zumpus. Every zumpus is a bompus.\n\nOliver is a bompus.",
+   "prompt_tokens": 502,
+   "completion_tokens": 180,
+   "latency_sec": 4.36
+  },
+  {
+   "idx": 36,
+   "ok": true,
+   "text": "Let's trace Oliver's chain: Oliver is a rempus → every rempus is a tumpus → every tumpus is a scrompus → every scrompus is a brimpus.\n\nSo Oliver is a brimpus (not necessarily a lempus, since lempus only follows from chorpus, which Oliver isn't).\n\nOliver is a brimpus.",
+   "prompt_tokens": 547,
+   "completion_tokens": 271,
+   "latency_sec": 5.32
+  },
+  {
+   "idx": 311,
+   "ok": true,
+   "text": "Polly is a sterpus, and every sterpus is a rempus, every rempus is a gorpus, and every gorpus is a wumpus.\n\nPolly is a wumpus.",
+   "prompt_tokens": 400,
+   "completion_tokens": 157,
+   "latency_sec": 3.83
+  },
+  {
+   "idx": 186,
+   "ok": true,
+   "text": "Wren is a rompus → Every rompus is a jompus → Wren is a jompus → Every jompus is a boompus → Wren is a boompus → Every boompus is a felpus → Wren is a felpus.\n\nWren is a felpus.",
+   "prompt_tokens": 380,
+   "completion_tokens": 183,
+   "latency_sec": 11.27
+  },
+  {
+   "idx": 83,
+   "ok": true,
+   "text": "Wren is a impus.",
+   "prompt_tokens": 469,
+   "completion_tokens": 124,
+   "latency_sec": 11.08
+  },
+  {
+   "idx": 273,
+   "ok": true,
+   "text": "Oliver is a yimpus → brimpus → sterpus → rempus.\n\nOliver is a rempus.",
+   "prompt_tokens": 585,
+   "completion_tokens": 87,
+   "latency_sec": 3.07
+  },
+  {
+   "idx": 413,
+   "ok": true,
+   "text": "Jack is a timpus. Every timpus is a terpus. Every terpus is a gorpus.\n\nJack is a gorpus.",
+   "prompt_tokens": 640,
+   "completion_tokens": 92,
+   "latency_sec": 3.32
+  },
+  {
+   "idx": 87,
+   "ok": true,
+   "text": "Gabriel is a lempus, and every lempus is a rempus. Every rempus is a storpus, and every storpus is a hilpus. Therefore Gabriel is a hilpus.\n\nGabriel is a hilpus.",
+   "prompt_tokens": 487,
+   "completion_tokens": 387,
+   "latency_sec": 5.34
+  },
+  {
+   "idx": 340,
+   "ok": true,
+   "text": "**Reasoning:**\n\nTom is a rempus.\nEvery rempus is a felpus → Tom is a felpus.\nEvery felpus is a sterpus → Tom is a sterpus.\nEvery sterpus is a zhorpus → Tom is a zhorpus.\n\n(There is no chain connecting Tom to yumpus.)\n\n**Tom is a zhorpus.**",
+   "prompt_tokens": 436,
+   "completion_tokens": 251,
+   "latency_sec": 5.52
+  },
+  {
+   "idx": 345,
+   "ok": true,
+   "text": "Tom is a zhorpus → quimpus → sterpus → gorpus.\n\nTom is a gorpus.",
+   "prompt_tokens": 460,
+   "completion_tokens": 103,
+   "latency_sec": 3.62
+  },
+  {
+   "idx": 342,
+   "ok": true,
+   "text": "Let me trace the chain of implications starting from Gabriel is a sterpus:\n\n1. Gabriel is a sterpus.\n2. Every sterpus is a hilpus → Gabriel is a hilpus.\n3. Every hilpus is a fompus → Gabriel is a fompus.\n4. Every fompus is a zhorpus → Gabriel is a zhorpus.\n\nChecking for gerpus: gerpus requires reaching either \"timpus\" (via lorpus) or \"vumpus\" (via lorpus), but no rule connects sterpus/hilpus/dumpus/fompus/rompus chains back to lorpus. So gerpus cannot be established.\n\nGabriel is a zhorpus.",
+   "prompt_tokens": 484,
+   "completion_tokens": 898,
+   "latency_sec": 9.84
+  },
+  {
+   "idx": 138,
+   "ok": true,
+   "text": "Alex is a lorpus, every lorpus is a quimpus, and every quimpus is a boompus.\n\nAlex is a boompus.",
+   "prompt_tokens": 543,
+   "completion_tokens": 194,
+   "latency_sec": 4.73
+  },
+  {
+   "idx": 166,
+   "ok": true,
+   "text": "Jack is a gerpus → shumpus → fompus → tumpus → terpus.\n\nJack is a terpus.",
+   "prompt_tokens": 477,
+   "completion_tokens": 159,
+   "latency_sec": 4.01
+  },
+  {
+   "idx": 117,
+   "ok": true,
+   "text": "Gabriel is a dumpus, and every dumpus is a wumpus. Every wumpus is a rorpus, and every rorpus is a jompus. Therefore, Gabriel is a jompus.\n\nGabriel is a jompus.",
+   "prompt_tokens": 432,
+   "completion_tokens": 130,
+   "latency_sec": 3.19
+  },
+  {
+   "idx": 402,
+   "ok": true,
+   "text": "Davis is a worpus → storpus → yumpus → timpus.\n\nDavis is a timpus.",
+   "prompt_tokens": 455,
+   "completion_tokens": 77,
+   "latency_sec": 3.24
+  },
+  {
+   "idx": 387,
+   "ok": true,
+   "text": "Gabriel is a vumpus → zhorpus → jompus → rompus, so Gabriel is a rompus (not a storpus).\n\nGabriel is a rompus.",
+   "prompt_tokens": 578,
+   "completion_tokens": 528,
+   "latency_sec": 9.6
+  },
+  {
+   "idx": 236,
+   "ok": true,
+   "text": "Max is a bompus.",
+   "prompt_tokens": 426,
+   "completion_tokens": 278,
+   "latency_sec": 16.52
+  },
+  {
+   "idx": 285,
+   "ok": true,
+   "text": "Oliver is a yimpus, and every yimpus is a jelpus; every jelpus is a jompus. Therefore Oliver is a jompus.\n\nOliver is a jompus.",
+   "prompt_tokens": 405,
+   "completion_tokens": 113,
+   "latency_sec": 14.66
+  },
+  {
+   "idx": 28,
+   "ok": true,
+   "text": "Bob is a gorpus → Bob is a grimpus (every gorpus is a grimpus) → Bob is a sterpus (every grimpus is a sterpus) → Bob is a numpus (every sterpus is a numpus).\n\nBob is a numpus.",
+   "prompt_tokens": 457,
+   "completion_tokens": 148,
+   "latency_sec": 14.85
+  }
+ ],
+ "elapsed_sec": 110.8
+}

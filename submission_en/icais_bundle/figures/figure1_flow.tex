@@ -1,96 +1,274 @@
-% Figure 1 — agent/environment schematic (single-row, no overflow)
-\begin{figure}[t]
+% Figure 1 v2 — spacious redraw (large canvas, no overlap)
+\definecolor{cocoPanel}{RGB}{248,248,248}
+\definecolor{cocoPanelB}{RGB}{243,250,247}
+\definecolor{cocoLLM}{RGB}{82,82,82}
+\definecolor{cocoText}{RGB}{55,55,55}
+\definecolor{cocoMuted}{RGB}{115,115,115}
+\definecolor{cocoHidden}{RGB}{220,205,240}
+\definecolor{cocoHiddenB}{RGB}{165,145,205}
+\definecolor{cocoLatent}{RGB}{255,232,178}
+\definecolor{cocoLatentB}{RGB}{235,175,95}
+\definecolor{cocoInput}{RGB}{255,250,215}
+\definecolor{cocoInputB}{RGB}{225,205,125}
+\definecolor{cocoTeal}{RGB}{38,150,138}
+\definecolor{cocoTealFill}{RGB}{228,246,242}
+\definecolor{cocoCoral}{RGB}{228,148,132}
+\definecolor{cocoCoralFill}{RGB}{255,240,236}
+\definecolor{cocoModule}{RGB}{236,248,242}
+\definecolor{cocoModuleB}{RGB}{165,205,185}
+
+\begin{figure}[!t]
 \centering
-\resizebox{0.98\linewidth}{!}{%
+\makebox[\linewidth][c]{%
+\resizebox{1.15\linewidth}{!}{%
 \begin{tikzpicture}[
+  x=1cm, y=1cm,
   font=\small,
-  >=Stealth,
-  module/.style={
-    rectangle, draw=black!70, line width=0.35pt,
-    fill=white, rounded corners=1pt,
-    minimum height=9mm, inner sep=3pt, align=center
+  layerlbl/.style={
+    font=\scriptsize, text=cocoMuted, align=right
   },
-  widemod/.style={module, minimum width=24mm, font=\scriptsize},
-  narrowmod/.style={module, minimum width=18mm, font=\scriptsize},
-  inst/.style={
-    rectangle, draw=black!55, line width=0.35pt,
-    fill=white, rounded corners=1pt,
-    minimum width=27mm, minimum height=16mm,
-    align=left, font=\scriptsize
+  ptitle/.style={
+    font=\small\bfseries, text=cocoText
+  },
+  psub/.style={
+    font=\scriptsize, text=cocoMuted
+  },
+  hidden/.style={
+    rectangle, rounded corners=4pt,
+    draw=cocoHiddenB, fill=cocoHidden, line width=0.5pt,
+    minimum width=1.05cm, minimum height=0.90cm,
+    inner sep=4pt, font=\scriptsize, align=center
+  },
+  latent/.style={
+    rectangle, rounded corners=4pt,
+    draw=cocoLatentB, fill=cocoLatent, line width=0.5pt,
+    minimum width=1.05cm, minimum height=0.90cm,
+    inner sep=4pt, font=\scriptsize, align=center
+  },
+  inputbox/.style={
+    rectangle, rounded corners=4pt,
+    draw=cocoInputB, fill=cocoInput, line width=0.5pt,
+    minimum width=1.20cm, minimum height=0.85cm, inner sep=4pt
+  },
+  outbox/.style={
+    rectangle, rounded corners=4pt,
+    draw=cocoMuted!45, fill=white, line width=0.5pt,
+    minimum width=1.05cm, minimum height=0.82cm, inner sep=5pt,
+    font=\scriptsize, align=center
+  },
+  routebox/.style={
+    rectangle, rounded corners=4pt,
+    draw=cocoTeal, fill=cocoTealFill, line width=0.5pt,
+    inner sep=6pt, font=\scriptsize, align=center
+  },
+  scorebox/.style={
+    rectangle, rounded corners=4pt,
+    draw=cocoCoral, fill=cocoCoralFill, line width=0.5pt,
+    inner sep=6pt, font=\scriptsize, align=center
+  },
+  commitbox/.style={
+    rectangle, rounded corners=4pt,
+    draw=cocoTeal, fill=cocoTealFill, line width=0.5pt,
+    inner sep=6pt, font=\scriptsize, align=center
   },
   gate/.style={
-    diamond, draw=black!75, line width=0.35pt,
-    fill=black!4, aspect=2.2, inner sep=0.5pt,
-    minimum width=11mm, font=\scriptsize, align=center
+    diamond, draw=cocoCoral, fill=cocoCoralFill, line width=0.5pt,
+    aspect=2.2, inner sep=2pt, minimum width=1.20cm,
+    font=\tiny, align=center
   },
   fb/.style={
-    module, minimum width=30mm, draw=black!60, dashed,
-    fill=white, font=\scriptsize
+    rectangle, rounded corners=4pt,
+    draw=cocoHiddenB, fill=cocoHidden!22, line width=0.6pt,
+    inner sep=6pt, font=\scriptsize, align=center, dashed
   },
-  arr/.style={->, line width=0.45pt, draw=black!75},
-  dasharr/.style={->, line width=0.45pt, draw=black!60, dashed},
-  lbl/.style={font=\scriptsize, fill=white, inner sep=1pt, text=black!70}
+  graphdot/.style={
+    circle, draw=cocoMuted!80, fill=cocoTeal!20, inner sep=0pt
+  },
+  guidedash/.style={
+    cocoMuted!65, line width=0.45pt, dash pattern=on 2.2pt off 1.8pt
+  },
+  arr/.style={
+    -{Stealth[length=1.6mm,width=1.2mm]},
+    draw=cocoMuted!70, line width=0.48pt,
+    shorten <=0pt, shorten >=2.2pt
+  },
+  arrL/.style={
+    -{Stealth[length=2.4mm,width=1.8mm]},
+    draw=cocoMuted!70, line width=0.55pt,
+    shorten <=0pt, shorten >=2.5pt
+  },
+  darr/.style={
+    -{Stealth[length=1.6mm,width=1.2mm]},
+    draw=cocoHiddenB!75, line width=0.52pt,
+    dash pattern=on 2.8pt off 2pt,
+    shorten <=0pt, shorten >=2.2pt
+  },
+  carr/.style={
+    -{Stealth[length=1.4mm,width=1.1mm]},
+    draw=cocoMuted!55, line width=0.42pt,
+    shorten <=0pt, shorten >=1.8pt
+  },
+  wire/.style={
+    draw=cocoMuted!70, line width=0.48pt
+  },
+  modbox/.style={
+    rounded corners=8pt, draw=cocoTeal!75, line width=0.55pt,
+    fill=cocoTealFill!18, inner xsep=18pt, inner ysep=18pt, dashed
+  },
+  modboxfill/.style={
+    modbox, draw=none
+  },
+  modboxframe/.style={
+    modbox, fill=none
+  },
 ]
 
-\node[inst] (inst) {%
-  \textbf{ProsQA input $x$}\\[-1pt]
-  graph $G=(V,E)$\\
-  root $r$, targets $\{a,b\}$%
-};
+% ---- spacious vertical grid (LLM band sits in clear gap) ----
+\def\yP{1.55}
+\def\yH{0.72}
+\def\yM{0.00}
+\def\yE{-0.72}
+\def\yG{-1.55}
+\def\yFb{-1.15}
+\def\llmH{0.14}
+\def\yTitle{1.95}
+\def\ySub{1.62}
+\def\yPanelTop{2.38}
+\def\yPanelBot{-2.05}
 
-\node[widemod, right=5mm of inst] (route) {%
-  \textbf{Structure router}\\[-1pt]
-  $d\leftarrow \mathrm{BFS}(G,r)$\\
-  $n_0\leftarrow \mathrm{clamp}(d)$%
-};
-\node[widemod, right=4mm of route] (coco) {%
-  \textbf{Coconut forward}\\[-1pt]
-  $\hat y_0 \leftarrow f(x,n_0)$\\
-  $h_{n_0}$%
-};
-\node[narrowmod, right=4mm of coco] (m2) {%
-  \textbf{M2 stop head}\\[-1pt]
-  $p_0=\sigma(g(\cdot))$%
-};
-\node[gate, right=5mm of m2] (gate) {$p_0{\ge}\tau$};
-\node[narrowmod, right=7mm of gate] (out) {%
-  \textbf{Output}\\[-1pt]
-  $y$%
-};
-
-\node[fb, below=9mm of coco] (fb) {%
-  \textbf{kNN--M2 fallback}\\[-1pt]
-  online stop search%
-};
-
+% ---- panel A shell (background layer) ----
 \begin{scope}[on background layer]
-  \node[rectangle, draw=black!45, line width=0.35pt, fill=black!2,
-        rounded corners=2pt, inner sep=7pt,
-        fit=(route) (coco) (m2) (gate) (fb) (out)] (agent) {};
-  \node[anchor=north west, font=\scriptsize\bfseries, text=black!60]
-    at ([xshift=1pt,yshift=-1pt]agent.north west)
-    {confidence\_fallback agent};
-\end{scope}
-\begin{scope}[on background layer]
-  \node[rectangle, draw=black!40, line width=0.45pt, dashed,
-        fill=black!1, rounded corners=3pt, inner sep=9pt,
-        fit=(inst) (agent) (fb)] (env) {};
-  \node[anchor=north west, font=\scriptsize, text=black!55]
-    at ([xshift=1pt,yshift=-1pt]env.north west)
-    {ProsQA inference environment};
+\fill[cocoPanel, rounded corners=9pt] (0.15,\yPanelBot) rectangle (11.35,\yPanelTop);
+\draw[cocoMuted!22, rounded corners=9pt] (0.15,\yPanelBot) rectangle (11.35,\yPanelTop);
 \end{scope}
 
-\draw[arr] (inst) -- (route);
-\draw[arr] (route) -- (coco);
-\draw[arr] (coco) -- (m2);
-\draw[arr] (m2) -- (gate);
-\draw[arr] (gate.east) -- node[lbl, above] {yes} (out.west);
+% left legend
+\node[layerlbl, anchor=east] at (0.02,\yP) {prediction $\hat y$};
+\node[layerlbl, anchor=east] at (0.02,\yH) {hidden $h_n$};
+\node[layerlbl, anchor=east] at (0.02,\yE) {latent step $n$};
+\node[layerlbl, anchor=east] at (0.02,\yG) {graph input $x$};
+\foreach \yy in {\yP,\yH,\yE,\yG} {
+  \draw[guidedash] (0.05,\yy) -- (1.25,\yy);
+}
 
-\draw[dasharr] (gate.south) -- ++(0,-3mm) -| node[lbl, pos=0.25, below] {no} (fb.north);
-\draw[dasharr] (fb.east) -| (out.south);
+% ===================== Panel A =====================
+\node[ptitle, anchor=west] at (0.45,\yTitle) {A.\ Fixed-budget baseline};
+\node[psub, anchor=west] at (0.45,\ySub) {Uniform $n{=}3$ · 83.8\%};
+
+% split LLM bar segments (label sits in gutter gap)
+\draw[cocoLLM, line width=5.6pt, line cap=round] (1.55,\yM) -- (3.05,\yM);
+\draw[cocoLLM, line width=5.6pt, line cap=round] (3.55,\yM) -- (5.05,\yM);
+\draw[cocoLLM, line width=5.6pt, line cap=round] (5.55,\yM) -- (7.05,\yM);
+\draw[cocoLLM, line width=5.6pt, line cap=round] (7.55,\yM) -- (9.55,\yM);
+\node[font=\scriptsize\bfseries, text=cocoText, fill=white, inner sep=2pt]
+  at (5.55,\yM) {Coconut LLM};
+
+\node[inputbox] (Agraph) at (1.85,\yG) {};
+\node[graphdot, minimum size=2.6mm] at (1.72,\yG+0.06) {};
+\node[graphdot, minimum size=2.2mm] at (1.98,\yG+0.20) {};
+\node[graphdot, minimum size=2.2mm] at (1.98,\yG-0.08) {};
+\coordinate (Agraphe) at (2.08,\yG+0.06);
+\node[psub, anchor=north] at (1.85,\yG-0.30) {graph $x$};
+
+\node[latent] (Ae1) at (3.30,\yE) {$n{=}1$};
+\node[latent] (Ae2) at (5.30,\yE) {$n{=}2$};
+\node[latent] (Ae3) at (7.30,\yE) {$n{=}3$};
+\node[hidden] (Ah1) at (3.30,\yH) {$h_1$};
+\node[hidden] (Ah2) at (5.30,\yH) {$h_2$};
+\node[hidden] (Ah3) at (7.30,\yH) {$h_3$};
+\node[outbox] (Aout) at (9.55,\yP) {$\hat y$};
+
+\coordinate (Ae1Tip) at ([xshift=-7mm]Ae1.west);
+\draw[wire] (Agraph.north) -- (Agraph.north |- Ae1Tip);
+\draw[wire] (Agraph.north |- Ae1Tip) -- (Ae1Tip);
+\draw[arr] (Ae1Tip) -- (Ae1.west);
+\draw[wire] (Ae1.north) -- (3.30,\yM);
+\draw[arr] (3.30,\yM) -- (Ah1.south);
+\draw[wire] (Ae2.north) -- (5.30,\yM);
+\draw[arr] (5.30,\yM) -- (Ah2.south);
+\draw[wire] (Ae3.north) -- (7.30,\yM);
+\draw[arr] (7.30,\yM) -- (Ah3.south);
+\draw[carr] (Ah1.east) to[out=-8, in=188] node[psub, pos=0.5, anchor=north, yshift=-1pt] {recycle} (Ae2.west);
+\draw[carr] (Ah2.east) to[out=-8, in=188] (Ae3.west);
+% readout: gutter at left, short final segment into ŷ west edge
+\coordinate (AreadTip) at ([xshift=-4mm]Aout.west);
+\draw[wire] (Ah3.east) -- (AreadTip |- 0,\yH);
+\draw[wire] (AreadTip |- 0,\yH) -- (AreadTip);
+\draw[arr] (AreadTip) -- (Aout.west);
+
+% ===================== Panel B =====================
+\node[ptitle, anchor=west] at (11.90,\yTitle) {B.\ Confidence Fallback (ours)};
+\node[psub, anchor=west] at (11.90,\ySub) {Route-then-gate · 95.23\% · $\tau{=}0.48$};
+
+% --- spine ---
+\draw[cocoLLM, line width=5.6pt, line cap=round] (12.20,\yM) -- (13.85,\yM);
+\draw[cocoLLM, line width=5.6pt, line cap=round] (14.35,\yM) -- (16.05,\yM);
+\node[font=\scriptsize\bfseries, text=cocoText, fill=white, inner sep=2pt]
+  at (14.10,\yM) {Coconut LLM};
+
+\node[inputbox] (Bgraph) at (12.20,\yG) {};
+\node[graphdot, minimum size=2.6mm] at (12.07,\yG+0.06) {};
+\node[graphdot, minimum size=2.2mm] at (12.33,\yG+0.20) {};
+\node[graphdot, minimum size=2.2mm] at (12.33,\yG-0.08) {};
+\coordinate (Bgraphe) at (12.43,\yG+0.06);
+\node[psub, anchor=north] at (12.20,\yG-0.30) {graph $x$};
+
+\node[routebox, minimum width=1.15cm] (Broute) at (14.15,\yG) {route $n_0$};
+\node[latent] (Be0) at (15.50,\yE) {$n_0$};
+\node[hidden] (Bh0) at (15.50,\yH) {$h_{n_0}$};
+
+\coordinate (BgraphOut) at ([xshift=3mm]Bgraph.east);
+\coordinate (BrouteIn) at ([xshift=-6mm]Broute.west);
+\draw[wire] (Bgraphe) -- (BrouteIn);
+\draw[arr] (BrouteIn) -- (Broute.west);
+\coordinate (Be0Tip) at ([xshift=-7mm]Be0.west);
+\draw[wire] (Broute.north) -- (Broute.north |- Be0Tip);
+\draw[wire] (Broute.north |- Be0Tip) -- (Be0Tip);
+\draw[arr] (Be0Tip) -- (Be0.west);
+\draw[wire] (Be0.north) -- (15.50,\yM);
+\draw[arr] (15.50,\yM) -- (Bh0.south);
+
+% --- CF controller (dashed module; spine nodes stay fully outside) ---
+\node[scorebox, minimum width=1.55cm] (Bscore) at (18.80,\yH) {RichStopHead $p_0$};
+\node[gate] (Bgate) at (21.30,\yH) {$p_0{\ge}\tau$};
+\node[commitbox, minimum width=1.15cm] (Bout) at (23.70,\yP) {commit $\hat y_0$};
+\node[fb, minimum width=2.35cm] (Bfallback) at (21.30,\yFb) {%
+  fallback refine $\rightarrow$ refined $\hat y$%
+};
+
+\coordinate (BmodPort) at ([xshift=-18pt]Bscore.west |- 0,\yH);
+\coordinate (BscoreIn) at ([xshift=-4mm]Bscore.west);
+\draw[wire] (Bh0.east) -- (BmodPort);
+\draw[wire] (BmodPort) -- (BscoreIn);
+\draw[arr] (BscoreIn) -- (Bscore.west);
+\coordinate (BscoreOut) at ($(Bscore.east)+(1.2mm,0)$);
+\coordinate (BgateIn) at ($(Bgate.west)+(-4mm,0)$);
+\draw[wire] (BscoreOut) -- (BgateIn);
+\draw[arrL] (BgateIn) -- (Bgate.west);
+% yes branch: route bus to tip x (avoid fixed x piercing wide commit box)
+\coordinate (BcommitTip) at ([xshift=-4mm]Bout.west);
+\draw[wire] (Bgate.east) -- (BcommitTip |- 0,\yH);
+\draw[wire] (BcommitTip |- 0,\yH) -- (BcommitTip);
+\draw[arr] (BcommitTip) -- (Bout.west);
+\draw[darr] (Bgate.south) -- (Bfallback.north);
+\node[psub, anchor=south] at ($(Bgate.east)!0.52!(BcommitTip |- 0,\yH)+(0,2pt)$) {yes 92.8\%};
+\node[psub, anchor=west] at (21.50,-0.68) {no 7.2\%};
+
+\node[modboxframe, fit=(Bscore)(Bgate)(Bout)(Bfallback)] (BmodFrame) {};
+\node[font=\scriptsize\bfseries, text=cocoTeal, anchor=south,
+  fill=white, inner sep=2pt, rounded corners=1pt]
+  at ([yshift=1pt]BmodFrame.north) {CF controller};
+
+% background: panel B fill then CF module tint (above panel gray)
+\begin{scope}[on background layer]
+\coordinate (BpanelNE) at ([xshift=3pt]BmodFrame.north east);
+\fill[cocoPanel, rounded corners=9pt] (11.60,\yPanelBot) rectangle (BpanelNE |- 0,\yPanelTop);
+\draw[cocoMuted!22, rounded corners=9pt] (11.60,\yPanelBot) rectangle (BpanelNE |- 0,\yPanelTop);
+\node[modboxfill, fit=(Bscore)(Bgate)(Bout)(Bfallback)] (Bmod) {};
+\end{scope}
 
 \end{tikzpicture}%
-}
-\caption{\textbf{confidence\_fallback} interacts with the ProsQA inference environment. The input $x$ contains a directed graph and a reachability query (e.g., which candidate target is reachable from $r$ within $n_0$ latent steps). The agent routes $n_0$ from BFS depth, performs one Coconut forward pass to obtain $\hat y_0$ and $h_{n_0}$, and queries the M2 stop head for $p_0=\sigma(g(h_{n_0},n_0,x))$. If $p_0\ge\tau$, it returns $\hat y_0$; otherwise it invokes the kNN--M2 fallback path.}
+}}
+\caption{\textbf{Confidence Fallback inference controller (Coconut-style).} \textbf{A}, Fixed-budget inference with three uniform latent steps and hidden-state recycling (83.8\%). \textbf{B}, CF routes $n_0$ from BFS depth $\textsc{BfsDepth}(x)$, scores $p_0$ with RichStopHead $g$ at $h_{n_0}$, commits when $p_0\ge\tau$ (92.8\%), and triggers neighborhood refinement on the 7.2\% low-confidence tail ($\bar{n}\approx 3.51$).}
 \label{fig:flow}
 \end{figure}

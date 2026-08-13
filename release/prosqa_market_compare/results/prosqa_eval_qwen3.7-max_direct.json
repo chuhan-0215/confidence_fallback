@@ -1,0 +1,817 @@
+{
+ "model": "qwen3.7-max",
+ "prompt_mode": "direct",
+ "n": 100,
+ "n_ok_api": 98,
+ "accuracy": 0.94,
+ "avg_prompt_tokens": 348.7,
+ "avg_completion_tokens": 815.2,
+ "avg_total_tokens": 1163.9,
+ "avg_latency_sec": 26.06,
+ "errors": 2,
+ "rows": [
+  {
+   "idx": 327,
+   "ok": true,
+   "text": "Davis is a quimpus.",
+   "prompt_tokens": 428,
+   "completion_tokens": 538,
+   "latency_sec": 9.56
+  },
+  {
+   "idx": 12,
+   "ok": true,
+   "text": "Max is a gwompus.",
+   "prompt_tokens": 427,
+   "completion_tokens": 532,
+   "latency_sec": 11.26
+  },
+  {
+   "idx": 57,
+   "ok": true,
+   "text": "Max is a felpus.",
+   "prompt_tokens": 283,
+   "completion_tokens": 902,
+   "latency_sec": 18.13
+  },
+  {
+   "idx": 125,
+   "ok": true,
+   "text": "Wren is a yimpus.",
+   "prompt_tokens": 350,
+   "completion_tokens": 766,
+   "latency_sec": 15.04
+  },
+  {
+   "idx": 52,
+   "ok": true,
+   "text": "Rex is a zhorpus.",
+   "prompt_tokens": 314,
+   "completion_tokens": 522,
+   "latency_sec": 10.77
+  },
+  {
+   "idx": 71,
+   "ok": true,
+   "text": "Gabriel is a bompus.",
+   "prompt_tokens": 390,
+   "completion_tokens": 743,
+   "latency_sec": 15.2
+  },
+  {
+   "idx": 377,
+   "ok": true,
+   "text": "Fae is a terpus.",
+   "prompt_tokens": 307,
+   "completion_tokens": 606,
+   "latency_sec": 12.3
+  },
+  {
+   "idx": 114,
+   "ok": true,
+   "text": "Sally is a tumpus.",
+   "prompt_tokens": 377,
+   "completion_tokens": 1041,
+   "latency_sec": 20.85
+  },
+  {
+   "idx": 279,
+   "ok": true,
+   "text": "Stella is a grimpus.",
+   "prompt_tokens": 347,
+   "completion_tokens": 520,
+   "latency_sec": 10.48
+  },
+  {
+   "idx": 44,
+   "ok": true,
+   "text": "Jack is a rorpus.",
+   "prompt_tokens": 347,
+   "completion_tokens": 526,
+   "latency_sec": 11.09
+  },
+  {
+   "idx": 415,
+   "ok": true,
+   "text": "Sam is a dumpus.",
+   "prompt_tokens": 325,
+   "completion_tokens": 1059,
+   "latency_sec": 20.85
+  },
+  {
+   "idx": 346,
+   "ok": true,
+   "text": "Jack is a bompus.",
+   "prompt_tokens": 302,
+   "completion_tokens": 1009,
+   "latency_sec": 21.62
+  },
+  {
+   "idx": 302,
+   "ok": true,
+   "text": "Max is a worpus.",
+   "prompt_tokens": 313,
+   "completion_tokens": 549,
+   "latency_sec": 12.34
+  },
+  {
+   "idx": 47,
+   "ok": true,
+   "text": "Rex is a terpus.",
+   "prompt_tokens": 272,
+   "completion_tokens": 655,
+   "latency_sec": 12.76
+  },
+  {
+   "idx": 216,
+   "ok": true,
+   "text": "Bob is a gwompus.",
+   "prompt_tokens": 363,
+   "completion_tokens": 1307,
+   "latency_sec": 24.58
+  },
+  {
+   "idx": 16,
+   "ok": true,
+   "text": "Alex is a sterpus.",
+   "prompt_tokens": 242,
+   "completion_tokens": 1015,
+   "latency_sec": 19.6
+  },
+  {
+   "idx": 119,
+   "ok": true,
+   "text": "Polly is a jelpus.",
+   "prompt_tokens": 361,
+   "completion_tokens": 584,
+   "latency_sec": 12.44
+  },
+  {
+   "idx": 258,
+   "ok": true,
+   "text": "Carol is a felpus.",
+   "prompt_tokens": 374,
+   "completion_tokens": 717,
+   "latency_sec": 15.58
+  },
+  {
+   "idx": 13,
+   "ok": true,
+   "text": "Bob is a brimpus.",
+   "prompt_tokens": 366,
+   "completion_tokens": 785,
+   "latency_sec": 16.2
+  },
+  {
+   "idx": 287,
+   "ok": false,
+   "text": "Jack is an impus.",
+   "prompt_tokens": 319,
+   "completion_tokens": 707,
+   "latency_sec": 14.81
+  },
+  {
+   "idx": 101,
+   "ok": true,
+   "text": "Eva is a chorpus.",
+   "prompt_tokens": 382,
+   "completion_tokens": 1096,
+   "latency_sec": 21.07
+  },
+  {
+   "idx": 366,
+   "ok": true,
+   "text": "Alex is a lorpus.",
+   "prompt_tokens": 348,
+   "completion_tokens": 381,
+   "latency_sec": 7.45
+  },
+  {
+   "idx": 332,
+   "ok": true,
+   "text": "Jack is a storpus.",
+   "prompt_tokens": 350,
+   "completion_tokens": 620,
+   "latency_sec": 11.58
+  },
+  {
+   "idx": 359,
+   "ok": true,
+   "text": "Davis is a yerpus.",
+   "prompt_tokens": 344,
+   "completion_tokens": 510,
+   "latency_sec": 10.55
+  },
+  {
+   "idx": 140,
+   "ok": false,
+   "error": "HTTP 504: <html>\r\n<head><title>504 Gateway Time-out</title></head>\r\n<body>\r\n<center><h1>504 Gateway Time-out</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+   "text": "",
+   "prompt_tokens": null,
+   "completion_tokens": null,
+   "latency_sec": null
+  },
+  {
+   "idx": 379,
+   "ok": false,
+   "error": "HTTP 504: <html>\r\n<head><title>504 Gateway Time-out</title></head>\r\n<body>\r\n<center><h1>504 Gateway Time-out</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+   "text": "",
+   "prompt_tokens": null,
+   "completion_tokens": null,
+   "latency_sec": null
+  },
+  {
+   "idx": 112,
+   "ok": true,
+   "text": "Sam is a shumpus.",
+   "prompt_tokens": 334,
+   "completion_tokens": 639,
+   "latency_sec": 12.63
+  },
+  {
+   "idx": 15,
+   "ok": true,
+   "text": "Alex is a storpus.",
+   "prompt_tokens": 373,
+   "completion_tokens": 558,
+   "latency_sec": 12.34
+  },
+  {
+   "idx": 111,
+   "ok": true,
+   "text": "Eva is a gerpus.",
+   "prompt_tokens": 177,
+   "completion_tokens": 649,
+   "latency_sec": 15.15
+  },
+  {
+   "idx": 308,
+   "ok": true,
+   "text": "Eva is a yimpus.",
+   "prompt_tokens": 441,
+   "completion_tokens": 653,
+   "latency_sec": 12.87
+  },
+  {
+   "idx": 142,
+   "ok": true,
+   "text": "Max is a quimpus.",
+   "prompt_tokens": 327,
+   "completion_tokens": 900,
+   "latency_sec": 16.19
+  },
+  {
+   "idx": 81,
+   "ok": true,
+   "text": "Bob is a rorpus.",
+   "prompt_tokens": 364,
+   "completion_tokens": 571,
+   "latency_sec": 11.76
+  },
+  {
+   "idx": 357,
+   "ok": true,
+   "text": "Stella is a sterpus.",
+   "prompt_tokens": 377,
+   "completion_tokens": 1186,
+   "latency_sec": 24.67
+  },
+  {
+   "idx": 403,
+   "ok": true,
+   "text": "Stella is a zumpus.",
+   "prompt_tokens": 311,
+   "completion_tokens": 638,
+   "latency_sec": 12.4
+  },
+  {
+   "idx": 174,
+   "ok": true,
+   "text": "Sally is a felpus.",
+   "prompt_tokens": 352,
+   "completion_tokens": 683,
+   "latency_sec": 14.19
+  },
+  {
+   "idx": 406,
+   "ok": true,
+   "text": "Alex is a terpus.",
+   "prompt_tokens": 357,
+   "completion_tokens": 780,
+   "latency_sec": 14.69
+  },
+  {
+   "idx": 384,
+   "ok": true,
+   "text": "Carol is a bompus.",
+   "prompt_tokens": 423,
+   "completion_tokens": 981,
+   "latency_sec": 19.48
+  },
+  {
+   "idx": 79,
+   "ok": true,
+   "text": "Alex is a wumpus.",
+   "prompt_tokens": 333,
+   "completion_tokens": 1283,
+   "latency_sec": 24.13
+  },
+  {
+   "idx": 110,
+   "ok": true,
+   "text": "Carol is a vumpus.",
+   "prompt_tokens": 336,
+   "completion_tokens": 1220,
+   "latency_sec": 24.26
+  },
+  {
+   "idx": 172,
+   "ok": true,
+   "text": "Eva is a lorpus.",
+   "prompt_tokens": 426,
+   "completion_tokens": 959,
+   "latency_sec": 19.07
+  },
+  {
+   "idx": 409,
+   "ok": true,
+   "text": "Jack is a jompus.",
+   "prompt_tokens": 303,
+   "completion_tokens": 1012,
+   "latency_sec": 19.46
+  },
+  {
+   "idx": 194,
+   "ok": true,
+   "text": "Carol is a dumpus.",
+   "prompt_tokens": 348,
+   "completion_tokens": 805,
+   "latency_sec": 15.42
+  },
+  {
+   "idx": 400,
+   "ok": true,
+   "text": "Sam is a rempus.",
+   "prompt_tokens": 315,
+   "completion_tokens": 1267,
+   "latency_sec": 23.61
+  },
+  {
+   "idx": 183,
+   "ok": true,
+   "text": "Stella is a sterpus.",
+   "prompt_tokens": 354,
+   "completion_tokens": 663,
+   "latency_sec": 13.48
+  },
+  {
+   "idx": 214,
+   "ok": true,
+   "text": "Max is a zhorpus.",
+   "prompt_tokens": 257,
+   "completion_tokens": 983,
+   "latency_sec": 17.93
+  },
+  {
+   "idx": 309,
+   "ok": true,
+   "text": "Oliver is a zumpus.",
+   "prompt_tokens": 417,
+   "completion_tokens": 906,
+   "latency_sec": 16.98
+  },
+  {
+   "idx": 135,
+   "ok": true,
+   "text": "Alex is a yimpus.",
+   "prompt_tokens": 364,
+   "completion_tokens": 555,
+   "latency_sec": 11.62
+  },
+  {
+   "idx": 22,
+   "ok": true,
+   "text": "Sally is a sterpus.",
+   "prompt_tokens": 420,
+   "completion_tokens": 2102,
+   "latency_sec": 41.85
+  },
+  {
+   "idx": 49,
+   "ok": true,
+   "text": "Alex is a vumpus.",
+   "prompt_tokens": 416,
+   "completion_tokens": 438,
+   "latency_sec": 264.23
+  },
+  {
+   "idx": 176,
+   "ok": true,
+   "text": "Max is a yimpus.",
+   "prompt_tokens": 304,
+   "completion_tokens": 554,
+   "latency_sec": 245.2
+  },
+  {
+   "idx": 301,
+   "ok": true,
+   "text": "Sally is a timpus.",
+   "prompt_tokens": 351,
+   "completion_tokens": 698,
+   "latency_sec": 144.85
+  },
+  {
+   "idx": 229,
+   "ok": true,
+   "text": "Alex is a tumpus.",
+   "prompt_tokens": 510,
+   "completion_tokens": 1128,
+   "latency_sec": 201.33
+  },
+  {
+   "idx": 235,
+   "ok": true,
+   "text": "Stella is a kerpus.",
+   "prompt_tokens": 305,
+   "completion_tokens": 1071,
+   "latency_sec": 126.18
+  },
+  {
+   "idx": 274,
+   "ok": true,
+   "text": "Polly is a fompus.",
+   "prompt_tokens": 418,
+   "completion_tokens": 758,
+   "latency_sec": 12.76
+  },
+  {
+   "idx": 63,
+   "ok": true,
+   "text": "Oliver is a fompus.",
+   "prompt_tokens": 373,
+   "completion_tokens": 711,
+   "latency_sec": 12.88
+  },
+  {
+   "idx": 3,
+   "ok": true,
+   "text": "Rex is a rompus.",
+   "prompt_tokens": 399,
+   "completion_tokens": 1341,
+   "latency_sec": 125.89
+  },
+  {
+   "idx": 193,
+   "ok": true,
+   "text": "Gabriel is a zhorpus.",
+   "prompt_tokens": 315,
+   "completion_tokens": 902,
+   "latency_sec": 16.41
+  },
+  {
+   "idx": 40,
+   "ok": true,
+   "text": "Rex is a jompus.",
+   "prompt_tokens": 303,
+   "completion_tokens": 637,
+   "latency_sec": 10.3
+  },
+  {
+   "idx": 282,
+   "ok": true,
+   "text": "Eva is a brimpus.",
+   "prompt_tokens": 279,
+   "completion_tokens": 535,
+   "latency_sec": 11.29
+  },
+  {
+   "idx": 321,
+   "ok": true,
+   "text": "Oliver is a zhorpus.",
+   "prompt_tokens": 360,
+   "completion_tokens": 682,
+   "latency_sec": 13.8
+  },
+  {
+   "idx": 316,
+   "ok": true,
+   "text": "Bob is a boompus.",
+   "prompt_tokens": 285,
+   "completion_tokens": 808,
+   "latency_sec": 17.31
+  },
+  {
+   "idx": 185,
+   "ok": true,
+   "text": "Sally is a vumpus.",
+   "prompt_tokens": 314,
+   "completion_tokens": 871,
+   "latency_sec": 13.88
+  },
+  {
+   "idx": 295,
+   "ok": true,
+   "text": "Tom is a lempus.",
+   "prompt_tokens": 388,
+   "completion_tokens": 721,
+   "latency_sec": 12.61
+  },
+  {
+   "idx": 150,
+   "ok": false,
+   "text": "Wren is an impus.",
+   "prompt_tokens": 259,
+   "completion_tokens": 1549,
+   "latency_sec": 25.45
+  },
+  {
+   "idx": 35,
+   "ok": true,
+   "text": "Bob is a scrompus.",
+   "prompt_tokens": 366,
+   "completion_tokens": 686,
+   "latency_sec": 12.74
+  },
+  {
+   "idx": 98,
+   "ok": true,
+   "text": "Oliver is a chorpus.",
+   "prompt_tokens": 290,
+   "completion_tokens": 1040,
+   "latency_sec": 18.76
+  },
+  {
+   "idx": 116,
+   "ok": true,
+   "text": "Eva is a lempus.",
+   "prompt_tokens": 382,
+   "completion_tokens": 634,
+   "latency_sec": 12.84
+  },
+  {
+   "idx": 23,
+   "ok": true,
+   "text": "Jack is a fompus.",
+   "prompt_tokens": 375,
+   "completion_tokens": 720,
+   "latency_sec": 14.03
+  },
+  {
+   "idx": 398,
+   "ok": true,
+   "text": "Wren is a vumpus.",
+   "prompt_tokens": 442,
+   "completion_tokens": 642,
+   "latency_sec": 12.34
+  },
+  {
+   "idx": 338,
+   "ok": false,
+   "text": "Alex is an impus.",
+   "prompt_tokens": 419,
+   "completion_tokens": 1254,
+   "latency_sec": 21.66
+  },
+  {
+   "idx": 148,
+   "ok": true,
+   "text": "Carol is a zhorpus.",
+   "prompt_tokens": 326,
+   "completion_tokens": 918,
+   "latency_sec": 17.87
+  },
+  {
+   "idx": 361,
+   "ok": true,
+   "text": "Tom is a rempus.",
+   "prompt_tokens": 267,
+   "completion_tokens": 812,
+   "latency_sec": 16.64
+  },
+  {
+   "idx": 372,
+   "ok": true,
+   "text": "Alex is a hilpus.",
+   "prompt_tokens": 376,
+   "completion_tokens": 889,
+   "latency_sec": 14.84
+  },
+  {
+   "idx": 378,
+   "ok": true,
+   "text": "Sally is a rempus.",
+   "prompt_tokens": 303,
+   "completion_tokens": 701,
+   "latency_sec": 13.85
+  },
+  {
+   "idx": 325,
+   "ok": true,
+   "text": "Gabriel is a timpus.",
+   "prompt_tokens": 327,
+   "completion_tokens": 610,
+   "latency_sec": 12.2
+  },
+  {
+   "idx": 232,
+   "ok": true,
+   "text": "Wren is a quimpus.",
+   "prompt_tokens": 394,
+   "completion_tokens": 750,
+   "latency_sec": 14.52
+  },
+  {
+   "idx": 51,
+   "ok": true,
+   "text": "Alex is a felpus.",
+   "prompt_tokens": 413,
+   "completion_tokens": 1362,
+   "latency_sec": 23.49
+  },
+  {
+   "idx": 186,
+   "ok": true,
+   "text": "Wren is a felpus.",
+   "prompt_tokens": 288,
+   "completion_tokens": 1084,
+   "latency_sec": 19.54
+  },
+  {
+   "idx": 83,
+   "ok": false,
+   "text": "Wren is an impus.",
+   "prompt_tokens": 345,
+   "completion_tokens": 842,
+   "latency_sec": 15.87
+  },
+  {
+   "idx": 181,
+   "ok": true,
+   "text": "Fae is a shumpus.",
+   "prompt_tokens": 310,
+   "completion_tokens": 610,
+   "latency_sec": 12.08
+  },
+  {
+   "idx": 136,
+   "ok": true,
+   "text": "Carol is a hilpus.",
+   "prompt_tokens": 334,
+   "completion_tokens": 581,
+   "latency_sec": 10.65
+  },
+  {
+   "idx": 107,
+   "ok": true,
+   "text": "Bob is a rompus.",
+   "prompt_tokens": 295,
+   "completion_tokens": 586,
+   "latency_sec": 13.88
+  },
+  {
+   "idx": 189,
+   "ok": true,
+   "text": "Oliver is a yimpus.",
+   "prompt_tokens": 352,
+   "completion_tokens": 1215,
+   "latency_sec": 19.49
+  },
+  {
+   "idx": 311,
+   "ok": true,
+   "text": "Polly is a wumpus.",
+   "prompt_tokens": 284,
+   "completion_tokens": 516,
+   "latency_sec": 9.07
+  },
+  {
+   "idx": 331,
+   "ok": true,
+   "text": "Oliver is a bompus.",
+   "prompt_tokens": 362,
+   "completion_tokens": 733,
+   "latency_sec": 12.95
+  },
+  {
+   "idx": 36,
+   "ok": true,
+   "text": "Oliver is a brimpus.",
+   "prompt_tokens": 398,
+   "completion_tokens": 707,
+   "latency_sec": 11.78
+  },
+  {
+   "idx": 87,
+   "ok": true,
+   "text": "Gabriel is a hilpus.",
+   "prompt_tokens": 361,
+   "completion_tokens": 557,
+   "latency_sec": 10.14
+  },
+  {
+   "idx": 273,
+   "ok": true,
+   "text": "Oliver is a rempus.",
+   "prompt_tokens": 431,
+   "completion_tokens": 534,
+   "latency_sec": 12.19
+  },
+  {
+   "idx": 413,
+   "ok": true,
+   "text": "Jack is a gorpus.",
+   "prompt_tokens": 477,
+   "completion_tokens": 533,
+   "latency_sec": 12.14
+  },
+  {
+   "idx": 345,
+   "ok": true,
+   "text": "Tom is a gorpus.",
+   "prompt_tokens": 338,
+   "completion_tokens": 477,
+   "latency_sec": 9.31
+  },
+  {
+   "idx": 340,
+   "ok": true,
+   "text": "Tom is a zhorpus.",
+   "prompt_tokens": 323,
+   "completion_tokens": 909,
+   "latency_sec": 16.0
+  },
+  {
+   "idx": 236,
+   "ok": true,
+   "text": "Max is a bompus.",
+   "prompt_tokens": 317,
+   "completion_tokens": 999,
+   "latency_sec": 18.81
+  },
+  {
+   "idx": 342,
+   "ok": true,
+   "text": "Gabriel is a zhorpus.",
+   "prompt_tokens": 336,
+   "completion_tokens": 1892,
+   "latency_sec": 33.35
+  },
+  {
+   "idx": 138,
+   "ok": true,
+   "text": "Alex is a boompus.",
+   "prompt_tokens": 396,
+   "completion_tokens": 678,
+   "latency_sec": 15.6
+  },
+  {
+   "idx": 28,
+   "ok": true,
+   "text": "Bob is a numpus.",
+   "prompt_tokens": 336,
+   "completion_tokens": 438,
+   "latency_sec": 8.84
+  },
+  {
+   "idx": 387,
+   "ok": true,
+   "text": "Gabriel is a rompus.",
+   "prompt_tokens": 419,
+   "completion_tokens": 705,
+   "latency_sec": 15.11
+  },
+  {
+   "idx": 166,
+   "ok": true,
+   "text": "Jack is a terpus.",
+   "prompt_tokens": 349,
+   "completion_tokens": 574,
+   "latency_sec": 13.08
+  },
+  {
+   "idx": 285,
+   "ok": true,
+   "text": "Oliver is a jompus.",
+   "prompt_tokens": 285,
+   "completion_tokens": 952,
+   "latency_sec": 19.08
+  },
+  {
+   "idx": 117,
+   "ok": true,
+   "text": "Gabriel is a jompus.",
+   "prompt_tokens": 304,
+   "completion_tokens": 514,
+   "latency_sec": 11.37
+  },
+  {
+   "idx": 402,
+   "ok": true,
+   "text": "Davis is a timpus.",
+   "prompt_tokens": 337,
+   "completion_tokens": 1145,
+   "latency_sec": 23.03
+  }
+ ],
+ "elapsed_sec": 1245.7
+}

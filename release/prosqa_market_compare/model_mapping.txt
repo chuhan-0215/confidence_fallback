@@ -1,0 +1,29 @@
+# 新旧平台模型映射表（旧模型 → 新平台等价模型）
+# 仅用于本次重跑失败项；已完成模型保留旧结果
+# 新平台: https://lightingtheword.com/v1
+
+# ===== Direct 模式需重跑（10个有效映射） =====
+deepseek-v3.2|deepseek-v4-pro
+qwen3-max|qwen3.7-max
+glm-4.6|glm-5.2
+kimi-k2.5|kimi-k2.6
+llama-3.3-70b-instruct|MiniMax-M3
+MiniMax-M2.5|MiniMax-M3
+mistral-large-2411|qwen3.7-plus
+qwen3-8b|qwen3.7-plus
+llama-3.1-8b-instruct|MiniMax-M2.7
+gpt-4.1-nano|gpt-5.4
+qwen2.5-14b-instruct|qwen3.7-plus
+qwq-32b|kimi-k3
+kimi-k2-thinking|kimi-k3
+
+# 无对应模型（跳过）:
+# microsoft/phi-4
+# grok-4-fast
+
+# ===== CoT 模式需重跑（5个） =====
+claude-sonnet-4-5-20250929|claude-sonnet-5
+deepseek-v3.2|deepseek-v4-pro
+gemini-2.5-pro|gemini-3.5-flash
+gpt-4.1|gpt-5.4
+qwen3-max|qwen3.7-max
