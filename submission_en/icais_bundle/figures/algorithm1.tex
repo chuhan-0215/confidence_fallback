@@ -1,28 +1,14 @@
-% Algorithms 1--2 (side-by-side, no nested floats)
-\begin{figure}[H]
-\centering
-\begin{minipage}[t]{0.48\linewidth}
+% Algorithm 1 — inline compact (no float)
+\vspace{-2pt}
+\begin{minipage}{\linewidth}
 \captionof{algorithm}{Confidence Fallback}
-\label{alg:conf-fallback}
+\label{alg:cf}
 \scriptsize
 \begin{algorithmic}[1]
-\Require instance $x$, $\tau$, Coconut $f$, stop head $g$
-\State $n_0 \leftarrow \max(n_{\min},\min(\textsc{BfsDepth}(x),n_{\max}))$
-\State $\hat y_0, h_{n_0} \leftarrow f(x,n_0)$;\ $p_0 \leftarrow \sigma(g(h_{n_0},n_0,x))$
-\State \textbf{if} $p_0 \ge \tau$ \textbf{then return} $\hat y_0$
-\State \textbf{return} \textsc{Refine}$(x,f,g)$
-\end{algorithmic}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.48\linewidth}
-\captionof{algorithm}{Neighborhood refinement}
-\label{alg:refinement}
-\scriptsize
-\begin{algorithmic}[1]
-\Require $x$, $f$, $g$, floor $n_{\mathrm{fl}}$, threshold $\theta$
-\State \textbf{for} $n = n_{\mathrm{fl}}$ \textbf{to} $n_{\max}$ \textbf{do}
-\State \hspace{1em}$\hat y, h_n \leftarrow f(x,n)$;\ $p \leftarrow \sigma(g(h_n,n,x))$
-\State \hspace{1em}\textbf{if} $p \ge \theta$ \textbf{then break}
-\State \textbf{return} $\hat y$
+\Require $x$, $\tau$, Coconut $f$, stop head $g$
+\State $n_0 \leftarrow \max(n_{\min},\min(\textsc{BfsDepth}(x),n_{\max}))$;\ $(\hat y_0,h_{n_0}) \leftarrow f(x,n_0)$
+\State $p_0 \leftarrow \sigma(g(h_{n_0},n_0,s_0))$ with $s_0=\textsc{StabFeat}(\hat y_0,n_0)$
+\If{$p_0 \ge \tau$} \Return $\hat y_0$ \Else\ \Return first $\hat y_n$ from Eq.~\eqref{eq:policy} \EndIf
 \end{algorithmic}
 \end{minipage}
-\end{figure}
+\vspace{-4pt}
