@@ -71,6 +71,12 @@
 \setlength{\headsep}{8pt}
 \addtolength{\topmargin}{-4pt}
 
+% Baseline policy abbreviations (avoid code-style identifiers in prose)
+\newcommand{\FixedThree}{\textbf{Fixed-3}}
+\newcommand{\StructureD}{\textbf{Structure-D}}
+\newcommand{\AutoRoute}{\textbf{Auto-Route}}
+\newcommand{\KnnMin}{\textbf{kNN-Min3}}
+
 \title{Confidence Fallback: Selective Stopping for Continuous Latent Reasoning}
 \author{Songyang Pang \\
 Beijing Youth AI Academy \\
@@ -91,7 +97,7 @@ Continuous latent reasoning lets language models search in hidden space rather t
 \section{Introduction}
 Chain-of-thought prompting elicits explicit reasoning traces from language models \citep{wei2022chain}. Coconut instead feeds the last hidden state back as the next input embedding, so each latent step can maintain a superposition over multiple search frontiers \citep{hao2024coconut,zhu2025superposition} and outperforms discrete chains on ProsQA graph reachability \citep{hao2024coconut}. At inference time, however, the model still needs an instance-specific latent budget and a rule for accepting or revising the resulting prediction.
 
-Prior stopping rules treat these choices separately. A uniform three-step budget reaches 83.8\% on our ProsQA split even though solvable depth correlates with graph structure ($r{=}0.543$). Depth-aware routing removes most of this mismatch (\texttt{structure\_d} 93.75\%, \texttt{auto\_route} 93.1\%), yet the residual errors decompose into 22 depth-mismatch cases ($E_d$) and 31 commitment-error cases ($E_c$). Refining every instance reaches only 92.6\%, below routing alone, so the two failure modes must be handled sequentially: first align depth, then decide whether the aligned prediction is trustworthy.
+Prior stopping rules treat these choices separately. A uniform three-step budget reaches 83.8\% on our ProsQA split even though solvable depth correlates with graph structure ($r{=}0.543$). Depth-aware routing removes most of this mismatch (\StructureD{} 93.75\%, \AutoRoute{} 93.1\%), yet the residual errors decompose into 22 depth-mismatch cases ($E_d$) and 31 commitment-error cases ($E_c$). Refining every instance reaches only 92.6\%, below routing alone, so the two failure modes must be handled sequentially: first align depth, then decide whether the aligned prediction is trustworthy.
 
 We propose \textbf{Confidence Fallback (CF)}, a stopping policy for frozen Coconut models that follows this order. CF routes each instance to a structure-derived budget, scores the aligned prediction with a learned stop head, and invokes neighborhood refinement only when confidence falls below a validation-locked threshold. On 419 ProsQA questions, CF reaches 93.89$\pm$0.76\% over five seeds (best-seed 95.23\%) while refining 7.2\% of instances. We formalize the two error modes and show why gating must follow routing (Definition~\ref{def:errors}, Proposition~\ref{prop:order}, Lemma~\ref{lem:contam}); report the best accuracy--compute trade-off among the evaluated policies; and evaluate transfer under 53 shifted ProsQA slices and five external benchmarks.
 
@@ -132,17 +138,17 @@ Assume \emph{(A1)} structure routing removes depth-mismatch mass without harming
 \textit{Proof sketch.} Routing removes $E_d$ before scoring (A1--A2); gate-first pools overlapping modes (A3), so no single $\tau$ cleanly separates them (Figure~\ref{fig:bar}B).
 
 \input{figures/algorithms.tex}
-\noindent\textbf{Stop head.} RichStopHead maps the 768-dimensional hidden state $h_n$, step index $n$, and stability features $s_n$ to a scalar logit through a two-layer MLP with 106K trainable parameters. The head trains on \texttt{first\_correct} labels from 1{,}608 training and 400 validation rows (12.5\% positive) with focal BCE \citep{lin2017focal} ($\gamma{=}2$); threshold $\tau{=}0.48$ is selected on validation and frozen before test evaluation (Algorithms~\ref{alg:conf-fallback}--\ref{alg:refinement}).
+\noindent\textbf{Stop head.} The stop head maps the 768-dimensional hidden state $h_n$, step index $n$, and stability features $s_n$ to a scalar logit through a two-layer MLP with 106K trainable parameters. It trains on \emph{first-correct} labels from 1{,}608 training and 400 validation rows (12.5\% positive) with focal BCE \citep{lin2017focal} ($\gamma{=}2$); threshold $\tau{=}0.48$ is selected on validation and frozen before test evaluation (Algorithms~\ref{alg:conf-fallback}--\ref{alg:refinement}).
 \input{figures/figure1_flow.tex}
 
 \section{Experiments}
 \label{sec:exp}
 \subsection{Experimental Setup}
-\noindent\textbf{Model and hardware.} All policies share the frozen Coconut \texttt{checkpoint\_300} \citep{hao2024coconut} and the same stop head, so reported differences isolate stopping behavior. Main ProsQA numbers are measured on a single NVIDIA A100; commercial API latencies include network round-trip time. \textbf{Data.} We evaluate 419 in-distribution ProsQA questions and 53 shifted slices that vary hop count, answer asymmetry, and graph shape. \textbf{Baselines.} Five policies are compared under one deployment contract: no exhaustive depth sweep and mean latent steps $\le 4.5$. \texttt{fixed\_3} uses a uniform three-step budget; \texttt{auto\_route} and \texttt{structure\_d} set depth from BFS estimates; \texttt{knn\_min3} always invokes neighborhood search; CF applies route-then-gate scoring with validation-locked $\tau{=}0.48$ and refinement floor $n_{\mathrm{fl}}{=}3$. \textbf{Metrics.} We report accuracy, gain over \texttt{fixed\_3}, refinement rate, mean forward passes, and per-question latency.
+\noindent\textbf{Model and hardware.} All policies share the frozen Coconut checkpoint at training step~300 \citep{hao2024coconut} and the same stop head, so reported differences isolate stopping behavior. Main ProsQA numbers are measured on a single NVIDIA A100; commercial API latencies include network round-trip time. \textbf{Data.} We evaluate 419 in-distribution ProsQA questions and 53 shifted slices that vary hop count, answer asymmetry, and graph shape. \textbf{Baselines.} Five policies are compared under one deployment contract: no exhaustive depth sweep and mean latent steps $\le 4.5$. \FixedThree{} uses a uniform three-step budget; \AutoRoute{} and \StructureD{} set depth from BFS estimates; \KnnMin{} always invokes neighborhood search; CF applies route-then-gate scoring with validation-locked $\tau{=}0.48$ and refinement floor $n_{\mathrm{fl}}{=}3$. \textbf{Metrics.} We report accuracy, gain over \FixedThree{}, refinement rate, mean forward passes, and per-question latency.
 
 \subsection{Main Results and Analysis}
 \label{sec:main}
-Figure~\ref{fig:bar}A summarizes the five-policy ablation. Depth-aware routing recovers most of the fixed-budget gap: \texttt{structure\_d} reaches 93.75\% (+10.0\,pp) and \texttt{auto\_route} reaches 93.1\% (+9.3\,pp) versus \texttt{fixed\_3} at 83.8\%. Universal refinement (\texttt{knn\_min3}) reaches 92.6\% (+8.8\,pp) at substantially higher compute, confirming that blind refinement cannot replace routing. CF reaches 93.89$\pm$0.76\% over five seeds (best-seed 95.23\%, seed~99), +11.4\,pp over \texttt{fixed\_3} at the best seed (+10.1\,pp for the mean) and +1.5\,pp over the best single-pass policy, while refining only 7.2\% of instances at $1.17\times$ mean forwards (Figure~\ref{fig:bar}B).
+Figure~\ref{fig:bar}A summarizes the five-policy ablation. Depth-aware routing recovers most of the fixed-budget gap: \StructureD{} reaches 93.75\% (+10.0\,pp) and \AutoRoute{} reaches 93.1\% (+9.3\,pp) versus \FixedThree{} at 83.8\%. Universal refinement (\KnnMin{}) reaches 92.6\% (+8.8\,pp) at substantially higher compute, confirming that blind refinement cannot replace routing. CF reaches 93.89$\pm$0.76\% over five seeds (best-seed 95.23\%, seed~99), +11.4\,pp over \FixedThree{} at the best seed (+10.1\,pp for the mean) and +1.5\,pp over the best single-pass policy, while refining only 7.2\% of instances at $1.17\times$ mean forwards (Figure~\ref{fig:bar}B).
 
 \textbf{Commercial comparison.} Table~\ref{tab:market} reports five commercial LLMs evaluated in direct-answer mode on ProsQA. Three APIs are run on a fixed random 100-question subset (seed 42); GPT-4.1 and GPT-4.1-Mini are evaluated on the full 419-question split. All five systems pay explicit decoding cost and remain below CF (95.2\%) despite using 25--82$\times$ more total tokens. The comparison is not matched by model scale---CF runs on a GPT-2-scale Coconut checkpoint---but it isolates the cost of explicit generation on the same task.
 \begin{table}[t]
