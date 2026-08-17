@@ -72,10 +72,10 @@
 \addtolength{\topmargin}{-4pt}
 
 % Baseline policy abbreviations (avoid code-style identifiers in prose)
-\newcommand{\FixedThree}{\textbf{Fixed-3}}
-\newcommand{\StructureD}{\textbf{Structure-D}}
-\newcommand{\AutoRoute}{\textbf{Auto-Route}}
-\newcommand{\KnnMin}{\textbf{kNN-Min3}}
+\newcommand{\FixedThree}{\textbf{Fixed 3}}
+\newcommand{\StructureD}{\textbf{Depth}}
+\newcommand{\AutoRoute}{\textbf{Auto BFS}}
+\newcommand{\KnnMin}{\textbf{Universal}}
 
 \title{Confidence Fallback: Selective Stopping for Continuous Latent Reasoning}
 \author{Songyang Pang \\
@@ -144,7 +144,7 @@ Assume \emph{(A1)} structure routing removes depth-mismatch mass without harming
 \section{Experiments}
 \label{sec:exp}
 \subsection{Experimental Setup}
-\noindent\textbf{Model and hardware.} All policies share the frozen Coconut checkpoint at training step~300 \citep{hao2024coconut} and the same stop head, so reported differences isolate stopping behavior. Main ProsQA numbers are measured on a single NVIDIA A100; commercial API latencies include network round-trip time. \textbf{Data.} We evaluate 419 in-distribution ProsQA questions and 53 shifted slices that vary hop count, answer asymmetry, and graph shape. \textbf{Baselines.} Five policies are compared under one deployment contract: no exhaustive depth sweep and mean latent steps $\le 4.5$. \FixedThree{} uses a uniform three-step budget; \AutoRoute{} and \StructureD{} set depth from BFS estimates; \KnnMin{} always invokes neighborhood search; CF applies route-then-gate scoring with validation-locked $\tau{=}0.48$ and refinement floor $n_{\mathrm{fl}}{=}3$. \textbf{Metrics.} We report accuracy, gain over \FixedThree{}, refinement rate, mean forward passes, and per-question latency.
+\noindent\textbf{Model and hardware.} All policies share the frozen Coconut checkpoint at training step~300 \citep{hao2024coconut} and the same stop head, so reported differences isolate stopping behavior. Main ProsQA numbers are measured on a single NVIDIA A100; commercial API latencies include network round-trip time. \textbf{Data.} We evaluate 419 in-distribution ProsQA questions and 53 shifted slices that vary hop count, answer asymmetry, and graph shape. \textbf{Baselines.} Five policies are compared under one deployment contract (Figure~\ref{fig:bar}): no exhaustive depth sweep and mean latent steps $\le 4.5$. \FixedThree{} uses a uniform three-step budget; \AutoRoute{} and \StructureD{} set depth from BFS estimates; \KnnMin{} always invokes neighborhood search; CF applies route-then-gate scoring with validation-locked $\tau{=}0.48$ and refinement floor $n_{\mathrm{fl}}{=}3$. \textbf{Metrics.} We report accuracy, gain over \FixedThree{}, refinement rate, mean forward passes, and per-question latency.
 
 \subsection{Main Results and Analysis}
 \label{sec:main}
