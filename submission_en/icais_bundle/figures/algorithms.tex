@@ -1,34 +1,40 @@
-% Algorithms 1--2 (side-by-side, standard algpseudocode)
-\noindent
-\begin{minipage}[t]{0.485\linewidth}
+% Algorithms 1--2 (ICAIS template style; single figure keeps them aligned)
+\vspace{-3mm}
+\begin{figure}[H]
+\centering
+\begin{minipage}[t]{0.48\linewidth}
 \begin{algorithm}[H]
 \caption{Confidence Fallback}
 \label{alg:conf-fallback}
+\footnotesize
 \begin{algorithmic}[1]
-\Require Instance $x$; threshold $\tau$; model $f$; stop head $g$
+\Require $x$, $\tau$; Coconut $f$; stop head $g$
 \Ensure Answer $\hat{y}$
-\State $n_0 \gets \max\!\bigl(n_{\min}, \min(\textsc{BfsDepth}(x), n_{\max})\bigr)$
+\State $n_0 \gets \max\!\bigl(n_{\min}, \min(\mbox{\textsc{BfsDepth}}(x), n_{\max})\bigr)$
 \State $(\hat{y}_0, h_{n_0}) \gets f(x, n_0)$
-\State $p_0 \gets \sigma\bigl(g(h_{n_0}, n_0, x)\bigr)$
+\State $s_0 \gets \mbox{\textsc{StabFeat}}(\hat{y}_0, n_0)$
+\State $p_0 \gets \sigma\bigl(g(h_{n_0}, n_0, s_0)\bigr)$
 \If{$p_0 \ge \tau$}
     \State \Return $\hat{y}_0$
 \Else
-    \State \Return \mbox{\Call{NeighborhoodRefine}{$x,f,g$}}
+    \State \Return \mbox{\Call{NeighborhoodRefine}{$x, f, g, \tau$}}
 \EndIf
 \end{algorithmic}
 \end{algorithm}
 \end{minipage}\hfill
-\begin{minipage}[t]{0.485\linewidth}
+\begin{minipage}[t]{0.48\linewidth}
 \begin{algorithm}[H]
 \caption{Neighborhood Refinement}
 \label{alg:refinement}
+\footnotesize
 \begin{algorithmic}[1]
-\Require Instance $x$; model $f$; head $g$; floor $n_{\mathrm{fl}}$; threshold $\theta$
+\Require $x$; $f$; $g$; floor $n_{\mathrm{fl}}$; $\tau$
 \Ensure Answer $\hat{y}$
 \For{$n = n_{\mathrm{fl}}, \ldots, n_{\max}$}
     \State $(\hat{y}, h_n) \gets f(x, n)$
-    \State $p \gets \sigma\bigl(g(h_n, n, x)\bigr)$
-    \If{$p \ge \theta$}
+    \State $s_n \gets \mbox{\textsc{StabFeat}}(\hat{y}, n)$
+    \State $p \gets \sigma\bigl(g(h_n, n, s_n)\bigr)$
+    \If{$p \ge \tau$}
         \State \textbf{break}
     \EndIf
 \EndFor
@@ -36,3 +42,5 @@
 \end{algorithmic}
 \end{algorithm}
 \end{minipage}
+\end{figure}
+\vspace{-3mm}

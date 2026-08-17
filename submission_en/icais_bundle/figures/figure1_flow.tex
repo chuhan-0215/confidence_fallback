@@ -17,10 +17,10 @@
 \definecolor{cocoModule}{RGB}{236,248,242}
 \definecolor{cocoModuleB}{RGB}{165,205,185}
 
-\begin{figure}[!t]
+\begin{figure}[H]
 \centering
 \makebox[\linewidth][c]{%
-\resizebox{1.06\linewidth}{!}{%
+\resizebox{0.88\linewidth}{!}{%
 \begin{tikzpicture}[
   x=1cm, y=1cm,
   font=\small,
@@ -269,6 +269,6 @@
 
 \end{tikzpicture}%
 }}
-\caption{\textbf{Confidence Fallback inference controller (Coconut-style).} \textbf{A}, Fixed-budget inference with three uniform latent steps and hidden-state recycling (83.8\%). \textbf{B}, CF routes $n_0$ from BFS depth $\textsc{BfsDepth}(x)$, scores $p_0$ with RichStopHead $g$ at $h_{n_0}$, commits when $p_0\ge\tau$ (92.8\%), and triggers neighborhood refinement on the 7.2\% low-confidence tail ($\bar{n}\approx 3.51$).}
+\caption{\textbf{CF inference controller.} \textbf{A}, Fixed three-step budget (83.8\%). \textbf{B}, CF routes $n_0$ from $\textsc{BfsDepth}(x)$, scores $p_0{=}g(h_{n_0},n_0,s_0)$, commits at $p_0\ge\tau$ (92.8\%), refines 7.2\% tail ($\bar{n}{\approx}3.51$).}
 \label{fig:flow}
 \end{figure}
