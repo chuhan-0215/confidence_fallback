@@ -30,20 +30,8 @@
   \hyper@natlinkend
 }
 \makeatother
-% hyperref resets fancyhdr; restore ICAIS header on all pages (incl. Overleaf)
-\AtBeginDocument{%
-  \pagestyle{fancy}%
-  \fancyhead[L]{\small Published as a conference paper at ICAIS}%
-  \fancyhead[R]{}%
-  \fancyfoot[C]{\thepage}%
-  \renewcommand{\headrulewidth}{0.4pt}%
-  \fancypagestyle{plain}{%
-    \fancyhead[L]{\small Published as a conference paper at ICAIS}%
-    \fancyhead[R]{}%
-    \fancyfoot[C]{\thepage}%
-    \renewcommand{\headrulewidth}{0.4pt}%
-  }%
-}
+% Submission layout: no running header; page numbers only
+\AtBeginDocument{\pagestyle{plain}}
 \makeatletter
 \newtheoremstyle{compactthm}{0pt}{0pt}{\itshape}{}{\bfseries}{.}{0.35em}{}
 \theoremstyle{compactthm}
@@ -88,7 +76,7 @@ Beijing Zhongguancun Academy
 
 \begin{document}
 \maketitle
-\thispagestyle{fancy}
+\thispagestyle{plain}
 
 \begin{abstract}
 Continuous latent reasoning lets language models search in hidden space rather than in decoded token sequences. Models such as Coconut maintain parallel search frontiers and improve graph reachability over discrete chain-of-thought, yet deployment still requires two instance-level decisions: how many latent steps to allocate, and whether to trust the prediction at that depth. We study \textbf{Confidence Fallback (CF)}, an inference policy on frozen Coconut weights that routes each instance to a structure-derived latent budget, scores the aligned prediction with a lightweight stop head, and refines only the low-confidence tail. On 419 ProsQA questions, CF reaches 93.89$\pm$0.76\% accuracy over five seeds (best-seed 95.23\%) while refining only 7.2\% of instances, a best-seed gain of 11.4 percentage points over a fixed three-step budget (+10.1\,pp for the five-seed mean); validation-locked gating adds 2.08\,pp across 53 shifted slices, and the policy transfers to five external benchmarks. CF adds no decoded tokens relative to the frozen base (${\approx}14.2$ vs.\ $49.4$ per question for explicit CoT) and uses 25--82$\times$ fewer total tokens than five commercial direct-answer APIs on ProsQA. Code: \url{https://github.com/chuhan-0215/confidence_fallback}
@@ -137,7 +125,11 @@ Assume \emph{(A1)} structure routing removes depth-mismatch mass without harming
 \end{lemma}
 \textit{Proof sketch.} Routing removes $E_d$ before scoring (A1--A2); gate-first pools overlapping modes (A3), so no single $\tau$ cleanly separates them (Figure~\ref{fig:bar}B).
 
+\vspace{\baselineskip}
+\vspace{\baselineskip}
 \input{figures/algorithms.tex}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
 \noindent\textbf{Stop head.} The stop head maps the 768-dimensional hidden state $h_n$, step index $n$, and stability features $s_n$ to a scalar logit through a two-layer MLP with 106K trainable parameters. It trains on \emph{first-correct} labels from 1{,}608 training and 400 validation rows (12.5\% positive) with focal BCE \citep{lin2017focal} ($\gamma{=}2$); threshold $\tau{=}0.48$ is selected on validation and frozen before test evaluation (Algorithms~\ref{alg:conf-fallback}--\ref{alg:refinement}).
 \input{figures/figure1_flow.tex}
 
