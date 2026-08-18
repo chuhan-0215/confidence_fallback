@@ -33,15 +33,11 @@
 % Submission layout: keep page geometry but hide running header text
 \AtBeginDocument{%
   \pagestyle{fancy}%
-  \fancyhead[L]{}%
-  \fancyhead[C]{}%
-  \fancyhead[R]{}%
+  \fancyhf{}%
   \fancyfoot[C]{\thepage}%
   \renewcommand{\headrulewidth}{0pt}%
   \fancypagestyle{plain}{%
-    \fancyhead[L]{}%
-    \fancyhead[C]{}%
-    \fancyhead[R]{}%
+    \fancyhf{}%
     \fancyfoot[C]{\thepage}%
     \renewcommand{\headrulewidth}{0pt}%
   }%
@@ -90,6 +86,8 @@ Beijing Zhongguancun Academy
 
 \begin{document}
 \maketitle
+% Force clear running header set by \@maketitle in icais_conference.sty
+\fancyhf{}\fancyfoot[C]{\thepage}\renewcommand{\headrulewidth}{0pt}%
 \thispagestyle{plain}
 
 \begin{abstract}
