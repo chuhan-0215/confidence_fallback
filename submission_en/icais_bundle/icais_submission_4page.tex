@@ -30,8 +30,22 @@
   \hyper@natlinkend
 }
 \makeatother
-% Submission layout: no running header; page numbers only
-\AtBeginDocument{\pagestyle{plain}}
+% Submission layout: keep page geometry but hide running header text
+\AtBeginDocument{%
+  \pagestyle{fancy}%
+  \fancyhead[L]{}%
+  \fancyhead[C]{}%
+  \fancyhead[R]{}%
+  \fancyfoot[C]{\thepage}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \fancypagestyle{plain}{%
+    \fancyhead[L]{}%
+    \fancyhead[C]{}%
+    \fancyhead[R]{}%
+    \fancyfoot[C]{\thepage}%
+    \renewcommand{\headrulewidth}{0pt}%
+  }%
+}
 \makeatletter
 \newtheoremstyle{compactthm}{0pt}{0pt}{\itshape}{}{\bfseries}{.}{0.35em}{}
 \theoremstyle{compactthm}
@@ -126,9 +140,8 @@ Assume \emph{(A1)} structure routing removes depth-mismatch mass without harming
 \textit{Proof sketch.} Routing removes $E_d$ before scoring (A1--A2); gate-first pools overlapping modes (A3), so no single $\tau$ cleanly separates them (Figure~\ref{fig:bar}B).
 
 \vspace{\baselineskip}
-\vspace{\baselineskip}
+\enlargethispage{2\baselineskip}
 \input{figures/algorithms.tex}
-\vspace{\baselineskip}
 \vspace{\baselineskip}
 \noindent\textbf{Stop head.} The stop head maps the 768-dimensional hidden state $h_n$, step index $n$, and stability features $s_n$ to a scalar logit through a two-layer MLP with 106K trainable parameters. It trains on \emph{first-correct} labels from 1{,}608 training and 400 validation rows (12.5\% positive) with focal BCE \citep{lin2017focal} ($\gamma{=}2$); threshold $\tau{=}0.48$ is selected on validation and frozen before test evaluation (Algorithms~\ref{alg:conf-fallback}--\ref{alg:refinement}).
 \input{figures/figure1_flow.tex}
@@ -172,7 +185,7 @@ Figure~\ref{fig:bar}A summarizes the five-policy ablation. Depth-aware routing r
 \label{sec:concl}
 Separating depth mismatch from commitment error clarifies why Coconut deployment benefits from route-then-gate control rather than uniform refinement. Confidence Fallback implements this sequence with a 106K-parameter stop head on frozen Coconut weights, reaching 93.89$\pm$0.76\% on ProsQA (best-seed 95.23\%) while refining 7.2\% of instances. The policy runs at 0.52\,s per question on a single A100, exceeds the five evaluated direct-answer APIs on ProsQA accuracy, and uses 25--82$\times$ fewer total tokens (Table~\ref{tab:market}).
 
-\textbf{Limitations.} Structure routing is task-specific; 17/419 ProsQA instances remain wrong under both evaluated paths; and the commercial comparison does not control for backbone scale. Future work includes learning routing end-to-end and evaluating same-scale open-weight baselines under matched decoding budgets.
+\textbf{Limitations.} Structure routing is task-specific; 17/419 instances remain wrong under both paths; the commercial comparison does not control for backbone scale. Future work includes end-to-end routing and matched open-weight baselines.
 
 \noindent\textbf{Acknowledgments.} We thank Jingwen Fu for supervision and the Beijing Youth AI Academy for research support.
 

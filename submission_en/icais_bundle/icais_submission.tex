@@ -1,0 +1,223 @@
+\documentclass{article}
+\PassOptionsToPackage{compact}{titlesec}
+\usepackage{icais_conference,times}
+\setcitestyle{numbers,square,sort&compress}  % Numbered citations like [1]
+\iclrfinalcopy  % Show author information (final version)
+\input{math_commands.tex}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\algrenewcommand\algorithmicrequire{\textbf{Input:}}
+\algrenewcommand\algorithmicensure{\textbf{Output:}}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning,fit,backgrounds,calc,arrows.meta,shapes.geometric}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,breaklinks=true,linkcolor=black,citecolor=blue!70!black,urlcolor=blue!70!black}
+\usepackage{url}
+\makeatletter
+\renewcommand\hyper@natlinkbreak[2]{#1}
+\def\NAT@hyper@#1{%
+  \hyper@natlinkstart{\@citeb\@extra@b@citeb}%
+  \mbox{#1}%
+  \hyper@natlinkend
+}
+\makeatother
+% hyperref resets fancyhdr; restore ICAIS header on all pages (incl. Overleaf)
+\AtBeginDocument{%
+  \pagestyle{fancy}%
+  \fancyhead[L]{\small Published as a conference paper at ICAIS}%
+  \fancyhead[R]{}%
+  \fancyfoot[C]{\thepage}%
+  \renewcommand{\headrulewidth}{0.4pt}%
+  \fancypagestyle{plain}{%
+    \fancyhead[L]{\small Published as a conference paper at ICAIS}%
+    \fancyhead[R]{}%
+    \fancyfoot[C]{\thepage}%
+    \renewcommand{\headrulewidth}{0.4pt}%
+  }%
+}
+\makeatletter
+\newtheoremstyle{compactthm}{0pt}{0pt}{\itshape}{}{\bfseries}{.}{0.35em}{}
+\theoremstyle{compactthm}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheoremstyle{compactdef}{0pt}{0pt}{}{}{\bfseries}{.}{0.35em}{}
+\theoremstyle{compactdef}
+\newtheorem{definition}{Definition}
+
+% Moderate compaction for 4-page limit with author info
+\setlength{\parskip}{0.2pc plus 0pt minus 0.2pc}
+\setlength{\textfloatsep}{3pt plus 1pt minus 1pt}
+\setlength{\floatsep}{3pt plus 1pt minus 1pt}
+\setlength{\intextsep}{3pt plus 1pt minus 1pt}
+\setlength{\abovecaptionskip}{3pt}
+\setlength{\belowcaptionskip}{1pt}
+\setlength{\abovedisplayskip}{2pt plus 1pt minus 1pt}
+\setlength{\belowdisplayskip}{2pt plus 1pt minus 1pt}
+\setlength{\abovedisplayshortskip}{2pt}
+\setlength{\belowdisplayshortskip}{2pt}
+\titleformat{\section}{\large\sc\raggedright}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalsize\sc\raggedright}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{-4pt plus 0pt minus 2pt}{2pt plus 0pt minus 1pt}
+\titlespacing*{\subsection}{0pt}{-0pt plus 0pt minus 1pt}{1pt plus 0pt minus 1pt}
+\setlength{\headsep}{8pt}
+\addtolength{\topmargin}{-4pt}
+
+\title{Confidence Fallback: Selective Stopping for Continuous Latent Reasoning}
+\author{Songyang Pang \\
+Beijing Youth AI Academy \\
+Experimental School Affiliated to Haidian Teachers Training College \\
+\texttt{y-psy@bza.edu.cn} \\
+Supervisor: Jingwen Fu \\
+Beijing Zhongguancun Academy
+}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\begin{abstract}
+Continuous latent reasoning enables language models to reason in hidden space rather than in tokens; models such as Coconut maintain parallel search frontiers and thereby improve graph reasoning over discrete chain-of-thought. \textbf{However}, deploying these models requires two per-instance decisions that existing stopping strategies do not solve: \emph{how many} latent steps an instance needs, and \emph{whether} the prediction made at that depth can be trusted. \textbf{In this work}, we propose \textbf{Confidence Fallback (CF)}, a plug-in inference policy on frozen Coconut models: CF routes each instance to a latent budget determined by graph structure, scores the resulting prediction with a lightweight stop head, and invokes neighborhood refinement only on the low-confidence tail. On 419 ProsQA questions, CF reaches \textbf{93.89$\pm$0.76\%} accuracy over five seeds (best-seed \textbf{95.23\%}) while refining only \textbf{7.2\%} of instances, +11.4\,pp over the fixed-step budget; validation-locked gating adds +2.08\,pp across 53 shifted slices, and the policy transfers to five external benchmarks. CF adds no generated tokens over the frozen base model (${\approx}14.2$ vs.\ $49.4$ per question for explicit CoT), and uses 25--82$\times$ fewer generated tokens than five direct-answer commercial LLMs on ProsQA. Code: \url{https://github.com/chuhan-0215/confidence_fallback}
+\end{abstract}
+
+\section{Introduction}
+Chain-of-thought prompting elicits explicit reasoning traces from language models \citep{wei2022chain}. Coconut instead feeds the last hidden state back as the next input embedding, so each latent step can maintain a superposition over multiple search frontiers \citep{hao2024coconut,zhu2025superposition} and outperforms discrete chains on ProsQA graph reachability \citep{hao2024coconut}. Deploying such a model, however, requires two per-instance decisions: \emph{how many} latent steps an instance needs, and \emph{whether} to trust the prediction at that depth.
+
+Existing strategies address these decisions only in isolation. A uniform three-step budget reaches 83.8\% on our ProsQA split, though the required depth correlates with graph structure ($r=0.543$). Depth-aware routing eliminates most of this mismatch (93.6\%), yet its residual failures split into 22 \emph{depth mismatch} ($E_d$; the budget misses the solvable depth) and 31 \emph{commitment error} ($E_c$; an unreliable commitment at aligned depth). Crucially, refining \emph{every} instance reaches only 92.6\%, \emph{below} routing alone; the two error types must therefore be repaired \emph{sequentially}: align the budget, then decide whether the aligned prediction can be trusted.
+
+\textbf{In this work}, we propose \textbf{Confidence Fallback (CF)}, a resource-efficient stopping policy that instantiates this sequential repair on frozen Coconut models: CF routes each instance to a structure-derived budget, scores the prediction with a learned stop head, and refines only the low-confidence tail. On 419 ProsQA questions, CF reaches 93.89$\pm$0.76\% over five seeds (best-seed 95.23\%) while refining only 7.2\% of instances. \textbf{Our contributions are as follows:}
+\begin{itemize}\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
+\item We decompose Coconut deployment errors into depth mismatch and commitment error, formalizing why gating must follow routing (Definition~\ref{def:errors}, Proposition~\ref{prop:order}, Lemma~\ref{lem:contam}).
+\item We propose Confidence Fallback, a plug-in route-then-gate policy on frozen Coconut that reaches 93.89$\pm$0.76\% on ProsQA (best-seed 95.23\%) at a 7.2\% refine rate, the best accuracy--compute trade-off among the evaluated policies.
+\item We show that validation-locked gating transfers under distribution shift (+2.08\,pp over 53 slices) and across five external benchmarks.
+\end{itemize}
+
+\noindent\textbf{Reasoning in latent spaces.} Coconut \citep{hao2024coconut} trains transformers to reason in continuous latent space; \citet{zhu2025superposition} provide a theoretical account of this superposition-based search behavior. These works improve the \emph{representation} of reasoning; CF is complementary: an inference-time control layer on frozen Coconut. \textbf{Adaptive computation and test-time scaling.} Token-level early exiting and multi-sample verification adapt or aggregate explicit reasoning traces, while verifiers score or rank sampled solutions, typically using a separately trained verifier \citep{cobbe2021training}. CF instead scores the \emph{continuous} hidden state at the routed depth and spends extra compute only on a 7.2\% low-confidence tail.
+
+\section{Problem Formulation}
+\label{sec:problem}
+In ProsQA graph reachability \citep{hao2024coconut}, each instance $x$ is a rooted directed graph with two candidate targets; $y$ is the reachability label and $d$ the BFS depth from the root. Coconut generates $n$ continuous thoughts and emits a prediction $\hat y$. A \emph{policy} chooses $n$ per instance and whether to accept $\hat y$.
+
+\begin{definition}[Two-stage stopping errors]
+\label{def:errors}
+For analysis, we operationally categorize deployment failures under a depth-selecting policy into two dominant (non-exclusive) modes: (i) \emph{depth mismatch} $E_d$: the budget stops before (or wanders past) the depth at which the instance is solvable; and (ii) \emph{commitment error} $E_c$: at an aligned depth, the model commits to a prediction whose stop confidence is unreliable; $E \approx E_d + E_c$ is an operational approximation, not a strict partition.
+\end{definition}
+
+\section{Confidence Fallback}
+\label{sec:method}
+CF repairs the two error types \emph{in that order}: routing aligns the latent budget with instance structure, and confidence gating decides whether the aligned prediction is trustworthy. \textbf{Route and score.} At each latent step $n$, we form stability features $s_n=(b_n,r_n,c_n)$: answer bucket $b_n$, repeat streak $r_n$, and change flag $c_n=\mathbf{1}[\hat y_n\ne\hat y_{n-1}]$. One forward pass to the structure-routed depth $n_0$ yields $\hat y_0$, $h_{n_0}$, and $s_0$, which the stop head scores:
+\begin{equation}
+\label{eq:route}
+n_0 = \max\big(n_{\min},\ \min(d,\ n_{\max})\big), \qquad p_0 = \sigma\big(g(h_{n_0}, n_0, s_0)\big).
+\end{equation}
+\textbf{Gate.} The policy commits to $\hat y_0$ when $p_0 \ge \tau$, and otherwise sweeps candidate depths from a floor $n_{\mathrm{fl}}$ up to $n_{\max}$ until some candidate scores at least $\tau$:
+\begin{equation}
+\label{eq:policy}
+\hat y = \begin{cases} \hat y_0, & p_0 \ge \tau \quad \text{(commit)},\\[1pt] \hat y_{n},\; n \in \{n_{\mathrm{fl}}, \ldots, n_{\max}\}, & \text{first $n$ with } p_n \ge \tau \quad \text{(refine)}. \end{cases}
+\end{equation}
+Each candidate depth costs one additional forward pass: routing targets $E_d$ and gated refinement targets the residual $E_c$ (Definition~\ref{def:errors}).
+
+\begin{proposition}[Route-before-gate]
+\label{prop:order}
+Under $E\approx E_d+E_c$, scoring stop confidence after depth alignment yields a gate whose low-confidence pool contains only commitment risk; gating before routing pools depth misallocation with commitment risk, so a single threshold cannot in general reproduce route-then-gate accuracy.
+\end{proposition}
+
+\begin{lemma}[Confidence contamination under overlapping error modes]
+\label{lem:contam}
+Assume \emph{(A1)} structure routing removes depth-mismatch mass without harming aligned instances, \emph{(A2)} on aligned depth, $g$ ranks commitment risk above chance, and \emph{(A3)} the confidence distributions of depth-mismatch and commitment-error instances overlap. If $p_0$ is instead scored while $E_d>0$, then $\Pr(\mathrm{wrong}\mid p_0<\tau)$ contains depth-misallocation mass, and a single threshold cannot in general cleanly isolate the two error modes.
+\end{lemma}
+\textit{Proof sketch.} By (A1), routing removes $E_d$ before scoring, so the low-$p_0$ pool holds only commitment risk, which (A2) ranks correctly; gate-first pools both modes, which (A3) overlap, so a single $\tau$ generally trades over-refinement of misallocated depths against missed commitment failures (empirically 93.5--94.0\%; Figure~\ref{fig:bar}B).
+
+\noindent\textbf{Stop head.} RichStopHead maps $(h_n,n,s_n)$ to a logit; $g$ trains on 1{,}608/400 \texttt{first\_correct} rows with focal BCE \citep{lin2017focal} ($\gamma=2$; 12.5\% positive), and $\tau=0.48$ is validation-locked.
+\input{figures/figure1_flow.tex}
+\input{figures/algorithm1.tex}
+
+\section{Experiments}
+\label{sec:exp}
+\subsection{Experimental Setup}
+\noindent\textbf{Model.} All policies share the frozen Coconut \texttt{checkpoint\_300} \citep{hao2024coconut} and the same stop head, so differences isolate stopping behavior. \textbf{Dataset.} 419 ProsQA in-distribution questions and 53 shifted slices spanning hop count, answer asymmetry, and graph shape. \textbf{Policies.} Five policies under one deployment contract (no exhaustive depth sweep; mean steps $\le 4.5$): \texttt{fixed\_3} ($\times$); \texttt{auto\_route}, \texttt{structure\_d}, \texttt{knn\_min3} ($\checkmark$, controls); CF and its OOD variants ($\bullet$). \textbf{Metrics.} Accuracy, gain $\Delta$ over \texttt{fixed\_3}, refine rate, mean forwards, per-question latency. We test \textbf{H1}: routing removes most fixed-budget error; \textbf{H2}: universal refinement cannot match routing; \textbf{H3}: gated refinement closes the residual gap at modest compute.
+
+\subsection{Main Results and Analysis}
+\label{sec:main}
+Figure~\ref{fig:bar}A reports all five policies ($\times$ ablation, $\checkmark$ controls, $\bullet$ ours); the results support all three hypotheses. Depth-aware routing gains +9.8\,pp over the fixed budget (H1: \texttt{structure\_d} 93.6\%, \texttt{auto\_route} 93.1\% vs.\ \texttt{fixed\_3} 83.8\%); universal refinement reaches only 92.6\% at high per-query compute, below routing alone (H2); CF reaches 93.89$\pm$0.76\% over five seeds (best-seed 95.23\%, seed~99), +11.4\,pp over \texttt{fixed\_3} and +1.6\,pp over the best single-pass policy, refining 7.2\% of instances at $1.17\times$ mean forwards (H3).
+\input{figures/figure2_bar.tex}
+
+\textbf{Comparison with commercial LLMs.} We evaluate five commercial LLMs in direct-answer mode on ProsQA, using either the full 419-question split or a fixed random 100-question subset (seed 42) due to API constraints (Table~\ref{tab:market}). All five score below CF (95.2\%) despite consuming 25--82$\times$ more generated tokens (354--1164 vs.\ 14.2).
+
+\begin{table}[t]
+  \centering
+  \caption{\textbf{Direct-answer comparison} on ProsQA. CF uses latent reasoning with zero decoded tokens; commercial systems use explicit generation. Three APIs: random 100-question subset (seed 42); GPT-4.1/mini: full 419. Latencies are end-to-end wall-clock including network.}
+  \label{tab:market}
+  \footnotesize
+  \begin{tabular}{llccc}
+    \toprule
+    Model & Type & Acc.(\%) & Avg.Tokens & Latency(s) \\
+    \midrule
+    \textbf{CF (Qwen2.5-0.5B)} & \textbf{Latent reasoning} & \textbf{95.2} & \textbf{14.2} & \textbf{0.52} \\
+    \midrule
+    Qwen3.7-Max & Flagship direct & 94.0 & 1163.9 & 26.06 \\
+    GPT-5.4 & Flagship direct & 87.0 & 480.9 & 2.48 \\
+    Kimi-K2.6 & Open-source direct & 77.0 & 484.8 & 4.53 \\
+    GPT-4.1 & Flagship direct & 65.6 & 355.0 & 2.30 \\
+    GPT-4.1-Mini & Lightweight direct & 53.5 & 354.2 & 1.74 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\noindent\textbf{Complement audit.} Of 419 instances, refinement recovers 14 routing-wrong cases, misleads 5 routing-correct ones, and 17 are jointly wrong, capping CF at a 95.94\% oracle union ceiling under the two evaluated paths (Figure~\ref{fig:bar}C). \textbf{Failure vignettes.} \emph{Triggered refine (idx~3):} a 4-hop graph ($n_0{=}4$) yields $p_0{=}0.47<\tau$, rescued by refinement; \emph{oracle gap (idx~111):} $p_0{=}0.51\ge\tau$, yet a correct path exists. \textbf{Latency.} CF costs 0.52\,s per question versus 0.45\,s for single-pass policies. \textbf{Token cost.} Latent thoughts are never decoded, so CF adds \emph{zero} generated tokens over the frozen base (${\approx}14.2$ per question on ProsQA vs.\ $49.4$ for explicit CoT \citep{hao2024coconut}, ${\sim}71\%$ fewer); the added cost is latent compute only: $\bar n{=}3.51$ mean steps ($1.17\times$ forwards, within the ${\le}4.5$ budget).
+
+\textbf{OOD and cross-dataset transfer.} On 53 ProsQA slices, validation-locked tri-band gating improves weighted accuracy by +2.08\,pp (+0.19\,pp in-distribution, +7.44\,pp OOD); only 6/53 slices regress (Figure~\ref{fig:bar}D). Transfer tests the \emph{framework}---the route-then-gate skeleton and validation-locked thresholds---not a literal replay of ProsQA routing. PrOntoQA and GSM8K gain +0.12 to +1.28\,pp; PrOntoQA's small gain reflects a 99.5\% ceiling; GSM8K's collapsed stop head is replaced by a calibrated classifier \citep{cobbe2021training} as a task-specific transfer adaptation. StrategyQA ($N{=}161$) gains +0.62\,pp, ProofWriter ($N{=}1200$) is unchanged (99.75\% ceiling), and MATH500 (random 50-example subset) gains +6.00\,pp.
+
+\section{Conclusion}
+\label{sec:concl}
+Decomposing Coconut errors into depth mismatch and commitment error explains why refinement must be gated after routing; Confidence Fallback instantiates this principle, reaching 93.89$\pm$0.76\% on ProsQA (best-seed 95.23\%) at a 7.2\% refine rate, with further gains under shift. CF adds only a 106K-parameter stop head on a frozen base, operates at 0.52\,s per question on a single A100, and achieves higher ProsQA accuracy than the five evaluated direct-answer APIs while using 25--82$\times$ fewer generated tokens (Table~\ref{tab:market}). CF is thus a deployment control layer rather than a universal accuracy booster.
+
+\textbf{Limitations.} Routing rules are task-specific; 17/419 jointly wrong instances are unrecoverable; oracle gaps remain when $p_0\ge\tau$ despite a correct refinement path; all results use one Coconut checkpoint; Table~\ref{tab:market} compares direct-answer APIs without controlling for model scale. Future work: end-to-end routing, multi-modal latent reasoning, same-scale open-weight baselines.
+
+\noindent\textbf{Acknowledgments.} We thank Jingwen Fu for supervision and the Beijing Youth AI Academy for support.
+
+\begingroup
+\small
+\begin{thebibliography}{5}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Hao et~al.(2024)Hao, Sukhbaatar, Su, et~al.]{hao2024coconut}
+Shibo Hao, Sainbayar Sukhbaatar, DiJia Su, et~al.
+\newblock Training large language models to reason in a continuous latent space.
+\newblock \emph{arXiv preprint arXiv:2412.06769}, 2024.
+
+\bibitem[Zhu et~al. (2025)Zhu, Hao, Hu, et~al.]{zhu2025superposition}
+Hanlin Zhu, Shibo Hao, Zhiting Hu, et~al.
+\newblock Reasoning by superposition: A theoretical perspective on chain of continuous thought.
+\newblock \emph{arXiv preprint arXiv:2505.12514}, 2025.
+
+\bibitem[Wei et~al. (2022)Wei, Wang, Schuurmans, et~al.]{wei2022chain}
+Jason Wei, Xuezhi Wang, Dale Schuurmans, et~al.
+\newblock Chain-of-thought prompting elicits reasoning in large language models.
+\newblock In \emph{NeurIPS}, 2022.
+
+\bibitem[Cobbe et~al. (2021)Cobbe, Kosaraju, Bavarian, et~al.]{cobbe2021training}
+Karl Cobbe, Vineet Kosaraju, Mohammad Bavarian, et~al.
+\newblock Training verifiers to solve math word problems.
+\newblock \emph{arXiv preprint arXiv:2110.14168}, 2021.
+
+\bibitem[Lin et~al. (2017)Lin, Goyal, Girshick, et~al.]{lin2017focal}
+Tsung-Yi Lin, Priya Goyal, Ross Girshick, et~al.
+\newblock Focal loss for dense object detection.
+\newblock In \emph{ICCV}, 2017.
+
+\end{thebibliography}
+\endgroup
+\end{document}

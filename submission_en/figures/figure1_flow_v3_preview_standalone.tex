@@ -1,0 +1,260 @@
+\documentclass[border=3pt]{standalone}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{positioning,fit,calc,arrows.meta,shapes.geometric,backgrounds}
+
+\definecolor{cocoPanel}{RGB}{248,248,248}
+\definecolor{cocoPanelB}{RGB}{243,250,247}
+\definecolor{cocoLLM}{RGB}{82,82,82}
+\definecolor{cocoText}{RGB}{55,55,55}
+\definecolor{cocoMuted}{RGB}{115,115,115}
+\definecolor{cocoHidden}{RGB}{220,205,240}
+\definecolor{cocoHiddenB}{RGB}{165,145,205}
+\definecolor{cocoLatent}{RGB}{255,232,178}
+\definecolor{cocoLatentB}{RGB}{235,175,95}
+\definecolor{cocoInput}{RGB}{255,250,215}
+\definecolor{cocoInputB}{RGB}{225,205,125}
+\definecolor{cocoTeal}{RGB}{38,150,138}
+\definecolor{cocoTealFill}{RGB}{228,246,242}
+\definecolor{cocoCoral}{RGB}{228,148,132}
+\definecolor{cocoCoralFill}{RGB}{255,240,236}
+
+\begin{document}
+\begin{tikzpicture}[
+  x=1cm, y=1cm,
+  font=\sffamily\small,
+  layerlbl/.style={
+    font=\sffamily\scriptsize, text=cocoMuted, align=right
+  },
+  ptitle/.style={
+    font=\sffamily\small\bfseries, text=cocoText
+  },
+  psub/.style={
+    font=\sffamily\scriptsize, text=cocoMuted
+  },
+  capsule/.style={
+    rectangle, rounded corners=999pt,
+    inner sep=3pt, font=\sffamily\scriptsize, align=center,
+    minimum width=0.58cm, minimum height=1.02cm, line width=0.5pt
+  },
+  hidden/.style={
+    capsule, draw=cocoHiddenB, fill=cocoHidden
+  },
+  latent/.style={
+    capsule, draw=cocoLatentB, fill=cocoLatent
+  },
+  inputbox/.style={
+    rectangle, rounded corners=4pt,
+    draw=cocoInputB, fill=cocoInput, line width=0.5pt,
+    minimum width=1.20cm, minimum height=0.85cm, inner sep=4pt
+  },
+  outbox/.style={
+    capsule, draw=cocoMuted!45, fill=white,
+    minimum width=0.62cm, minimum height=0.88cm, inner sep=4pt
+  },
+  routebox/.style={
+    rectangle, rounded corners=4pt,
+    draw=cocoTeal, fill=cocoTealFill, line width=0.5pt,
+    inner sep=6pt, font=\sffamily\scriptsize, align=center
+  },
+  scorebox/.style={
+    rectangle, rounded corners=4pt,
+    draw=cocoCoral, fill=cocoCoralFill, line width=0.5pt,
+    inner sep=6pt, font=\sffamily\scriptsize, align=center
+  },
+  commitbox/.style={
+    rectangle, rounded corners=4pt,
+    draw=cocoTeal, fill=cocoTealFill, line width=0.5pt,
+    inner sep=6pt, font=\sffamily\scriptsize, align=center
+  },
+  gate/.style={
+    diamond, draw=cocoCoral, fill=cocoCoralFill, line width=0.5pt,
+    aspect=2.2, inner sep=2pt, minimum width=1.20cm,
+    font=\sffamily\tiny, align=center
+  },
+  fb/.style={
+    rectangle, rounded corners=4pt,
+    draw=cocoHiddenB, fill=cocoHidden!22, line width=0.6pt,
+    inner sep=6pt, font=\sffamily\scriptsize, align=center, dashed
+  },
+  graphdot/.style={
+    circle, draw=cocoMuted!80, fill=cocoTeal!20, inner sep=0pt
+  },
+  guidedash/.style={
+    cocoMuted!65, line width=0.45pt, dash pattern=on 2.2pt off 1.8pt
+  },
+  arr/.style={
+    -{Stealth[length=1.6mm,width=1.2mm]},
+    draw=cocoMuted!70, line width=0.48pt,
+    shorten <=0pt, shorten >=2.2pt
+  },
+  arrL/.style={
+    -{Stealth[length=2.4mm,width=1.8mm]},
+    draw=cocoMuted!70, line width=0.55pt,
+    shorten <=0pt, shorten >=2.5pt
+  },
+  darr/.style={
+    -{Stealth[length=1.6mm,width=1.2mm]},
+    draw=cocoHiddenB!75, line width=0.52pt,
+    dash pattern=on 2.8pt off 2pt,
+    shorten <=0pt, shorten >=2.2pt
+  },
+  rcycle/.style={
+    -{Stealth[length=1.4mm,width=1.1mm]},
+    draw=cocoMuted!55, line width=0.42pt,
+    shorten <=0pt, shorten >=1.8pt
+  },
+  wire/.style={
+    draw=cocoMuted!70, line width=0.48pt
+  },
+  modbox/.style={
+    rounded corners=8pt, draw=cocoTeal!75, line width=0.55pt,
+    fill=cocoTealFill!18, inner xsep=18pt, inner ysep=18pt, dashed
+  },
+  modboxfill/.style={modbox, draw=none},
+  modboxframe/.style={modbox, fill=none},
+]
+
+\def\yP{1.55}
+\def\yH{0.72}
+\def\yM{0.00}
+\def\yE{-0.72}
+\def\yG{-1.55}
+\def\yFb{-1.15}
+\def\yTitle{1.95}
+\def\ySub{1.62}
+\def\ySubB{1.28}
+\def\yPanelTop{2.38}
+\def\yPanelBot{-2.05}
+
+% ---- panel A shell ----
+\begin{scope}[on background layer]
+\fill[cocoPanel, rounded corners=9pt] (0.15,\yPanelBot) rectangle (11.35,\yPanelTop);
+\draw[cocoMuted!22, rounded corners=9pt] (0.15,\yPanelBot) rectangle (11.35,\yPanelTop);
+\end{scope}
+
+% left legend (Coconut-style layer rails)
+\node[layerlbl, anchor=east] at (0.02,\yP) {prediction $\hat y$};
+\node[layerlbl, anchor=east] at (0.02,\yH) {hidden $h_n$};
+\node[layerlbl, anchor=east] at (0.02,\yE) {latent step $n$};
+\node[layerlbl, anchor=east] at (0.02,\yG) {graph input $x$};
+\foreach \yy in {\yP,\yH,\yE,\yG} {
+  \draw[guidedash] (0.05,\yy) -- (1.25,\yy);
+}
+
+% ===================== Panel A =====================
+\node[ptitle, anchor=west] at (0.45,\yTitle) {A.\ Fixed-budget baseline};
+\node[psub, anchor=west] at (0.45,\ySub) {Uniform $n{=}3$ · 83.8\% acc.};
+
+% continuous Coconut LLM bar
+\draw[cocoLLM, line width=5.6pt, line cap=butt] (1.55,\yM) -- (9.55,\yM);
+\node[font=\sffamily\scriptsize\bfseries, text=cocoText, fill=white, inner sep=3pt]
+  at (5.55,\yM) {Coconut LLM};
+
+\node[inputbox] (Agraph) at (1.85,\yG) {};
+\node[graphdot, minimum size=2.6mm] at (1.72,\yG+0.06) {};
+\node[graphdot, minimum size=2.2mm] at (1.98,\yG+0.20) {};
+\node[graphdot, minimum size=2.2mm] at (1.98,\yG-0.08) {};
+\node[psub, anchor=north] at (1.85,\yG-0.30) {graph $x$};
+
+\node[latent] (Ae1) at (3.30,\yE) {$n{=}1$};
+\node[latent] (Ae2) at (5.30,\yE) {$n{=}2$};
+\node[latent] (Ae3) at (7.30,\yE) {$n{=}3$};
+\node[hidden] (Ah1) at (3.30,\yH) {$h_1$};
+\node[hidden] (Ah2) at (5.30,\yH) {$h_2$};
+\node[hidden] (Ah3) at (7.30,\yH) {$h_3$};
+\node[outbox] (Aout) at (9.55,\yP) {$\hat y$};
+
+\coordinate (Ae1Tip) at ([xshift=-7mm]Ae1.west);
+\draw[wire] (Agraph.north) -- (Agraph.north |- Ae1Tip);
+\draw[wire] (Agraph.north |- Ae1Tip) -- (Ae1Tip);
+\draw[arr] (Ae1Tip) -- (Ae1.west);
+\foreach \Ae/\Ah in {Ae1/Ah1, Ae2/Ah2, Ae3/Ah3} {
+  \draw[arr] (\Ae.north) -- (\Ah.south);
+}
+% Coconut-style recycle: hidden lower-right → next latent upper-left
+\draw[rcycle] (Ah1.south east) to[out=-28, in=152]
+  node[psub, pos=0.52, anchor=north, yshift=-1pt] {recycle} (Ae2.north west);
+\draw[rcycle] (Ah2.south east) to[out=-28, in=152] (Ae3.north west);
+% dashed readout (decode)
+\coordinate (AreadTip) at ([xshift=-4mm]Aout.west);
+\draw[wire] (Ah3.east) -- (AreadTip |- 0,\yH);
+\draw[wire] (AreadTip |- 0,\yH) -- (AreadTip);
+\draw[darr] (AreadTip) -- (Aout.west);
+
+% ===================== Panel B =====================
+\node[ptitle, anchor=west] at (11.90,\yTitle) {B.\ Confidence Fallback (ours)};
+\node[psub, anchor=west] at (11.90,\ySub) {Route-then-gate · 95.23\% acc.};
+\node[psub, anchor=west, text=cocoTeal] at (11.90,\ySubB) {Gate commit vs.\ fallback ($\tau{=}0.48$)};
+
+% continuous LLM bar (two latent columns)
+\draw[cocoLLM, line width=5.6pt, line cap=butt] (12.20,\yM) -- (18.35,\yM);
+\node[font=\sffamily\scriptsize\bfseries, text=cocoText, fill=white, inner sep=3pt]
+  at (15.28,\yM) {Coconut LLM};
+
+\node[inputbox] (Bgraph) at (12.20,\yG) {};
+\node[graphdot, minimum size=2.6mm] at (12.07,\yG+0.06) {};
+\node[graphdot, minimum size=2.2mm] at (12.33,\yG+0.20) {};
+\node[graphdot, minimum size=2.2mm] at (12.33,\yG-0.08) {};
+\coordinate (Bgraphe) at (12.43,\yG+0.06);
+\node[psub, anchor=north] at (12.20,\yG-0.30) {graph $x$};
+
+\node[routebox, minimum width=1.15cm] (Broute) at (14.15,\yG) {route $n_0$};
+\node[latent] (Be0) at (15.50,\yE) {$n_0$};
+\node[latent] (Be1) at (17.50,\yE) {$n_0{+}1$};
+\node[hidden] (Bh0) at (15.50,\yH) {$h_{n_0}$};
+\node[hidden] (Bh1) at (17.50,\yH) {$h_{n_0+1}$};
+
+\coordinate (BrouteIn) at ([xshift=-6mm]Broute.west);
+\draw[wire] (Bgraphe) -- (BrouteIn);
+\draw[arr] (BrouteIn) -- (Broute.west);
+\coordinate (Be0Tip) at ([xshift=-7mm]Be0.west);
+\draw[wire] (Broute.north) -- (Broute.north |- Be0Tip);
+\draw[wire] (Broute.north |- Be0Tip) -- (Be0Tip);
+\draw[arr] (Be0Tip) -- (Be0.west);
+\draw[arr] (Be0.north) -- (Bh0.south);
+\draw[arr] (Be1.north) -- (Bh1.south);
+% recycle via column gutter (draw_spec)
+\draw[wire] (Bh0.east) -- (16.50,\yH) -- (16.50,\yE);
+\draw[arr] (16.50,\yE) -- (Be1.west);
+\node[psub, anchor=north] at (16.50,\yE-0.22) {recycle};
+
+% --- CF controller (module-style dashed box) ---
+\node[scorebox, minimum width=1.55cm] (Bscore) at (20.55,\yH) {RichStopHead $p_0$};
+\node[gate] (Bgate) at (23.05,\yH) {$p_0{\ge}\tau$};
+\node[commitbox, minimum width=1.15cm] (Bout) at (25.55,\yH) {Commit $\hat y_0$};
+\node[fb, minimum width=2.35cm] (Bfallback) at (23.05,\yFb) {%
+  neighborhood refine $\rightarrow$ $\hat y$%
+};
+
+\coordinate (BmodPort) at ([xshift=-18pt]Bscore.west |- 0,\yH);
+\coordinate (BscoreIn) at ([xshift=-4mm]Bscore.west);
+\draw[wire] (Bh0.east) -- (BmodPort);
+\draw[wire] (BmodPort) -- (BscoreIn);
+\draw[arr] (BscoreIn) -- (Bscore.west);
+\coordinate (BscoreOut) at ($(Bscore.east)+(1.2mm,0)$);
+\coordinate (BgateIn) at ($(Bgate.west)+(-4mm,0)$);
+\draw[wire] (BscoreOut) -- (BgateIn);
+\draw[arrL] (BgateIn) -- (Bgate.west);
+\coordinate (BcommitIn) at ($(Bout.west)+(-4mm,0)$);
+\draw[wire] (Bgate.east) -- (BcommitIn);
+\draw[arr] (BcommitIn) -- (Bout.west);
+\draw[darr] (Bgate.south) -- (Bfallback.north);
+\node[psub, anchor=south] at ($(Bgate.east)!0.55!(Bout.west)+(0,2pt)$) {Yes, commit 92.8\%};
+\node[psub, anchor=west] at (23.25,-0.68) {No, refine 7.2\%};
+
+\node[modboxframe, fit=(Bscore)(Bgate)(Bout)(Bfallback)] (BmodFrame) {};
+\node[font=\sffamily\scriptsize\bfseries, text=cocoTeal, anchor=south west,
+  fill=white, inner sep=2pt, rounded corners=1pt]
+  at ([xshift=4pt,yshift=2pt]BmodFrame.north west) {CF controller};
+
+% panel B: light-teal shell + CF tint
+\begin{scope}[on background layer]
+\coordinate (BpanelNE) at ([xshift=3pt]BmodFrame.north east);
+\fill[cocoPanelB, rounded corners=9pt] (11.60,\yPanelBot) rectangle (BpanelNE |- 0,\yPanelTop);
+\draw[cocoTeal!28, rounded corners=9pt] (11.60,\yPanelBot) rectangle (BpanelNE |- 0,\yPanelTop);
+\node[modboxfill, fit=(Bscore)(Bgate)(Bout)(Bfallback)] (Bmod) {};
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
